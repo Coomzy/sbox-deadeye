@@ -95,6 +95,11 @@ public class Player : Component
 
 	void WalkingUpdate()
 	{
+		if (RoomManager.instance.currentRoom == null)
+		{
+			return;
+		}
+
 		var currentPos = Transform.Position;
 		var targetPos = RoomManager.instance.currentRoom.targetPos;
 		var newPos = MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
@@ -155,15 +160,26 @@ public class Player : Component
 		}
 		RoomManager.instance.currentRoom.targetIndex++;
 
-		var directionToTarget = Vector3.Direction(Transform.Position, RoomManager.instance.currentRoom.currentTarget.Transform.Position);
-		directionToTarget.z = 0;
-		GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
+		if (!PlayerSettings.instance.firstPersonMode)
+		{
+			var directionToTarget = Vector3.Direction(Transform.Position, RoomManager.instance.currentRoom.currentTarget.Transform.Position);
+			directionToTarget.z = 0;
+			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
+		}
 
 		RoomManager.instance.currentRoom.currentTarget.Select();
 	}
 
 	void DecidingUpdate()
 	{
+		if (PlayerSettings.instance.firstPersonMode)
+		{
+			var directionToTarget = Vector3.Direction(Transform.Position, RoomManager.instance.currentRoom.currentTarget.Transform.Position);
+			directionToTarget.z = 0;
+			var desiredRotation = directionToTarget.Normal.EulerAngles.ToRotation();
+			GameObject.Transform.Rotation = Rotation.Slerp(GameObject.Transform.Rotation, desiredRotation, 10.0f * Time.Delta);
+		}
+
 		if (timeSinceStartedDecisionMaking >= RoomManager.instance.currentRoom.reactTime)
 		{
 			bool anyBadGuys = false;
@@ -253,6 +269,7 @@ public class Player : Component
 			}
 			else
 			{
+				civiliansKilled++;
 				Sandbox.Services.Stats.Increment("civilians-killed", 1);
 			}
 
@@ -261,7 +278,28 @@ public class Player : Component
 
 		await GameTask.DelaySeconds(PlayerSettings.instance.delayAfterExecute);
 
-		if (RoomManager.instance.isFinalRoom)
+		bool anyTargetsLeft = false;
+		foreach (var target in RoomManager.instance.currentRoom.targets)
+		{
+			if (!target.isBadTarget)
+				continue;
+
+			if (target.isDead)
+				continue;
+
+			anyTargetsLeft = true;
+		}
+
+		if (anyTargetsLeft)
+		{
+			SetState(PlayerState.Dead);
+		}
+		// TODO: Make this based on a level setting or at least a game setting
+		else if (civiliansKilled > 3)
+		{
+			SetState(PlayerState.KilledTooManyCivs);
+		}
+		else if (RoomManager.instance.isFinalRoom)
 		{
 			SetState(PlayerState.Won);
 		}
@@ -272,11 +310,20 @@ public class Player : Component
 		}
 	}
 
-	void DeadStart()
+	async void DeadStart()
 	{
 		Sandbox.Services.Stats.Increment("died", 1);
 
 		DeathAnimate();
+
+		while (!bodyPhysics.Enabled)
+		{
+			await Task.Frame();
+		}
+
+		await Task.DelaySeconds(1.5f);
+
+		UIManager.instance.Died();
 	}
 
 	async void DeathAnimate()
@@ -413,22 +460,40 @@ public class Player : Component
 		thirdPersonAnimationHelper.Target.Set("hit_strength", (force.Length / 1000.0f) * damageScale);
 	}
 
-	void WonStart()
+	async void WonStart()
 	{
 		Sandbox.Services.Stats.Increment("won", 1);
+
+		await Task.DelaySeconds(1.5f);
+
+		UIManager.instance.Won();
 	}
 
-	void KilledTooManyCivsStart()
+	async void KilledTooManyCivsStart()
 	{
 		Sandbox.Services.Stats.Increment("failure-too-many-civs-killed", 1);
+
+		await Task.DelaySeconds(1.5f);
+
+		UIManager.instance.FailedTooManyCivsKilled();
 	}
 
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
 
+		CheckForExitLevelInput();
 		CheckForReloadLevelInput();
 		StateMachineUpdate();
+	}
+
+	void CheckForExitLevelInput()
+	{
+		if (!Input.EscapePressed)
+			return;
+		Input.EscapePressed = false;
+
+		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
 	}
 
 	void CheckForReloadLevelInput()

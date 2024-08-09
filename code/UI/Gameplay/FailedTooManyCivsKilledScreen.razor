@@ -1,0 +1,38 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="title">
+		<span style="color: lightgray">You killed too many civilians</span>
+	</div>
+
+	<div class="content">
+		<div class="button-container">
+			<div class="button" onclick="@(() => Retry())">Retry</div>
+			<div class="button red" onclick="@(() => ReturnToMenu())">Return to menu</div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+    void ReturnToMenu()
+	{
+		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+		Sound.Play("ui.navigate.back");
+	}
+
+	void Retry()
+	{
+		Game.ActiveScene.Load(Game.ActiveScene.Source);
+		Sound.Play("ui.navigate.back");
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

@@ -1,0 +1,55 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="title">@GetRemainingReactTime()</div>
+</root>
+
+@code
+{
+	string GetRemainingReactTime()
+	{
+		if (Player.instance.state != PlayerState.Deciding)
+		{
+			// HACK: Just doing "" didn't seem to make the UI disappear, maybe it doesn't create a valid hash or something?
+			return " ";
+		}
+
+		if (RoomManager.instance == null)
+		{
+			return " ";	
+		}
+
+		float timeSpentMakingDecision = Player.instance.timeSinceStartedDecisionMaking;
+		float maxReactTime = RoomManager.instance.currentRoom.reactTime;
+		float remainingReactTime = maxReactTime - timeSpentMakingDecision;
+		remainingReactTime = remainingReactTime.Clamp(0, maxReactTime);
+
+		// TODO: Make this this a bar that shrinks instead
+		string remainingReactTimeStr = $"{remainingReactTime.ToString("0.00")}s";
+		return remainingReactTimeStr;
+	}
+
+	float GetBarPercentage()
+	{
+		if (Player.instance.state != PlayerState.Deciding)
+		{
+			return 0.0f;
+		}
+
+		if (RoomManager.instance == null)
+		{
+			return 0.0f;
+		}
+
+		float timeSpentMakingDecision = Player.instance.timeSinceStartedDecisionMaking;
+		float maxReactTime = RoomManager.instance.currentRoom.reactTime;
+		float remainingReactTime = maxReactTime - timeSpentMakingDecision;
+
+		return MathX.LerpInverse(remainingReactTime, 0.0f, maxReactTime, true);
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine(GetRemainingReactTime());
+}

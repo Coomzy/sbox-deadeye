@@ -14,6 +14,11 @@ public class PlayerCamera : Component
 		instance = this;
 
 		base.OnAwake();
+
+		if (PlayerSettings.instance.firstPersonMode)
+		{
+			GameObject.Enabled = false;
+		}
 	}
 
 	protected override void OnUpdate()

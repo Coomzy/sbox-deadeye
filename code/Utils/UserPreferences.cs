@@ -12,18 +12,15 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 	static string fileName => $"{typeof(T).ToSimpleString(false)}.json";
 
 #pragma warning disable SB3000 // Hotloading not supported
-	static T _instance;
+	public static T _instance;
 #pragma warning restore SB3000 // Hotloading not supported
 	public static T instance
 	{
 		get
 		{
-			//Log.Info($"Game.IsEditor = {Game.IsEditor}, Application.IsEditor {Application.IsEditor}");
-
-			// TODO: Figure out how to make this only at edit time!
-			if (Game.IsEditor)
+			if (!Utils.isEditTime)
 			{
-				//_instance = null;
+				_instance = null;
 			}
 
 			if (_instance != null)
@@ -34,7 +31,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 			if (FileSystem.Data.FileExists(fileName))
 			{
 				var fileInst = FileSystem.Data.ReadJson<T>(fileName);
-
+				Log.Info($"JSON Found! fileName: {fileName}");
 				if (fileInst != null)
 				{
 					_instance = fileInst;
@@ -57,7 +54,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 
 	void IHotloadManaged.Created(IReadOnlyDictionary<string, object> state)
 	{
-		_instance = null;
+		//_instance = null;
 		if (state.GetValueOrDefault("IsActive") is true)
 		{
 			//instance = (T)this;
@@ -66,7 +63,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 
 	void IHotloadManaged.Destroyed(Dictionary<string, object> state)
 	{
-		_instance = null;
+		//_instance = null;
 		state["IsActive"] = instance == this;
 	}
 }

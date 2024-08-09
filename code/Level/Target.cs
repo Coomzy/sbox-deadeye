@@ -3,6 +3,7 @@ using Sandbox;
 using Sandbox.Citizen;
 using System;
 using System.Text.Json;
+using System.Transactions;
 using static Sandbox.Gizmo;
 
 public class Target : Component
@@ -14,6 +15,8 @@ public class Target : Component
 	[Group("Setup"), Property] public HighlightOutline highlightOutline { get; set; }
 
 	[Group("Config"), Property] public bool isBadTarget { get; set; } = true;
+
+	[Group("Runtime"), Property] public bool isDead { get; set; } = false;
 
 	protected override void OnStart()
 	{
@@ -85,6 +88,7 @@ public class Target : Component
 	[Button("Die")]
 	public void Die()
 	{
+		isDead = true;
 		citizenVisuals.Die();
 	}
 }

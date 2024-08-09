@@ -64,7 +64,51 @@
         },
         {
           "__type": "MainMenu",
-          "__guid": "970ce064-2ed8-4bae-9c77-3c3ab42cf437"
+          "__guid": "bbc7d441-be90-4b47-8878-ba05ef5f4fdb",
+          "levelSelectScreen": {
+            "_type": "component",
+            "component_id": "ee0e82be-24b6-4da0-b2f5-a21bbf5b41fd",
+            "go": "2de4b206-7686-4243-b205-5e21452c68b8",
+            "component_type": "LevelSelectScreen"
+          },
+          "mainMenuScreen": {
+            "_type": "component",
+            "component_id": "90370cf5-d86b-4e02-8142-f278dde91509",
+            "go": "2de4b206-7686-4243-b205-5e21452c68b8",
+            "component_type": "MainMenuScreen"
+          },
+          "menuState": "Main",
+          "settingsScreen": {
+            "_type": "component",
+            "component_id": "355e1a8b-8af0-45e9-8b42-de3b95d32ead",
+            "go": "2de4b206-7686-4243-b205-5e21452c68b8",
+            "component_type": "SettingsScreen"
+          },
+          "statsScreen": {
+            "_type": "component",
+            "component_id": "bb360643-1c2d-45b6-9290-f0d18509976b",
+            "go": "2de4b206-7686-4243-b205-5e21452c68b8",
+            "component_type": "StatsScreen"
+          }
+        },
+        {
+          "__type": "MainMenuScreen",
+          "__guid": "90370cf5-d86b-4e02-8142-f278dde91509"
+        },
+        {
+          "__type": "LevelSelectScreen",
+          "__guid": "ee0e82be-24b6-4da0-b2f5-a21bbf5b41fd",
+          "__enabled": false
+        },
+        {
+          "__type": "SettingsScreen",
+          "__guid": "355e1a8b-8af0-45e9-8b42-de3b95d32ead",
+          "__enabled": false
+        },
+        {
+          "__type": "StatsScreen",
+          "__guid": "bb360643-1c2d-45b6-9290-f0d18509976b",
+          "__enabled": false
         }
       ]
     }
@@ -90,8 +134,8 @@
       "IncludedBodies": ""
     }
   },
-  "Title": null,
-  "Description": null,
+  "Title": "menu",
+  "Description": "",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

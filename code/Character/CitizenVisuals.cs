@@ -108,7 +108,12 @@ public class CitizenVisuals : Component
 		weaponGameObject.Transform.LocalPosition = Vector3.Zero;
 		weaponGameObject.Transform.LocalRotation = Rotation.Identity;
 		weaponGameObject.SetPrefabSource(weaponPrefab.ResourcePath);
-		//weaponGameObject.UpdateFromPrefab();
+
+		// HACK: This errors in edit time. https://github.com/Facepunch/sbox-issues/issues/6169
+		if (!Scene.IsEditor)
+		{
+			weaponGameObject.UpdateFromPrefab();
+		}
 
 		weapon = weaponGameObject.Components.Get<Weapon>();
 	}

@@ -1,0 +1,59 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="title">
+		<span style="color: red;">Shoot</span>
+		<span style="color: lightgray; margin: 0 50px;">or</span>
+		<span style="color: blue;">Don't Shoot</span>
+	</div>
+
+	<div class="content">
+		<div class="button-container">
+			<div class="button" onclick="@(() => ButtonPlay())">Play</div>
+			<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>
+			<div class="button blue" onclick="@(() => ButtonSettings())">Settings</div>
+			<div class="button red" onclick="@(() => Quit())">Quit</div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+	void ButtonPlay()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Play);
+		Sound.Play("ui.button.press");
+	}
+
+	void ButtonSettings()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Settings);
+		Sound.Play("ui.button.press");
+	}
+
+	void ButtonStats()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Stats);
+		Sound.Play("ui.button.press");
+	}
+
+	void Quit()
+	{
+		if (Game.IsEditor)
+		{
+			Log.Info("Quit");
+		}
+		else
+		{
+			Game.Close();
+		}
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

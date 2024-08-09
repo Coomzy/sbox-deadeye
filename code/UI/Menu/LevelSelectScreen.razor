@@ -1,0 +1,119 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="title">
+		<span style="color: lightgray">Original</span>
+	</div>
+    
+    <div class="table">
+        <div class="header row">
+            <div class="name">Name</div>
+            <div class="stat">Status</div>
+        </div>
+
+        @if (MainMenu.instance.isRefreshingLeaderboards)
+        {
+            <div class="name">Refreshing</div>
+        }
+        else
+        {
+            foreach (var entry in MainMenu.instance.globalBoard.Entries)
+            {
+                string specialClass = "";
+                if (entry.Me) specialClass = "me";
+
+                <div class="row @specialClass">
+                    <div class="name">
+
+                        @entry.DisplayName
+
+
+                    </div>
+                    @{
+                        <div class="stat">@LeaderboardTimeFormatted(entry)</div>
+                    }
+                </div>
+            }
+        }
+    </div>
+
+    <div class="table">
+        <div class="header row">
+            <div class="name">Name</div>
+            <div class="stat">Status</div>
+        </div>
+
+        @if (MainMenu.instance.isRefreshingLeaderboards)
+        {
+            <div class="name">Refreshing</div>
+        }
+        else
+        {
+            foreach (var entry in MainMenu.instance.friendsBoard.Entries)
+            {
+                string specialClass = "";
+                if (entry.Me) specialClass = "me";
+
+                <div class="row @specialClass">
+                    <div class="name">
+
+                        @entry.DisplayName
+
+
+                    </div>
+                    @{
+                        <div class="stat">@LeaderboardTimeFormatted(entry)</div>
+                    }
+                </div>
+            }
+        }
+    </div>
+
+	<div class="content">
+		<div class="button-container">
+			<div class="button" onclick="@(() => StartGame())">Start</div>
+			<div class="button red" onclick="@(() => ButtonBack())">Back</div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+    string LeaderboardTimeFormatted(Leaderboards.Entry entry)
+    {
+        double timeInSeconds = entry.Value;
+        return $"{timeInSeconds:F3}s";
+    }
+
+    void ButtonBack()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Main);
+		Sound.Play("ui.navigate.back");
+	}
+
+	void StartGame()
+	{
+		Game.ActiveScene.LoadFromFile("scenes/original.scene");
+	}
+
+	void Quit()
+	{
+		if (Game.IsEditor)
+		{
+			Log.Info("Quit");
+		}
+		else
+		{
+			Game.Close();
+		}
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

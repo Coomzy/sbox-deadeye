@@ -12,4 +12,6 @@ public class PlayerSettings : GameResourceSingleton<PlayerSettings>
 
 	[Group("Executing"), Property] public float delayPerExecute { get; set; } = 0.25f;
 	[Group("Executing"), Property] public float delayAfterExecute { get; set; } = 0.25f;
+
+	[Group("Executing"), Property] public bool firstPersonMode { get; set; } = false;
 }

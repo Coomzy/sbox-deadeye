@@ -15,4 +15,19 @@ public class GameManager : Component
 
 		base.OnAwake();
 	}
+
+	[Button("Test")]
+	public void Test()
+	{
+		Log.Info($"GamePreferences.instance = {GamePreferences._instance}");
+		Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
+		Log.Info($"GamePreferences.instance = {GamePreferences._instance}");
+
+		GamePreferences.instance.useOneHandedMode = true;
+		Log.Info($"GamePreferences.instance = {GamePreferences._instance}");
+		//GamePreferences.instance.Save();
+
+		Log.Info($"After: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
+		Log.Info($"GamePreferences.instance = {GamePreferences._instance}");
+	}
 }
