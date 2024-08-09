@@ -1,0 +1,49 @@
+MainMenu {
+	position: absolute;
+	top: -1000px;
+	left: -1000px;
+	right: -1000px;
+	bottom: -1000px;
+	//background-color: #1115;
+	background-color: white;
+	justify-content: center;
+	align-items: center;
+	font-family: Poppins;
+	font-size: 22px;
+	color: #fff;
+	//backdrop-filter: blur( 10px );
+	//backdrop-filter: white;
+	transform: scale( 1 );
+	transition: all 0.1s ease-out;
+
+	.table {
+		flex-direction: column;
+		width: 600px;
+		mix-blend-mode: lighten;
+
+		.header {
+			opacity: 0.3;
+		}
+
+		.row {
+			white-space: nowrap;
+
+			> .name {
+				flex-grow: 1;
+			}
+
+			> .stat {
+				width: 100px;
+				justify-content: flex-end;
+			}
+
+			> * {
+				padding: 0px 8px;
+			}
+		}
+
+		.me {
+			color: #4cff00;
+		}
+	}
+}
