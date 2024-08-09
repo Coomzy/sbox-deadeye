@@ -1,0 +1,142 @@
+{
+  "RootObject": {
+    "__guid": "deb3c017-00fe-487f-870d-06f17c84ddbe",
+    "Flags": 0,
+    "Name": "door piece",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "f8f9b8f1-4db2-4881-9b04-e7924d7e6fb3",
+        "Flags": 0,
+        "Name": "Solid",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Children": [
+          {
+            "__guid": "4c526e92-dd3b-4f37-9aea-d17dab16f18e",
+            "Flags": 0,
+            "Name": "Wall",
+            "Position": "0,-225,87.5",
+            "Scale": "10,1,3.5",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "b9a92422-ec60-449f-97d8-ce2374eea9b3",
+                "BodyGroups": 18446744073709551615,
+                "MaterialOverride": "materials/default.vmat",
+                "Model": "models/dev/box.vmdl",
+                "RenderType": "On",
+                "Tint": "0.39546,0.51163,0.27128,1"
+              },
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "73e23fcf-3119-4b2d-aad1-673b40197eab",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "__guid": "4fb315c4-4101-4ae3-9d62-c4d231612536",
+        "Flags": 0,
+        "Name": "Door",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "3769a6e4-1e66-4371-afba-3328f97b76b6",
+            "Flags": 0,
+            "Name": "Wall",
+            "Position": "140,-225,87.5",
+            "Scale": "4.375,1,3.5",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "0d9ffde3-9767-465a-a18f-529f8caaecea",
+                "BodyGroups": 18446744073709551615,
+                "MaterialOverride": "materials/default.vmat",
+                "Model": "models/dev/box.vmdl",
+                "RenderType": "On",
+                "Tint": "0.39546,0.51163,0.27128,1"
+              },
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "c1237550-d27e-40f2-b328-cf144c2a8a46",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "a9691eb4-178b-4119-82de-cabf0b396b00",
+            "Flags": 0,
+            "Name": "Door",
+            "Position": "0,-225,150",
+            "Scale": "1.25,1,1",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "6d20dc5d-2fc9-49d1-85f2-470666d86eef",
+                "BodyGroups": 18446744073709551615,
+                "MaterialOverride": "materials/default.vmat",
+                "Model": "models/dev/box.vmdl",
+                "RenderType": "On",
+                "Tint": "0.39546,0.51163,0.27128,1"
+              },
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "ebb7c30c-21bf-4b37-91cc-b64db00486af",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          },
+          {
+            "__guid": "9c3f136d-7ae2-40b3-9897-a8f6ae2a97dd",
+            "Flags": 0,
+            "Name": "Wall",
+            "Position": "-140,-225,87.5",
+            "Scale": "4.375,1,3.5",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ModelRenderer",
+                "__guid": "59f6114e-4ebb-42a3-9f79-dab724490c9a",
+                "BodyGroups": 18446744073709551615,
+                "MaterialOverride": "materials/default.vmat",
+                "Model": "models/dev/box.vmdl",
+                "RenderType": "On",
+                "Tint": "0.39546,0.51163,0.27128,1"
+              },
+              {
+                "__type": "Sandbox.BoxCollider",
+                "__guid": "38625da8-831d-4469-8b87-fec7ccf5d1ba",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Scale": "50,50,50",
+                "Static": false
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}
