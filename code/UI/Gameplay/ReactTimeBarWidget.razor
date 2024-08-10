@@ -140,18 +140,59 @@
 	[Property]
 	public float TwistMin = -1f;
 
+	float Heartbeat(float progress)
+	{
+		// Define the duration of each part of the heartbeat cycle
+		float firstBeatEnd = 0.3f;  // End of the first beat (30% of the cycle)
+		float secondBeatEnd = 0.6f; // End of the second beat (60% of the cycle)
+
+		float heartBeat = 0.0f;
+
+		if (progress < firstBeatEnd)
+		{
+			// First beat (stronger beat)
+			float localProgress = progress / firstBeatEnd;
+			float sineValue = MathF.Sin(localProgress * MathF.PI);
+			heartBeat = MathX.Lerp(0.0f, 1.0f, sineValue); // Lerp from 0 to 1.0
+		}
+		else if (progress < secondBeatEnd)
+		{
+			// Second beat (weaker beat)
+			float localProgress = (progress - firstBeatEnd) / (secondBeatEnd - firstBeatEnd);
+			float sineValue = MathF.Sin(localProgress * MathF.PI);
+			heartBeat = MathX.Lerp(0.0f, 0.7f, sineValue); // Lerp from 0 to 0.7
+		}
+		else
+		{
+			// Silence period (return 0)
+			heartBeat = 0.0f;
+		}
+
+		return heartBeat;
+	}
 	protected void UpdatePulse()
 	{
-		if (_Progress > 0.33f)
+		if (_Progress > 0.5f)
 		{
 			return;
 		}
 
-		// Divide into 4 to make it breathe
-		var val = 1 - (GetMsTime() / (1000 / 4));
-		if (val >= 0.5) val = 1 - val;
+		var ScalePulse = _Progress > 0.5f ? 1 : (_Progress > 0.2f ? 2 : 4);
 
-		PulseScaleValue = MathX.Lerp(PulseScaleMin, PulseScaleMax, val);
+		Func<int, float> perSec = (i) => (1000 / i);
+		Func<int, float> percPerSec = (times) => ((GetMsTime() % perSec(times)) / perSec(times));
+
+		PulseScaleValue = MathX.Lerp(
+			PulseScaleMin, PulseScaleMax,
+			// Heartbeat(percPerSec(ScalePulse)),
+			MathF.Sin(percPerSec(ScalePulse) * MathF.PI),
+			true
+		);
+		// Divide into 4 to make it breathe
+		// var val = 1 - ((GetMsTime() % 250) / 250);
+		// if (val >= 0.5) val = 1 - val;
+
+		// PulseScaleValue = MathX.Lerp(PulseScaleMin, PulseScaleMax, val);
 		//Log.Info($"ms={GetMsTime()}, pos={val}, val={PulseScaleValue}");
 	}
 
@@ -169,7 +210,7 @@
 		var ShakeDistanceMin = (int)MathX.Lerp(ShakeDistanceMinSoft, ShakeDistanceMinHard, ShakeProgress);
 		var ShakeDistanceMax = (int)MathX.Lerp(ShakeDistanceMaxSoft, ShakeDistanceMaxHard, ShakeProgress);
 
-		if (_Progress > 0.75f)
+		if (_Progress > 0.5f)
 		{
 			// Log.Info("No shake");
 			if (ProgressBar != null) ProgressBar.Style.Transform = null;

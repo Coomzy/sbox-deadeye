@@ -17,11 +17,12 @@
 	protected Panel ProgressValue;
 
 	private float _Progress = 0.5f;
-	[Property, Range(0,1)]
+	[Property, Range(0, 1)]
 	public float Progress
 	{
 		get => _Progress;
-		set {
+		set
+		{
 			_Progress = value;
 			var Width = Length.Parse($"{value * 100}%");
 			if (ProgressValue != null)
@@ -60,7 +61,7 @@
 		// If not visible just use current time for now...
 		if (!IsBarVisible()) return 1000 - ((DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) % 1000);
 
-		return GetRemainingReactTime() % 1000;
+		return (GetRemainingReactTime() * 1000) % 1000;
 	}
 
 	float GetRemainingReactTime()
@@ -114,9 +115,9 @@
 	[Property]
 	public float ShakeDistanceMaxHard = 15f;
 	[Property]
-	public float ShakeMinSpeed = 25f;
+	public float ShakeMinSpeed = 30f;
 	[Property]
-	public float ShakeMaxSpeed = 150f;
+	public float ShakeMaxSpeed = 175f;
 
 	public float ShakeTransformLastX = 0;
 	public float ShakeTransformLastY = 0;
@@ -128,7 +129,7 @@
 	[Property]
 	public float PulseScaleValue = 1f;
 	[Property]
-	public float PulseScaleMax = 1.1f;
+	public float PulseScaleMax = 1.2f;
 	[Property]
 	public float PulseScaleMin = 1.0f;
 
@@ -139,13 +140,59 @@
 	[Property]
 	public float TwistMin = -1f;
 
+	float Heartbeat(float progress)
+	{
+		// Define the duration of each part of the heartbeat cycle
+		float firstBeatEnd = 0.3f;  // End of the first beat (30% of the cycle)
+		float secondBeatEnd = 0.6f; // End of the second beat (60% of the cycle)
+
+		float heartBeat = 0.0f;
+
+		if (progress < firstBeatEnd)
+		{
+			// First beat (stronger beat)
+			float localProgress = progress / firstBeatEnd;
+			float sineValue = MathF.Sin(localProgress * MathF.PI);
+			heartBeat = MathX.Lerp(0.0f, 1.0f, sineValue); // Lerp from 0 to 1.0
+		}
+		else if (progress < secondBeatEnd)
+		{
+			// Second beat (weaker beat)
+			float localProgress = (progress - firstBeatEnd) / (secondBeatEnd - firstBeatEnd);
+			float sineValue = MathF.Sin(localProgress * MathF.PI);
+			heartBeat = MathX.Lerp(0.0f, 0.7f, sineValue); // Lerp from 0 to 0.7
+		}
+		else
+		{
+			// Silence period (return 0)
+			heartBeat = 0.0f;
+		}
+
+		return heartBeat;
+	}
 	protected void UpdatePulse()
 	{
-		// Divide into 4 to make it breathe
-		var val = 1 - (GetMsTime() / (1000 / 4));
-		if (val >= 0.5) val = 1 - val;
+		if (_Progress > 0.5f)
+		{
+			return;
+		}
 
-		PulseScaleValue = MathX.Lerp(PulseScaleMin, PulseScaleMax, val);
+		var ScalePulse = _Progress > 0.5f ? 1 : (_Progress > 0.2f ? 2 : 4);
+
+		Func<int, float> perSec = (i) => (1000 / i);
+		Func<int, float> percPerSec = (times) => ((GetMsTime() % perSec(times)) / perSec(times));
+
+		PulseScaleValue = MathX.Lerp(
+			PulseScaleMin, PulseScaleMax,
+			// Heartbeat(percPerSec(ScalePulse)),
+			MathF.Sin(percPerSec(ScalePulse) * MathF.PI),
+			true
+		);
+		// Divide into 4 to make it breathe
+		// var val = 1 - ((GetMsTime() % 250) / 250);
+		// if (val >= 0.5) val = 1 - val;
+
+		// PulseScaleValue = MathX.Lerp(PulseScaleMin, PulseScaleMax, val);
 		//Log.Info($"ms={GetMsTime()}, pos={val}, val={PulseScaleValue}");
 	}
 
@@ -158,12 +205,12 @@
 
 	protected void UpdateShake()
 	{
-		var ShakeProgress = 1f - (_Progress / 0.99f);
+		var ShakeProgress = 1f - (_Progress / 0.5f);
 		var ShakeApproachTime = MathX.Lerp(ShakeMinSpeed, ShakeMaxSpeed, ShakeProgress) * Time.Delta;
 		var ShakeDistanceMin = (int)MathX.Lerp(ShakeDistanceMinSoft, ShakeDistanceMinHard, ShakeProgress);
 		var ShakeDistanceMax = (int)MathX.Lerp(ShakeDistanceMaxSoft, ShakeDistanceMaxHard, ShakeProgress);
 
-		if (_Progress > 0.99f)
+		if (_Progress > 0.5f)
 		{
 			// Log.Info("No shake");
 			if (ProgressBar != null) ProgressBar.Style.Transform = null;
@@ -171,39 +218,36 @@
 		}
 		//Log.Info($"Shake p={ShakeProgress} t={MathX.Lerp(5000, 10, ShakeProgress)}ms");
 
-		if (DateTime.Now > ShakeExpires) {
+		if (DateTime.Now > ShakeExpires)
+		{
 			ShakeExpires = new DateTime(
 				DateTime.Now.Ticks +
 				TimeSpan.FromMilliseconds(MathX.Lerp(250, 1, ShakeProgress)).Ticks
 			);
 
-			var NextX = ShakeTransformNextX;
-			var NextY = ShakeTransformNextY;
+			// var NextX = ShakeTransformNextX;
+			// var NextY = ShakeTransformNextY;
 
 			ShakeTransformNextX = Rnd.Next(-(ShakeDistanceMin / 2), (ShakeDistanceMax / 2));
 			ShakeTransformNextY = Rnd.Next(-(ShakeDistanceMin / 2), (ShakeDistanceMax / 2));
 			//Log.Info($"Update Shake x={NextX}=>{ShakeTransformNextX}, y={NextY}=>{ShakeTransformNextY}");
 		}
 
-		//if (ProgressBar != null)
-		{
-			var LastX = ShakeTransformLastX;
-			var LastY = ShakeTransformLastY;
-			ShakeTransformLastX = MathX.Clamp(MathX.Approach(ShakeTransformLastX, ShakeTransformNextX, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
-			ShakeTransformLastY = MathX.Clamp(MathX.Approach(ShakeTransformLastY, ShakeTransformNextY, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
-			// Log.Info($"Approach shake value x={LastX}=>{ShakeTransformLastX}, y={LastY}=>{ShakeTransformLastY}");
-		}
+		// var LastX = ShakeTransformLastX;
+		// var LastY = ShakeTransformLastY;
+		ShakeTransformLastX = MathX.Clamp(MathX.Approach(ShakeTransformLastX, ShakeTransformNextX, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
+		ShakeTransformLastY = MathX.Clamp(MathX.Approach(ShakeTransformLastY, ShakeTransformNextY, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
+		// Log.Info($"Approach shake value x={LastX}=>{ShakeTransformLastX}, y={LastY}=>{ShakeTransformLastY}");
 	}
 
 	protected override void OnUpdate()
 	{
-		bool Prod = false;
-		bool Visible = (Prod ? IsBarVisible() : true);
+		bool Visible = IsBarVisible();
 		this.Panel.Style.Display = (Visible ? DisplayMode.Flex : DisplayMode.None);
 
 		var _Progress = GetTimePercentage();
 
-		if (Visible && Prod) Progress = _Progress;
+		if (Visible) Progress = _Progress;
 
 		UpdateShake();
 		UpdatePulse();
@@ -217,7 +261,6 @@
 				Length.Parse($"{(int)ShakeTransformLastX}px"),
 				Length.Parse($"{(int)ShakeTransformLastY}px")
 			);
-			//Log.Info(PulseScaleValue);
 			PBTransform.AddScale(PulseScaleValue);
 			// PBTransform.AddRotation(0, 0, TwistValue);
 			ProgressBar.Style.Transform = PBTransform;
