@@ -63,9 +63,15 @@
 		var SceneName = target.GetAttribute("data-map");
 		var SceneFilePath = $"scenes/{SceneName}.scene";
 
+		// Maybe there's a better way around this? See @FPM
+		var mode = PlayerSettings.instance.firstPersonMode;
+
 		try
 		{
+			//Log.Info($"FPS1? {mode}");
 			Game.ActiveScene.LoadFromFile(SceneFilePath);
+			//Log.Info($"FPS2? {PlayerSettings.instance.firstPersonMode}");
+			PlayerSettings.instance.firstPersonMode = mode; // @FPM
 		}
 		catch (Exception ex)
 		{
