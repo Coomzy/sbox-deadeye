@@ -115,9 +115,9 @@
 	[Property]
 	public float ShakeDistanceMaxHard = 15f;
 	[Property]
-	public float ShakeMinSpeed = 25f;
+	public float ShakeMinSpeed = 30f;
 	[Property]
-	public float ShakeMaxSpeed = 150f;
+	public float ShakeMaxSpeed = 175f;
 
 	public float ShakeTransformLastX = 0;
 	public float ShakeTransformLastY = 0;
@@ -129,7 +129,7 @@
 	[Property]
 	public float PulseScaleValue = 1f;
 	[Property]
-	public float PulseScaleMax = 1.1f;
+	public float PulseScaleMax = 1.2f;
 	[Property]
 	public float PulseScaleMin = 1.0f;
 
@@ -142,6 +142,11 @@
 
 	protected void UpdatePulse()
 	{
+		if (_Progress > 0.33f)
+		{
+			return;
+		}
+
 		// Divide into 4 to make it breathe
 		var val = 1 - (GetMsTime() / (1000 / 4));
 		if (val >= 0.5) val = 1 - val;
@@ -159,12 +164,12 @@
 
 	protected void UpdateShake()
 	{
-		var ShakeProgress = 1f - (_Progress / 0.99f);
+		var ShakeProgress = 1f - (_Progress / 0.5f);
 		var ShakeApproachTime = MathX.Lerp(ShakeMinSpeed, ShakeMaxSpeed, ShakeProgress) * Time.Delta;
 		var ShakeDistanceMin = (int)MathX.Lerp(ShakeDistanceMinSoft, ShakeDistanceMinHard, ShakeProgress);
 		var ShakeDistanceMax = (int)MathX.Lerp(ShakeDistanceMaxSoft, ShakeDistanceMaxHard, ShakeProgress);
 
-		if (_Progress > 0.99f)
+		if (_Progress > 0.75f)
 		{
 			// Log.Info("No shake");
 			if (ProgressBar != null) ProgressBar.Style.Transform = null;
