@@ -1,4 +1,4 @@
-ReactTimeBarWidget {
+ReactTimeBarWidgetTest {
 	display: flex;
 	position: absolute;
 	width: 100%;
@@ -13,11 +13,10 @@ ReactTimeBarWidget {
 
 	.pbar-container {
 		position: relative;
-		margin-top: 2em;
+		margin-top: 1em;
 		width: 50em;
 		border-radius: 1em;
 		background-color: rgba(200,200,200,0.25);
-		transform-origin: center;
 
 		.pbar-progress {
 			position: relative;
@@ -41,7 +40,7 @@ ReactTimeBarWidget {
 
 	.title {
 		display: none;
-		font-size: 2.5em;
+		font-size: 7.5em;
 		font-family: Poppins;
 		color: #fff;
 		text-shadow: 3.0em 3.0em 0.1em black;

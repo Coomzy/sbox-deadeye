@@ -3,14 +3,17 @@
 @using System;
 @inherits PanelComponent
 
-<root>
-	<div class="title">
-		<span style="color: cornflowerblue">Settings</span>
-	</div>
-
-	<div class="content">
-		<div class="button-container">
-			<div class="button red" onclick="@(() => ButtonBack())">Back</div>
+<root class="menu">
+	<div class="container">
+		<div class="buttons">
+				<div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+			@* <div class="button-bg">
+			</div> *@
+		</div>
+		<div class="content">
+			<div class="title">
+				<span>Settings</span>
+			</div>
 		</div>
 	</div>
 </root>

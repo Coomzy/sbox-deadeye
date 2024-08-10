@@ -3,102 +3,87 @@
 @using Sandbox.Services;
 @using System;
 @inherits PanelComponent
+@code {
+	string[] levels = {
+		"original",
+		"original",
+		"original",
+		"original",
+		"original",
+		"original",
+		"original"
+	};
+}
 
-<root>
-	<div class="title">
-		<span style="color: lightgray">Original</span>
-	</div>
-    
-    <div class="table">
-        <div class="header row">
-            <div class="name">Name</div>
-            <div class="stat">Status</div>
+<root class="menu">
+    <div class="container">
+        <div class="content">
+	        <div class="title">
+		        <span>Levels</span>
+	        </div>
+			<div class="levels">
+				@for (int i = 0; i < levels.Count(); i++)
+				{
+					<div class="level-button" data-map="@levels[i]" onclick="@((e) => StartLevel(e))">
+						<div class="preview">
+							@* TODO: Fix the level links so that they start different levels! *@
+							<span >@(i + 1)</span>
+						</div>
+						<label>Level @(i + 1)</label>
+					</div>
+				}
+			</div>
         </div>
-
-        @if (MainMenu.instance.isRefreshingLeaderboards)
-        {
-            <div class="name">Refreshing</div>
-        }
-        else
-        {
-            foreach (var entry in MainMenu.instance.globalBoard.Entries)
-            {
-                string specialClass = "";
-                if (entry.Me) specialClass = "me";
-
-                <div class="row @specialClass">
-                    <div class="name">
-
-                        @entry.DisplayName
-
-
-                    </div>
-                    @{
-                        <div class="stat">@LeaderboardTimeFormatted(entry)</div>
-                    }
-                </div>
-            }
-        }
     </div>
 
-    <div class="table">
-        <div class="header row">
-            <div class="name">Name</div>
-            <div class="stat">Status</div>
-        </div>
-
-        @if (MainMenu.instance.isRefreshingLeaderboards)
-        {
-            <div class="name">Refreshing</div>
-        }
-        else
-        {
-            foreach (var entry in MainMenu.instance.friendsBoard.Entries)
-            {
-                string specialClass = "";
-                if (entry.Me) specialClass = "me";
-
-                <div class="row @specialClass">
-                    <div class="name">
-
-                        @entry.DisplayName
-
-
-                    </div>
-                    @{
-                        <div class="stat">@LeaderboardTimeFormatted(entry)</div>
-                    }
-                </div>
-            }
-        }
-    </div>
-
-	<div class="content">
-		<div class="button-container">
-			<div class="button" onclick="@(() => StartGame())">Start</div>
-			<div class="button red" onclick="@(() => ButtonBack())">Back</div>
+	<div class="container">
+		<div class="buttons">
+			<div class="button-bg">
+				@* <div class="button green" onclick="@(() => StartGame())">Start</div> *@
+				<div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+			</div>
 		</div>
 	</div>
 </root>
 
 @code
 {
-    string LeaderboardTimeFormatted(Leaderboards.Entry entry)
-    {
-        double timeInSeconds = entry.Value;
-        return $"{timeInSeconds:F3}s";
-    }
-
-    void ButtonBack()
+	void StartLevel(PanelEvent t)
 	{
-		MainMenu.instance.SetMenuState(MenuState.Main);
+		t.StopPropagation();
+
+		var _event = (MousePanelEvent) t;
+		var target = _event.Target;
+
+		while (target != null && target.Parent != null && !target.HasClass("level-button")) {
+			//Log.Info(String.Format("Going up {0}, {1}", target, target.Parent));
+			target = target.Parent;
+		}
+
+		var SceneName = target.GetAttribute("data-map");
+		var SceneFilePath = $"scenes/{SceneName}.scene";
+
+		try
+		{
+			Game.ActiveScene.LoadFromFile(SceneFilePath);
+		}
+		catch (Exception ex)
+		{
+			Log.Error(String.Format("Failed to load from file: {0}", ex.StackTrace));
+			Log.Info("Unable to load level because it cannot be found!");
+		}
+	}
+
+	void ButtonBack()
+	{
+		MainMenu.instance.SetMenuState(MenuState.GameMode);
 		Sound.Play("ui.navigate.back");
 	}
 
-	void StartGame()
+	/*void StartGame()
 	{
 		Game.ActiveScene.LoadFromFile("scenes/original.scene");
-	}
+	}*/
 
 	void Quit()
 	{

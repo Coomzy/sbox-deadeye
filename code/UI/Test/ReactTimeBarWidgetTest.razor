@@ -17,12 +17,11 @@
 	protected Panel ProgressValue;
 
 	private float _Progress = 0.5f;
-	[Property, Range(0, 1)]
+	[Property, Range(0,1)]
 	public float Progress
 	{
 		get => _Progress;
-		set
-		{
+		set {
 			_Progress = value;
 			var Width = Length.Parse($"{value * 100}%");
 			if (ProgressValue != null)
@@ -61,7 +60,7 @@
 		// If not visible just use current time for now...
 		if (!IsBarVisible()) return 1000 - ((DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond) % 1000);
 
-		return (GetRemainingReactTime() * 1000) % 1000;
+		return GetRemainingReactTime() % 1000;
 	}
 
 	float GetRemainingReactTime()
@@ -172,36 +171,39 @@
 		}
 		//Log.Info($"Shake p={ShakeProgress} t={MathX.Lerp(5000, 10, ShakeProgress)}ms");
 
-		if (DateTime.Now > ShakeExpires)
-		{
+		if (DateTime.Now > ShakeExpires) {
 			ShakeExpires = new DateTime(
 				DateTime.Now.Ticks +
 				TimeSpan.FromMilliseconds(MathX.Lerp(250, 1, ShakeProgress)).Ticks
 			);
 
-			// var NextX = ShakeTransformNextX;
-			// var NextY = ShakeTransformNextY;
+			var NextX = ShakeTransformNextX;
+			var NextY = ShakeTransformNextY;
 
 			ShakeTransformNextX = Rnd.Next(-(ShakeDistanceMin / 2), (ShakeDistanceMax / 2));
 			ShakeTransformNextY = Rnd.Next(-(ShakeDistanceMin / 2), (ShakeDistanceMax / 2));
 			//Log.Info($"Update Shake x={NextX}=>{ShakeTransformNextX}, y={NextY}=>{ShakeTransformNextY}");
 		}
 
-		// var LastX = ShakeTransformLastX;
-		// var LastY = ShakeTransformLastY;
-		ShakeTransformLastX = MathX.Clamp(MathX.Approach(ShakeTransformLastX, ShakeTransformNextX, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
-		ShakeTransformLastY = MathX.Clamp(MathX.Approach(ShakeTransformLastY, ShakeTransformNextY, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
-		// Log.Info($"Approach shake value x={LastX}=>{ShakeTransformLastX}, y={LastY}=>{ShakeTransformLastY}");
+		//if (ProgressBar != null)
+		{
+			var LastX = ShakeTransformLastX;
+			var LastY = ShakeTransformLastY;
+			ShakeTransformLastX = MathX.Clamp(MathX.Approach(ShakeTransformLastX, ShakeTransformNextX, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
+			ShakeTransformLastY = MathX.Clamp(MathX.Approach(ShakeTransformLastY, ShakeTransformNextY, ShakeApproachTime), -(ShakeDistanceMax / 2), (ShakeDistanceMax / 2));
+			// Log.Info($"Approach shake value x={LastX}=>{ShakeTransformLastX}, y={LastY}=>{ShakeTransformLastY}");
+		}
 	}
 
 	protected override void OnUpdate()
 	{
-		bool Visible = IsBarVisible();
+		bool Prod = false;
+		bool Visible = (Prod ? IsBarVisible() : true);
 		this.Panel.Style.Display = (Visible ? DisplayMode.Flex : DisplayMode.None);
 
 		var _Progress = GetTimePercentage();
 
-		if (Visible) Progress = _Progress;
+		if (Visible && Prod) Progress = _Progress;
 
 		UpdateShake();
 		UpdatePulse();
@@ -215,6 +217,7 @@
 				Length.Parse($"{(int)ShakeTransformLastX}px"),
 				Length.Parse($"{(int)ShakeTransformLastY}px")
 			);
+			//Log.Info(PulseScaleValue);
 			PBTransform.AddScale(PulseScaleValue);
 			// PBTransform.AddRotation(0, 0, TwistValue);
 			ProgressBar.Style.Transform = PBTransform;

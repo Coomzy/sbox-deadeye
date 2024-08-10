@@ -1,0 +1,83 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+<root class="menu">
+    <div class="container">
+
+        <div class="content">
+	        <div class="title">
+		        <span>Game Mode</span>
+	        </div>
+			<div class="modes">
+				<div class="mode-button" onclick="@(() => GoTopDownMode())">
+					<div class="img">
+						<img />
+					</div>
+					<label>Top Down</label>
+				</div>
+
+				<div class="mode-button" onclick="@(() => GoFirstPersonMode())">
+					<div class="img">
+						<img />
+					</div>
+					<label>First Person</label>
+				</div>
+
+				@* TODO: Discover how to detect VR and disable/hide this option when it's not used... *@
+				<div class="mode-button" onclick="@(() => GoVRMode())">
+					<div class="img">
+						<img />
+					</div>
+					<label>VR</label>
+				</div>
+			</div>
+        </div>
+    </div>
+
+	<div class="container">
+		<div class="buttons">
+			<div class="button-bg">
+				@* <div class="button green" onclick="@(() => StartGame())">Start</div> *@
+				<div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+			</div>
+		</div>
+	</div>
+</root>
+
+@code
+{
+	void ButtonBack()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Main);
+		Sound.Play("ui.navigate.back");
+	}
+
+	void GoTopDownMode()
+	{
+		// TODO: Somehow select/switch into certain mode here...
+		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
+		Sound.Play("ui.button.press");
+	}
+
+	void GoFirstPersonMode()
+	{
+		// TODO: Somehow select/switch into certain mode here...
+		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
+		Sound.Play("ui.button.press");
+	}
+
+	void GoVRMode()
+	{
+		// TODO: Somehow select/switch into certain mode here...
+		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
+		Sound.Play("ui.button.press");
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

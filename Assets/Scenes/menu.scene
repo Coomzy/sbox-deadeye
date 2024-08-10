@@ -65,6 +65,12 @@
         {
           "__type": "MainMenu",
           "__guid": "bbc7d441-be90-4b47-8878-ba05ef5f4fdb",
+          "gameModeScreen": {
+            "_type": "component",
+            "component_id": "548d52cd-eb85-414b-8354-55ee7acd14c0",
+            "go": "2de4b206-7686-4243-b205-5e21452c68b8",
+            "component_type": "GameModeScreen"
+          },
           "levelSelectScreen": {
             "_type": "component",
             "component_id": "ee0e82be-24b6-4da0-b2f5-a21bbf5b41fd",
@@ -77,7 +83,7 @@
             "go": "2de4b206-7686-4243-b205-5e21452c68b8",
             "component_type": "MainMenuScreen"
           },
-          "menuState": "Main",
+          "menuState": "Play",
           "settingsScreen": {
             "_type": "component",
             "component_id": "355e1a8b-8af0-45e9-8b42-de3b95d32ead",
@@ -93,7 +99,8 @@
         },
         {
           "__type": "MainMenuScreen",
-          "__guid": "90370cf5-d86b-4e02-8142-f278dde91509"
+          "__guid": "90370cf5-d86b-4e02-8142-f278dde91509",
+          "__enabled": false
         },
         {
           "__type": "LevelSelectScreen",
@@ -108,6 +115,11 @@
         {
           "__type": "StatsScreen",
           "__guid": "bb360643-1c2d-45b6-9290-f0d18509976b",
+          "__enabled": false
+        },
+        {
+          "__type": "GameModeScreen",
+          "__guid": "548d52cd-eb85-414b-8354-55ee7acd14c0",
           "__enabled": false
         }
       ]

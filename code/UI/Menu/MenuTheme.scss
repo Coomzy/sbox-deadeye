@@ -1,0 +1,152 @@
+.menu {
+    //background: url("UI/Menu/shoot-dont-shoot-menu-bg.png");
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // padding: 50px;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+    // font-family: "paper cuts 2";
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: scale( 1 );
+    transition: all 0.1s ease-out;
+    pointer-events: all;
+    background-color: white; // rgba(25,25,200,1);
+
+    > .title {
+        align-self: flex-end;
+        font-size: 128px;
+        color: #fff;
+        text-shadow: 0px 0px 2px black;
+        flex-shrink: 0;
+        font-family: Consolas;
+    }
+
+    > .container {
+        gap: 50px;
+        width: 100%;
+        height: 100%;
+
+        .title {
+            align-self: center;
+            font-size: 80px;
+            flex-shrink: 0;
+        }
+
+        > .buttons {
+            flex-direction: column;
+            justify-content: flex-end;
+            flex-shrink: 0;
+            // gap: 8px;
+        }
+
+        .button-bg {
+            border-radius: 100px 10px 100px 10px;
+            // box-shadow: 0 100px 10px black;
+            box-shadow: 0 0 200px rgba(50,50,50,0.5);
+            //margin: 10px;
+            flex-direction: column;
+        }
+
+        > .buttons {
+
+            .button {
+                background-color: rgb(20,20,20);
+                color: rgba(255,255,255, 0.88);
+                width: 500px;
+                border: 5px solid transparent;
+                border-radius: 0;
+                padding: 15px 32px;
+                text-align: center;
+                font-size: 54px;
+                // margin: 4px 2px;
+                margin: 0;
+                cursor: pointer;
+
+                &:hover {
+                    sound-in: ui.button.over;
+                }
+
+                &:active {
+                    // transform: scale(0.98, 0.98);
+                    border: 5px solid black;
+                }
+
+                &:first-child {
+                    border-radius: 100px 10px 0 0;
+                }
+
+                &:last-child {
+                    border-radius: 0 0 100px 10px;
+                }
+
+                &.green {
+                    background-color: #4CAF50;
+
+                    &:hover {
+                        background-color: #45A049;
+                    }
+                }
+
+                &.red {
+                    background-color: #f44336;
+
+                    &:hover {
+                        background-color: #d32f2f;
+                    }
+                }
+
+                &.blue {
+                    background-color: #2196F3;
+
+                    &:hover {
+                        background-color: #1e87f0;
+                    }
+                }
+
+                &.yellow {
+                    background-color: #C3B300; // #8b4513; <-- THIS IS BROWN?!?
+
+                    &:hover {
+                        background-color: #B4A400; // #663919; <-- THIS IS BROWN?!?
+                    }
+                }
+
+                .icon {
+                    font-size: 65px;
+                    line-height: 50px;
+                    padding: 0px;
+                    margin: 0;
+                    margin-right: 10px;
+                    color: rgba(255,255,255,0.75);
+                }
+            }
+
+            .button.singular {
+                border-radius: 100px 10px 100px 10px;
+            }
+        }
+        /*.content-panel {
+            height: 100%;
+            flex-grow: 1;
+            background-color: rgba(black, 0.8);
+            // What's this going to be used for?
+        }*/
+
+        .content {
+            padding: 10px;
+            flex-grow: 1;
+            flex-direction: column;
+            border-radius: 2em;
+
+            &.bg {
+                background-color: rgba(220,220,220,0.5);
+            }
+        }
+    }
+}

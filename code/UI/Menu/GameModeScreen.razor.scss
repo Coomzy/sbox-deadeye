@@ -1,0 +1,69 @@
+@import "./MenuTheme.scss";
+
+GameModeScreen.menu {
+	.title {
+		align-self: center;
+		text-shadow: none;
+		color: #4CAF50; // rgb(75,75,75);
+	}
+
+	// Fix stretching by growing the content. Shrink the whitespace area desired by buttons.
+	.container:nth-child(1) {
+		flex-grow: 2;
+	}
+
+	.container:nth-child(2) {
+		flex-grow: 0;
+		flex-shrink: 8;
+	}
+
+	.content {
+		align-items: center;
+	}
+
+	.modes {
+		max-width: 1500px; // Otherwise widescreens will spread too far outwards?
+		height: 100%;
+		padding: 2em 0;
+		transition: all 0.1s ease-out;
+		pointer-events: all;
+		cursor: pointer;
+
+		.mode-button {
+			border-radius: 20px;
+			margin: 0 25px;
+			background-color: rgba(225, 225, 225, 0.5);
+
+			&:hover {
+				background-color: rgba(225, 225, 225, 0.9);
+			}
+
+			.img {
+				width: 100%;
+				margin: 20px;
+				justify-content: center;
+			}
+
+			img {
+				align-self: center;
+				width: 256px;
+				height: 256px;
+				background-color: gray;
+			}
+
+			label {
+				width: 100%;
+				padding: 10px;
+				margin: 10px;
+			}
+
+			flex-wrap: wrap;
+			width: 100%;
+			flex-direction: row;
+			text-align: center;
+			align-content: center;
+			justify-content: center;
+			height: 20em;
+		}
+	}
+}

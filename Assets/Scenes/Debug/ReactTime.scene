@@ -1,0 +1,111 @@
+{
+  "__guid": "eab38476-3e63-41ef-8b39-f8cf32c75b2b",
+  "GameObjects": [
+    {
+      "__guid": "7ed6e773-3396-4628-9567-49ce55ef6dac",
+      "Flags": 0,
+      "Name": "Main Camera",
+      "Position": "-300,0,100",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "b75378e7-a164-49c6-8026-f6b05897e611",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "8650e4da-a1c0-47a6-bda4-02f606190af8",
+      "Flags": 0,
+      "Name": "Directional Light",
+      "Position": "0,0,200",
+      "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "c1c50263-ad22-4ccf-a98a-46f7ecfd0778",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "79d54d44-9ff3-4ca1-8369-9086deb4ae7c",
+      "Flags": 0,
+      "Name": "Screen",
+      "Position": "0,0,100",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "291971c1-89eb-477f-94bf-af6651649cde",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "ReactTimeBarWidgetTest",
+          "__guid": "7202ae1d-b4a9-4d8e-8566-8ad3162452c0",
+          "PulseScaleMax": 1.2,
+          "PulseScaleMin": 1,
+          "PulseScaleValue": 1,
+          "ShakeDistanceMaxHard": 15,
+          "ShakeDistanceMaxSoft": 20,
+          "ShakeDistanceMinHard": 2,
+          "ShakeDistanceMinSoft": 15,
+          "ShakeMaxSpeed": 150,
+          "ShakeMinSpeed": 25,
+          "TwistMax": 1.1,
+          "TwistMin": 1,
+          "TwistValue": 1,
+          "Progress": 0.5
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": null,
+  "Description": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

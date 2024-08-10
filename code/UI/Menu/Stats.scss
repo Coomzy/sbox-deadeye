@@ -1,0 +1,31 @@
+.table {
+    flex-direction: column;
+    width: 600px;
+    mix-blend-mode: lighten;
+    margin: .5em;
+
+    .header {
+        opacity: 0.3;
+    }
+
+    .row {
+        white-space: nowrap;
+
+        > .name {
+            flex-grow: 1;
+        }
+
+        > .stat {
+            width: 100px;
+            justify-content: flex-end;
+        }
+
+        > * {
+            padding: 0px 8px;
+        }
+    }
+
+    .me {
+        color: #4cff00;
+    }
+}

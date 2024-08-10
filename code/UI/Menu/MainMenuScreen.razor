@@ -3,19 +3,24 @@
 @using System;
 @inherits PanelComponent
 
-<root>
+<root class="menu">
 	<div class="title">
 		<span style="color: red;">Shoot</span>
 		<span style="color: lightgray; margin: 0 50px;">or</span>
 		<span style="color: blue;">Don't Shoot</span>
 	</div>
 
-	<div class="content">
-		<div class="button-container">
-			<div class="button" onclick="@(() => ButtonPlay())">Play</div>
-			<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>
-			<div class="button blue" onclick="@(() => ButtonSettings())">Settings</div>
-			<div class="button red" onclick="@(() => Quit())">Quit</div>
+	<div class="container">
+		<div class="buttons">
+			<div class="button-bg">
+				<div class="button green" onclick="@(() => ButtonPlay())">Play</div>
+				<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>
+				<div class="button blue" onclick="@(() => ButtonSettings())">Settings</div>
+				<div class="button red" onclick="@(() => Quit())">Quit</div>
+			</div>
+		</div>
+		<div class="content">
+			<!-- Nothing here right now... -->
 		</div>
 	</div>
 </root>
@@ -24,7 +29,7 @@
 {
 	void ButtonPlay()
 	{
-		MainMenu.instance.SetMenuState(MenuState.Play);
+		MainMenu.instance.SetMenuState(MenuState.GameMode);
 		Sound.Play("ui.button.press");
 	}
 

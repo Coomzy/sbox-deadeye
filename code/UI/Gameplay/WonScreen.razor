@@ -4,14 +4,14 @@
 @using System;
 @inherits PanelComponent
 
-<root>
+<root class="menu">
 	<div class="title">
-		<span style="color: lightgray">You Won!</span>
+		<span>You Won!</span>
 	</div>
 
-	<div class="content">
-		<div class="button-container">
-			<div class="button" onclick="@(() => Retry())">Retry</div>
+	<div class="container">
+		<div class="buttons">
+			<div class="button green" onclick="@(() => Retry())">Retry</div>
 			<div class="button red" onclick="@(() => ReturnToMenu())">Return to menu</div>
 		</div>
 	</div>
