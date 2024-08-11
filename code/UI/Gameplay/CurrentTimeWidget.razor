@@ -1,0 +1,44 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="container">
+		<div @ref=medal class ="circle"></div>
+		<div class="title">@GetRemainingReactTime()</div>
+	</div>
+</root>
+
+@code
+{
+	protected Panel medal;
+
+	string GetRemainingReactTime()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			// HACK: Just doing "" didn't seem to make the UI disappear, maybe it doesn't create a valid hash or something?
+			return " ";
+		}
+
+
+		var currentMedal = GamePlayManager.instance.currentMedal;
+		medal.Style.BackgroundColor = GameSettings.instance.GetMedalColour(currentMedal);
+
+		var levelTime = GamePlayManager.instance.levelTime;
+		var formattedTime = FormatTime(levelTime);
+		return formattedTime;
+	}
+
+	public string FormatTime(float time)
+	{
+		int minutes = (int)(time / 60);
+		float seconds = time % 60;
+
+		return string.Format("{0:00}:{1:00.000}", minutes, seconds);
+	}
+
+
+	protected override int BuildHash() => System.HashCode.Combine(GetRemainingReactTime());
+}

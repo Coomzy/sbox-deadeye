@@ -7,5 +7,5 @@ using Sandbox;
 
 public class GamePreferences : UserPreferences<GamePreferences>
 {
-	public bool useOneHandedMode = false;
+	public bool useOneHandedMode { get; set; }
 }

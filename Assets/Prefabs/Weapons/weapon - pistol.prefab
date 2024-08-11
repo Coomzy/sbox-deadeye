@@ -8,6 +8,10 @@
       {
         "__type": "Weapon",
         "__guid": "062ef11f-c1f5-43f0-b2b1-fb38df891e74",
+        "muzzleFlashHolder": {
+          "_type": "gameobject",
+          "go": "861b1ec3-3064-45dc-b180-947f06bb7043"
+        },
         "muzzleFlashVFX": {
           "_type": "component",
           "component_id": "7151f141-c215-4346-9bd4-43fbbcc2186c",
@@ -19,7 +23,8 @@
           "component_id": "3eead9c7-ba1f-4a72-8cbe-ac5993c0aed4",
           "go": "d29dc4ab-931f-4e6e-a007-4c1d34303588",
           "component_type": "Rigidbody"
-        }
+        },
+        "smokePFX": "prefabs/weapons/smoke_ pfx.prefab"
       }
     ],
     "Children": [
@@ -70,7 +75,7 @@
             "__guid": "861b1ec3-3064-45dc-b180-947f06bb7043",
             "Flags": 0,
             "Name": "Muzzle Flash",
-            "Position": "5.45,-0.0000001554887,4.75",
+            "Position": "7.038661,-0.0000001554887,4.75",
             "Tags": "particles",
             "Enabled": true,
             "Components": [

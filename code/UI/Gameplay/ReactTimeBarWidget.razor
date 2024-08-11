@@ -68,7 +68,7 @@
 	{
 		if (!IsBarVisible()) return 0f; // Bit of a hack
 
-		float timeSpentMakingDecision = Player.instance.timeSinceStartedDecisionMaking;
+		float timeSpentMakingDecision = Player_TD.instance.timeSinceStartedDecisionMaking;
 		float maxReactTime = RoomManager.instance.currentRoom.reactTime;
 		float remainingReactTime = maxReactTime - timeSpentMakingDecision;
 		remainingReactTime = remainingReactTime.Clamp(0, maxReactTime);
@@ -87,7 +87,7 @@
 	{
 		if (!IsBarVisible()) return 1f;
 
-		float timeSpentMakingDecision = Player.instance.timeSinceStartedDecisionMaking;
+		float timeSpentMakingDecision = Player_TD.instance.timeSinceStartedDecisionMaking;
 		float maxReactTime = RoomManager.instance.currentRoom.reactTime;
 		float remainingReactTime = maxReactTime - timeSpentMakingDecision;
 
@@ -96,7 +96,7 @@
 
 	bool IsBarVisible()
 	{
-		if (Player.instance.state != PlayerState.Deciding || RoomManager.instance == null)
+		if (Player_TD.instance.state != PlayerState.Deciding || RoomManager.instance == null)
 		{
 			return false;
 		}

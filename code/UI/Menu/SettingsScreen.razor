@@ -15,15 +15,30 @@
 				<span>Settings</span>
 			</div>
 		</div>
+
+		<div class="buttons">
+			<div class="label">One Handed Mode:</div>
+			<div class="button @oneHandedColorOff singular" onclick="@(() => SetOneHandedMode(false))">Off</div>
+			<div class="button @oneHandedColorOn singular" onclick="@(() => SetOneHandedMode(true))">On</div>
+		</div>
 	</div>
 </root>
 
 @code
 {
+	string oneHandedColorOff => GamePreferences.instance.useOneHandedMode ? "gray" : "red";
+	string oneHandedColorOn => GamePreferences.instance.useOneHandedMode ? "green" : "gray";
+
 	void ButtonBack()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Main);
 		Sound.Play("ui.navigate.back");
+	}
+
+	void SetOneHandedMode(bool enabled)
+	{
+		GamePreferences.instance.useOneHandedMode = enabled;		
+		Sound.Play("ui.button.press");
 	}
 
 	/// <summary>

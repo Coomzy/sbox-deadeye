@@ -33,7 +33,7 @@ public class MainMenu : Component
 	[Group("Screens"), Property] public SettingsScreen settingsScreen { get; private set; }
 	[Group("Screens"), Property] public StatsScreen statsScreen { get; private set; }
 
-	[Group("Runtime"), Property] public MenuState menuState { get; private set; }
+	[Group("Runtime"), Property, ReadOnly] public MenuState menuState { get; private set; }
 
 	public bool isRefreshingLeaderboards { get; private set; }
 	public Leaderboards.Board globalBoard { get; private set; }

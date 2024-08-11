@@ -1,4 +1,3 @@
-
 using Sandbox;
 using Sandbox.Citizen;
 using System;
@@ -9,6 +8,7 @@ public class UIManager : Component
 {
 	public static UIManager instance;
 
+	[Property] public CurrentTimeWidget currentTimeWidget { get; private set; }
 	[Property] public ReactTimeBarWidget reactTimeBarWidget { get; private set; }
 	[Property] public DiedScreen diedScreen { get; private set; }
 	[Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
@@ -23,18 +23,21 @@ public class UIManager : Component
 
 	public void Died()
 	{
+		currentTimeWidget.Enabled = false;
 		reactTimeBarWidget.Enabled = false;
 		diedScreen.Enabled = true;
 	}
 
 	public void FailedTooManyCivsKilled()
 	{
+		currentTimeWidget.Enabled = false;
 		reactTimeBarWidget.Enabled = false;
 		failedTooManyCivsKilledScreen.Enabled = true;
 	}
 
 	public void Won()
 	{
+		currentTimeWidget.Enabled = false;
 		reactTimeBarWidget.Enabled = false;
 		wonScreen.Enabled = true;
 	}

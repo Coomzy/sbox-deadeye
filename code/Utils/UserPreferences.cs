@@ -5,6 +5,8 @@ using System.IO;
 using System;
 using Sandbox;
 using static Sandbox.Gizmo;
+using Sandbox.Audio;
+using System.Runtime.CompilerServices;
 
 public abstract class UserPreferences<T> : IHotloadManaged where T : UserPreferences<T>
 {
@@ -18,7 +20,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 	{
 		get
 		{
-			if (!Utils.isEditTime)
+			if (Utils.isEditTime)
 			{
 				_instance = null;
 			}
@@ -31,16 +33,18 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 			if (FileSystem.Data.FileExists(fileName))
 			{
 				var fileInst = FileSystem.Data.ReadJson<T>(fileName);
-				Log.Info($"JSON Found! fileName: {fileName}");
+
 				if (fileInst != null)
 				{
 					_instance = fileInst;
+					_instance.OnLoad();
 					return _instance;
 				}
 			}
 
 			T newInst = Activator.CreateInstance<T>();
 			_instance = newInst;
+			_instance.OnLoad();
 			_instance.Save();
 			return _instance;
 		}
@@ -48,22 +52,20 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 
 	public void Save()
 	{
-		Log.Info($"Save() fileName = {fileName}");
-		FileSystem.Data.WriteJson(fileName, this);
+		OnSave();
+		FileSystem.Data.WriteJson(fileName, this as T);
 	}
+
+	protected virtual void OnSave(){}
+	protected virtual void OnLoad(){}
 
 	void IHotloadManaged.Created(IReadOnlyDictionary<string, object> state)
 	{
-		//_instance = null;
-		if (state.GetValueOrDefault("IsActive") is true)
-		{
-			//instance = (T)this;
-		}
+		_instance = null;
 	}
 
 	void IHotloadManaged.Destroyed(Dictionary<string, object> state)
 	{
-		//_instance = null;
-		state["IsActive"] = instance == this;
+		_instance = null;
 	}
 }

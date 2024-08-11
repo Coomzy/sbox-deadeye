@@ -57,7 +57,6 @@
 
 	void GoTopDownMode()
 	{
-		PlayerSettings.instance.firstPersonMode = false;
 		// TODO: Somehow select/switch into certain mode here...
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
 		Sound.Play("ui.button.press");
@@ -65,7 +64,6 @@
 
 	void GoFirstPersonMode()
 	{
-		PlayerSettings.instance.firstPersonMode = true;
 		// TODO: Somehow select/switch into certain mode here...
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
 		Sound.Play("ui.button.press");
