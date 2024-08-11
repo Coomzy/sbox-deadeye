@@ -29,6 +29,24 @@ public class RoomManager : Component
 		}
 	}
 
+	[Button("Randomize Citizen Visuals")]
+	void RandomizeCitizenVisuals()
+	{
+		foreach (var room in rooms)
+		{
+			var roomName = room.GameObject.Name;
+			if (roomName == "Room - 1" ||
+				roomName == "Room - 4" ||
+				roomName == "Room - 15")
+				continue;
+
+			foreach(var target in room.targets)
+			{
+				target.citizenVisuals.RandomClothing();
+			}
+		}
+	}
+
 	[Button("Get Rooms")]
 	void GetRooms()
 	{
