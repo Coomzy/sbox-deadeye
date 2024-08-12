@@ -37,6 +37,9 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 	[Group("Medals"), Property] public Color goldColour { get; set; } = new Color(0xFF00D7FF);
 	[Group("Medals"), Property] public Color onyxColour { get; set; } = new Color(0xFF393835);
 
+	[Group("Time"), Property] public float civilianKilledTimePenalty { get; set; } = 5.0f;
+	[Group("Time"), Property] public float simulatedReactTime { get; set; } = 0.25f;
+
 	public PrefabFile GetWeaponPrefab(WeaponType weaponType)
 	{
 		switch (weaponType)

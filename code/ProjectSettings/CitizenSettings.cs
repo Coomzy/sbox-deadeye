@@ -46,6 +46,11 @@ public class CitizenClothingCategory
 [GameResource("Citizen Settings", "citizen", "Citizen Settings")]
 public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 {
+	[Group("Character"), Property] public Vector2 randomHeightRange { get; set; } = new Vector2(0.5f, 1.5f);
+	[Group("Character"), Property] public Curve randomHeightCurve { get; set; }
+	[Group("Character"), Property] public Curve randomDuckHeightBadGuyCurve { get; set; }
+	[Group("Character"), Property] public Curve randomDuckHeightGoodGuyCurve { get; set; }
+
 	[Group("Clothing - Hat"), Property, InlineEditor] public CitizenClothingCategory hat { get; set; }
 	[Group("Clothing - Hair"), Property, InlineEditor] public CitizenClothingCategory hair { get; set; }
 	[Group("Clothing - Facial"), Property, InlineEditor] public CitizenClothingCategory facial { get; set; }
@@ -55,8 +60,22 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 	[Group("Clothing - Footwear"), Property, InlineEditor] public CitizenClothingCategory footwear { get; set; }
 	[Group("Clothing - Skin"), Property, InlineEditor] public CitizenClothingCategory skin { get; set; }
 
-	[Button("GetAll")]
-	public void GetAll()
+	public float GetRandomCharacterHeight()
+	{
+		var randomPct = Random.Shared.Float();
+		randomPct = randomHeightCurve.Evaluate(randomPct);
+		return MathX.Lerp(randomHeightRange.x, randomHeightRange.y, randomPct);
+	}
+
+	public float GetRandomCharacterDuckHeight(bool isBadGuy)
+	{
+		var randomPct = Random.Shared.Float();
+		randomPct = isBadGuy ? randomDuckHeightBadGuyCurve.Evaluate(randomPct) : randomDuckHeightGoodGuyCurve.Evaluate(randomPct);
+		return randomPct;
+	}
+
+	[Button("GetAllClothing")]
+	public void GetAllClothing()
 	{
 		var allClothing = ResourceLibrary.GetAll<Clothing>();
 

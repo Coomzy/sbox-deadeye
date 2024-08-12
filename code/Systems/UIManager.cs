@@ -23,14 +23,14 @@ public class UIManager : Component
 
 	public void Died()
 	{
-		currentTimeWidget.Enabled = false;
+		//currentTimeWidget.Enabled = false;
 		reactTimeBarWidget.Enabled = false;
 		diedScreen.Enabled = true;
 	}
 
 	public void FailedTooManyCivsKilled()
 	{
-		currentTimeWidget.Enabled = false;
+		//currentTimeWidget.Enabled = false;
 		reactTimeBarWidget.Enabled = false;
 		failedTooManyCivsKilledScreen.Enabled = true;
 	}

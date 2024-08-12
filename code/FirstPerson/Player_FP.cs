@@ -87,7 +87,7 @@ public class Player_FP : Component
 		}
 
 		var currentPos = Transform.Position;
-		var targetPos = RoomManager.instance.currentRoom.targetPos;
+		var targetPos = RoomManager.instance.currentRoom.walkToPos;
 		var newPos = MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
 		Transform.Position = newPos;
 

@@ -19,13 +19,43 @@ public class RoomManager : Component
 		base.OnAwake();
 	}
 
-	[Button("Apply All Citizen Visuals")]
+	[Button("Get Simulated Time")]
+	void GetSimulatedTime()
+	{
+		var levelData = Scene.GetSceneLevelData();
+		float simulatedTime = levelData.fastestTime;
+		float simulatedReactTime = GameSettings.instance.simulatedReactTime;
+
+		foreach (var room in rooms)
+		{
+			foreach (var target in room.targets)
+			{
+				simulatedTime += simulatedReactTime;
+			}
+		}
+
+		levelData.simulatedTime = simulatedTime;
+		Log.Info($"simulatedTime: {simulatedTime}");
+	}
+
+	//[Button("Apply All Citizen Visuals")]
 	void ApplyAllCitizenVisuals()
 	{
 		var all = Scene.GetAllComponents<CitizenVisuals>();
 		foreach(var inst in all)
 		{ 
-			inst.Apply(true);
+			//inst.Apply(true);
+		}
+	}
+
+	[Button("Randomize All Citizen Height And Duck")]
+	void ApplyRandomHeights()
+	{
+		var all = Scene.GetAllComponents<CitizenVisuals>();
+		foreach (var inst in all)
+		{
+			inst.RandomHeight();
+			inst.RandomDuckHeight();
 		}
 	}
 
@@ -34,16 +64,7 @@ public class RoomManager : Component
 	{
 		foreach (var room in rooms)
 		{
-			var roomName = room.GameObject.Name;
-			if (roomName == "Room - 1" ||
-				roomName == "Room - 4" ||
-				roomName == "Room - 15")
-				continue;
-
-			foreach(var target in room.targets)
-			{
-				target.citizenVisuals.RandomClothing();
-			}
+			room.RandomizeCitizenVisuals();
 		}
 	}
 

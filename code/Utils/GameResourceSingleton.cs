@@ -48,8 +48,7 @@ public abstract partial class GameResourceSingleton<T> : GameResource, IHotloadM
 		{
 			//Log.Info($"Game.IsEditor = {Game.IsEditor}, Application.IsEditor {Application.IsEditor}");
 
-			// TODO: Figure out how to make this only at edit time!
-			if (Game.IsEditor)
+			if (Utils.isEditTime)
 			{
 				_instance = null;
 			}
@@ -64,6 +63,7 @@ public abstract partial class GameResourceSingleton<T> : GameResource, IHotloadM
 			if (ResourceLibrary.TryGet(filePath, out T inst))
 			{
 				_instance = inst;
+				_instance.Load();
 				return _instance;
 			}
 
@@ -74,11 +74,10 @@ public abstract partial class GameResourceSingleton<T> : GameResource, IHotloadM
 			}
 
 			T newInst = Activator.CreateInstance<T>();
+			newInst.Load();
 			//newInst.ResourceName = fileName;
 			//newInst.ResourcePath = filePath;
 			//var sceneAsset = AssetSystem.CreateResource("prefab", location);
-			
-			
 
 			if (Game.IsEditor)
 			{
@@ -98,5 +97,36 @@ public abstract partial class GameResourceSingleton<T> : GameResource, IHotloadM
 	void IHotloadManaged.Destroyed(Dictionary<string, object> state)
 	{
 		_instance = null;
+	}
+
+	void Load()
+	{
+		GameResourceSingletonSystem.onClear += Clear;
+		OnLoad();
+	}
+
+	protected virtual void OnLoad(){}
+
+	public void Clear()
+	{
+		_instance = null;
+	}
+
+	~GameResourceSingleton()
+	{
+		GameResourceSingletonSystem.onClear -= Clear;
+	}
+}
+
+public class GameResourceSingletonSystem : GameObjectSystem
+{
+	public static event Action onClear;
+
+	public GameResourceSingletonSystem(Scene scene) : base(scene)
+	{
+		if (onClear != null)
+		{
+			onClear();
+		}
 	}
 }

@@ -15,10 +15,16 @@ public class CitizenVisuals : Component
 	[Group("Setup"), Property] public SkinnedModelRenderer bodyRenderer { get; set; }
 	[Group("Setup"), Property] public ModelPhysics bodyPhysics { get; set; }
 	[Group("Setup"), Property] public CitizenAnimationHelper animationHelper { get; set; }
-	[Group("Setup"), Property] public Target target { get; set; }
+	[Group("Setup"), Property] Target _target { get; set; }
 
 	[Group("Random"), Property] string randomStart { get; set; }
 	[Group("Clear"), Property] string clearStart { get; set; }
+
+	[Group("Animation"), Property] public CitizenAnimationHelper.HoldTypes? holdTypeOverride { get; set; }
+	[Group("Animation"), Property] public CitizenAnimationHelper.Hand handedness { get; set; } = CitizenAnimationHelper.Hand.Right;
+
+	[Group("Character"), Range(0.5f, 1.5f), Property] public float characterHeight { get; set; } = 1.0f;
+	[Group("Character"), Range(0.0f, 1.0f), Property] public float duckHeight { get; set; } = 0.0f;
 
 	[Group("Body Groups"), Property] public bool head { get; set; } = true;
 	[Group("Body Groups"), Property] public bool chest { get; set; } = false;
@@ -35,27 +41,26 @@ public class CitizenVisuals : Component
 	[Group("Clothing - Footwear"), Property, InlineEditor] public CitizenClothingInst footwearClothing { get; set; }
 	[Group("Clothing - Skin"), Property, InlineEditor] public CitizenClothingInst skinClothing { get; set; }
 
-	[Group("Animation"), Property] public CitizenAnimationHelper.HoldTypes? holdTypeOverride { get; set; }
-	[Group("Animation"), Property] public CitizenAnimationHelper.Hand handedness { get; set; } = CitizenAnimationHelper.Hand.Right;
-
 	[Group("Clothing"), Property] public List<Clothing> clothingList { get; set; }
-
-	[Group("Character"), Range(0.5f, 1.5f), Property] public float characterHeight { get; set; } = 1.0f;
 
 	[Group("Weapon"), Property] public WeaponType weaponType { get; set; } = WeaponType.Pistol;
 
 	[Group("Runtime"), Property] public GameObject weaponGameObject { get; set; }
 	[Group("Runtime"), Property] public Weapon weapon { get; set; }
+	[Group("Runtime"), Property] public Target target => _target ?? GameObject.Components.Get<Target>();
 
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 
+		// Need this while UpdateFromPrefab() is broken in edit time
 		if (weapon == null && weaponGameObject != null)
 		{
 			weaponGameObject.BreakFromPrefab();
 			weapon = weaponGameObject.Components.Get<Weapon>();
 		}
+
+		RuntimeApply();
 	}
 
 	[Group("Body Groups"), Button("Apply")]
@@ -68,14 +73,8 @@ public class CitizenVisuals : Component
 		bodyRenderer.SetBodyGroup("feet", feet ? 1 : 0);
 	}
 
-	public void Apply(bool fullUpdate = false)
+	public void RuntimeApply()
 	{
-		bodyRenderer.SetBodyGroup("head", head ? 0 : 1);
-		bodyRenderer.SetBodyGroup("chest", chest ? 0 : 1);
-		bodyRenderer.SetBodyGroup("legs", legs ? 0 : 1);
-		bodyRenderer.SetBodyGroup("hands", hands ? 0 : 1);
-		bodyRenderer.SetBodyGroup("feet", feet ? 0 : 1);
-
 		var holdType = GameSettings.instance.GetWeaponHoldType(weaponType);
 		if (holdTypeOverride.HasValue)
 		{
@@ -83,14 +82,7 @@ public class CitizenVisuals : Component
 		}
 		animationHelper.HoldType = holdType;
 		animationHelper.Handedness = handedness;
-		animationHelper.Height = characterHeight;
-		//animationHelper.DuckLevel = duckLevel;
-
-		if (fullUpdate)
-		{
-			Apply_Clothing();
-			Apply_Weapon();
-		}		
+		animationHelper.DuckLevel = duckHeight;	
 	}
 
 	void Apply_Clothing()
@@ -144,17 +136,9 @@ public class CitizenVisuals : Component
 		weapon = weaponGameObject.Components.Get<Weapon>();
 	}
 
-	[Button("Apply")]
-	void Apply_Editor()
-	{
-		Apply(true);
-	}
-
 	[Category("Random"), Button("Random Clothing")]
 	public void RandomClothing()
 	{
-		target = GameObject.Components.Get<Target>();
-
 		var children = new List<GameObject>(clothingHolder.Children);
 		foreach (var child in children)
 		{
@@ -213,6 +197,18 @@ public class CitizenVisuals : Component
 		if (skinClothing != null) clothingInsts.Add(skinClothing);
 
 		return clothingInsts;
+	}
+
+	[Category("Character"), Button("Random Height")]
+	public void RandomHeight()
+	{
+		characterHeight = CitizenSettings.instance.GetRandomCharacterHeight();
+	}
+
+	[Category("Character"), Button("Random Duck")]
+	public void RandomDuckHeight()
+	{
+		duckHeight = CitizenSettings.instance.GetRandomCharacterDuckHeight(target.isBadTarget);
 	}
 
 	[Category("Random"), Button("Random Hat")]

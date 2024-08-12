@@ -18,6 +18,7 @@ public enum PlayerState
 	Won,
 };
 
+
 public class Player_TD : Component
 {
 	public static Player_TD instance;
@@ -30,7 +31,6 @@ public class Player_TD : Component
 	[Group("Runtime"), Property] public PlayerState state { get; private set; } = PlayerState.Idle;
 	[Group("Runtime"), Property] public Target target { get; private set; }
 	[Group("Runtime"), Property] public List<Target> targets { get; private set; } = new List<Target>();
-	[Group("Runtime"), Property] public int civiliansKilled { get; private set; }
 
 	[Group("Weapon"), Property] public WeaponType weaponType { get; set; } = WeaponType.Pistol;
 	[Group("Weapon"), Property] public GameObject weaponGameObject { get; private set; }
@@ -110,13 +110,14 @@ public class Player_TD : Component
 
 	void WalkingUpdate()
 	{
-		if (RoomManager.instance.currentRoom == null)
+		if (RoomManager.instance?.currentRoom?.GameObject?.Transform == null)
 		{
 			return;
 		}
 
 		var currentPos = Transform.Position;
-		var targetPos = RoomManager.instance.currentRoom.targetPos;
+		// BUG: WHY DOES THIS ERROR ON SCENE RELOAD!?
+		var targetPos = RoomManager.instance.currentRoom.walkToPos;
 		var newPos = MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
 		Transform.Position = newPos;
 
@@ -186,7 +187,7 @@ public class Player_TD : Component
 	{
 		if (timeSinceStartedDecisionMaking >= RoomManager.instance.currentRoom.reactTime)
 		{
-			if (GamePlayManager.instance.botMode == PlayerBotMode.SlowestTime)
+			if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.SlowestTime))
 			{
 				if (RoomManager.instance.currentRoom.currentTarget.isBadTarget)
 				{
@@ -235,7 +236,7 @@ public class Player_TD : Component
 			Sound.Play("target.passed");
 		}
 
-		if (GamePlayManager.instance.botMode == PlayerBotMode.FastestTime)
+		if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.FastestTime))
 		{
 			madeChoice = true;
 			if (RoomManager.instance.currentRoom.currentTarget.isBadTarget)
@@ -244,7 +245,7 @@ public class Player_TD : Component
 			}
 		}
 
-		if (GamePlayManager.instance.botMode == PlayerBotMode.SlowestTime)
+		if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.SlowestTime))
 		{
 			if (!RoomManager.instance.currentRoom.isFinalTarget)
 			{
@@ -272,7 +273,7 @@ public class Player_TD : Component
 
 	bool ShootKeyIsDown()
 	{
-		if (Input.Pressed("attack1"))
+		if (Input.Pressed("Shoot"))
 			return true;
 
 		return false;
@@ -280,7 +281,7 @@ public class Player_TD : Component
 
 	bool SpareKeyIsDown()
 	{
-		if (Input.Pressed("attack2"))
+		if (Input.Pressed("Spare"))
 			return true;
 
 		return false;
@@ -313,7 +314,7 @@ public class Player_TD : Component
 			}
 			else
 			{
-				civiliansKilled++;
+				GamePlayManager.instance.civiliansKilled++;
 				Stats.Increment(Stats.CIVILIANS_KILLED);
 			}
 
@@ -337,12 +338,22 @@ public class Player_TD : Component
 			anyTargetsLeft = true;
 		}
 
+		int civilianKillLimit = 3;
+
+		if (LevelData.active != null)
+		{
+			civilianKillLimit = LevelData.active.allowedCivilianCasualties;
+		}
+		else
+		{
+			Log.Error($"Failed to get LevelData.active!");
+		}
+
 		if (anyTargetsLeft)
 		{
 			SetState(PlayerState.Dead);
 		}
-		// TODO: Make this based on a level setting or at least a game setting
-		else if (civiliansKilled > 3)
+		else if (GamePlayManager.instance.civiliansKilled > civilianKillLimit)
 		{
 			SetState(PlayerState.KilledTooManyCivs);
 		}
@@ -359,8 +370,7 @@ public class Player_TD : Component
 
 	async void DeadStart()
 	{
-		GamePlayManager.instance.EndLevel();
-		Stats.Increment(Stats.DIED);
+		GamePlayManager.instance.FailLevel(FailReason.Died);
 
 		DeathAnimate();
 
@@ -510,8 +520,7 @@ public class Player_TD : Component
 
 	async void WonStart()
 	{
-		GamePlayManager.instance.EndLevel();
-		Stats.Increment(Stats.WON);
+		GamePlayManager.instance.WonLevel();
 
 		await Task.DelaySeconds(1.5f);
 
@@ -520,8 +529,7 @@ public class Player_TD : Component
 
 	async void KilledTooManyCivsStart()
 	{
-		GamePlayManager.instance.EndLevel();
-		Stats.Increment(Stats.FAILURE_TOO_MANY_CIVS_KILLED);
+		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
 
 		await Task.DelaySeconds(1.5f);
 
@@ -539,16 +547,22 @@ public class Player_TD : Component
 
 	void CheckForExitLevelInput()
 	{
-		if (!Input.EscapePressed)
+		bool exitLevel = Input.Pressed("Quit");
+		if (Input.EscapePressed)
+		{
+			Input.EscapePressed = false;
+			exitLevel = true;
+		}
+
+		if (!exitLevel)
 			return;
-		Input.EscapePressed = false;
 
 		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
 	}
 
 	void CheckForReloadLevelInput()
 	{
-		if (!Input.Pressed("reload"))
+		if (!Input.Pressed("Reload_Level"))
 			return;
 
 		Game.ActiveScene.Load(Game.ActiveScene.Source);
