@@ -7,9 +7,21 @@ public class Weapon : Component
 	[Group("Setup"), Property] public GameObject muzzleFlashHolder { get; set; }
 	[Group("Setup"), Property] public PrefabFile smokePFX { get; set; }
 	[Group("Setup"), Property] public LegacyParticleSystem muzzleFlashVFX { get; set; }
+	[Group("Setup"), Property] public LineRenderer bulletTracerLineRenderer { get; set; }
+	[Group("Setup"), Property] public Light muzzleFlashLight { get; set; }
+	[Group("Setup"), Property] public PrefabFile bloodSplatPFX { get; set; }
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		muzzleFlashVFX.Enabled = false;
+		bulletTracerLineRenderer.Enabled = false;
+		muzzleFlashLight.Enabled = false;
+	}
 
 	[Button("Shoot")]
-	public void Shoot()
+	public void Shoot(Vector3 hitPosition)
 	{
 		//Particles.Create();
 		//muzzleFlashVFX.
@@ -19,8 +31,36 @@ public class Weapon : Component
 		var smokeGO = Scene.CreateObject();
 		smokeGO.SetPrefabSource(smokePFX.ResourcePath);
 		smokeGO.UpdateFromPrefab();
-		smokeGO.Transform.Position = GameObject.Transform.Position;
-		smokeGO.Transform.Rotation = GameObject.Transform.Rotation;
+		smokeGO.Transform.Position = muzzleFlashHolder.Transform.Position;
+		smokeGO.Transform.Rotation = muzzleFlashHolder.Transform.Rotation;
+
+
+		var bloodSplatGO = Scene.CreateObject();
+		bloodSplatGO.SetPrefabSource(bloodSplatPFX.ResourcePath);
+		bloodSplatGO.UpdateFromPrefab();
+		bloodSplatGO.Transform.Position = hitPosition;
+		bloodSplatGO.Transform.Rotation = (-GameObject.Transform.Rotation.Forward).EulerAngles.ToRotation();
+
+		BulletTracer(hitPosition);
+		MuzzleFlashLight();
+	}
+
+	async void BulletTracer(Vector3 hitPosition)
+	{
+		List<Vector3> points = new List<Vector3>();
+		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 25.0f));
+		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 125.0f));
+		bulletTracerLineRenderer.VectorPoints = points;
+		bulletTracerLineRenderer.Enabled = true;
+		await Task.FrameEnd();
+		bulletTracerLineRenderer.Enabled = false;
+	}
+
+	async void MuzzleFlashLight()
+	{
+		muzzleFlashLight.Enabled = true;
+		await Task.FrameEnd();
+		muzzleFlashLight.Enabled = false;
 	}
 
 	[Button("Drop")]

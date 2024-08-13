@@ -298,7 +298,7 @@ public class Player_TD : Component
 			}
 
 			target.Die();
-			weapon.Shoot();
+			weapon.Shoot(target.Transform.Position);
 		}
 
 		await GameTask.DelaySeconds(PlayerSettings.instance.delayAfterExecute);
@@ -367,6 +367,25 @@ public class Player_TD : Component
 	{
 		var currentTarget = RoomManager.instance.currentRoom.currentTarget;
 
+		List<Target> shooters = new List<Target>();
+
+		foreach (var target in RoomManager.instance.currentRoom.targets)
+		{
+			if (!target.isBadTarget)
+				continue;
+
+			if (target.isDead)
+				continue;
+
+			if (target?.citizenVisuals?.weapon == null)
+				continue;
+
+			shooters.Add(target);
+		}
+
+		int shooterIndex = 0;
+		shooters.Shuffle();
+
 		var hitBoxes = new List<HitboxSet.Box>();
 		foreach (var hitbox in bodyRenderer.Model.HitboxSet.All)
 		{
@@ -430,16 +449,29 @@ public class Player_TD : Component
 		Vector3 hitPosition = Vector3.Zero;
 		while (true)
 		{
+			var shooter = shooters[shooterIndex];
+
 			//var damageInfo = new DamageInfo(100.0f, currentTarget.GameObject, currentTarget.citizenVisuals?.weaponGameObject);
 			var randomIndex = System.Random.Shared.Next(hitBoxes.Count);
 			Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
 			var boneIndex = hitBoxes[randomIndex].Bone.Index;			
 			//Gizmo.Draw.LineSphere(hitBoxes[randomIndex].Bone.LocalTransform.PointToWorld(hitBoxes[randomIndex].RandomPointInside), 1.0f);
 			var damageScale = 10.0f;
-			force = new Vector3(-Transform.Rotation.Forward * 25.0f);
+			//force = new Vector3(-Transform.Rotation.Forward * 25.0f);
+			force = new Vector3(shooter.citizenVisuals.weapon.Transform.Rotation.Forward * 25.0f);
 			hitPosition = hitBoxes[randomIndex].RandomPointInside;
 			ProceduralHitReaction(boneIndex, damageScale, force);
 			//thirdPersonAnimationHelper.ProceduralHitReaction(damageInfo, 10, force);
+
+			var hitBoneGO = thirdPersonAnimationHelper.Target.GetBoneObject(boneIndex);
+			shooter.citizenVisuals.weapon.Shoot(hitBoneGO.Transform.Position);
+
+			shooterIndex++;
+			if (shooterIndex >= shooters.Count)
+			{
+				shooterIndex = 0;
+				shooters.Shuffle();
+			}
 
 			if (shootTime < 1.5f)
 			{
@@ -451,7 +483,7 @@ public class Player_TD : Component
 			}
 		}
 
-		foreach (var target in RoomManager.instance.currentRoom.targets)
+		/*foreach (var target in RoomManager.instance.currentRoom.targets)
 		{
 			if (!target.isBadTarget)
 			{
@@ -464,7 +496,7 @@ public class Player_TD : Component
 			}
 
 			target.citizenVisuals.weapon.Shoot();
-		}
+		}*/
 
 		bodyPhysics.Enabled = true;
 		bodyRenderer.UseAnimGraph = false;

@@ -199,6 +199,10 @@
                 "go": "9583c62b-0df7-48dd-8e1a-ee0bbf87d1de"
               },
               "ignoreRandomize": true,
+              "playerPosOverride": {
+                "_type": "gameobject",
+                "go": "28bf9f86-8ec8-40b0-ac0c-aad35a440472"
+              },
               "reactTime": 10,
               "targetIndex": 0,
               "targets": [
@@ -329,6 +333,14 @@
                   "Enabled": true,
                   "__Prefab": "prefabs/environment/door piece.prefab",
                   "__PrefabVariables": {}
+                },
+                {
+                  "__guid": "28bf9f86-8ec8-40b0-ac0c-aad35a440472",
+                  "Flags": 0,
+                  "Name": "PlayerPos",
+                  "Position": "0,0,0",
+                  "Rotation": "0,-0,-0.7071068,0.7071068",
+                  "Enabled": true
                 }
               ]
             },

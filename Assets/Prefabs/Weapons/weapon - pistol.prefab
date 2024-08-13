@@ -8,9 +8,22 @@
       {
         "__type": "Weapon",
         "__guid": "062ef11f-c1f5-43f0-b2b1-fb38df891e74",
+        "bloodSplatPFX": "prefabs/weapons/bloodsplat_pfx.prefab",
+        "bulletTracerLineRenderer": {
+          "_type": "component",
+          "component_id": "1e884a92-8ee8-430f-8529-b235a0411f40",
+          "go": "861b1ec3-3064-45dc-b180-947f06bb7043",
+          "component_type": "LineRenderer"
+        },
         "muzzleFlashHolder": {
           "_type": "gameobject",
           "go": "861b1ec3-3064-45dc-b180-947f06bb7043"
+        },
+        "muzzleFlashLight": {
+          "_type": "component",
+          "component_id": "80b4c8ce-8093-4aec-a68a-66ec3b975cd8",
+          "go": "861b1ec3-3064-45dc-b180-947f06bb7043",
+          "component_type": "PointLight"
         },
         "muzzleFlashVFX": {
           "_type": "component",
@@ -76,7 +89,7 @@
             "Flags": 0,
             "Name": "Muzzle Flash",
             "Position": "7.038661,-0.0000001554887,4.75",
-            "Tags": "particles",
+            "Tags": "particles,light_spot,light,light_point",
             "Enabled": true,
             "Components": [
               {
@@ -87,6 +100,51 @@
                 "Looped": false,
                 "Particles": "particles/pistol_muzzleflash.vpcf",
                 "PlaybackSpeed": 1
+              },
+              {
+                "__type": "Sandbox.LineRenderer",
+                "__guid": "1e884a92-8ee8-430f-8529-b235a0411f40",
+                "__enabled": false,
+                "CastShadows": false,
+                "Color": {
+                  "color": [
+                    {
+                      "t": 0.5,
+                      "c": "1,1,1,1"
+                    }
+                  ],
+                  "alpha": []
+                },
+                "EndCap": "Rounded",
+                "Opaque": true,
+                "Points": [],
+                "SplineBias": 0,
+                "SplineContinuity": 0,
+                "SplineInterpolation": 1,
+                "SplineTension": 0,
+                "StartCap": "Rounded",
+                "UseVectorPoints": true,
+                "VectorPoints": [],
+                "Width": {
+                  "rangey": "0,0.25",
+                  "frames": [
+                    {
+                      "x": 0.5,
+                      "y": 1
+                    }
+                  ]
+                },
+                "Wireframe": false
+              },
+              {
+                "__type": "Sandbox.PointLight",
+                "__guid": "80b4c8ce-8093-4aec-a68a-66ec3b975cd8",
+                "Attenuation": 0.46,
+                "FogMode": "Enabled",
+                "FogStrength": 1,
+                "LightColor": "1.87194,2,1.45116,1",
+                "Radius": 400,
+                "Shadows": true
               }
             ]
           }

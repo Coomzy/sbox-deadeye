@@ -1,0 +1,169 @@
+{
+  "RootObject": {
+    "__guid": "fe9aea6c-6ad9-4056-89a0-1cea30c51742",
+    "Flags": 0,
+    "Name": "bloodsplat_pfx",
+    "Tags": "particles",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ParticleEffect",
+        "__guid": "9bb8afed-08c7-47f8-a3cd-e77f5b08a196",
+        "Alpha": {
+          "Type": "Curve",
+          "CurveA": [
+            {
+              "y": 0.10000002
+            },
+            {
+              "x": 0.12916669,
+              "y": 0.086702146
+            },
+            {
+              "x": 1
+            }
+          ],
+          "Constants": "1,0,0,0"
+        },
+        "ApplyColor": true,
+        "ApplyRotation": false,
+        "ApplyShape": true,
+        "Bounce": {
+          "Constants": "1,0,0,0"
+        },
+        "Brightness": {
+          "Constants": "1,0,0,0"
+        },
+        "Bumpiness": {},
+        "Collision": false,
+        "CollisionRadius": 1,
+        "Damping": {},
+        "DieOnCollisionChance": {},
+        "Force": false,
+        "ForceDirection": "0,0,0",
+        "ForceScale": {},
+        "Friction": {
+          "Constants": "1,0,0,0"
+        },
+        "Gradient": {
+          "GradientA": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "GradientB": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "ConstantA": "1,1,1,1",
+          "ConstantB": "1,1,1,1"
+        },
+        "Lifetime": {
+          "Constants": "0.3,0,0,0"
+        },
+        "MaxParticles": 100,
+        "OrbitalForce": {},
+        "OrbitalPull": {},
+        "PerParticleTimeScale": {
+          "Constants": "1,0,0,0"
+        },
+        "Pitch": {},
+        "PreWarm": 0,
+        "PushStrength": {},
+        "Roll": {},
+        "Scale": {
+          "Type": "Curve",
+          "CurveA": {
+            "rangey": "0,30",
+            "frames": [
+              {
+                "y": 0.8333334
+              },
+              {
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "Constants": "30,0,0,0"
+        },
+        "SequenceId": {},
+        "SequenceSpeed": {
+          "Constants": "1,0,0,0"
+        },
+        "SequenceTime": {
+          "Constants": "1,0,0,0"
+        },
+        "SheetSequence": false,
+        "Space": "World",
+        "StartDelay": {},
+        "StartVelocity": {
+          "Constants": "10,0,0,0"
+        },
+        "Stretch": {},
+        "TimeScale": 1,
+        "Tint": "1,0,0,1",
+        "Yaw": {}
+      },
+      {
+        "__type": "Sandbox.ParticleConeEmitter",
+        "__guid": "8ced5853-5600-48df-b034-87daea8390de",
+        "Burst": 100,
+        "ConeAngle": 30,
+        "ConeFar": 30,
+        "ConeNear": 0,
+        "Delay": 0,
+        "DestroyOnEnd": false,
+        "Duration": 0.1,
+        "InVolume": true,
+        "Loop": false,
+        "OnEdge": false,
+        "Rate": 0,
+        "RateOverDistance": 0
+      },
+      {
+        "__type": "Sandbox.ParticleSpriteRenderer",
+        "__guid": "b6043eca-bb95-4be4-972a-eb8674687ce2",
+        "Additive": false,
+        "Alignment": "LookAtCamera",
+        "BlurAmount": 0.5,
+        "BlurOpacity": 0.5,
+        "BlurSpacing": 0.5,
+        "DepthFeather": 0,
+        "FaceVelocity": false,
+        "FogStrength": 1,
+        "LeadingTrail": true,
+        "Lighting": false,
+        "MotionBlur": false,
+        "Opaque": false,
+        "RotationOffset": 0,
+        "Scale": 0.5,
+        "Shadows": false,
+        "SortMode": "Unsorted",
+        "Texture": "materials/particle/beam_smoke_01.vtex"
+      },
+      {
+        "__type": "LifeTime",
+        "__guid": "68ef3ed6-5f14-415d-a78e-0975947fd3f2",
+        "time": 3
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

@@ -21,8 +21,8 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/firstperson/test/test_fp.scene",
-    "MapStartupScene": "scenes/firstperson/test/test_fp.scene",
+    "StartupScene": "scenes/topdown/original.scene",
+    "MapStartupScene": "scenes/topdown/original.scene",
     "LaunchMode": "Normal",
     "ControlModes": {
       "Keyboard": true,
@@ -65,12 +65,6 @@
           "KeyboardCode": "BACKSPACE",
           "GamepadCode": "SwitchLeftMenu",
           "GroupName": "Game"
-        },
-        {
-          "Name": "Shoot_FP",
-          "KeyboardCode": "MOUSE1",
-          "GamepadCode": "RightTrigger",
-          "GroupName": "First Person"
         }
       ],
       "__guid": "9c554b60-95ad-4ff5-8b25-68ca6285b49c"

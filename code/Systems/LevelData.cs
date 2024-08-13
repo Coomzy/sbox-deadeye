@@ -7,6 +7,13 @@ using System.Runtime.CompilerServices;
 using System.Text.Json;
 using static Sandbox.Gizmo;
 
+public enum GameMode
+{
+	TopDown,
+	//FirstPerson,
+	VR
+}
+
 [GameResource("Level Data", "ld", "Level Data")]
 public class LevelData : GameResource
 {
@@ -15,7 +22,8 @@ public class LevelData : GameResource
 
 	// TODO: Figure out how to reference a scene file so we can use this for the dictionary because scene.Name doesn't work in game builds
 	// Then we'll use scene.Title instead of scene.Name
-	[Category("Setup"), Property] public Scene scene { get; private set; }
+	[Category("Setup"), Property] public SceneFile scene { get; set; }
+	[Category("Setup"), Property] public GameMode gameMode { get; set; } = GameMode.TopDown;
 
 	[Category("Civilians"), Property] public int allowedCivilianCasualties = 3;
 
@@ -28,15 +36,15 @@ public class LevelData : GameResource
 	[Category("Times"), Property] public float simulatedTime = 80.0f;
 
 	[Category("Leaderboard"), Property] public bool isLeaderboardLevel { get; set; } = true;
-	[Category("Leaderboard"), Property] 
+	[Category("Leaderboard"), Property, ReadOnly]
 	public string leaderboardName
 	{
 		get
 		{
-			if (isLeaderboardLevel)
+			if (!isLeaderboardLevel)
 				return null;
 
-			return $"level-{this.ResourceName.ToLower()}";
+			return $"level-{gameMode}-{this.ResourceName.ToLower()}";
 		}
 	}
 
@@ -47,14 +55,18 @@ public class LevelData : GameResource
 
 	public static void SetActiveLevelData()
 	{
-		Log.Info($"SetActiveLevelData() Game.ActiveScene.GetSceneLevelData() = {Game.ActiveScene.GetSceneLevelData()}");
 		active = Game.ActiveScene.GetSceneLevelData();
 	}
 
 	public void Register()
 	{
-		Log.Info($"Register() this.ResourceName = {this.ResourceName}");
-		sceneNameToLevelData[this.ResourceName] = this;
+		if (scene == null)
+		{
+			Log.Info($"Register() scene was null for LevelData '{this.ResourceName}'");
+			return;
+		}
+
+		sceneNameToLevelData[scene.Title] = this;
 	}
 
 	public MedalType TimeToMedalType(float time)
@@ -93,9 +105,7 @@ public class LevelData : GameResource
 			return null;
 		}
 
-		// TODO: scene.Name doesn't work in game, scene.Title is unusable because it can be set to anything
-		Log.Error($"scene.Name: {scene.Name}, scene.Title: {scene.Title}, sceneNameToLevelData.Count: {sceneNameToLevelData.Count}");
-		if (sceneNameToLevelData.TryGetValue(scene.Name, out var levelData))
+		if (sceneNameToLevelData.TryGetValue(scene.Title, out var levelData))
 		{
 			return levelData;
 		}
