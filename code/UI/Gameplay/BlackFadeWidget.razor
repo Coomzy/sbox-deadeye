@@ -1,0 +1,15 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root style ="background-color: rgba(0, 0, 0, @alpha);">
+
+</root>
+
+@code
+{
+	float alpha => UIManager.instance.blackFadeAlpha;
+
+	protected override int BuildHash() => System.HashCode.Combine(alpha * 10000);
+}

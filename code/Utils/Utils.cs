@@ -29,4 +29,35 @@ public static partial class Utils
 			list[n] = value;
 		}
 	}
+
+	public static Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta)
+	{
+		Vector3 direction = target - current;
+
+		float distance = direction.Length;
+
+		if (distance <= maxDistanceDelta)
+		{
+			return target;
+		}
+		else
+		{
+
+			Vector3 scaledDirection = direction.Normal * maxDistanceDelta;
+
+			Vector3 newPosition = current + scaledDirection;
+
+			return newPosition;
+		}
+	}
+
+	public static float MoveTowards(float current, float target, float maxDelta)
+	{
+		if (System.Math.Abs(target - current) <= maxDelta)
+		{
+			return target;
+		}
+
+		return current + System.Math.Sign(target - current) * maxDelta;
+	}
 }

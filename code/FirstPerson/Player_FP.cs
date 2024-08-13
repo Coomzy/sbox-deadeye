@@ -10,7 +10,6 @@ public enum PlayerState_FP
 {
 	Idle,
 	Walking,
-	Deciding,
 	Executing,
 	Dead,
 	KilledTooManyCivs,
@@ -21,14 +20,7 @@ public class Player_FP : Component
 {
 	public static Player_FP instance;
 
-	[Group("Setup"), Property] public SkinnedModelRenderer bodyRenderer { get; private set; }
-	[Group("Setup"), Property] public ModelPhysics bodyPhysics { get; private set; }
-	[Group("Setup"), Property] public CitizenAnimationHelper thirdPersonAnimationHelper { get; private set; }
-
-	[Group("Runtime"), Property] public PlayerState state { get; private set; } = PlayerState.Idle;
-	[Group("Runtime"), Property] public Target target { get; private set; }
-	[Group("Runtime"), Property] public List<Target> targets { get; private set; } = new List<Target>();
-	[Group("Runtime"), Property] public Weapon weapon { get; private set; }
+	[Group("Runtime"), Property] public PlayerState_FP state { get; private set; } = PlayerState_FP.Idle;
 	[Group("Runtime"), Property] public int civiliansKilled { get; private set; }
 
 	public TimeSince timeSinceStartedDecisionMaking { get; private set; }
@@ -38,19 +30,6 @@ public class Player_FP : Component
 		instance = this;
 
 		base.OnAwake();
-
-		LoadClothing();
-
-		Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
-
-		GamePreferences.instance.useOneHandedMode = true;
-		//GamePreferences.instance.Save();
-
-		Log.Info($"After: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
-
-		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
-		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
-		thirdPersonAnimationHelper.Handedness = GamePreferences.instance.useOneHandedMode ? CitizenAnimationHelper.Hand.Right : CitizenAnimationHelper.Hand.Both;
 	}
 
 	protected override void OnStart()
@@ -58,108 +37,67 @@ public class Player_FP : Component
 		base.OnStart();
 
 		GoToNextRoom();
-	}
-
-	void LoadClothing()
-	{
-		var avatarJson = Connection.Local.GetUserData("avatar");
-		var clothing = new ClothingContainer();
-		clothing.Deserialize(avatarJson);
-		clothing.Apply(bodyRenderer);
+		Mouse.CursorType = "crosshair";
 	}
 
 	void GoToNextRoom()
 	{
+		Mouse.Visible = false;
 		RoomManager.instance.roomIndex++;
-		SetState(PlayerState.Walking);
+		SetState(PlayerState_FP.Walking);
 	}
 
-	void WalkingStart()
+	async void WalkingStart()
 	{
-		
+		TimeUntil fadeIn = 1.5f;
+
+		UIManager.instance.blackFadeWidget.Enabled = true;
+		while (UIManager.instance.blackFadeAlpha < 1.0f)
+		{
+			UIManager.instance.blackFadeAlpha = fadeIn.Fraction;
+			await Task.Frame();
+		}
+		UIManager.instance.blackFadeAlpha = 1.0f;
+
+		await GameTask.DelaySeconds(0.25f);
+
+		TimeUntil walkTime = 5.0f;
+
+		while (!walkTime)
+		{
+			Sound.Play("footstep-concrete", Transform.Position);
+			await GameTask.DelaySeconds(0.5f);
+		}
+		Sound.Play("footstep-concrete", Transform.Position);
+
+		await GameTask.DelaySeconds(0.25f);
+
+		SetState(PlayerState_FP.Executing);
 	}
 
-	void WalkingUpdate()
+	async void ExecutingStart()
 	{
-		if (RoomManager.instance.currentRoom == null)
+		//await GameTask.DelaySeconds(3.5f);
+		Mouse.Visible = true;
+
+		TimeUntil fadeOut = 0.25f;
+
+		do
 		{
-			return;
+			UIManager.instance.blackFadeAlpha = 1.0f - fadeOut.Fraction;
+			await Task.Frame();
 		}
+		while (UIManager.instance.blackFadeAlpha > 0.0f);
 
-		var currentPos = Transform.Position;
-		var targetPos = RoomManager.instance.currentRoom.walkToPos;
-		var newPos = MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
-		Transform.Position = newPos;
+		//UIManager.instance.blackFadeAlpha = 0.0f;
+		UIManager.instance.blackFadeWidget.Enabled = false;
+		Mouse.Visible = true;
 
-		var moveDelta = Vector3.Direction(currentPos, targetPos);
-		
-		Transform.Rotation = Rotation.Slerp(Transform.Rotation, Rotation.From(moveDelta.EulerAngles), PlayerSettings.instance.faceMovementSpeed * Time.Delta);
-
-		thirdPersonAnimationHelper.WithWishVelocity(moveDelta * 100.0f);
-		thirdPersonAnimationHelper.WithVelocity(moveDelta * 100.0f);
-
-		if (Vector3.DistanceBetween(Transform.Position, targetPos) < 0.01f)
-		{
-			SetState(PlayerState.Deciding);
-		}
-	}
-
-	public static Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta)
-	{
-		Vector3 direction = target - current;
-
-		float distance = direction.Length;
-
-		if (distance <= maxDistanceDelta)
-		{
-
-			return target;
-		}
-		else
-		{
-
-			Vector3 scaledDirection = direction.Normal * maxDistanceDelta;
-
-			Vector3 newPosition = current + scaledDirection;
-
-			return newPosition;
-		}
-	}
-
-	void DecidingStart()
-	{
 		timeSinceStartedDecisionMaking = 0;
-		targets.Clear();
-
-		thirdPersonAnimationHelper.WithWishVelocity(Vector3.Zero);
-		thirdPersonAnimationHelper.WithVelocity(Vector3.Zero);
-
-		RoomManager.instance.currentRoom.Activate();
-		NextTarget();
 	}
 
-	void NextTarget()
+	void ExecutingUpdate()
 	{
-		if (RoomManager.instance.currentRoom.currentTarget != null)
-		{
-			RoomManager.instance.currentRoom.currentTarget.Deselect();
-		}
-		RoomManager.instance.currentRoom.targetIndex++;
-
-		//var directionToTarget = Vector3.Direction(Transform.Position, RoomManager.instance.currentRoom.currentTarget.Transform.Position);
-		//directionToTarget.z = 0;
-		//GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
-
-		RoomManager.instance.currentRoom.currentTarget.Select();
-	}
-
-	void DecidingUpdate()
-	{
-		var directionToTarget = Vector3.Direction(Transform.Position, RoomManager.instance.currentRoom.currentTarget.Transform.Position);
-		directionToTarget.z = 0;
-		var desiredRotation = directionToTarget.Normal.EulerAngles.ToRotation();
-		GameObject.Transform.Rotation = Rotation.Slerp(GameObject.Transform.Rotation, desiredRotation, 10.0f * Time.Delta);
-
 		if (timeSinceStartedDecisionMaking >= RoomManager.instance.currentRoom.reactTime)
 		{
 			bool anyBadGuys = false;
@@ -175,75 +113,23 @@ public class Player_FP : Component
 			if (anyBadGuys)
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				SetState(PlayerState.Dead);
+				SetState(PlayerState_FP.Dead);
 			}
 			else
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
 				RoomManager.instance.roomIndex++;
-				SetState(PlayerState.Walking);
+				SetState(PlayerState_FP.Walking);
 			}
 
 			return;
 		}
 
-		bool madeChoice = false;
+		// TODO: Move crosshair and find target
+
 		if (ShootKeyIsDown())
 		{
-			madeChoice = true;
-			targets.Add(RoomManager.instance.currentRoom.currentTarget);
-		}
-		if (SpareKeyIsDown())
-		{
-			madeChoice = true;
-		}
-
-		if (madeChoice)
-		{
-			if (RoomManager.instance.currentRoom.isFinalTarget)
-			{
-				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				SetState(PlayerState.Executing);
-			}
-			else
-			{
-				NextTarget();
-			}
-		}
-	}
-
-	bool ShootKeyIsDown()
-	{
-		if (Input.Pressed("attack1"))
-			return true;
-
-		return false;
-	}
-
-	bool SpareKeyIsDown()
-	{
-		if (Input.Pressed("attack2"))
-			return true;
-
-		return false;
-	}
-
-	void ExecutingStart()
-	{
-		ExecuteCommands();
-	}
-
-	async void ExecuteCommands()
-	{
-		foreach (var target in targets)
-		{
-			await GameTask.DelaySeconds(PlayerSettings.instance.delayPerExecute);
-
-			var directionToTarget = Vector3.Direction(Transform.Position, target.Transform.Position);
-			directionToTarget.z = 0;
-			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
-
-			if (target.isBadTarget)
+			/*if (target.isBadTarget)
 			{
 				Stats.Increment(Stats.TARGETS_ELIMINATED);
 			}
@@ -253,12 +139,15 @@ public class Player_FP : Component
 				Stats.Increment(Stats.CIVILIANS_KILLED);
 			}
 
-			target.Die();
+			target.Die();*/
+
+			if (civiliansKilled >= LevelData.active.allowedCivilianCasualties)
+			{
+				SetState(PlayerState_FP.KilledTooManyCivs);
+			}
 		}
 
-		await GameTask.DelaySeconds(PlayerSettings.instance.delayAfterExecute);
-
-		bool anyTargetsLeft = false;
+		bool allBadGuysDead = true;
 		foreach (var target in RoomManager.instance.currentRoom.targets)
 		{
 			if (!target.isBadTarget)
@@ -267,177 +156,52 @@ public class Player_FP : Component
 			if (target.isDead)
 				continue;
 
-			anyTargetsLeft = true;
+			allBadGuysDead = false;
+			break;
 		}
 
-		if (anyTargetsLeft)
+		if (allBadGuysDead)
 		{
-			SetState(PlayerState.Dead);
+			if (RoomManager.instance.isFinalRoom)
+			{
+				SetState(PlayerState_FP.Won);
+			}
+			else
+			{
+				RoomManager.instance.roomIndex++;
+				SetState(PlayerState_FP.Walking);
+			}
 		}
-		// TODO: Make this based on a level setting or at least a game setting
-		else if (civiliansKilled > 3)
-		{
-			SetState(PlayerState.KilledTooManyCivs);
-		}
-		else if (RoomManager.instance.isFinalRoom)
-		{
-			SetState(PlayerState.Won);
-		}
-		else
-		{
-			RoomManager.instance.roomIndex++;
-			SetState(PlayerState.Walking);
-		}
+	}
+
+	bool ShootKeyIsDown()
+	{
+		if (Input.Pressed("Shoot_FP"))
+			return true;
+
+		return false;
 	}
 
 	async void DeadStart()
 	{
 		Stats.Increment(Stats.DIED);
 
-		DeathAnimate();
-
-		while (!bodyPhysics.Enabled)
-		{
-			await Task.Frame();
-		}
+		UIManager.instance.blackFadeAlpha = 1.0f;
 
 		await Task.DelaySeconds(1.5f);
 
-		UIManager.instance.Died();
+		Game.ActiveScene.Load(Game.ActiveScene.Source);
 	}
 
-	async void DeathAnimate()
+	async void KilledTooManyCivsStart()
 	{
-		var currentTarget = RoomManager.instance.currentRoom.currentTarget;
+		Stats.Increment(Stats.FAILURE_TOO_MANY_CIVS_KILLED);
 
-		var hitBoxes = new List<HitboxSet.Box>();
-		foreach (var hitbox in bodyRenderer.Model.HitboxSet.All)
-		{
-			//HB_pelvis
-			//HB_spine_0
-			//HB_spine_1
-			//HB_spine_2
-			//HB_neck_0
-			//HB_head
-			//HB_clavicle_R
-			//HB_arm_upper_R
-			//HB_arm_lower_R
-			//HB_hand_R
-			//HB_clavicle_L
-			//HB_arm_upper_L
-			//HB_arm_lower_L
-			//HB_hand_L
-			//HB_leg_upper_R
-			//HB_leg_lower_R
-			//HB_ankle_R
-			//HB_leg_upper_L
-			//HB_leg_lower_L
-			//HB_ankle_L
-			if (hitbox.Name == "HB_head" ||
-				hitbox.Name == "HB_neck_0" ||
-				hitbox.Name == "HB_arm_upper_R" ||
-				hitbox.Name == "HB_arm_upper_L" ||
-				hitbox.Name == "HB_arm_lower_R" ||
-				hitbox.Name == "HB_arm_lower_L" ||
-				hitbox.Name == "HB_neck_0" ||
-				hitbox.Name == "HB_spine_2") //||
-				//hitbox.Name == "HB_clavicle_R" ||
-				//hitbox.Name == "HB_clavicle_L")
-			{
-				continue;
-			}
-			if (hitbox.Name == "HB_leg_upper_R" ||
-				hitbox.Name == "HB_leg_upper_L" ||
-				hitbox.Name == "HB_leg_lower_R" ||
-				hitbox.Name == "HB_leg_lower_L" ||
-				hitbox.Name == "HB_ankle_R" ||
-				hitbox.Name == "HB_ankle_L" ||
-				hitbox.Name == "HB_hand_R" ||
-				hitbox.Name == "HB_hand_L" ||
-				//hitbox.Name == "HB_arm_lower_R" ||
-				//hitbox.Name == "HB_arm_lower_L" ||
-				hitbox.Name == "HB_pelvis" ||
-				hitbox.Name == "HB_spine_0" ||
-				hitbox.Name == "HB_spine_1")
-			{
-				continue;
-			}
-			hitBoxes.Add(hitbox);
-			Log.Info($"hitbox = {hitbox.Name}");
-		}
+		UIManager.instance.blackFadeAlpha = 1.0f;
 
-		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		await Task.DelaySeconds(1.5f);
 
-		TimeSince shootTime = 0;
-		Vector3 force = Vector3.Zero;
-		Vector3 hitPosition = Vector3.Zero;
-		while (true)
-		{
-			//var damageInfo = new DamageInfo(100.0f, currentTarget.GameObject, currentTarget.citizenVisuals?.weaponGameObject);
-			var randomIndex = System.Random.Shared.Next(hitBoxes.Count);
-			Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
-			var boneIndex = hitBoxes[randomIndex].Bone.Index;			
-			//Gizmo.Draw.LineSphere(hitBoxes[randomIndex].Bone.LocalTransform.PointToWorld(hitBoxes[randomIndex].RandomPointInside), 1.0f);
-			var damageScale = 10.0f;
-			force = new Vector3(-Transform.Rotation.Forward * 25.0f);
-			hitPosition = hitBoxes[randomIndex].RandomPointInside;
-			ProceduralHitReaction(boneIndex, damageScale, force);
-			//thirdPersonAnimationHelper.ProceduralHitReaction(damageInfo, 10, force);
-
-			if (shootTime < 1.5f)
-			{
-				await GameTask.DelaySeconds(0.3f);
-			}
-			else
-			{
-				break;
-			}
-		}
-
-		foreach (var target in RoomManager.instance.currentRoom.targets)
-		{
-			if (!target.isBadTarget)
-			{
-				continue;
-			}
-
-			if (target?.citizenVisuals?.weapon == null)
-			{
-				continue;
-			}
-
-			target.citizenVisuals.weapon.Shoot();
-		}
-
-		bodyPhysics.Enabled = true;
-		bodyRenderer.UseAnimGraph = false;
-
-		bodyRenderer.GameObject.Tags.Set("ragdoll", true);
-		bodyRenderer.GameObject.SetParent(null);
-
-		foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
-		{
-			body.ApplyImpulseAt(hitPosition, force);
-		}
-
-		if (weapon != null)
-		{
-			weapon.Drop();
-		}
-	}
-
-	void ProceduralHitReaction(int boneIndex = 0, float damageScale = 1.0f, Vector3 force = default)
-	{
-		var tx = thirdPersonAnimationHelper.Target.GetBoneObject(boneIndex);
-
-		var localToBone = tx.Transform.Local.Position;
-		if (localToBone == Vector3.Zero) localToBone = Vector3.One;
-
-		thirdPersonAnimationHelper.Target.Set("hit", true);
-		thirdPersonAnimationHelper.Target.Set("hit_bone", boneIndex);
-		thirdPersonAnimationHelper.Target.Set("hit_offset", localToBone);
-		thirdPersonAnimationHelper.Target.Set("hit_direction", force.Normal);
-		thirdPersonAnimationHelper.Target.Set("hit_strength", (force.Length / 1000.0f) * damageScale);
+		Game.ActiveScene.Load(Game.ActiveScene.Source);
 	}
 
 	async void WonStart()
@@ -447,15 +211,6 @@ public class Player_FP : Component
 		await Task.DelaySeconds(1.5f);
 
 		UIManager.instance.Won();
-	}
-
-	async void KilledTooManyCivsStart()
-	{
-		Stats.Increment(Stats.FAILURE_TOO_MANY_CIVS_KILLED);
-
-		await Task.DelaySeconds(1.5f);
-
-		UIManager.instance.FailedTooManyCivsKilled();
 	}
 
 	protected override void OnUpdate()
@@ -478,7 +233,7 @@ public class Player_FP : Component
 
 	void CheckForReloadLevelInput()
 	{
-		if (!Input.Pressed("reload"))
+		if (!Input.Pressed("restart"))
 			return;
 
 		Game.ActiveScene.Load(Game.ActiveScene.Source);
@@ -488,37 +243,31 @@ public class Player_FP : Component
 	{
 		switch (state)
 		{
-			case PlayerState.Walking:
-				WalkingUpdate();
-				break;
-			case PlayerState.Deciding:
-				DecidingUpdate();
+			case PlayerState_FP.Executing:
+				ExecutingUpdate();
 				break;
 		}
 	}
 
-	void SetState(PlayerState newState)
+	void SetState(PlayerState_FP newState)
 	{
 		state = newState;
 
 		switch (state)
 		{
-			case PlayerState.Walking:
+			case PlayerState_FP.Walking:
 				WalkingStart();
 				break;
-			case PlayerState.Deciding:
-				DecidingStart();
-				break;
-			case PlayerState.Executing:
+			case PlayerState_FP.Executing:
 				ExecutingStart();
 				break;
-			case PlayerState.Dead:
+			case PlayerState_FP.Dead:
 				DeadStart();
 				break;
-			case PlayerState.KilledTooManyCivs:
+			case PlayerState_FP.KilledTooManyCivs:
 				KilledTooManyCivsStart();
 				break;
-			case PlayerState.Won:
+			case PlayerState_FP.Won:
 				WonStart();
 				break;
 		}

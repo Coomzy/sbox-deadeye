@@ -2,6 +2,7 @@ using Sandbox;
 using Sandbox.Citizen;
 using Sandbox.Internal;
 using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using static Sandbox.Gizmo;
@@ -11,6 +12,10 @@ public class LevelData : GameResource
 {
 	static Dictionary<string, LevelData> sceneNameToLevelData { get; set; } = new Dictionary<string, LevelData>(StringComparer.OrdinalIgnoreCase);
 	public static LevelData active { get; private set; }
+
+	// TODO: Figure out how to reference a scene file so we can use this for the dictionary because scene.Name doesn't work in game builds
+	// Then we'll use scene.Title instead of scene.Name
+	[Category("Setup"), Property] public Scene scene { get; private set; }
 
 	[Category("Civilians"), Property] public int allowedCivilianCasualties = 3;
 
@@ -42,11 +47,13 @@ public class LevelData : GameResource
 
 	public static void SetActiveLevelData()
 	{
+		Log.Info($"SetActiveLevelData() Game.ActiveScene.GetSceneLevelData() = {Game.ActiveScene.GetSceneLevelData()}");
 		active = Game.ActiveScene.GetSceneLevelData();
 	}
 
 	public void Register()
 	{
+		Log.Info($"Register() this.ResourceName = {this.ResourceName}");
 		sceneNameToLevelData[this.ResourceName] = this;
 	}
 
@@ -80,11 +87,14 @@ public class LevelData : GameResource
 
 			if (ResourceLibrary.TryGet(path, out LevelData data))
 			{
+				Log.Error($"Loaded levelData at path: {path}");
 				return data;
 			}
 			return null;
 		}
 
+		// TODO: scene.Name doesn't work in game, scene.Title is unusable because it can be set to anything
+		Log.Error($"scene.Name: {scene.Name}, scene.Title: {scene.Title}, sceneNameToLevelData.Count: {sceneNameToLevelData.Count}");
 		if (sceneNameToLevelData.TryGetValue(scene.Name, out var levelData))
 		{
 			return levelData;
@@ -106,7 +116,7 @@ public class LevelDataSystem : GameObjectSystem
 		{
 			levelData.Register();
 		}
-
+		
 		Listen(Stage.SceneLoaded, -1, SetActiveSceneData, "SetActiveSceneData");
 	}
 

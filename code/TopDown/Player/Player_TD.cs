@@ -7,7 +7,7 @@ using static Sandbox.Gizmo;
 using static Sandbox.PhysicsContact;
 using static Sandbox.VertexLayout;
 
-public enum PlayerState
+public enum PlayerState_TD
 {
 	Idle,
 	Walking,
@@ -28,13 +28,14 @@ public class Player_TD : Component
 	[Group("Setup"), Property] public CitizenAnimationHelper thirdPersonAnimationHelper { get; private set; }
 	[Group("Setup"), Property] public GameObject weaponHolder { get; set; }
 
-	[Group("Runtime"), Property] public PlayerState state { get; private set; } = PlayerState.Idle;
-	[Group("Runtime"), Property] public Target target { get; private set; }
+	[Group("Config"), Property] public WeaponType weaponType { get; set; } = WeaponType.Pistol;
+
+	[Group("Runtime"), Property, ReadOnly] public PlayerState_TD state { get; private set; } = PlayerState_TD.Idle;
+	[Group("Runtime"), Property, ReadOnly] public Target target { get; private set; }
 	[Group("Runtime"), Property] public List<Target> targets { get; private set; } = new List<Target>();
 
-	[Group("Weapon"), Property] public WeaponType weaponType { get; set; } = WeaponType.Pistol;
-	[Group("Weapon"), Property] public GameObject weaponGameObject { get; private set; }
-	[Group("Weapon"), Property] public Weapon weapon { get; private set; }
+	[Group("Runtime"), Property] public GameObject weaponGameObject { get; private set; }
+	[Group("Runtime"), Property] public Weapon weapon { get; private set; }
 
 	public TimeSince timeSinceStartedDecisionMaking { get; private set; }
 
@@ -100,7 +101,7 @@ public class Player_TD : Component
 	void GoToNextRoom()
 	{
 		RoomManager.instance.roomIndex++;
-		SetState(PlayerState.Walking);
+		SetState(PlayerState_TD.Walking);
 	}
 
 	void WalkingStart()
@@ -118,7 +119,7 @@ public class Player_TD : Component
 		var currentPos = Transform.Position;
 		// BUG: WHY DOES THIS ERROR ON SCENE RELOAD!?
 		var targetPos = RoomManager.instance.currentRoom.walkToPos;
-		var newPos = MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
+		var newPos = Utils.MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
 		Transform.Position = newPos;
 
 		var moveDelta = Vector3.Direction(currentPos, targetPos);
@@ -130,29 +131,7 @@ public class Player_TD : Component
 
 		if (Vector3.DistanceBetween(Transform.Position, targetPos) < 0.01f)
 		{
-			SetState(PlayerState.Deciding);
-		}
-	}
-
-	public static Vector3 MoveTowards(Vector3 current, Vector3 target, float maxDistanceDelta)
-	{
-		Vector3 direction = target - current;
-
-		float distance = direction.Length;
-
-		if (distance <= maxDistanceDelta)
-		{
-
-			return target;
-		}
-		else
-		{
-
-			Vector3 scaledDirection = direction.Normal * maxDistanceDelta;
-
-			Vector3 newPosition = current + scaledDirection;
-
-			return newPosition;
+			SetState(PlayerState_TD.Deciding);
 		}
 	}
 
@@ -194,7 +173,7 @@ public class Player_TD : Component
 					targets.Add(RoomManager.instance.currentRoom.currentTarget);
 				};
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				SetState(PlayerState.Executing);
+				SetState(PlayerState_TD.Executing);
 				return;
 			}
 
@@ -211,13 +190,13 @@ public class Player_TD : Component
 			if (anyBadGuys)
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				SetState(PlayerState.Dead);
+				SetState(PlayerState_TD.Dead);
 			}
 			else
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
 				RoomManager.instance.roomIndex++;
-				SetState(PlayerState.Walking);
+				SetState(PlayerState_TD.Walking);
 			}
 
 			return;
@@ -262,7 +241,7 @@ public class Player_TD : Component
 			if (RoomManager.instance.currentRoom.isFinalTarget)
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				SetState(PlayerState.Executing);
+				SetState(PlayerState_TD.Executing);
 			}
 			else
 			{
@@ -351,20 +330,20 @@ public class Player_TD : Component
 
 		if (anyTargetsLeft)
 		{
-			SetState(PlayerState.Dead);
+			SetState(PlayerState_TD.Dead);
 		}
-		else if (GamePlayManager.instance.civiliansKilled > civilianKillLimit)
+		else if (GamePlayManager.instance.civiliansKilled >= civilianKillLimit)
 		{
-			SetState(PlayerState.KilledTooManyCivs);
+			SetState(PlayerState_TD.KilledTooManyCivs);
 		}
 		else if (RoomManager.instance.isFinalRoom)
 		{
-			SetState(PlayerState.Won);
+			SetState(PlayerState_TD.Won);
 		}
 		else
 		{
 			RoomManager.instance.roomIndex++;
-			SetState(PlayerState.Walking);
+			SetState(PlayerState_TD.Walking);
 		}
 	}
 
@@ -562,7 +541,7 @@ public class Player_TD : Component
 
 	void CheckForReloadLevelInput()
 	{
-		if (!Input.Pressed("Reload_Level"))
+		if (!Input.Pressed("restart"))
 			return;
 
 		Game.ActiveScene.Load(Game.ActiveScene.Source);
@@ -572,37 +551,37 @@ public class Player_TD : Component
 	{
 		switch (state)
 		{
-			case PlayerState.Walking:
+			case PlayerState_TD.Walking:
 				WalkingUpdate();
 				break;
-			case PlayerState.Deciding:
+			case PlayerState_TD.Deciding:
 				DecidingUpdate();
 				break;
 		}
 	}
 
-	void SetState(PlayerState newState)
+	void SetState(PlayerState_TD newState)
 	{
 		state = newState;
 
 		switch (state)
 		{
-			case PlayerState.Walking:
+			case PlayerState_TD.Walking:
 				WalkingStart();
 				break;
-			case PlayerState.Deciding:
+			case PlayerState_TD.Deciding:
 				DecidingStart();
 				break;
-			case PlayerState.Executing:
+			case PlayerState_TD.Executing:
 				ExecutingStart();
 				break;
-			case PlayerState.Dead:
+			case PlayerState_TD.Dead:
 				DeadStart();
 				break;
-			case PlayerState.KilledTooManyCivs:
+			case PlayerState_TD.KilledTooManyCivs:
 				KilledTooManyCivsStart();
 				break;
-			case PlayerState.Won:
+			case PlayerState_TD.Won:
 				WonStart();
 				break;
 		}

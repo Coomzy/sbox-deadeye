@@ -8,11 +8,15 @@ public class UIManager : Component
 {
 	public static UIManager instance;
 
-	[Property] public CurrentTimeWidget currentTimeWidget { get; private set; }
-	[Property] public ReactTimeBarWidget reactTimeBarWidget { get; private set; }
-	[Property] public DiedScreen diedScreen { get; private set; }
-	[Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
-	[Property] public WonScreen wonScreen { get; private set; }
+	[Group("Setup"), Property] public CurrentTimeWidget currentTimeWidget { get; private set; }
+	[Group("Setup"), Property] public ReactTimeBarWidget reactTimeBarWidget { get; private set; }
+	[Group("Setup"), Property] public DiedScreen diedScreen { get; private set; }
+	[Group("Setup"), Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
+	[Group("Setup"), Property] public WonScreen wonScreen { get; private set; }
+
+	[Group("Setup"), Property] public BlackFadeWidget blackFadeWidget { get; private set; }
+
+	[Group("Runtime"), Property] public float blackFadeAlpha { get; set; } = 1.0f;
 
 	protected override void OnAwake()
 	{
@@ -23,22 +27,22 @@ public class UIManager : Component
 
 	public void Died()
 	{
-		//currentTimeWidget.Enabled = false;
-		reactTimeBarWidget.Enabled = false;
-		diedScreen.Enabled = true;
+		//if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (diedScreen != null) diedScreen.Enabled = true;
 	}
 
 	public void FailedTooManyCivsKilled()
 	{
-		//currentTimeWidget.Enabled = false;
-		reactTimeBarWidget.Enabled = false;
-		failedTooManyCivsKilledScreen.Enabled = true;
+		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (failedTooManyCivsKilledScreen != null) failedTooManyCivsKilledScreen.Enabled = true;
 	}
 
 	public void Won()
 	{
-		currentTimeWidget.Enabled = false;
-		reactTimeBarWidget.Enabled = false;
-		wonScreen.Enabled = true;
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (wonScreen != null) wonScreen.Enabled = true;
 	}
 }

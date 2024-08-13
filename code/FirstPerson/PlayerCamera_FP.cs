@@ -7,7 +7,7 @@ public class PlayerCamera_FP : Component
 
 	[Group("Setup"), Property] public CameraComponent camera { get; set; }
 
-	[Group("Config"), Property] public float topDownOffset { get; set; } = 700.0f;
+	[Group("Config"), Property] public float topDownOffset { get; set; } = 88.0f;
 
 	protected override void OnAwake()
 	{
@@ -18,8 +18,10 @@ public class PlayerCamera_FP : Component
 
 	protected override void OnUpdate()
 	{
-		Vector3 cameraPos = Player_TD.instance.Transform.Position;
+		Vector3 cameraPos = Player_FP.instance.Transform.Position;
 		cameraPos.z += topDownOffset;
 		GameObject.Transform.Position = cameraPos;
+
+		GameObject.Transform.Rotation = Player_FP.instance.Transform.Rotation;
 	}
 }
