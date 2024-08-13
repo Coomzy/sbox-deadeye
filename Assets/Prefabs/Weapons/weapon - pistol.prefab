@@ -11,7 +11,7 @@
         "bloodSplatPFX": "prefabs/weapons/bloodsplat_pfx.prefab",
         "bulletTracerLineRenderer": {
           "_type": "component",
-          "component_id": "1e884a92-8ee8-430f-8529-b235a0411f40",
+          "component_id": "97a884e0-1c6e-42bc-a1bd-dada0253234f",
           "go": "861b1ec3-3064-45dc-b180-947f06bb7043",
           "component_type": "LineRenderer"
         },
@@ -103,14 +103,14 @@
               },
               {
                 "__type": "Sandbox.LineRenderer",
-                "__guid": "1e884a92-8ee8-430f-8529-b235a0411f40",
+                "__guid": "97a884e0-1c6e-42bc-a1bd-dada0253234f",
                 "__enabled": false,
                 "CastShadows": false,
                 "Color": {
                   "color": [
                     {
-                      "t": 0.5,
-                      "c": "1,1,1,1"
+                      "t": 0.50213677,
+                      "c": "765.5814,1000,218.6046,1"
                     }
                   ],
                   "alpha": []
@@ -126,11 +126,35 @@
                 "UseVectorPoints": true,
                 "VectorPoints": [],
                 "Width": {
-                  "rangey": "0,0.25",
+                  "rangey": "0,2",
                   "frames": [
+                    {},
                     {
-                      "x": 0.5,
-                      "y": 1
+                      "x": 0.39136904,
+                      "y": 0.63297874,
+                      "in": -3.9166694,
+                      "out": 3.9166694
+                    },
+                    {
+                      "x": 0.56696427,
+                      "y": 0.99734044,
+                      "in": -0.037735824,
+                      "out": 0.037735824
+                    },
+                    {
+                      "x": 0.6889881,
+                      "y": 1,
+                      "in": 0.033898085,
+                      "out": -0.033898085
+                    },
+                    {
+                      "x": 0.85863096,
+                      "y": 0.6755319,
+                      "in": 4.0000005,
+                      "out": -4.0000005
+                    },
+                    {
+                      "x": 1
                     }
                   ]
                 },

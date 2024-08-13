@@ -52,14 +52,14 @@ public class Weapon : Component
 		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 125.0f));
 		bulletTracerLineRenderer.VectorPoints = points;
 		bulletTracerLineRenderer.Enabled = true;
-		await Task.FrameEnd();
+		await GameTask.Delay(20);
 		bulletTracerLineRenderer.Enabled = false;
 	}
 
 	async void MuzzleFlashLight()
 	{
 		muzzleFlashLight.Enabled = true;
-		await Task.FrameEnd();
+		await GameTask.Delay(1);
 		muzzleFlashLight.Enabled = false;
 	}
 
