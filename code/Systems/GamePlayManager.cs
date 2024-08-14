@@ -55,10 +55,10 @@ public class GamePlayManager : Component
 		switch (failReason)
 		{
 			case FailReason.KilledTooManyCivs:
-				Stats.Increment(Stats.FAILURE_TOO_MANY_CIVS_KILLED);
+				GameStats.Increment(GameStats.FAILURE_TOO_MANY_CIVS_KILLED);
 				break;
 			case FailReason.Died:
-				Stats.Increment(Stats.DIED);
+				GameStats.Increment(GameStats.DIED);
 				break;
 		}
 
@@ -68,53 +68,29 @@ public class GamePlayManager : Component
 
 	public void WonLevel()
 	{
-		Stats.Increment(Stats.WON);
+		GameStats.Increment(GameStats.WON);
 
 		isPlayingLevel = false;
 		endLevelTime = timeSinceLevelStart;
 
 		string levelName = LevelData.active.ResourceName;
-		bool isNewPersonalBest = true;
-
-		if (GameSave.instance.levelNameToBestTime.TryGetValue(levelName, out float savedBestTime))
-		{
-			if (levelTime >= savedBestTime)
-			{
-				isNewPersonalBest = false;
-			}
-		}
-
-		Log.Info($"WonLevel() levelTime: {levelTime}, savedBestTime: {savedBestTime}, isNewPersonalBest: {isNewPersonalBest}");
-
-		if (isNewPersonalBest)
-		{
-			GameSave.instance.levelNameToBestTime[LevelData.active.ResourceName] = levelTime;
-			GameSave.instance.Save();
-
-			string leaderboardName = LevelData.active.leaderboardName;
-			if (!string.IsNullOrEmpty(leaderboardName))
-			{
-				bool allowSubmit = !Game.IsEditor;
-				if (allowSubmit)
-				{
-					Sandbox.Services.Stats.SetValue(leaderboardName, levelTime);
-					Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{levelTime}'");
-				}
-				else
-				{
-					Log.Info($"Not submitting leaderboard '{leaderboardName}' for time '{levelTime}'");
-				}
-			}
-			else
-			{
-				Log.Error($"WonLevel() leaderboardName null for {levelName}");
-			}
-		}
 
 		if (LevelData.active == null)
 		{
-			Log.Warning($"No active level data for scene {Game.ActiveScene}");
+			Log.Error($"No active level data for scene {Game.ActiveScene}");
 			return;
+		}
+
+		bool isNewPersonalBest = LevelData.active.SetBestTime(levelTime);
+
+		Log.Info($"WonLevel() levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+
+		if (isNewPersonalBest)
+		{
+			GameLeaderboards.SetLeaderboardLevelTime(LevelData.active, levelTime);
+
+			var bestMedalType = GameSettings.instance.GetLowestMedalType();
+			GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
 		}
 
 		if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.FastestTime))

@@ -1,10 +1,12 @@
 @import "../Menu/MenuTheme.scss";
 
 DiedScreen.menu {
-	background-color: rgba(5, 0, 0, 0.99);
+	background-color: transparent;
+	pointer-events: none;
 
 	.buttons .button {
 		width: 600px;
+		pointer-events: all;
 
 		.icon.hand {
 			padding: 5px 0;
@@ -12,7 +14,7 @@ DiedScreen.menu {
 	}
 
 	.title {
-		align-self: center;
+		align-self: flex-end;
 		font-size: 88px;
 		color: lightgray;
 	}

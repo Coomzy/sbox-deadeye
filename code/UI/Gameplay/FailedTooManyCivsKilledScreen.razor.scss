@@ -1,16 +1,18 @@
 @import "../Menu/MenuTheme.scss";
 
 FailedTooManyCivsKilledScreen.menu {
-	background-color: rgb(5, 0, 0, 0.99);
+	background-color: transparent;
+	pointer-events: none;
 
 	.title {
-		align-self: center;
+		align-self: flex-end;
 		font-size: 88px;
 		color: lightgray;
 	}
 
 	.buttons .button {
 		width: 600px;
+		pointer-events: all;
 
 		.icon.hand {
 			padding: 5px 0;

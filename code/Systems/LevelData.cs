@@ -86,6 +86,46 @@ public class LevelData : GameResource
 		return MedalType.Bronze;
 	}
 
+	public bool HasCompletedLevel()
+	{
+		if (GameSave.instance.levelNameToBestTime.TryGetValue(LevelData.active.ResourceName, out float savedBestTime))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public float GetBestTime()
+	{
+		if (GameSave.instance.levelNameToBestTime.TryGetValue(LevelData.active.ResourceName, out float savedBestTime))
+		{
+			return savedBestTime;
+		}
+		return float.MaxValue;
+	}
+
+	public bool SetBestTime(float newTime)
+	{
+		if (GameSave.instance.levelNameToBestTime.TryGetValue(ResourceName, out float savedBestTime))
+		{
+			if (newTime < savedBestTime)
+			{
+				GameSave.instance.levelNameToBestTime[ResourceName] = savedBestTime;
+				GameSave.instance.Save();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public MedalType GetBestTimeMedal()
+	{
+		if (!HasCompletedLevel())
+			return MedalType.None;
+
+		return TimeToMedalType(GetBestTime());
+	}
+
 	public static LevelData GetSceneLevelData(Scene scene)
 	{
 		if (Utils.isEditTime)

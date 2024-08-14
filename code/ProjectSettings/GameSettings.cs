@@ -8,11 +8,11 @@ using static Sandbox.Connection;
 
 public enum MedalType
 {
-	None,
-	Bronze,
-	Silver,
-	Gold,
-	Onyx
+	None = 0,
+	Bronze = 1,
+	Silver = 2,
+	Gold = 3,
+	Onyx = 4
 }
 
 public enum WeaponType
@@ -26,6 +26,8 @@ public enum WeaponType
 [GameResource("Game Settings", "gs", "Game Settings")]
 public class GameSettings : GameResourceSingleton<GameSettings>
 {
+	[Group("Levels"), Property] public List<LevelData> topDownLevels { get; set; } = new List<LevelData>();
+
 	[Group("Weapons"), Property] public PrefabFile pistolPrefab { get; set; } = ResourceLibrary.Get<PrefabFile>("prefabs/weapons/weapon - pistol.prefab");
 
 	[Group("Highlight"), Property] public Color badHighlightColour { get; set; } = Color.Red;
@@ -81,5 +83,25 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 		}
 
 		return noneColour;
+	}
+
+	public MedalType GetLowestMedalType()
+	{
+		var lowestMedalType = MedalType.Onyx;
+		foreach (var level in topDownLevels)
+		{
+			if (level.HasCompletedLevel())
+			{
+				lowestMedalType = MedalType.None;
+				break;
+			}
+
+			var levelMedalType = level.GetBestTimeMedal();
+			if (levelMedalType >= lowestMedalType)
+				continue;
+
+			lowestMedalType = levelMedalType;
+		}
+		return lowestMedalType;
 	}
 }

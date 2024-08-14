@@ -45,6 +45,8 @@ public class Player_TD : Component
 
 		base.OnAwake();
 
+		Mouse.Visible = true;
+
 		LoadClothing();
 
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
@@ -252,18 +254,28 @@ public class Player_TD : Component
 
 	bool ShootKeyIsDown()
 	{
-		if (Input.Pressed("Shoot"))
-			return true;
+		bool pressed = Input.Pressed("Shoot");
+		if (Input.Pressed("Shoot_Alt"))
+		{
+			pressed = true;
+		}
+		if (!pressed)
+			return false;
 
-		return false;
+		return true;
 	}
 
 	bool SpareKeyIsDown()
 	{
-		if (Input.Pressed("Spare"))
-			return true;
+		bool pressed = Input.Pressed("Spare");
+		if (Input.Pressed("Spare_Alt"))
+		{
+			pressed = true;
+		}
+		if (!pressed)
+			return false;
 
-		return false;
+		return true;
 	}
 
 	void ExecutingStart()
@@ -289,12 +301,12 @@ public class Player_TD : Component
 
 			if (target.isBadTarget)
 			{
-				Stats.Increment(Stats.TARGETS_ELIMINATED);
+				GameStats.Increment(GameStats.TARGETS_ELIMINATED);
 			}
 			else
 			{
 				GamePlayManager.instance.civiliansKilled++;
-				Stats.Increment(Stats.CIVILIANS_KILLED);
+				GameStats.Increment(GameStats.CIVILIANS_KILLED);
 			}
 
 			target.Die();
@@ -439,7 +451,7 @@ public class Player_TD : Component
 				continue;
 			}
 			hitBoxes.Add(hitbox);
-			Log.Info($"hitbox = {hitbox.Name}");
+			//Log.Info($"hitbox = {hitbox.Name}");
 		}
 
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
@@ -453,7 +465,7 @@ public class Player_TD : Component
 
 			//var damageInfo = new DamageInfo(100.0f, currentTarget.GameObject, currentTarget.citizenVisuals?.weaponGameObject);
 			var randomIndex = System.Random.Shared.Next(hitBoxes.Count);
-			Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
+			//Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
 			var boneIndex = hitBoxes[randomIndex].Bone.Index;			
 			//Gizmo.Draw.LineSphere(hitBoxes[randomIndex].Bone.LocalTransform.PointToWorld(hitBoxes[randomIndex].RandomPointInside), 1.0f);
 			var damageScale = 10.0f;
@@ -558,14 +570,14 @@ public class Player_TD : Component
 
 	void CheckForExitLevelInput()
 	{
-		bool exitLevel = Input.Pressed("Quit");
+		bool pressed = Input.Pressed("Quit");
 		if (Input.EscapePressed)
 		{
 			Input.EscapePressed = false;
-			exitLevel = true;
+			pressed = true;
 		}
 
-		if (!exitLevel)
+		if (!pressed)
 			return;
 
 		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
@@ -573,7 +585,12 @@ public class Player_TD : Component
 
 	void CheckForReloadLevelInput()
 	{
-		if (!Input.Pressed("restart"))
+		bool pressed = Input.Pressed("Restart");
+		if (Input.Pressed("Restart_Alt"))
+		{
+			pressed = true;
+		}
+		if (!pressed)
 			return;
 
 		Game.ActiveScene.Load(Game.ActiveScene.Source);
