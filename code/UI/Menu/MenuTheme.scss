@@ -16,7 +16,8 @@
     transform: scale( 1 );
     transition: all 0.1s ease-out;
     pointer-events: all;
-    background-color: white; // rgba(25,25,200,1);
+    //background-color: white; // rgba(25,25,200,1);
+    background-color: transparent; // rgba(25,25,200,1);
 
     > .title {
         align-self: flex-end;

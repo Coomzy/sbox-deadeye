@@ -163,6 +163,7 @@
               {
                 "__type": "Sandbox.PointLight",
                 "__guid": "80b4c8ce-8093-4aec-a68a-66ec3b975cd8",
+                "__enabled": false,
                 "Attenuation": 0.46,
                 "FogMode": "Enabled",
                 "FogStrength": 1,

@@ -52,21 +52,11 @@ public class StatAndLeaderboardTest : Component
 	[Button("GetLeaderboard")]
 	async void GetLeaderboard()
 	{
-		// get a board class for the board in my package called "decapitations"
-		var board = Sandbox.Services.Leaderboards.Get("level-original");
-
-		// return max 10 entries
-		board.MaxEntries = 10;
-
-		// compare against people in my country
-		board.Group = "country";
-
-		await board.Refresh();
+		var board = await GameLeaderboards.GetLeaderboard("level-original", LeaderboardGroup.Global, 10);
 
 		Log.Info($"Got board {board.DisplayName}, {board.Title}");
 		Log.Info($"Board has {board.TotalEntries} total entries!");
 
-		// print entries
 		foreach (var e in board.Entries)
 		{
 			Log.Info($"[{e.Rank}] {e.DisplayName} - {e.Value} - Me: {e.Me}");

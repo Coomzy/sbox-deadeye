@@ -31,7 +31,7 @@ public class Target : Component
 
 	public void Activate()
 	{
-		
+		citizenVisuals.RuntimeApply();
 	}
 
 	public void Select()

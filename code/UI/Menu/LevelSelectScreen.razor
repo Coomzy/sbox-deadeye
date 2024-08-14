@@ -77,7 +77,10 @@
 
 	void ButtonBack()
 	{
-		MainMenu.instance.SetMenuState(MenuState.GameMode);
+		// Other gamemodes have been dropped
+		//MainMenu.instance.SetMenuState(MenuState.GameMode);
+
+		MainMenu.instance.SetMenuState(MenuState.Main);
 		Sound.Play("ui.navigate.back");
 	}
 

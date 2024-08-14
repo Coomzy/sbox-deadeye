@@ -183,7 +183,7 @@ public class Player_VR : Component
 
 	async void DeadStart()
 	{
-		Stats.Increment(Stats.DIED);
+		GameStats.Increment(GameStats.DIED);
 
 		//UIManager.instance.blackFadeAlpha = 1.0f;
 
@@ -194,7 +194,7 @@ public class Player_VR : Component
 
 	async void KilledTooManyCivsStart()
 	{
-		Stats.Increment(Stats.FAILURE_TOO_MANY_CIVS_KILLED);
+		GameStats.Increment(GameStats.FAILURE_TOO_MANY_CIVS_KILLED);
 
 		//UIManager.instance.blackFadeAlpha = 1.0f;
 
@@ -205,7 +205,7 @@ public class Player_VR : Component
 
 	async void WonStart()
 	{
-		Stats.Increment(Stats.WON);
+		GameStats.Increment(GameStats.WON);
 
 		await Task.DelaySeconds(1.5f);
 

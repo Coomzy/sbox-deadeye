@@ -45,13 +45,13 @@
         {
           "Name": "Shoot",
           "KeyboardCode": "MOUSE1",
-          "GamepadCode": "SwitchLeftBumper",
+          "GamepadCode": "LeftTrigger",
           "GroupName": "Top Down"
         },
         {
           "Name": "Spare",
           "KeyboardCode": "MOUSE2",
-          "GamepadCode": "SwitchRightBumper",
+          "GamepadCode": "RightTrigger",
           "GroupName": "Top Down"
         },
         {
@@ -65,6 +65,30 @@
           "KeyboardCode": "BACKSPACE",
           "GamepadCode": "SwitchLeftMenu",
           "GroupName": "Game"
+        },
+        {
+          "Name": "Shoot_Alt",
+          "KeyboardCode": "A",
+          "GamepadCode": "SwitchLeftBumper",
+          "GroupName": "Top Down"
+        },
+        {
+          "Name": "Spare_Alt",
+          "KeyboardCode": "D",
+          "GamepadCode": "SwitchRightBumper",
+          "GroupName": "Top Down"
+        },
+        {
+          "Name": "Restart_Alt",
+          "KeyboardCode": "R",
+          "GamepadCode": "DpadSouth",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "Toggle_One_Handed_Mode",
+          "KeyboardCode": "T",
+          "GamepadCode": "X",
+          "GroupName": "Misc"
         }
       ],
       "__guid": "9c554b60-95ad-4ff5-8b25-68ca6285b49c"
