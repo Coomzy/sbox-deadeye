@@ -21,5 +21,9 @@ public class PlayerCamera_TD : Component
 		Vector3 cameraPos = Player_TD.instance.Transform.Position;
 		cameraPos.z += topDownOffset;
 		GameObject.Transform.Position = cameraPos;
+		
+		var currentPosition = GameObject.Transform.Position;
+		var newPosition = currentPosition.LerpTo(cameraPos, RealTime.Delta * 25.0f);
+		GameObject.Transform.Position = newPosition;
 	}
 }

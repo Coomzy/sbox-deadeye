@@ -4,6 +4,7 @@ using static Sandbox.PhysicsContact;
 
 public class Room : Component
 {
+	[Group("Setup"), Property] public Spline walkToPath { get; set; }
 	[Group("Setup"), Property] public GameObject hiddenBlocker { get; set; }
 	[Group("Setup"), Property] public GameObject playerPosOverride { get; set; }
 	[Group("Setup"), Property] public List<Target> targets { get; set; }
@@ -25,6 +26,13 @@ public class Room : Component
 			}
 			return GameObject.Transform.Position;
 		}
+	}
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		hiddenBlocker.Enabled = false;
 	}
 
 	public void Activate()
@@ -53,7 +61,7 @@ public class Room : Component
 
 	protected override void OnUpdate()
 	{
-		MakeTargetsLookAtWalkPos();
+		//MakeTargetsLookAtWalkPos();
 	}
 
 	[Button("Make Targets Look At WalkPos")]

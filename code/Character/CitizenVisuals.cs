@@ -4,6 +4,7 @@ using Sandbox.Citizen;
 using System;
 using System.Security;
 using System.Text.Json;
+using static Sandbox.Citizen.CitizenAnimationHelper;
 using static Sandbox.Clothing;
 using static Sandbox.ClothingContainer;
 using static Sandbox.Gizmo;
@@ -58,9 +59,11 @@ public class CitizenVisuals : Component
 		{
 			weaponGameObject.BreakFromPrefab();
 			weapon = weaponGameObject.Components.Get<Weapon>();
+			weaponGameObject.Enabled = false;
 		}
 
-		RuntimeApply();
+		//RuntimeApply();
+		//animationHelper.HoldType = HoldTypes.None;
 	}
 
 	[Group("Body Groups"), Button("Apply")]
@@ -82,7 +85,12 @@ public class CitizenVisuals : Component
 		}
 		animationHelper.HoldType = holdType;
 		animationHelper.Handedness = handedness;
-		animationHelper.DuckLevel = duckHeight;	
+		animationHelper.DuckLevel = duckHeight;
+
+		if (weaponGameObject != null)
+		{
+			weaponGameObject.Enabled = true;
+		}
 	}
 
 	void Apply_Clothing()
@@ -97,7 +105,10 @@ public class CitizenVisuals : Component
 		foreach (var clothing in clothingList)
 		{
 			GameObject gameObject = GameObject.Scene.CreateObject(true);
-			gameObject.Name = $"Clothing - {clothing.ResourceName}";
+			if (Game.IsEditor)
+			{
+				gameObject.Name = $"Clothing - {clothing.ResourceName}";
+			}
 			gameObject.SetParent(clothingHolder, false);
 
 			var skinnedModelRenderer = gameObject.Components.Create<SkinnedModelRenderer>(true);
@@ -121,7 +132,10 @@ public class CitizenVisuals : Component
 			return;
 		}
 		weaponGameObject = GameObject.Scene.CreateObject(true);
-		weaponGameObject.Name = weaponPrefab.ResourceName;
+		if (Game.IsEditor)
+		{
+			weaponGameObject.Name = weaponPrefab.ResourceName;
+		}
 		weaponGameObject.SetParent(weaponHolder, false);
 		weaponGameObject.Transform.LocalPosition = Vector3.Zero;
 		weaponGameObject.Transform.LocalRotation = Rotation.Identity;
@@ -431,7 +445,10 @@ public class CitizenVisuals : Component
 		}
 
 		GameObject gameObject = GameObject.Scene.CreateObject(true);
-		gameObject.Name = $"Clothing - {clothingInst.clothing.ResourceName}";
+		if (Game.IsEditor)
+		{
+			gameObject.Name = $"Clothing - {clothingInst.clothing.ResourceName}";
+		}
 		gameObject.SetParent(clothingHolder, false);
 
 		var skinnedModelRenderer = gameObject.Components.Create<SkinnedModelRenderer>(true);

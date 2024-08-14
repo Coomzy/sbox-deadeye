@@ -4,11 +4,7 @@
 @inherits PanelComponent
 
 <root class="menu">
-	<div class="title">
-		<span style="color: red;">Shoot</span>
-		<span style="color: lightgray; margin: 0 50px;">or</span>
-		<span style="color: blue;">Don't Shoot</span>
-	</div>
+	<!--<div class="title">Shoot or Don't Shoot</div>-->
 
 	<div class="container">
 		<div class="buttons">
@@ -20,7 +16,7 @@
 			</div>
 		</div>
 		<div class="content">
-			<div class="input">
+			<!--<div class="input">
 				<InputGlyph button="Shoot" />
 				<label>Shoot</label>
 			</div>
@@ -43,7 +39,7 @@
 			<div class="input">
 				<InputGlyph button="Quit" />
 				<label>Quit</label>
-			</div>
+			</div>-->
 			<!-- Nothing here right now... -->
 		</div>
 	</div>
@@ -53,7 +49,10 @@
 {
 	void ButtonPlay()
 	{
-		MainMenu.instance.SetMenuState(MenuState.GameMode);
+		// Other gamemodes have been dropped
+		//MainMenu.instance.SetMenuState(MenuState.GameMode);
+
+		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
 		Sound.Play("ui.button.press");
 	}
 

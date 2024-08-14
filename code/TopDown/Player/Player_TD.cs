@@ -37,6 +37,7 @@ public class Player_TD : Component
 	[Group("Runtime"), Property] public GameObject weaponGameObject { get; private set; }
 	[Group("Runtime"), Property] public Weapon weapon { get; private set; }
 
+	public TimeSince timeSinceStartedWalking { get; private set; }
 	public TimeSince timeSinceStartedDecisionMaking { get; private set; }
 
 	protected override void OnAwake()
@@ -51,7 +52,7 @@ public class Player_TD : Component
 
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
-		thirdPersonAnimationHelper.Handedness = GamePreferences.instance.useOneHandedMode ? CitizenAnimationHelper.Hand.Right : CitizenAnimationHelper.Hand.Both;
+		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 	}
 
 	protected override void OnStart()
@@ -108,7 +109,8 @@ public class Player_TD : Component
 
 	void WalkingStart()
 	{
-		
+		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
+		timeSinceStartedWalking = 0;
 	}
 
 	void WalkingUpdate()
@@ -120,18 +122,25 @@ public class Player_TD : Component
 
 		var currentPos = Transform.Position;
 		// BUG: WHY DOES THIS ERROR ON SCENE RELOAD!?
-		var targetPos = RoomManager.instance.currentRoom.walkToPos;
-		var newPos = Utils.MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
-		Transform.Position = newPos;
+		//var targetPos = RoomManager.instance.currentRoom.walkToPos;
+		//var newPos = Utils.MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
+		//Transform.Position = newPos;
 
-		var moveDelta = Vector3.Direction(currentPos, targetPos);
+		var walkToPath = RoomManager.instance.currentRoom.walkToPath;
+		var moveToPos = walkToPath.GetPointAlongSplineAtTime(timeSinceStartedWalking);
+		Transform.Position = moveToPos;
+
+		var moveDelta = Vector3.Direction(currentPos, moveToPos);
 		
 		Transform.Rotation = Rotation.Slerp(Transform.Rotation, Rotation.From(moveDelta.EulerAngles), PlayerSettings.instance.faceMovementSpeed * Time.Delta);
 
 		thirdPersonAnimationHelper.WithWishVelocity(moveDelta * 100.0f);
 		thirdPersonAnimationHelper.WithVelocity(moveDelta * 100.0f);
 
-		if (Vector3.DistanceBetween(Transform.Position, targetPos) < 0.01f)
+		float totalSplineLength = walkToPath.GetTotalSplineTime();
+		float timeLeftAlongSpline = totalSplineLength - timeSinceStartedWalking;
+		if (timeLeftAlongSpline < 0.01f)
+		//if (Vector3.DistanceBetween(Transform.Position, targetPos) < 0.01f)
 		{
 			SetState(PlayerState_TD.Deciding);
 		}
@@ -139,6 +148,9 @@ public class Player_TD : Component
 
 	void DecidingStart()
 	{
+		thirdPersonAnimationHelper.IsWeaponLowered = true;
+		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Both;
+
 		timeSinceStartedDecisionMaking = 0;
 		targets.Clear();
 
