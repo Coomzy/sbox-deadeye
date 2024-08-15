@@ -46,14 +46,6 @@
             // gap: 8px;
         }
 
-        .button-bg {
-            border-radius: 100px 10px 100px 10px;
-            // box-shadow: 0 100px 10px black;
-            box-shadow: 0 0 200px rgba(50,50,50,0.5);
-            //margin: 10px;
-            flex-direction: column;
-        }
-
         > .buttons {
 
             .button {
@@ -139,6 +131,26 @@
             }
 
             .button.singular {
+                border-radius: 100px 10px 100px 10px;
+            }
+        }
+
+        .button-bg {
+            border-radius: 100px 10px 100px 10px;
+            // box-shadow: 0 100px 10px black;
+            box-shadow: 0 0 200px rgba(50,50,50,0.5);
+            //margin: 10px;
+            flex-direction: column;
+
+            > .button:first-child {
+                border-radius: 100px 10px 0 0;
+            }
+
+            > .button:last-child {
+                border-radius: 0 0 100px 10px;
+            }
+
+            > .button.singular {
                 border-radius: 100px 10px 100px 10px;
             }
         }
