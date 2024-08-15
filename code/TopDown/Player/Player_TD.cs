@@ -128,7 +128,17 @@ public class Player_TD : Component
 		//Transform.Position = newPos;
 
 		var walkToPath = RoomManager.instance.currentRoom.walkToPath;
+		float totalSplineLength = walkToPath.GetTotalSplineTime();
+		float timeLeftAlongSpline = totalSplineLength - timeSinceStartedWalking;
+		Vector3 endOfSplinePoint = walkToPath.endOfSplinePoint;
 		var moveToPos = walkToPath.GetPointAlongSplineAtTime(timeSinceStartedWalking);
+
+		// Yikes, this is really shit but no time to fix :/
+		if (timeLeftAlongSpline < 0.015f)
+		{
+			moveToPos = Utils.MoveTowards(Transform.Position, endOfSplinePoint, PlayerSettings.instance.walkSpeed * Time.Delta);
+		}
+
 		Transform.Position = moveToPos;
 
 		var moveDelta = Vector3.Direction(currentPos, moveToPos);
@@ -138,10 +148,7 @@ public class Player_TD : Component
 		thirdPersonAnimationHelper.WithWishVelocity(moveDelta * 100.0f);
 		thirdPersonAnimationHelper.WithVelocity(moveDelta * 100.0f);
 
-		float totalSplineLength = walkToPath.GetTotalSplineTime();
-		float timeLeftAlongSpline = totalSplineLength - timeSinceStartedWalking;
-		if (timeLeftAlongSpline < 0.01f)
-		//if (Vector3.DistanceBetween(Transform.Position, targetPos) < 0.01f)
+		if (Vector3.DistanceBetween(Transform.Position, endOfSplinePoint) < 0.01f)
 		{
 			SetState(PlayerState_TD.Deciding);
 		}

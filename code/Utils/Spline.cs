@@ -20,6 +20,7 @@ public class Spline : Component
 
 	[Group("Runtime"), Property] public float splineTime => GetTotalSplineTime();
 	[Group("Runtime"), Property] public float splineLength => CalculateTotalSplineLength();
+	[Group("Runtime"), Property] public Vector3 endOfSplinePoint => GetEndOfSplinePoint();
 
 	[Group("Debug"), Property] public bool drawGizmo { get; set; } = true;
 	[Group("Debug"), Property] public float? testTime { get; set; }
@@ -120,6 +121,18 @@ public class Spline : Component
 
 			points.Add(point);
 		}
+	}
+
+	public Vector3 GetEndOfSplinePoint()
+	{
+		Vector3 point = Transform.Position;
+
+		if (GameObject.Children.Count != 0)
+		{
+			// Maybe could check if it's a 'point' but eh game jam
+			return GameObject.Children[GameObject.Children.Count - 1].Transform.Position;
+		}
+		return point;
 	}
 
 	public Vector3 QuadraticBezier(Vector3 p0, Vector3 p1, Vector3 p2, float t)
