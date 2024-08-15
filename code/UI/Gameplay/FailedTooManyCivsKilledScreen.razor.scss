@@ -10,12 +10,22 @@ FailedTooManyCivsKilledScreen.menu {
 		color: lightgray;
 	}
 
-	.buttons .button {
-		width: 600px;
-		pointer-events: all;
+	> .container .buttons {
+		.button-group {
+			align-items: center;
 
-		.icon.hand {
-			padding: 5px 0;
+			InputGlyph {
+				margin-left: 0.5em;
+			}
+		}
+
+		.button {
+			width: 600px;
+			pointer-events: all;
+
+			.icon.hand {
+				padding: 5px 0;
+			}
 		}
 	}
 }

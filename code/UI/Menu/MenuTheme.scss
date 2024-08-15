@@ -78,14 +78,6 @@
                     border: 5px solid black;
                 }
 
-                &:first-child {
-                    border-radius: 100px 10px 0 0;
-                }
-
-                &:last-child {
-                    border-radius: 0 0 100px 10px;
-                }
-
                 &.green {
                     background-color: #4CAF50;
 
@@ -134,6 +126,16 @@
                     margin-right: 10px;
                     color: rgba(255,255,255,0.75);
                 }
+            }
+
+            > .button-group:first-child .button,
+            > .button:first-child {
+                border-radius: 100px 10px 0 0;
+            }
+
+            > .button-group:last-child .button,
+            > .button:last-child {
+                border-radius: 0 0 100px 10px;
             }
 
             .button.singular {

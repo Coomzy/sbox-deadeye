@@ -1,6 +1,26 @@
 @import "../Menu/MenuTheme.scss";
 
 WonScreen.menu {
+	> .container .buttons {
+		.button-group {
+			align-items: center;
+
+			InputGlyph {
+				margin-left: 0.5em;
+			}
+		}
+
+		.button {
+			width: 600px;
+			pointer-events: all;
+
+			.icon.hand {
+				padding: 5px 0;
+			}
+		}
+	}
+
+
 	.title {
 		align-self: center;
 		font-size: 88px;

@@ -7,7 +7,7 @@
 
 @code {
     private string _inputAction;
-    private InputGlyphSize _inputGlyphSize;
+    private InputGlyphSize _inputGlyphSize = InputGlyphSize.Medium;
     private GlyphStyle _glyphStyle;
 
     public void SetButton(string inputAction)
@@ -61,7 +61,7 @@
     {
         var texture = Input.GetGlyph(_inputAction, _inputGlyphSize, _glyphStyle);
         Style.BackgroundImage = texture;
-        Style.Width = texture.Width;
-        Style.Height = texture.Height;
+        Style.Width = texture.Width / 2;
+        Style.Height = texture.Height / 2;
     }
 }

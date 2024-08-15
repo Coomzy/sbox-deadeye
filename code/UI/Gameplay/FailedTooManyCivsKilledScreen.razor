@@ -11,8 +11,25 @@
 
 	<div class="container">
 		<div class="buttons">
-			<div class="button green" onclick="@(() => Retry())"><span class="icon"><InputGlyph button="Restart"/>@* ⟳ *@</span> Retry</div>
-			<div class="button red" onclick="@(() => ReturnToMenu())"><span class="icon hand"><InputGlyph button="Quit"/>@* 🖜 *@</span>Return to menu</div>
+			<div class="button-group">
+				<div class="button green" onclick="@(() => Retry())">
+					<span class="icon">⟳</span>
+					Retry
+				</div>
+				@if (Input.UsingController) {
+					<span class="icon"><InputGlyph button="Restart" /></span>
+				}
+			</div>
+			<div class="button-group">
+				<div class="button red" onclick="@(() => ReturnToMenu())">
+					<span class="icon hand">🖜</span>
+					Return to menu
+				</div>
+				@if (Input.UsingController)
+				{
+					<span class="icon"><span style="opacity: 0.2">[</span> <InputGlyph button="Quit"/> <span style="opacity: 0.2">]</span></span>
+				}
+			</div>
 		</div>
 	</div>
 </root>
