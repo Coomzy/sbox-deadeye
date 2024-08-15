@@ -81,9 +81,19 @@ public class GamePlayManager : Component
 			return;
 		}
 
+		bool hasBeatLevel = LevelData.active.HasCompletedLevel();
+		float previousBest = LevelData.active.GetBestTime();
+
 		bool isNewPersonalBest = LevelData.active.SetBestTime(levelTime);
 
-		Log.Info($"WonLevel() levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+		if (hasBeatLevel)
+		{
+			Log.Info($"WonLevel() levelTime: {levelTime}, previousBest: {previousBest}, isNewPersonalBest: {isNewPersonalBest}");
+		}
+		else
+		{
+			Log.Info($"WonLevel() for first time! levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+		}
 
 		if (isNewPersonalBest)
 		{
@@ -106,11 +116,11 @@ public class GamePlayManager : Component
 	[Button("Test")]
 	public void Test()
 	{
-		Log.Info($"GameSave.instance.temp was '{GameSave.instance.temp}'");
+		//Log.Info($"GameSave.instance.temp was '{GameSave.instance.temp}'");
 
-		GameSave.instance.temp += 1.0f;
-		GameSave.instance.Save();
+		//GameSave.instance.temp += 1.0f;
+		//GameSave.instance.Save();
 
-		FileSystem.Data.WriteJson("GameSaveAlt.json", GameSave.instance);
+		//FileSystem.Data.WriteJson("GameSaveAlt.json", GameSave.instance);
 	}
 }

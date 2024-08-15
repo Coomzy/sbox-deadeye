@@ -8,15 +8,17 @@ public class RoomManager : Component
 
 	[Group("Setup"), Property] public List<Room> rooms { get; set; }
 
-	public int roomIndex { get; set; }
-	public Room currentRoom => rooms.ContainsIndex(roomIndex) ? rooms[roomIndex] : null;
-	public bool isFinalRoom => roomIndex == rooms.Count - 1;
+	[Group("Runtime"), Property] public int roomIndex { get; set; }
+	[Group("Runtime"), Property] public Room currentRoom => rooms.ContainsIndex(roomIndex) ? rooms[roomIndex] : null;
+	[Group("Runtime"), Property] public bool isFinalRoom => roomIndex == rooms.Count - 1;
 
 	protected override void OnAwake()
 	{
 		instance = this;
 
 		base.OnAwake();
+
+		roomIndex = 0;
 	}
 
 	[Button("Get Simulated Time")]

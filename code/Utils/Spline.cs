@@ -2,6 +2,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 using System;
+using System.Diagnostics;
 using System.Text.Json;
 using static Sandbox.Gizmo;
 
@@ -14,13 +15,17 @@ public struct SplinePoint
 
 public class Spline : Component
 {
-	[Property] public int segments { get; set; } = 100;
-	[Property] public float speed { get; set; } = 1.0f;
-	[Property] public bool drawGizmo { get; set; } = true;
-	[Property] public float timeAlongSpline => GetTotalSplineTime();
-	[Property] public float? testTime { get; set; }
+	[Group("Config"), Property] public int segments { get; set; } = 100;
+	[Group("Config"), Property] public float speed { get; set; } = 1.0f;
 
-	[Property, ReadOnly] public List<SplinePoint> points { get; set; } = new List<SplinePoint>();
+	[Group("Runtime"), Property] public float splineTime => GetTotalSplineTime();
+	[Group("Runtime"), Property] public float splineLength => CalculateTotalSplineLength();
+	[Group("Runtime"), Property] public Vector3 endOfSplinePoint => GetEndOfSplinePoint();
+
+	[Group("Debug"), Property] public bool drawGizmo { get; set; } = true;
+	[Group("Debug"), Property] public float? testTime { get; set; }
+
+	[Group("Runtime"), Property, ReadOnly] public List<SplinePoint> points { get; set; } = new List<SplinePoint>();
 
 	protected override void OnAwake()
 	{
@@ -118,10 +123,16 @@ public class Spline : Component
 		}
 	}
 
-	[Button("Test")]
-	public void Test()
+	public Vector3 GetEndOfSplinePoint()
 	{
-		Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
+		Vector3 point = Transform.Position;
+
+		if (GameObject.Children.Count != 0)
+		{
+			// Maybe could check if it's a 'point' but eh game jam
+			return GameObject.Children[GameObject.Children.Count - 1].Transform.Position;
+		}
+		return point;
 	}
 
 	public Vector3 QuadraticBezier(Vector3 p0, Vector3 p1, Vector3 p2, float t)
