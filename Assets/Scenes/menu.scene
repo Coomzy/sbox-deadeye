@@ -187,7 +187,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "83714b12-903a-4672-ba25-10c8665cfb09",
+            "component_id": "5aa3b0c0-21f6-4c8d-af1d-2e27cdaa3187",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1094,7 +1094,7 @@
       "__guid": "bed5e57e-1cc2-40e4-8c9d-378ea031db50",
       "Flags": 0,
       "Name": "Civilian",
-      "Position": "1605.617,-1066.616,-3.9",
+      "Position": "1473.716,-1066.616,-3.899902",
       "Rotation": "0,0,0.7071068,0.7071068",
       "Enabled": true,
       "Components": [
@@ -2191,7 +2191,7 @@
       "__guid": "fa411e4a-98c1-4f95-a957-a4e1978e9cef",
       "Flags": 0,
       "Name": "Enemy",
-      "Position": "1473.716,-1066.616,-3.899902",
+      "Position": "1605.617,-1066.616,-3.9",
       "Rotation": "0,0,0.7071068,0.7071068",
       "Enabled": true,
       "Components": [
@@ -2213,7 +2213,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "7764416a-e522-47b9-85db-766a670f35ca",
+            "component_id": "4e2fa3e9-ad26-4a71-a5ff-22754220778a",
             "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
             "component_type": "Weapon"
           }
@@ -2283,7 +2283,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "7764416a-e522-47b9-85db-766a670f35ca",
+            "component_id": "4e2fa3e9-ad26-4a71-a5ff-22754220778a",
             "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
             "component_type": "Weapon"
           },
@@ -3443,7 +3443,7 @@
           "__guid": "23f4a89c-37c5-4762-b064-290b0e60dc5c",
           "BodyGroups": 18446744073709551615,
           "Model": "models/title_3d_text.vmdl",
-          "RenderType": "On",
+          "RenderType": "ShadowsOnly",
           "Tint": "1,1,1,1"
         }
       ]
