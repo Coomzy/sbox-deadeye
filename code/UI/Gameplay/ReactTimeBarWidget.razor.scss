@@ -13,15 +13,15 @@ ReactTimeBarWidget {
 
 	.pbar-container {
 		position: relative;
-		margin-top: 2em;
-		width: 50em;
+		margin-top: 3.25em;
+		width: 38em;
 		border-radius: 1em;
 		background-color: rgba(200,200,200,0.25);
 		transform-origin: center;
 
 		.pbar-progress {
 			position: relative;
-			height: 0.5em;
+			height: 1em;
 			border-radius: 1em;
 			background-color: white;
 
