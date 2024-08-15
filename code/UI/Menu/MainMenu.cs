@@ -101,6 +101,15 @@ public class MainMenu : Component
 
 		base.OnAwake();
 
+		// Regardless of whether enabled, we will toggle all of them during load.
+		ToggleMenu(mainMenuScreen, true);
+		ToggleMenu(gameModeScreen, false);
+		ToggleMenu(levelSelectScreen, false);
+		ToggleMenu(settingsScreen, false);
+		ToggleMenu(howToPlayScreen, false);
+		ToggleMenu(statsScreen, false);
+		ToggleMenu(leaderboardsScreen, false);
+
 		Mouse.Visible = true;
 
 		SetMenuState(MenuState.Main);
@@ -200,9 +209,17 @@ public class MainMenu : Component
 			Log.Warning("Selected is null using MenuState " + state.ToString());
 		}
 
-		currentMenu.Enabled = false;
-		selected.Enabled = true;
+		ToggleMenu(currentMenu, false);
+		ToggleMenu(selected, true);
 		currentMenu = selected;
+	}
+
+	protected void ToggleMenu(PanelComponent Component, bool Visibility)
+	{
+		// Component.Enabled = Visibility;
+		Component.Enabled = true;
+		Component.SetClass("visible", Visibility);
+		Component.SetClass("invisible", !Visibility);
 	}
 
 	protected override void OnUpdate()

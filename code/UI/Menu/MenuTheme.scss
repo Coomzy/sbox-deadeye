@@ -19,6 +19,14 @@
     //background-color: white; // rgba(25,25,200,1);
     background-color: transparent; // rgba(25,25,200,1);
 
+    &.visible {
+        opacity: 1;
+    }
+
+    &.invisible {
+        opacity: 0;
+    }
+
     > .title {
         align-self: flex-end;
         font-size: 128px;
