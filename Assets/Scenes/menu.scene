@@ -74,13 +74,6 @@
             "go": "204b2944-c66d-4b93-a2a0-1483dc403858",
             "component_type": "CameraComponent"
           },
-          "cameraSpline": {
-            "_type": "component",
-            "component_id": "e9697e13-8a84-4d47-a04d-919b0ffc7193",
-            "go": "9d5d02fb-edb9-40e7-be28-5300ea266a00",
-            "component_type": "Spline"
-          },
-          "cameraSplineLerp": 0,
           "gameModeScreen": {
             "_type": "component",
             "component_id": "548d52cd-eb85-414b-8354-55ee7acd14c0",
@@ -118,12 +111,29 @@
             "go": "2de4b206-7686-4243-b205-5e21452c68b8",
             "component_type": "SettingsScreen"
           },
+          "SideViewSpline": {
+            "_type": "component",
+            "component_id": "033541b5-8138-489c-b11e-c77cfeb903e4",
+            "go": "a04425c7-7422-4838-808c-03f08f4f4b7b",
+            "component_type": "Spline"
+          },
           "statsScreen": {
             "_type": "component",
             "component_id": "bb360643-1c2d-45b6-9290-f0d18509976b",
             "go": "2de4b206-7686-4243-b205-5e21452c68b8",
             "component_type": "StatsScreen"
-          }
+          },
+          "TutorialSpline": {
+            "_type": "component",
+            "component_id": "e9697e13-8a84-4d47-a04d-919b0ffc7193",
+            "go": "9d5d02fb-edb9-40e7-be28-5300ea266a00",
+            "component_type": "Spline"
+          },
+          "VAActiveState": 0,
+          "VANextState": 0,
+          "VARotationType": "None",
+          "VASplineMoveSpeed": 1,
+          "VASplineRotationSpeed": 25
         },
         {
           "__type": "MainMenuScreen",
@@ -187,7 +197,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "5aa3b0c0-21f6-4c8d-af1d-2e27cdaa3187",
+            "component_id": "ee2b584c-94c2-4e0c-8877-b0ee84f02a39",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -2213,7 +2223,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "4e2fa3e9-ad26-4a71-a5ff-22754220778a",
+            "component_id": "fa32a2ae-be09-4810-a8db-0203d5d0cdb6",
             "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
             "component_type": "Weapon"
           }
@@ -2283,7 +2293,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "4e2fa3e9-ad26-4a71-a5ff-22754220778a",
+            "component_id": "fa32a2ae-be09-4810-a8db-0203d5d0cdb6",
             "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
             "component_type": "Weapon"
           },
@@ -3470,7 +3480,7 @@
     {
       "__guid": "9d5d02fb-edb9-40e7-be28-5300ea266a00",
       "Flags": 0,
-      "Name": "Camera Spline",
+      "Name": "TutorialSpline",
       "Position": "1020,-229.9077,45.7606",
       "Enabled": true,
       "Components": [
@@ -3508,6 +3518,50 @@
           "Name": "Point",
           "Position": "513.8182,-600,0",
           "Rotation": "0,0,-0.7071068,0.7071068",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "__guid": "a04425c7-7422-4838-808c-03f08f4f4b7b",
+      "Flags": 0,
+      "Name": "SideViewSpline",
+      "Position": "1020,-229.9077,45.7606",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Spline",
+          "__guid": "033541b5-8138-489c-b11e-c77cfeb903e4",
+          "drawGizmo": true,
+          "points": [
+            {}
+          ],
+          "segments": 100,
+          "speed": 1,
+          "testTime": 661.09985,
+          "timeAlongSpline": 88.16134
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "d8c563ba-d973-4f26-bd59-4d24d3c2488b",
+          "Flags": 0,
+          "Name": "Point",
+          "Position": "0,0,0",
+          "Enabled": true
+        },
+        {
+          "__guid": "2b58fbf6-f7b7-493d-bbaf-3037075a5a7e",
+          "Flags": 0,
+          "Name": "Curve",
+          "Position": "-25,-10,-0.00005340576",
+          "Enabled": true
+        },
+        {
+          "__guid": "4d789ed0-94c7-432e-b807-86ee81834c1b",
+          "Flags": 0,
+          "Name": "Point",
+          "Position": "55.41431,-53.33977,1.152309",
           "Enabled": true
         }
       ]

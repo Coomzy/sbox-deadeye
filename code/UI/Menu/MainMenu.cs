@@ -1,6 +1,8 @@
 
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.Internal;
+using Sandbox.Utils;
 using Sandbox.Services;
 using System;
 using System.ComponentModel.Design;
@@ -18,15 +20,19 @@ public enum MenuState
 	HowToPlay,
 }
 
+public enum SplineRotationType
+{
+	None = 0,
+	Towards,
+	SideStepLeft,
+	SideStepRight,
+}
+
 public class MainMenu : Component
 {
 	public static MainMenu instance;
 
-	private PanelComponent _currentMenu = null;
-	public PanelComponent currentMenu
-	{
-		get => _currentMenu;
-	}
+	public PanelComponent currentMenu { get; private set; }
 
 	[Group("Screens"), Property] public MainMenuScreen mainMenuScreen { get; private set; }
 	[Group("Screens"), Property] public GameModeScreen gameModeScreen { get; private set; }
@@ -37,12 +43,52 @@ public class MainMenu : Component
 	[Group("Screens"), Property] public HowToPlayScreen howToPlayScreen { get; private set; }
 
 	[Group("Setup"), Property] public CameraComponent camera { get; private set; }
-	[Group("Setup"), Property] public Spline cameraSpline { get; private set; }
 
-	[Group("Runtime"), Property, ReadOnly] public MenuState menuState { get; private set; }
-	[Group("Runtime"), Property, Range(0,1)] public float cameraSplineLerp { get; private set; }
+	[Group("Virtual Area"), Property]
+	public Spline TutorialSpline {
+		get; private set;
+	}
+	[Group("Virtual Area"), Property]
+	public Spline SideViewSpline {
+		get; private set;
+	}
+	
+	// VA Spline is short form of Virtual Area Spline
+	[Group("Virtual Area"), Property, Rename("VA Spline"), ReadOnly]
+	public Spline VASpline {
+		get; private set;
+	}
 
-	float lastUsedCameraSplineTime{ get; set; }
+	[Group("Virtual Area"), Property, Range(0, 1), Rename("VA Active State"), ReadOnly]
+	public float VAActiveState {
+		get; private set;
+	}
+
+	[Group("Virtual Area"), Property, Range(0, 1), Rename("VA Next State")]
+	public float VANextState {
+		get; private set;
+	}
+
+	[Group("Virtual Area"), Property, Rename("VA Spline Move Speed")]
+	public float VASplineMoveSpeed {
+		get; private set;
+	}
+
+	[Group("Virtual Area"), Property, Rename("VA Spline Rotate Speed")]
+	public float VASplineRotationSpeed {
+		get; private set;
+	}
+
+	[Group("Virtual Area"), Property, Rename("VA Rotate Type"), ReadOnly]
+	public SplineRotationType VARotationType
+	{
+		get; private set;
+	}
+
+	[Group("Runtime"), Property, ReadOnly]
+	public MenuState menuState {
+		get; private set;
+	}
 
 	public bool isRefreshingLeaderboards { get; private set; }
 	public Leaderboards.Board globalBoard { get; private set; }
@@ -51,7 +97,7 @@ public class MainMenu : Component
 	protected override void OnAwake()
 	{
 		instance = this;
-		_currentMenu = mainMenuScreen;
+		currentMenu = mainMenuScreen;
 
 		base.OnAwake();
 
@@ -89,12 +135,12 @@ public class MainMenu : Component
 	{
 		base.OnEnabled();
 
-		_currentMenu = mainMenuScreen;
+		currentMenu = mainMenuScreen;
 	}
 
 	public void SetMenuState(MenuState state)
 	{ 
-		menuState = state;
+
 		PanelComponent selected = null;
 
 		switch (state)
@@ -123,56 +169,64 @@ public class MainMenu : Component
 				break;
 		}
 
+		// Update Virtual Area Spline
+		switch (state)
+		{
+			case MenuState.Main:
+				// Reset back, no spline to set here.
+				VANextState = 0.0f;
+				break;
+			case MenuState.HowToPlay:
+				VARotationType = SplineRotationType.Towards;
+				VASplineMoveSpeed = 1f;
+				VASpline = TutorialSpline;
+				VANextState = 1.0f;
+				break;
+			case MenuState.GameMode:
+			case MenuState.LevelSelect:
+			case MenuState.Leaderboards:
+			case MenuState.Stats:
+				VARotationType = SplineRotationType.None;
+				VASplineMoveSpeed = 2f;
+				VASpline = SideViewSpline;
+				VANextState = 1.0f;
+				break;
+		}
+
+		menuState = state;
+
 		if (selected == null)
 		{
 			Log.Warning("Selected is null using MenuState " + state.ToString());
 		}
 
-		_currentMenu.Enabled = false;
+		currentMenu.Enabled = false;
 		selected.Enabled = true;
-		_currentMenu = selected;
-
-		/*mainMenuScreen.Enabled = state == MenuState.Main;
-		levelSelectScreen.Enabled = state == MenuState.Play;
-		settingsScreen.Enabled = state == MenuState.Settings;
-		statsScreen.Enabled = state == MenuState.Stats;
-
-		if (state == MenuState.Play)
-		{
-			
-		}*/
+		currentMenu = selected;
 	}
 
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();
-
-		float lerpTarget = menuState == MenuState.HowToPlay ? 1.0f : 0.0f;
-		float lerpRate = 1.0f;
-		cameraSplineLerp = Utils.MoveTowards(cameraSplineLerp, lerpTarget, lerpRate * Time.Delta);
-		FuckingCameraSplineShit();
+		UpdateCameraViewSpline();
 	}
 
-	void FuckingCameraSplineShit()
+	void UpdateCameraViewSpline()
 	{
-		float lerp = cameraSplineLerp;
-		if (lerp >= 1.0f)
-		{
-			lerp = 0.99f;
-		}
-		float time = lerp * cameraSpline.CalculateTotalSplineLength();
+		if (VASpline == null) return;
+		if (MathX.AlmostEqual(VAActiveState, VANextState)) return; // TBD: Maybe optimised too early?
 
+		VAActiveState = MathX.Clamp(Utils.MoveTowards(VAActiveState, VANextState, VASplineMoveSpeed * Time.Delta), 0.0f, 0.99f);
+
+		float time = VAActiveState * VASpline.CalculateTotalSplineLength();
+		bool isMovingBackwards = MathX.AlmostEqual(VANextState, 0.0f);
 		var lastCameraPoint = camera.Transform.Position;
-		var cameraPoint = cameraSpline.GetPointAlongSplineAtTime(time);
+		
+		var cameraPoint = VASpline.GetPointAlongSplineAtTime(time);
 		camera.Transform.Position = cameraPoint;
 
-		float rotateSpeed = 25.0f;
 		var moveDelta = Vector3.Direction(lastCameraPoint, cameraPoint);
 		moveDelta.z = 0.0f;
-
-		bool isMovingBackwards = lastUsedCameraSplineTime > time;
-
-		lastUsedCameraSplineTime = time;
 
 		if (moveDelta.Length <= 0.0f)
 			return;
@@ -182,6 +236,29 @@ public class MainMenu : Component
 			moveDelta = -moveDelta;
 		}
 
-		camera.Transform.Rotation = Rotation.Slerp(camera.Transform.Rotation, Rotation.From(moveDelta.Normal.EulerAngles), rotateSpeed * Time.Delta);
+		Rotation rotation = Rotation.From(moveDelta.Normal.EulerAngles);
+
+		switch(VARotationType)
+		{
+			case SplineRotationType.Towards:
+				rotation = Rotation.From(moveDelta.Normal.EulerAngles);
+				break;
+			case SplineRotationType.SideStepLeft:
+				rotation = Rotation.FromToRotation(moveDelta.Normal, Vector3.Left.Normal);
+				break;
+			case SplineRotationType.SideStepRight:
+				rotation = Rotation.FromToRotation(moveDelta.Normal, Vector3.Right.Normal);
+				break;
+		}
+
+		if (VARotationType != SplineRotationType.None)
+		{
+			camera.Transform.Rotation = Rotation.Slerp(
+				camera.Transform.Rotation,
+				rotation,
+				// Rotation.From(moveDelta.Normal.EulerAngles),
+				VASplineRotationSpeed * Time.Delta
+			);
+		}
 	}
 }
