@@ -108,14 +108,15 @@ public class LevelData : GameResource
 	{
 		if (GameSave.instance.levelNameToBestTime.TryGetValue(ResourceName, out float savedBestTime))
 		{
-			if (newTime < savedBestTime)
+			if (newTime >= savedBestTime)
 			{
-				GameSave.instance.levelNameToBestTime[ResourceName] = savedBestTime;
-				GameSave.instance.Save();
-				return true;
+				return false;
 			}
 		}
-		return false;
+
+		GameSave.instance.levelNameToBestTime[ResourceName] = newTime;
+		GameSave.instance.Save();
+		return true;
 	}
 
 	public MedalType GetBestTimeMedal()

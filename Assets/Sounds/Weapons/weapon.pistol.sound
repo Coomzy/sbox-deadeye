@@ -5,7 +5,12 @@
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/weapons/gun shot.vsnd"
+    "sounds/weapons/glock_18_shot_1.vsnd",
+    "sounds/weapons/glock_18_shot_2.vsnd",
+    "sounds/weapons/glock_18_shot_3.vsnd",
+    "sounds/weapons/glock_18_shot_4.vsnd",
+    "sounds/weapons/glock_18_shot_5.vsnd",
+    "sounds/weapons/glock_18_shot_6.vsnd"
   ],
   "Occlusion": true,
   "AirAbsorption": true,

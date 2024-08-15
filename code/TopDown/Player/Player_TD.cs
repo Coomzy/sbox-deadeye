@@ -37,6 +37,7 @@ public class Player_TD : Component
 	[Group("Runtime"), Property] public GameObject weaponGameObject { get; private set; }
 	[Group("Runtime"), Property] public Weapon weapon { get; private set; }
 
+	public RealTimeSince timeSinceStartedWalking2 { get; private set; }
 	public TimeSince timeSinceStartedWalking { get; private set; }
 	public TimeSince timeSinceStartedDecisionMaking { get; private set; }
 
