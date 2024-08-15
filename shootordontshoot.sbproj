@@ -21,8 +21,8 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "StartupScene": "scenes/topdown/original.scene",
-    "MapStartupScene": "scenes/topdown/original.scene",
+    "StartupScene": "scenes/menu.scene",
+    "MapStartupScene": "scenes/menu.scene",
     "LaunchMode": "Normal",
     "ControlModes": {
       "Keyboard": true,
