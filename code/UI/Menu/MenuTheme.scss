@@ -58,7 +58,7 @@
 
             .button {
                 background-color: rgb(20,20,20);
-                color: rgba(255,255,255, 0.88);
+                color: rgba(255,255,255, 1);
                 width: 500px;
                 border: 5px solid transparent;
                 border-radius: 0;
@@ -103,15 +103,25 @@
                 }
 
                 &.yellow {
-                    background-color: #C3B300; // #8b4513; <-- THIS IS BROWN?!?
+                    background-color: #C3B300;
 
                     &:hover {
-                        background-color: #B4A400; // #663919; <-- THIS IS BROWN?!?
+                        background-color: #B4A400;
+                    }
+                }
+
+                &.indigo {
+                    background-color: #333776;
+
+                    &:hover {
+                        background-color: #2B3072;
                     }
                 }
 
                 &.brown {
                     background-color: #8b4513;
+                    text-shadow: 1px 1px 0px #7700EF;
+                    color: white;
 
                     &:hover {
                         background-color: #663919;
