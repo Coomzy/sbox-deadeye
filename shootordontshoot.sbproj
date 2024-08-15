@@ -45,13 +45,13 @@
         {
           "Name": "Shoot",
           "KeyboardCode": "MOUSE1",
-          "GamepadCode": "LeftTrigger",
+          "GamepadCode": "RightTrigger",
           "GroupName": "Top Down"
         },
         {
           "Name": "Spare",
           "KeyboardCode": "MOUSE2",
-          "GamepadCode": "RightTrigger",
+          "GamepadCode": "LeftTrigger",
           "GroupName": "Top Down"
         },
         {
@@ -69,19 +69,49 @@
         {
           "Name": "Shoot_Alt",
           "KeyboardCode": "A",
-          "GamepadCode": "SwitchLeftBumper",
+          "GamepadCode": "SwitchRightBumper",
           "GroupName": "Top Down"
         },
         {
           "Name": "Spare_Alt",
           "KeyboardCode": "D",
-          "GamepadCode": "SwitchRightBumper",
+          "GamepadCode": "SwitchLeftBumper",
           "GroupName": "Top Down"
         },
         {
           "Name": "Restart_Alt",
           "KeyboardCode": "R",
           "GamepadCode": "DpadSouth",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "ActionConfirm",
+          "KeyboardCode": "space",
+          "GamepadCode": "A",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "ActionBack",
+          "KeyboardCode": "BACKSPACE",
+          "GamepadCode": "B",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "ActionAlt",
+          "KeyboardCode": "Q",
+          "GamepadCode": "X",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "ActionAccess",
+          "KeyboardCode": "E",
+          "GamepadCode": "Y",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "ActionConfirmAlt",
+          "KeyboardCode": "return",
+          "GamepadCode": "None",
           "GroupName": "Game"
         }
       ],
