@@ -3,4 +3,7 @@
 MainMenuScreen.Menu {
 	background-color: transparent;
 	//background: url("UI/Menu/shoot-dont-shoot-menu-bg.png");
+	.title {
+		text-shadow: 2px 2px 50px black, 0 0 5px black;
+	}
 }
