@@ -96,10 +96,19 @@ public class MainMenu : Component
 
 	protected override void OnAwake()
 	{
-		instance = this;
-		currentMenu = mainMenuScreen;
-
 		base.OnAwake();
+
+		instance = this;
+
+		Mouse.Visible = true;
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		currentMenu = mainMenuScreen;
+		SetMenuState(MenuState.Main);
 
 		// Regardless of whether enabled, we will toggle all of them during load.
 		ToggleMenu(mainMenuScreen, true);
@@ -109,10 +118,6 @@ public class MainMenu : Component
 		ToggleMenu(howToPlayScreen, false);
 		ToggleMenu(statsScreen, false);
 		ToggleMenu(leaderboardsScreen, false);
-
-		Mouse.Visible = true;
-
-		SetMenuState(MenuState.Main);
 	}
 
 	[Button("GetLeaderboard")]
@@ -140,16 +145,8 @@ public class MainMenu : Component
 		isRefreshingLeaderboards = false;
 	}
 
-	protected override void OnEnabled()
-	{
-		base.OnEnabled();
-
-		currentMenu = mainMenuScreen;
-	}
-
 	public void SetMenuState(MenuState state)
 	{ 
-
 		PanelComponent selected = null;
 
 		switch (state)
@@ -207,15 +204,18 @@ public class MainMenu : Component
 		if (selected == null)
 		{
 			Log.Warning("Selected is null using MenuState " + state.ToString());
+			return;
 		}
 
-		ToggleMenu(currentMenu, false);
+		if (currentMenu != null) ToggleMenu(currentMenu, false);
 		ToggleMenu(selected, true);
 		currentMenu = selected;
 	}
 
 	protected void ToggleMenu(PanelComponent Component, bool Visibility)
 	{
+		if (Component == null) return;
+
 		// Component.Enabled = Visibility;
 		Component.Enabled = true;
 		Component.SetClass("visible", Visibility);
