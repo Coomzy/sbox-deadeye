@@ -17,8 +17,6 @@ public class MainMenuCharacter : Component
 	{
 		base.OnAwake();
 
-		Mouse.Visible = true;
-
 		LoadClothing();
 
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;

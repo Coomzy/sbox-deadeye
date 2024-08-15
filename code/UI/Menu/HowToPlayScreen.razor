@@ -1,0 +1,31 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+<root class="menu">
+
+    <div class="container">
+        <div class="buttons">
+            <div class="button-bg">
+                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+            </div>
+        </div>
+    </div>
+
+</root>
+
+@code
+{
+	void ButtonBack()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Main);
+		Sound.Play("ui.navigate.back");
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

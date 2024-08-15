@@ -553,6 +553,21 @@ public class Player_TD : Component
 		thirdPersonAnimationHelper.Target.Set("hit_strength", (force.Length / 1000.0f) * damageScale);
 	}
 
+	async void KilledTooManyCivsStart()
+	{
+		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+
+		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
+
+		await Task.DelaySeconds(0.15f);
+
+		weapon.Drop();
+
+		await Task.DelaySeconds(1.5f);
+
+		UIManager.instance.FailedTooManyCivsKilled();
+	}
+
 	async void WonStart()
 	{
 		GamePlayManager.instance.WonLevel();
@@ -560,15 +575,6 @@ public class Player_TD : Component
 		await Task.DelaySeconds(1.5f);
 
 		UIManager.instance.Won();
-	}
-
-	async void KilledTooManyCivsStart()
-	{
-		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
-
-		await Task.DelaySeconds(1.5f);
-
-		UIManager.instance.FailedTooManyCivsKilled();
 	}
 
 	protected override void OnUpdate()

@@ -5,7 +5,7 @@ using Sandbox.Services;
 using System;
 using System.ComponentModel.Design;
 using System.Text.Json;
-using static Sandbox.Gizmo;
+using System.Transactions;
 
 
 public enum MenuState
@@ -13,8 +13,9 @@ public enum MenuState
 	Main,
 	GameMode,
 	LevelSelect,
-	Settings,
-	Stats	
+	Stats,
+	Leaderboards,
+	HowToPlay,
 }
 
 public class MainMenu : Component
@@ -32,8 +33,16 @@ public class MainMenu : Component
 	[Group("Screens"), Property] public LevelSelectScreen levelSelectScreen { get; private set; }
 	[Group("Screens"), Property] public SettingsScreen settingsScreen { get; private set; }
 	[Group("Screens"), Property] public StatsScreen statsScreen { get; private set; }
+	[Group("Screens"), Property] public LeaderboardsScreen leaderboardsScreen { get; private set; }
+	[Group("Screens"), Property] public HowToPlayScreen howToPlayScreen { get; private set; }
+
+	[Group("Setup"), Property] public CameraComponent camera { get; private set; }
+	[Group("Setup"), Property] public Spline cameraSpline { get; private set; }
 
 	[Group("Runtime"), Property, ReadOnly] public MenuState menuState { get; private set; }
+	[Group("Runtime"), Property, Range(0,1)] public float cameraSplineLerp { get; private set; }
+
+	float lastUsedCameraSplineTime{ get; set; }
 
 	public bool isRefreshingLeaderboards { get; private set; }
 	public Leaderboards.Board globalBoard { get; private set; }
@@ -45,6 +54,8 @@ public class MainMenu : Component
 		_currentMenu = mainMenuScreen;
 
 		base.OnAwake();
+
+		Mouse.Visible = true;
 
 		SetMenuState(MenuState.Main);
 	}
@@ -97,12 +108,18 @@ public class MainMenu : Component
 			case MenuState.LevelSelect:
 				selected = levelSelectScreen;
 				break;
-			case MenuState.Settings:
+			/*case MenuState.Settings:
 				selected = settingsScreen;
-				break;
+				break;*/
 			case MenuState.Stats:
 				selected = statsScreen;
 				GetLeaderboard();
+				break;
+			case MenuState.Leaderboards:
+				selected = leaderboardsScreen;
+				break;
+			case MenuState.HowToPlay:
+				selected = howToPlayScreen;
 				break;
 		}
 
@@ -124,5 +141,47 @@ public class MainMenu : Component
 		{
 			
 		}*/
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		float lerpTarget = menuState == MenuState.HowToPlay ? 1.0f : 0.0f;
+		float lerpRate = 1.0f;
+		cameraSplineLerp = Utils.MoveTowards(cameraSplineLerp, lerpTarget, lerpRate * Time.Delta);
+		FuckingCameraSplineShit();
+	}
+
+	void FuckingCameraSplineShit()
+	{
+		float lerp = cameraSplineLerp;
+		if (lerp >= 1.0f)
+		{
+			lerp = 0.99f;
+		}
+		float time = lerp * cameraSpline.CalculateTotalSplineLength();
+
+		var lastCameraPoint = camera.Transform.Position;
+		var cameraPoint = cameraSpline.GetPointAlongSplineAtTime(time);
+		camera.Transform.Position = cameraPoint;
+
+		float rotateSpeed = 25.0f;
+		var moveDelta = Vector3.Direction(lastCameraPoint, cameraPoint);
+		moveDelta.z = 0.0f;
+
+		bool isMovingBackwards = lastUsedCameraSplineTime > time;
+
+		lastUsedCameraSplineTime = time;
+
+		if (moveDelta.Length <= 0.0f)
+			return;
+
+		if (isMovingBackwards)
+		{
+			moveDelta = -moveDelta;
+		}
+
+		camera.Transform.Rotation = Rotation.Slerp(camera.Transform.Rotation, Rotation.From(moveDelta.Normal.EulerAngles), rotateSpeed * Time.Delta);
 	}
 }

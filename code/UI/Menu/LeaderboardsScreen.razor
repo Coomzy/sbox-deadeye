@@ -1,0 +1,105 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+<root class="menu">
+
+	<div class="container">
+		<div class="buttons">
+            <div class="button-bg">
+                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+            </div>
+		</div>
+		<div class="content bg">
+	        <div class="title">
+		        <span>Leaderboards</span>
+	        </div>
+            <h1>Global</h1>
+            <div class="table">
+                <div class="header row">
+                    <div class="name">Name</div>
+                    <div class="stat">Status</div>
+                </div>
+
+                @if (MainMenu.instance.isRefreshingLeaderboards)
+                {
+                    <div class="name">Refreshing</div>
+                }
+                else
+                {
+                    foreach (var entry in MainMenu.instance.globalBoard.Entries)
+                    {
+                        string specialClass = "";
+                        if (entry.Me) specialClass = "me";
+
+                        <div class="row @specialClass">
+                            <div class="name">
+
+                                @entry.DisplayName
+
+
+                            </div>
+                            @{
+                                <div class="stat">@LeaderboardTimeFormatted(entry)</div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+            <h1>Friends</h1>
+            <div class="table">
+                <div class="header row">
+                    <div class="name">Name</div>
+                    <div class="stat">Status</div>
+                </div>
+
+                @if (MainMenu.instance.isRefreshingLeaderboards)
+                {
+                    <div class="name">Refreshing</div>
+                }
+                else
+                {
+                    var i = 0;
+                    foreach (var entry in MainMenu.instance.friendsBoard.Entries)
+                    {
+                        if (++i > 5) break;
+
+                        string specialClass = "";
+                        if (entry.Me) specialClass = "me";
+
+                        <div class="row @specialClass">
+                            <div class="name">@entry.DisplayName</div>
+                            @{
+                                <div class="stat">@LeaderboardTimeFormatted(entry)</div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+		</div>
+
+	</div>
+
+</root>
+
+@code
+{
+    string LeaderboardTimeFormatted(Leaderboards.Entry entry)
+    {
+        double timeInSeconds = entry.Value;
+        return $"{timeInSeconds:F3}s";
+    }
+
+	void ButtonBack()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Main);
+		Sound.Play("ui.navigate.back");
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

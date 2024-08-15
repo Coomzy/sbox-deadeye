@@ -118,6 +118,14 @@
                     }
                 }
 
+                &.brown {
+                    background-color: #8b4513;
+
+                    &:hover {
+                        background-color: #663919;
+                    }
+                }
+
                 .icon {
                     font-size: 65px;
                     line-height: 50px;

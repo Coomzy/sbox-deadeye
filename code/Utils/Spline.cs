@@ -301,4 +301,26 @@ public class Spline : Component
 		// If we reach the end of the spline, return the last point
 		return points[points.Count - 1].end;
 	}
+
+	public Vector3 GetDirectionAtTime(float time, float? speedOverride = null, int? segmentsOverride = null)
+	{
+		float curSpeed = speedOverride ?? speed;
+		int curSegments = segmentsOverride ?? segments;
+
+		MathX.AlmostEqual(time, curSpeed);
+		float epsilon = 0.001f; // A small value to compute the difference
+
+		// Get the position at the given time
+		Vector3 position1 = GetPointAlongSplineAtTime(time, curSpeed, curSegments);
+
+		// Get the position at a slightly later time
+		Vector3 position2 = GetPointAlongSplineAtTime(time + epsilon, curSpeed, curSegments);
+
+		// Compute the direction vector (tangent)
+		Vector3 direction = position2 - position1;
+
+		// Normalize the direction to get the unit vector
+		return direction.Normal;
+	}
+
 }

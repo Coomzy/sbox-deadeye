@@ -31,8 +31,8 @@
     "InputSettings": {
       "Actions": [
         {
-          "Name": "Select",
-          "KeyboardCode": "MOUSE1",
+          "Name": "Play",
+          "KeyboardCode": "SPACE",
           "GamepadCode": "A",
           "GroupName": "Menu"
         },
@@ -83,12 +83,6 @@
           "KeyboardCode": "R",
           "GamepadCode": "DpadSouth",
           "GroupName": "Game"
-        },
-        {
-          "Name": "Toggle_One_Handed_Mode",
-          "KeyboardCode": "T",
-          "GamepadCode": "X",
-          "GroupName": "Misc"
         }
       ],
       "__guid": "9c554b60-95ad-4ff5-8b25-68ca6285b49c"
