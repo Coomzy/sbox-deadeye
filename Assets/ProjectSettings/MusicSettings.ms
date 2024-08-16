@@ -1,6 +1,6 @@
 {
   "crossFadeTime": 3,
-  "musicVolume": 0.5,
+  "musicVolume": 0.95,
   "menuMusic": [
     {
       "soundEvent": "sounds/music/music.menu.amen.sound",
