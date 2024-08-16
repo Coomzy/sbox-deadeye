@@ -30,7 +30,7 @@
                 }
                 else
                 {
-                    Log.Info(MainMenu.instance.globalBoard != null);
+                    //Log.Info(MainMenu.instance.globalBoard != null);
                     if (MainMenu.instance.globalBoard != null)
                     {
                         foreach (var entry in MainMenu.instance.globalBoard.Entries)
@@ -115,7 +115,7 @@
 	void ButtonBack()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Main);
-        var soundHandle = Sound.Play("ui.button.back");
+        var soundHandle = Sound.Play("ui.navigate.back");
         soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 

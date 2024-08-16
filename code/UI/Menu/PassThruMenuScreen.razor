@@ -22,7 +22,7 @@
 	void ButtonBack()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Main);
-        var soundHandle = Sound.Play("ui.button.back");
+        var soundHandle = Sound.Play("ui.navigate.back");
         soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 

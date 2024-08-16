@@ -70,7 +70,7 @@
 											<p class="medals">
 												<span class="key">Medal: </span>
 												<span class="value">
-													@if (!(medal != null && medal != MedalType.None))
+													@if (medal == MedalType.None)
 													{
 														<span>None</span>
 													}
@@ -187,7 +187,7 @@
 		//MainMenu.instance.SetMenuState(MenuState.GameMode);
 
 		MainMenu.instance.SetMenuState(MenuState.Main);
-		var soundHandle = Sound.Play("ui.button.back");
+		var soundHandle = Sound.Play("ui.navigate.back");
 		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 

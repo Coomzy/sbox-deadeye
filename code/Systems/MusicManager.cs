@@ -20,6 +20,9 @@ public class MusicManager : Component, IHotloadManaged
 	public static Task fadingMusicTask { get; private set; } = null;
 	public static CancellationTokenSource currentCancellationToken { get; private set; }
 
+	public List<SoundData> menuMusic { get; private set; } = new List<SoundData>();
+	public List<SoundData> gameMusic { get; private set; } = new List<SoundData>();
+
 	int menuMusicIndex { get; set; }
 	int gameMusicIndex { get; set; }
 
@@ -33,12 +36,18 @@ public class MusicManager : Component, IHotloadManaged
 
 		var insts = Scene.GetAllComponents<MusicManager>();
 
-		Log.Info($"MusicManager::OnAwake() MusicManager inst count: {insts.Count()}");
+		//Log.Info($"MusicManager::OnAwake() MusicManager inst count: {insts.Count()}");
 
 		GamePreferences.instance.ApplyVolumesToMixers();
 
-		menuMusicIndex = Game.Random.Next(0, MusicSettings.instance.menuMusic.Count);
-		gameMusicIndex = Game.Random.Next(0, MusicSettings.instance.gameMusic.Count);
+		menuMusic = new List<SoundData>(MusicSettings.instance.menuMusic);
+		gameMusic = new List<SoundData>(MusicSettings.instance.gameMusic);
+
+		menuMusic.Shuffle();
+		menuMusicIndex = 0;
+
+		menuMusicIndex = 99999;
+		gameMusicIndex = 99999;
 
 		if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
 		{
@@ -53,7 +62,12 @@ public class MusicManager : Component, IHotloadManaged
 	[Button("Start Menu Music")]
 	void PlayMenuMusicTrack()
 	{
-		var soundData = MusicSettings.instance.menuMusic[0];
+		var soundData = GetNextMenuMusic();
+		if (soundData.soundEvent == null)
+		{
+			Log.Warning($"PlayMenuMusicTrack() failed to get next track");
+			return;
+		}
 		StartMusicTask(soundData, PlayMenuMusicTrack);
 		currentTrackIsMainMenu = true;
 	}
@@ -61,9 +75,72 @@ public class MusicManager : Component, IHotloadManaged
 	[Button("Start Game Music")]
 	void PlayGameMusicTrack()
 	{
-		var soundData = MusicSettings.instance.gameMusic[0];
+		var soundData = GetNextGameMusic();
+		if (soundData.soundEvent == null)
+		{
+			Log.Warning($"PlayGameMusicTrack() failed to get next track");
+			return;
+		}
 		StartMusicTask(soundData, PlayGameMusicTrack);
 		currentTrackIsMainMenu = false;
+	}
+
+	SoundData GetNextMenuMusic()
+	{
+		if (menuMusic == null || menuMusic.Count == 0)
+		{
+			return new SoundData();
+		}
+
+		if (menuMusic.Count == 1)
+		{
+			return menuMusic[0];
+		}
+
+		menuMusicIndex++;
+		if (menuMusicIndex >= menuMusic.Count)
+		{
+			var lastSoundData = menuMusic[menuMusic.Count - 1];
+			menuMusicIndex = 0;
+			menuMusic.Shuffle();
+
+			if (menuMusic[0].soundEvent == lastSoundData.soundEvent)
+			{
+				menuMusic.RemoveAt(0);
+				menuMusic.Insert(Game.Random.Next(1, menuMusic.Count), lastSoundData);
+			}
+		}
+
+		return menuMusic[menuMusicIndex];
+	}
+
+	SoundData GetNextGameMusic()
+	{
+		if (gameMusic == null || gameMusic.Count == 0)
+		{
+			return new SoundData();
+		}
+
+		if (gameMusic.Count == 1)
+		{
+			return gameMusic[0];
+		}
+
+		gameMusicIndex++;
+		if (gameMusicIndex >= gameMusic.Count)
+		{
+			var lastSoundData = gameMusic[gameMusic.Count-1];
+			gameMusicIndex = 0;
+			gameMusic.Shuffle();
+
+			if (gameMusic[0].soundEvent == lastSoundData.soundEvent)
+			{
+				gameMusic.RemoveAt(0);
+				gameMusic.Insert(Game.Random.Next(1, gameMusic.Count), lastSoundData);
+			}
+		}
+
+		return gameMusic[gameMusicIndex];
 	}
 
 	void StartMusicTask(SoundData soundData, Action nextMusicCallback)
@@ -118,7 +195,7 @@ public class MusicManager : Component, IHotloadManaged
 
 	public void OnLevelLoaded()
 	{
-		Log.Info($"MusicManager::OnLevelLoaded() GameObject: {GameObject}");
+		//Log.Info($"MusicManager::OnLevelLoaded() GameObject: {GameObject}");
 
 		bool isMainMenu = Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title;
 

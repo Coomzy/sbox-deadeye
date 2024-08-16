@@ -568,6 +568,8 @@ public class Player_TD : Component
 	{
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 
+		LowerHead();
+
 		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
 
 		await Task.DelaySeconds(0.15f);
@@ -577,6 +579,33 @@ public class Player_TD : Component
 		await Task.DelaySeconds(1.5f);
 
 		UIManager.instance.FailedTooManyCivsKilled();
+	}
+
+	async void LowerHead()
+	{
+		thirdPersonAnimationHelper.LookAtEnabled = true;
+
+		Vector3 lookAtPos = GameObject.Transform.Position;
+		lookAtPos += GameObject.Transform.Rotation.Forward * 10.0f;
+		var headBone = bodyRenderer.GetBoneObject("head");
+		if (headBone == null)
+		{
+			return;
+		}
+		Vector3 headPos = headBone.Transform.Position;
+		Vector3 dirToFloor = Vector3.Direction(headPos, lookAtPos).Normal;
+		Vector3 currentHeadForward = GameObject.Transform.Rotation.Forward;
+
+		TimeUntil lowerHeadTime = 0.25f;
+
+		while (!lowerHeadTime)
+		{
+			var lerp = Vector3.Lerp(currentHeadForward, dirToFloor, lowerHeadTime.Fraction);
+			thirdPersonAnimationHelper.WithLook(lerp);
+			await Task.Frame();
+		}
+
+		thirdPersonAnimationHelper.WithLook(dirToFloor);
 	}
 
 	async void WonStart()
@@ -634,7 +663,7 @@ public class Player_TD : Component
 				break;
 			case PlayerState_TD.Deciding:
 				DecidingUpdate();
-				break;
+				break;			
 		}
 	}
 
