@@ -29,21 +29,31 @@
                 }
                 else
                 {
-                    foreach (var entry in MainMenu.instance.globalBoard.Entries)
+                    Log.Info(MainMenu.instance.globalBoard != null);
+                    if (MainMenu.instance.globalBoard != null)
                     {
-                        string specialClass = "";
-                        if (entry.Me) specialClass = "me";
+                        foreach (var entry in MainMenu.instance.globalBoard.Entries)
+                        {
+                            string specialClass = "";
+                            if (entry.Me) specialClass = "me";
 
-                        <div class="row @specialClass">
-                            <div class="name">
+                            <div class="row @specialClass">
+                                <div class="name">
 
-                                @entry.DisplayName
+                                    @entry.DisplayName
 
 
+                                </div>
+                                @{
+                                    <div class="stat">@LeaderboardTimeFormatted(entry)</div>
+                                }
                             </div>
-                            @{
-                                <div class="stat">@LeaderboardTimeFormatted(entry)</div>
-                            }
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            <span style="color: red">Error retrieving global leaderboard</span>
                         </div>
                     }
                 }
@@ -61,19 +71,28 @@
                 }
                 else
                 {
-                    var i = 0;
-                    foreach (var entry in MainMenu.instance.friendsBoard.Entries)
+                    if (MainMenu.instance.friendsBoard != null)
                     {
-                        if (++i > 5) break;
+                        var i = 0;
+                        foreach (var entry in MainMenu.instance.friendsBoard.Entries)
+                        {
+                            if (++i > 5) break;
 
-                        string specialClass = "";
-                        if (entry.Me) specialClass = "me";
+                            string specialClass = "";
+                            if (entry.Me) specialClass = "me";
 
-                        <div class="row @specialClass">
-                            <div class="name">@entry.DisplayName</div>
-                            @{
-                                <div class="stat">@LeaderboardTimeFormatted(entry)</div>
-                            }
+                            <div class="row @specialClass">
+                                <div class="name">@entry.DisplayName</div>
+                                @{
+                                    <div class="stat">@LeaderboardTimeFormatted(entry)</div>
+                                }
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>
+                            <span style="color: red">Error retrieving friends leaderboard</span>
                         </div>
                     }
                 }
