@@ -216,7 +216,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "728c1ac8-cae7-40da-9d34-d8b083445fa3",
+            "component_id": "36a84ecc-6cc2-47c3-ad38-6589192a23d5",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1290,7 +1290,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "9c2f3007-15d8-4e09-8f55-a820dd3449b6",
+                "component_id": "10cdd84b-d6ee-4518-9d23-ef389ec0344f",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               }
@@ -1360,7 +1360,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "9c2f3007-15d8-4e09-8f55-a820dd3449b6",
+                "component_id": "10cdd84b-d6ee-4518-9d23-ef389ec0344f",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               },
@@ -3619,6 +3619,58 @@
                 "Harmless"
               ],
               "useBullet": true
+            }
+          ]
+        },
+        {
+          "__guid": "f6309812-3932-4647-b70e-6699531707b0",
+          "Flags": 0,
+          "Name": "EnemyInputGlyph",
+          "Position": "127,-50.00037,-5",
+          "Rotation": "0,0,0.7071068,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.WorldPanel",
+              "__guid": "e0bac0c2-34f0-41e0-8f41-130c99a1f0ff",
+              "HorizontalAlign": "Center",
+              "InteractionRange": 1000,
+              "LookAtCamera": false,
+              "PanelSize": "1024,1024",
+              "RenderScale": 1,
+              "VerticalAlign": "Center"
+            },
+            {
+              "__type": "InputGlyphWidget",
+              "__guid": "c9fad0d4-7c6f-4714-877e-0c7c85698f92",
+              "Action": "Shoot",
+              "Size": "Large"
+            }
+          ]
+        },
+        {
+          "__guid": "27c3dfac-380d-4717-b663-811ad5b065b0",
+          "Flags": 0,
+          "Name": "CivilianInputGlyph",
+          "Position": "75,-50.00024,-5",
+          "Rotation": "0,0,0.7071068,0.7071068",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.WorldPanel",
+              "__guid": "1143bc5e-5648-4daa-ab1b-883534d1dbab",
+              "HorizontalAlign": "Center",
+              "InteractionRange": 1000,
+              "LookAtCamera": false,
+              "PanelSize": "1024,1024",
+              "RenderScale": 1,
+              "VerticalAlign": "Center"
+            },
+            {
+              "__type": "InputGlyphWidget",
+              "__guid": "5d4f14b6-c08b-4ce7-97da-c86c0a44481d",
+              "Action": "Spare",
+              "Size": "Large"
             }
           ]
         }

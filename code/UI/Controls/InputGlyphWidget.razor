@@ -1,0 +1,24 @@
+@using System;
+@using Sandbox
+@using Sandbox.UI
+@inherits PanelComponent
+
+@code {
+	[Property]
+	public string Action { get; set; }
+	[Property]
+	public string Size   { get; set; }
+	[Property]
+	public string Style  { get; set; }
+
+	protected override int BuildHash() => ((int)MathF.Floor(RealTime.Now)) % 2; // Every other second
+}
+
+<root>
+	<div class="container">
+		<div class="glyph">
+			<InputGlyph button="@Action" size="@Size" style="@Style"/>
+		</div>
+		<div class="text">@Action</div>
+	</div>
+</root>
