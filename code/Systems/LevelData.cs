@@ -35,6 +35,15 @@ public class LevelData : GameResource
 	[Category("Times"), Property] public float fastestTime = 60.0f;
 	[Category("Times"), Property] public float simulatedTime = 80.0f;
 
+	[Category("Metadata"), Property]
+	public string friendlyLevelName { get; set; }
+
+	[Category("Metadata"), Property]
+	public string friendlyLevelDescription { get; set; }
+
+	[Category("Metadata"), Property]
+	public string artworkImageData { get; set; }
+
 	[Category("Leaderboard"), Property] public bool isLeaderboardLevel { get; set; } = true;
 	[Category("Leaderboard"), Property, ReadOnly]
 	public string leaderboardName
@@ -88,19 +97,33 @@ public class LevelData : GameResource
 
 	public bool HasCompletedLevel()
 	{
+		if (GameSave.instance == null || LevelData.active == null)
+		{
+			Log.Info("FIXME: This needs to be fixed since GameSave/LevelData here (menu)");
+			return true;
+		}
+
 		if (GameSave.instance.levelNameToBestTime.TryGetValue(LevelData.active.ResourceName, out float savedBestTime))
 		{
 			return true;
 		}
+
 		return false;
 	}
 
 	public float GetBestTime()
 	{
+		if (GameSave.instance == null || LevelData.active == null)
+		{
+			Log.Warning("FIXME: GameInstance/LevelData is null (menu)?");
+			return float.MaxValue;
+		}
+
 		if (GameSave.instance.levelNameToBestTime.TryGetValue(LevelData.active.ResourceName, out float savedBestTime))
 		{
 			return savedBestTime;
 		}
+
 		return float.MaxValue;
 	}
 

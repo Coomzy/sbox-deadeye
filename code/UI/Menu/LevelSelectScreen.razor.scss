@@ -6,21 +6,227 @@ LevelSelectScreen.menu {
 		text-shadow: none;
 		color: #4CAF50; // rgb(75,75,75);
 	}
-	// Fix stretching by growing the content. Shrink the whitespace area desired by buttons.
-	.container:nth-child(1) {
-		flex-grow: 2;
-	}
 
-	.container:nth-child(2) {
+	.container.controls {
+		// A bit hacky. Would prefer not to...
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding: 2em;
+		width: 600px;
+		height: 10em;
+		z-index: 99;
 		flex-grow: 0;
 		flex-shrink: 8;
+	}
+	// Fix stretching by growing the content. Shrink the whitespace area desired by buttons.
+	.container.main {
+		flex-grow: 2;
+		z-index: 99;
 	}
 
 	.content {
 		align-items: center;
 	}
 
-	.levels {
+	.switcher {
+		width: 100%;
+		color: white;
+		flex-direction: row;
+		font-size: 50px;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		flex-wrap: nowrap;
+
+		> .column {
+			height: 100%;
+			margin: .5em;
+		}
+
+		.column .level /*, 
+		.column .arrow*/ {
+			background-color: rgba(255,255,255, 0.33);
+			color: #1A1A1A;
+			backdrop-filter: blur(25px);
+		}
+
+		.column:first-child,
+		.column:last-child {
+			//	justify-content: space-around;
+
+			.arrow {
+				pointer-events: all;
+				align-content: center;
+				text-align: center;
+				justify-content: space-around;
+				align-items: center;
+				align-self: center;
+				flex-direction: column;
+				// border-radius: 100%;
+				border-radius: 20px;
+				padding: .5em;
+				text-shadow: 0 0 2px black, 0 0 50px black;
+				cursor: pointer;
+				transition: background-color 100ms linear, border 50ms linear;
+				border: .25em solid transparent;
+
+				&:hover {
+					background-color: rgb(255,255,255,0.33);
+					backdrop-filter: blur(5px);
+				}
+
+				&:active {
+					background-color: rgb(255,255,255,0.33);
+					backdrop-filter: blur(5px);
+					border: .25em solid black;
+				}
+
+				.char {
+					// Make sure it's as square as possible...
+					// Each character and font-family may have a different size
+					font-family: Roboto;
+					font-size: 120px;
+					padding: 10px 0;
+					transform: translate(7px, 0px);
+					line-height: 70px;
+				}
+
+				.text {
+					font-size: 30px;
+				}
+
+				&.prev .char {
+					transform: rotate(180deg);
+				}
+
+				&.disabled {
+					//cursor: default;
+					opacity: 0.28;
+				}
+
+				&.disabled:hover {
+					backdrop-filter: blur(0px);
+					background-color: transparent;
+					color: white;
+				}
+			}
+		}
+
+		.level {
+			flex-shrink: 0;
+			border-radius: 25px;
+			padding: 25px;
+			margin: .5em;
+			width: 1200px; // calc(100% - 100px);
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			.button {
+				font-size: 40px;
+				width: auto;
+				border-radius: 20px;
+			}
+
+			.header {
+				flex-shrink: 0;
+				flex-direction: column;
+				margin: 0;
+				text-align: center;
+
+				.name {
+					width: 100%;
+				}
+
+				.id {
+					width: 100%;
+					font-size: 26px;
+					font-weight: 600;
+				}
+
+				.hyphenator {
+					margin: 0 .4em;
+				}
+			}
+
+			.description {
+				align-self: flex-start;
+				flex-shrink: 0;
+				margin: .25em 0;
+				font-size: 30px;
+				font-weight: 600;
+			}
+
+			.preview {
+				flex-shrink: 0;
+				background-color: gray;
+				width: 100%;
+				max-width: 800px;
+				height: 350px;
+				max-height: 650px;
+				margin: 0.25em 0;
+				border-radius: 15px;
+			}
+
+			p {
+				flex-shrink: 0;
+				margin: 0.25em 0;
+				width: 100%;
+			}
+
+			.misc {
+				font-size: 28px;
+				flex-direction: column;
+
+				.key, .value {
+					margin: 0 0.2em;
+					align-items: center;
+				}
+
+				.civs {
+					justify-content: flex-end;
+				}
+
+				.medal {
+					width: 48px;
+					height: 48px;
+					margin: 0.25em;
+					background-color: deeppink;
+					border-radius: 50%;
+					box-shadow: 0px 0px 15px gray;
+					align-items: center;
+					justify-content: center;
+				}
+			}
+
+			.table {
+				width: 100%;
+				flex-shrink: 1;
+				flex-grow: 1;
+				justify-content: center;
+
+				.row {
+					flex-direction: row;
+					width: 100%;
+					align-items: flex-start;
+				}
+
+				.column {
+					flex-direction: column;
+					align-items: flex-start;
+					width: 100%;
+				}
+
+				.column:last-child {
+					align-items: flex-end;
+					justify-content: center;
+					height: 100%;
+				}
+			}
+		}
+	}
+	/*.levels {
 		max-width: 1500px; // Otherwise widescreens will spread too far outwards?
 		height: 100%;
 		padding: 2em 0;
@@ -85,10 +291,10 @@ LevelSelectScreen.menu {
 
 			// Direct label child of .level-button
 			> label {
-				display: none;
+				//display: none;
 				padding: .25em .5em;
 				margin: 0;
 			}
 		}
-	}
+	}*/
 }

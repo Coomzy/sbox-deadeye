@@ -4,39 +4,126 @@
 @using System;
 @inherits PanelComponent
 @code {
-	string[] levels = {
-		"original",
-		"original",
-		"original",
-		"original",
-		"original",
-		"original",
-		"original"
-	};
+	List<LevelData> levels = GameSettings.instance.topDownLevels;
+	Object error = null;
+	int currentIndex = 0;
+	LevelData level = null;
+	MedalType medal = MedalType.None;
 }
 
 <root class="menu">
-    <div class="container">
+    <div class="container main">
         <div class="content">
 	        <div class="title">
 		        <span>Levels</span>
 	        </div>
-			<div class="levels">
-				@for (int i = 0; i < levels.Count(); i++)
+			<div class="switcher">
+				@if (levels == null || levels.Count() == 0)
 				{
-					<div class="level-button" data-map="@levels[i]" onclick="@((e) => StartLevel(e))">
-						<div class="preview">
-							@* TODO: Fix the level links so that they start different levels! *@
-							<span >@(i + 1)</span>
-						</div>
-						<label>Level @(i + 1)</label>
+					error = "Couldn't find any levels (invalid game data)";
+					Log.Warning("Could not find any levels. Have you generated GameSettings?");
+				}
+				else
+				{
+					currentIndex = Math.Clamp(currentIndex, 0, levels.Count() - 1);
+					level = levels[currentIndex];
+					medal = level.GetBestTimeMedal();
+
+					<div class="column">
+						<span class="arrow prev @(currentIndex < 1 ? "disabled" : "")" onclick="@(() => --currentIndex)">
+							<span class="char">
+								@* NOTE: Changing this requires specific padding. Make sure to update the SCSS .char property *@
+								@* Left White Arrow *@
+								@* &#8678; *@
+								@* Single Left-Pointing Quotation Mark *@
+								@*&lsaquo;*@
+								@* Black Right Arrowhead (Flipped in CSS)*@
+								&#10148;
+							</span>
+							<span class="text">Previous</span>
+						</span>
 					</div>
+					<div class="column">
+						<div class="level">
+							<div class="header">
+								<span class="name">@level.friendlyLevelName</span>
+								<span class="identifier">
+									<span class="id">Level @(currentIndex + 1)</span>
+									@*<span class="hyphenator">&mdash;</span>*@
+								</span>
+							</div>
+							<div class="description">@level.friendlyLevelDescription</div>
+							<div class="preview" style="background-image: url('@level.artworkImageData')"></div>
+							<div class="table">
+								<div class="row">
+									<div class="column">
+										<div class="misc">
+											<p class="kvp civs">
+												<span class="key">Maximum Civilian Casualties: </span>
+												<span class="value">@level.allowedCivilianCasualties</span>
+											</p>
+											<p class="kvp best">
+												<span class="key">Best Time: </span>
+												<span class="value">@level.allowedCivilianCasualties</span>
+											</p>
+											<p class="medals">
+												<span class="key">Medal: </span>
+												<span class="value">
+													@if (!(medal != null && medal != MedalType.None))
+													{
+														<span>None</span>
+													}
+													else
+													{
+														@foreach (var medalIt in Enum.GetValues<MedalType>())
+														{
+															if (medalIt == MedalType.None) continue;
+															<span class="medal @medalIt.ToString()" style="background-color: @GameSettings.instance.GetMedalColour(medalIt).Rgb"></span>
+															if (medalIt == medal) break;
+														}
+													}
+												</span>
+											</p>
+										</div>
+									</div>
+									<div class="column">
+										<div class="buttons">
+											<div class="button red" onclick="@(() => StartActiveLevel())">Play</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<span class="arrow next @(currentIndex < levels.Count() - 1 ? "" : "disabled")" onclick="@(() => ++currentIndex)">
+							<span class="char">
+								@* NOTE: Changing this requires specific padding. Make sure to update the SCSS .char property *@
+								@* Right White Arrow *@
+								@* &#8680;*@
+								@* Single Right-Pointing Quotation Mark *@
+								@* &rsaquo; *@
+								@* Black Right Arrowhead *@
+								&#10148;
+							</span>
+							<span class="text">Next</span>
+						</span>
+					</div>
+					@* for (int i = 0; i < levels.Count(); i++)
+					{
+						<div class="level-button" data-map="@i" onclick="@((e) => StartLevel(e))">
+							<div class="preview">
+								<span >@(i + 1)</span>
+							</div>
+							<label>Level @(i + 1) - @levels[i].friendlyLevelName</label>
+						</div>
+					} *@
 				}
 			</div>
         </div>
     </div>
 
-	<div class="container">
+	<div class="container controls">
 		<div class="buttons">
 			<div class="button-bg">
 				@* <div class="button green" onclick="@(() => StartGame())">Start</div> *@
@@ -48,7 +135,26 @@
 
 @code
 {
-	void StartLevel(PanelEvent t)
+
+	bool StartActiveLevel()
+	{
+		if (!(level != null && level.scene != null))
+		{
+			Log.Error("Unable to load level due to invalid GameSettings configuration");
+			return false;
+		}
+
+		try {
+			Game.ActiveScene.Load(level.scene);
+		}
+		catch (Exception ex)
+		{
+			Log.Error(String.Format("Unable to load level due to uncaught exception: {0}", ex.StackTrace));
+		}
+		return true;
+	}
+
+	/*void StartLevel(PanelEvent t)
 	{
 		t.StopPropagation();
 
@@ -72,7 +178,7 @@
 			Log.Error(String.Format("Failed to load from file: {0}", ex.StackTrace));
 			Log.Info("Unable to load level because it cannot be found!");
 		}
-	}
+	}*/
 
 	void ButtonBack()
 	{
