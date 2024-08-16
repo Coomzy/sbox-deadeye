@@ -57,7 +57,7 @@
         .button {
             flex-shrink: 0;
             background-color: rgb(20,20,20);
-            color: rgba(255,255,255, 1);
+            color: rgba(255,255,255, 0.9);
             width: 500px;
             border: 5px solid transparent;
             border-radius: 0;
@@ -65,24 +65,104 @@
             text-align: center;
             align-self: center;
             font-size: 54px;
+            font-weight: 600;
             // margin: 4px 2px;
             margin: 0;
-            cursor: pointer;
-            backdrop-filter: blur(5px);
-            text-shadow: 0px 0px 2px black;
             transition: all 50ms linear;
+            cursor: pointer;
 
             &:hover {
-                text-shadow: 1px 1px 2px black;
                 sound-in: ui.button.over;
             }
 
             &:active {
-                // transform: scale(0.98, 0.98);
                 border: 5px solid black;
             }
 
             &.green {
+                background-color: #4CAF50;
+
+                &:hover {
+                    background-color: #57BB5A;
+                }
+
+                &:active {
+                    background-color: #45A049;
+                }
+            }
+
+            &.red {
+                background-color: #F44336;
+
+                &:hover {
+                    background-color: #EC594F;
+                }
+
+                &:active {
+                    background-color: #D32F2F;
+                }
+            }
+
+            &.blue {
+                background-color: #2196F3;
+
+                &:hover {
+                    background-color: #529FDF;
+                }
+
+                &:active {
+                    background-color: #1283DE;
+                }
+            }
+
+            &.yellow {
+                background-color: #CEBF13;
+
+                &:hover {
+                    background-color: #D6C93C;
+                }
+
+                &:active {
+                    background-color: #C3B300;
+                }
+            }
+
+            &.indigo {
+                background-color: #272A5C;
+
+                &:hover {
+                    background-color: #393D77;
+                }
+
+                &:active {
+                    background-color: #282A4C;
+                }
+            }
+
+            &.brown {
+                background-color: #8B4513;
+                color: white;
+
+                &:hover {
+                    background-color: #8B4513;
+                }
+
+                &:active {
+                    background-color: #663919;
+                }
+            }
+
+            &.translucent {
+                color: rgba(255,255,255, 1);
+                backdrop-filter: blur(5px);
+                text-shadow: 0px 0px 2px black;
+            }
+
+            &.translucent:hover {
+                text-shadow: 1px 1px 2px black;
+            }
+
+            &.translucent.green {
                 background-color: #4CAF50D7;
 
                 &:hover {
@@ -94,7 +174,7 @@
                 }
             }
 
-            &.red {
+            &.translucent.red {
                 background-color: #F44336D7;
 
                 &:hover {
@@ -106,7 +186,7 @@
                 }
             }
 
-            &.blue {
+            &.translucent.blue {
                 background-color: #2196F3B7;
 
                 &:hover {
@@ -118,7 +198,7 @@
                 }
             }
 
-            &.yellow {
+            &.translucent.yellow {
                 background-color: #C3B300D7;
 
                 &:hover {
@@ -130,7 +210,7 @@
                 }
             }
 
-            &.indigo {
+            &.translucent.indigo {
                 background-color: #333776B7;
 
                 &:hover {
@@ -142,7 +222,7 @@
                 }
             }
 
-            &.brown {
+            &.translucent.brown {
                 background-color: #8B4513D7;
                 text-shadow: 1px 1px 0px #7700EF;
                 color: white;
@@ -162,7 +242,11 @@
                 padding: 0px;
                 margin: 0;
                 margin-right: 10px;
-                color: rgba(255,255,255,0.75);
+                color: rgba(255,255,255,0.88);
+            }
+
+            &.translucent .icon {
+                color: rgba(255,255,255, 1);
             }
         }
 
