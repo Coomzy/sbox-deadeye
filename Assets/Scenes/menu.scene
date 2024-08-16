@@ -216,7 +216,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "9aa02dc6-e9de-4755-8e4e-32da99fedc9b",
+            "component_id": "728c1ac8-cae7-40da-9d34-d8b083445fa3",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1245,20 +1245,6 @@
       "Name": "HowToPlay Area",
       "Position": "1436.158,-1006.171,70.83447",
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "Spline",
-          "__guid": "f63fd583-c822-4a2a-b468-2b1d0922e558",
-          "drawGizmo": true,
-          "endOfSplinePoint": "1460.345,-1055.45,38.96565",
-          "points": [],
-          "segments": 100,
-          "speed": 1,
-          "splineLength": 0,
-          "splineTime": 0,
-          "testTime": 661.09985
-        }
-      ],
       "Children": [
         {
           "__guid": "be34b491-9d06-4ce3-8188-5ccdd1bfac12",
@@ -1304,7 +1290,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "b1080eab-bdde-4e35-ad6e-6932b2b17835",
+                "component_id": "9c2f3007-15d8-4e09-8f55-a820dd3449b6",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               }
@@ -1374,7 +1360,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "b1080eab-bdde-4e35-ad6e-6932b2b17835",
+                "component_id": "9c2f3007-15d8-4e09-8f55-a820dd3449b6",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               },
