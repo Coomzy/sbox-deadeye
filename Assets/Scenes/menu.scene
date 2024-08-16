@@ -62,7 +62,7 @@
           "__guid": "c683848f-5b42-4de1-a6bd-1c1e5984d85e",
           "AutoScreenScale": true,
           "Opacity": 1,
-          "Scale": 1,
+          "Scale": 0.85,
           "ZIndex": 100
         },
         {
@@ -216,7 +216,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "8f64ea67-1610-4497-91c2-8cba4a4bf761",
+            "component_id": "9aa02dc6-e9de-4755-8e4e-32da99fedc9b",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1304,7 +1304,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "c589829f-a563-4d37-aebe-8355504efd51",
+                "component_id": "b1080eab-bdde-4e35-ad6e-6932b2b17835",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               }
@@ -1374,7 +1374,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "c589829f-a563-4d37-aebe-8355504efd51",
+                "component_id": "b1080eab-bdde-4e35-ad6e-6932b2b17835",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               },
