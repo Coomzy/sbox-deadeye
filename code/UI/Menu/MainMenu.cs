@@ -175,6 +175,9 @@ public class MainMenu : Component
 				break;
 		}
 
+		// Move us to the correct place to skip to the next menu transition.
+		CancelSplineAnimation();
+
 		// Update Virtual Area Spline
 		switch (state)
 		{
@@ -228,34 +231,52 @@ public class MainMenu : Component
 		UpdateCameraViewSpline();
 	}
 
+	void CancelSplineAnimation()
+	{
+		if (MathX.AlmostEqual(VAActiveState, VANextState, 0.1f))
+		{
+			return;
+		}
+
+		Log.Warning(String.Format("Cancelling spline animation {0:00.00} -> {1:00.00}", VAActiveState, VANextState));
+
+		var VAMoveSpeed = VASplineMoveSpeed;
+		var VARotSpeed = VASplineRotationSpeed;
+
+		// We will appear instantaneously....
+		VASplineMoveSpeed = 500f;
+		VASplineRotationSpeed = 500f;
+		VAActiveState = VANextState;
+
+		UpdateCameraViewSpline();
+
+		VASplineMoveSpeed = VASplineMoveSpeed;
+		VASplineRotationSpeed = VASplineRotationSpeed;
+	}
+
 	void UpdateCameraViewSpline()
 	{
 		if (VASpline == null) return;
-		if (MathX.AlmostEqual(VAActiveState, VANextState)) return; // TBD: Maybe optimised too early?
+		if (MathX.AlmostEqual(VAActiveState, VANextState)) return;
 
 		VAActiveState = MathX.Clamp(Utils.MoveTowards(VAActiveState, VANextState, VASplineMoveSpeed * Time.Delta), 0.0f, 0.99f);
 
 		float time = VAActiveState * VASpline.CalculateTotalSplineLength();
-		bool isMovingBackwards = MathX.AlmostEqual(VANextState, 0.0f);
-		var lastCameraPoint = camera.Transform.Position;
-		
+
 		var cameraPoint = VASpline.GetPointAlongSplineAtTime(time);
 		camera.Transform.Position = cameraPoint;
 
-		var moveDelta = Vector3.Direction(lastCameraPoint, cameraPoint);
+		// The direction is always what's behind us, so step slightly back in time.
+		// The precision around 0.1-0.025f is best, otherwise the precision causes us to ripple
+		var moveDelta = Vector3.Direction(VASpline.GetPointAlongSplineAtTime(time - 0.1f), cameraPoint);
 		moveDelta.z = 0.0f;
 
-		if (moveDelta.Length <= 0.0f)
+		if (moveDelta.Length <= 0.01f)
 			return;
-
-		if (isMovingBackwards)
-		{
-			moveDelta = -moveDelta;
-		}
 
 		Rotation rotation = Rotation.From(moveDelta.Normal.EulerAngles);
 
-		switch(VARotationType)
+		switch (VARotationType)
 		{
 			case SplineRotationType.Towards:
 				rotation = Rotation.From(moveDelta.Normal.EulerAngles);
