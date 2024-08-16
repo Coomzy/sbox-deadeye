@@ -1,5 +1,6 @@
 ﻿@using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Audio;
 @using Sandbox.Services;
 @using System;
 @inherits PanelComponent
@@ -39,13 +40,15 @@
     void ReturnToMenu()
 	{
 		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
-		Sound.Play("ui.navigate.back");
+		var soundHandle = Sound.Play("ui.navigate.back");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void Retry()
 	{
 		Game.ActiveScene.Load(Game.ActiveScene.Source);
-		Sound.Play("ui.navigate.back");
+		var soundHandle = Sound.Play("ui.navigate.back");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	/// <summary>

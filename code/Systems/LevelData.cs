@@ -152,7 +152,7 @@ public class LevelData : GameResource
 
 	public static LevelData GetSceneLevelData(Scene scene)
 	{
-		if (Utils.isEditTime)
+		if (!Game.IsPlaying)
 		{
 			if (scene?.Source?.ResourcePath == null)
 			{

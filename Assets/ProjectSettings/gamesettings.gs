@@ -1,4 +1,5 @@
 {
+  "menuLevel": "scenes/menu.ld",
   "topDownLevels": [
     "scenes/topdown/original.ld",
     "scenes/topdown/original-2-test.ld"

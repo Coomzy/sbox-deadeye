@@ -48,7 +48,7 @@ public abstract partial class GameResourceSingleton<T> : GameResource, IHotloadM
 		{
 			//Log.Info($"Game.IsEditor = {Game.IsEditor}, Application.IsEditor {Application.IsEditor}");
 
-			if (Utils.isEditTime)
+			if (!Game.IsPlaying)
 			{
 				_instance = null;
 			}

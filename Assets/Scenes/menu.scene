@@ -1,5 +1,5 @@
 {
-  "__guid": "5bc12677-6d1b-4d53-b6a7-de90807c6197",
+  "__guid": "00dbe0f1-1db3-4c14-89f1-a3e9ad5cb247",
   "GameObjects": [
     {
       "__guid": "204b2944-c66d-4b93-a2a0-1483dc403858",
@@ -216,7 +216,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "6826bd7e-e403-496b-aae5-ce2d8f194486",
+            "component_id": "8f64ea67-1610-4497-91c2-8cba4a4bf761",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1155,14 +1155,14 @@
               "__type": "Spline",
               "__guid": "033541b5-8138-489c-b11e-c77cfeb903e4",
               "drawGizmo": true,
-              "endOfSplinePoint": "1075.414,-283.2475,46.91291",
+              "endOfSplinePoint": "1074.344,-289.8178,43.12866",
               "points": [
                 {}
               ],
               "segments": 100,
               "speed": 1,
-              "splineLength": 88.16135,
-              "splineTime": 88.16135,
+              "splineLength": 91.679,
+              "splineTime": 91.679,
               "testTime": 661.09985
             }
           ],
@@ -1185,7 +1185,7 @@
               "__guid": "4d789ed0-94c7-432e-b807-86ee81834c1b",
               "Flags": 0,
               "Name": "Point",
-              "Position": "55.41431,-53.33977,1.152309",
+              "Position": "54.34326,-59.90997,-2.631939",
               "Enabled": true
             }
           ]
@@ -1201,14 +1201,14 @@
               "__type": "Spline",
               "__guid": "e9697e13-8a84-4d47-a04d-919b0ffc7193",
               "drawGizmo": true,
-              "endOfSplinePoint": "1533.818,-829.9077,45.7606",
+              "endOfSplinePoint": "1533.819,-829.9078,45.7606",
               "points": [
                 {}
               ],
               "segments": 100,
               "speed": 1,
-              "splineLength": 903.3806,
-              "splineTime": 903.3806,
+              "splineLength": 903.38025,
+              "splineTime": 903.38025,
               "testTime": 661.09985
             }
           ],
@@ -1245,6 +1245,20 @@
       "Name": "HowToPlay Area",
       "Position": "1436.158,-1006.171,70.83447",
       "Enabled": true,
+      "Components": [
+        {
+          "__type": "Spline",
+          "__guid": "f63fd583-c822-4a2a-b468-2b1d0922e558",
+          "drawGizmo": true,
+          "endOfSplinePoint": "1460.345,-1055.45,38.96565",
+          "points": [],
+          "segments": 100,
+          "speed": 1,
+          "splineLength": 0,
+          "splineTime": 0,
+          "testTime": 661.09985
+        }
+      ],
       "Children": [
         {
           "__guid": "be34b491-9d06-4ce3-8188-5ccdd1bfac12",
@@ -1290,7 +1304,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "48a34dcf-84a2-4eb6-83ed-9f56bbe798bb",
+                "component_id": "c589829f-a563-4d37-aebe-8355504efd51",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               }
@@ -1360,7 +1374,7 @@
               },
               "weapon": {
                 "_type": "component",
-                "component_id": "48a34dcf-84a2-4eb6-83ed-9f56bbe798bb",
+                "component_id": "c589829f-a563-4d37-aebe-8355504efd51",
                 "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                 "component_type": "Weapon"
               },

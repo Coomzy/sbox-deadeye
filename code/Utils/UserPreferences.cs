@@ -22,7 +22,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 	{
 		get
 		{
-			if (Utils.isEditTime)
+			if (!Game.IsPlaying)
 			{
 				_instance = null;
 			}

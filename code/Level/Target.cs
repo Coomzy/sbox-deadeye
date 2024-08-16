@@ -53,7 +53,7 @@ public class Target : Component
 			walkPos = Player_TD.instance.Transform.Position;
 		}
 
-		if (Utils.isEditTime)
+		if (Game.IsPlaying)
 		{
 			var room = Components.GetInAncestorsOrSelf<Room>(true);
 			if (room != null)

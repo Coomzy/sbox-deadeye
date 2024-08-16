@@ -1,5 +1,6 @@
 ﻿@using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Audio;
 @using Sandbox.Services;
 @using System;
 @inherits PanelComponent
@@ -186,7 +187,8 @@
 		//MainMenu.instance.SetMenuState(MenuState.GameMode);
 
 		MainMenu.instance.SetMenuState(MenuState.Main);
-		Sound.Play("ui.navigate.back");
+		var soundHandle = Sound.Play("ui.button.back");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	/*void StartGame()

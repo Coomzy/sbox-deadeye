@@ -1,5 +1,6 @@
 ﻿@using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Audio;
 @using System;
 @inherits PanelComponent
 
@@ -54,31 +55,36 @@
 		//MainMenu.instance.SetMenuState(MenuState.GameMode);
 
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void ButtonStats()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Stats);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void ButtonLeaderboards()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Leaderboards);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	/*void ButtonSettings()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Settings);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}*/
 
 	void ButtonHowToPlay()
 	{
 		MainMenu.instance.SetMenuState(MenuState.HowToPlay);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void Quit()
