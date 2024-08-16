@@ -68,8 +68,13 @@
                 // margin: 4px 2px;
                 margin: 0;
                 cursor: pointer;
+                backdrop-filter: blur(5px);
+                text-shadow: 0px 0px 2px black;
+
+                transition: all 50ms linear;
 
                 &:hover {
+                    text-shadow: 1px 1px 2px black;
                     sound-in: ui.button.over;
                 }
 
@@ -79,51 +84,75 @@
                 }
 
                 &.green {
-                    background-color: #4CAF50;
+                    background-color: #4CAF50D7;
 
                     &:hover {
+                        background-color: #4CAF50;
+                    }
+
+                    &:active {
                         background-color: #45A049;
                     }
                 }
 
                 &.red {
-                    background-color: #f44336;
+                    background-color: #F44336D7;
 
                     &:hover {
-                        background-color: #d32f2f;
+                        background-color: #F44336;
+                    }
+
+                    &:active {
+                        background-color: #D32F2F;
                     }
                 }
 
                 &.blue {
-                    background-color: #2196F3;
+                    background-color: #2196F3B7;
 
                     &:hover {
-                        background-color: #1e87f0;
+                        background-color: #2196F3;
+                    }
+
+                    &:active {
+                        background-color: #1E87F0;
                     }
                 }
 
                 &.yellow {
-                    background-color: #C3B300;
+                    background-color: #C3B300D7;
 
                     &:hover {
+                        background-color: #C3B300;
+                    }
+
+                    &:active {
                         background-color: #B4A400;
                     }
                 }
 
                 &.indigo {
-                    background-color: #333776;
+                    background-color: #333776B7;
 
                     &:hover {
+                        background-color: #333776;
+                    }
+
+                    &:active {
                         background-color: #2B3072;
                     }
                 }
 
                 &.brown {
-                    background-color: #8b4513;
+                    background-color: #8B4513D7;
                     text-shadow: 1px 1px 0px #7700EF;
                     color: white;
 
                     &:hover {
+                        background-color: #8B4513;
+                    }
+
+                    &:active {
                         background-color: #663919;
                     }
                 }
