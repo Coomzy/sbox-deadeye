@@ -4,6 +4,7 @@ using Sandbox.Audio;
 using Sandbox.Citizen;
 using Sandbox.UI;
 using System.Diagnostics;
+using System.Threading;
 using static Sandbox.Gizmo;
 using static Sandbox.PhysicsContact;
 using static Sandbox.VertexLayout;
@@ -113,21 +114,30 @@ public class Player_TD : Component
 	{
 		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 		timeSinceStartedWalking = 0;
+
+
+		if (RoomManager.instance?.currentRoom?.walkToPath == null)
+		{
+			if (RoomManager.instance?.currentRoom != null)
+			{
+				Log.Error($"{RoomManager.instance?.currentRoom.GameObject.Name} does not have a walkToPath!");
+			}
+			else
+			{
+				Log.Error($"RoomManager.instance.currentRoom is null, everything is fucked");
+			}
+		}
 	}
 
 	void WalkingUpdate()
 	{
 		if (RoomManager.instance?.currentRoom?.GameObject?.Transform == null)
-		{
 			return;
-		}
+
+		if (RoomManager.instance?.currentRoom?.walkToPath == null)
+			return;
 
 		var currentPos = Transform.Position;
-		// BUG: WHY DOES THIS ERROR ON SCENE RELOAD!?
-		//var targetPos = RoomManager.instance.currentRoom.walkToPos;
-		//var newPos = Utils.MoveTowards(Transform.Position, targetPos, PlayerSettings.instance.walkSpeed * Time.Delta);
-		//Transform.Position = newPos;
-
 		var walkToPath = RoomManager.instance.currentRoom.walkToPath;
 		float totalSplineLength = walkToPath.GetTotalSplineTime();
 		float timeLeftAlongSpline = totalSplineLength - timeSinceStartedWalking;
@@ -308,17 +318,16 @@ public class Player_TD : Component
 
 	async void ExecuteCommands()
 	{
-		await GameTask.DelaySeconds(PlayerSettings.instance.delayBeforeExecute);
+		await Task.DelaySeconds(PlayerSettings.instance.delayBeforeExecute);
 
 		foreach (var target in targets)
 		{			
-
 			var directionToTarget = Vector3.Direction(Transform.Position, target.Transform.Position);
 			directionToTarget.z = 0;
 			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
 			//thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
 
-			await GameTask.DelaySeconds(PlayerSettings.instance.delayPerExecute);
+			await Task.DelaySeconds(PlayerSettings.instance.delayPerExecute);
 
 			//Game.ActiveScene.TimeScale = 0.0f;
 
@@ -336,7 +345,7 @@ public class Player_TD : Component
 			weapon.Shoot(target.Transform.Position);
 		}
 
-		await GameTask.DelaySeconds(PlayerSettings.instance.delayAfterExecute);
+		await Task.DelaySeconds(PlayerSettings.instance.delayAfterExecute);
 
 		Game.ActiveScene.TimeScale = 1.0f;
 
@@ -486,6 +495,11 @@ public class Player_TD : Component
 		{
 			var shooter = shooters[shooterIndex];
 
+			if (shooter?.citizenVisuals?.weapon == null)
+			{
+				continue;
+			}
+
 			//var damageInfo = new DamageInfo(100.0f, currentTarget.GameObject, currentTarget.citizenVisuals?.weaponGameObject);
 			var randomIndex = System.Random.Shared.Next(hitBoxes.Count);
 			//Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
@@ -510,7 +524,7 @@ public class Player_TD : Component
 
 			if (shootTime < 1.5f)
 			{
-				await GameTask.DelaySeconds(0.3f);
+				await Task.DelaySeconds(0.3f);
 			}
 			else
 			{
@@ -638,7 +652,7 @@ public class Player_TD : Component
 		if (!pressed)
 			return;
 
-		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+		Game.ActiveScene.Load(GameSettings.instance.menuLevel.scene);
 	}
 
 	void CheckForReloadLevelInput()

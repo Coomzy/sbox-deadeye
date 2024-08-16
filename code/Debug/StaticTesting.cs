@@ -2,6 +2,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 using System;
+using System.Diagnostics.Metrics;
 using System.Text.Json;
 using static Sandbox.Gizmo;
 
@@ -9,11 +10,19 @@ public class StaticTesting : Component
 {
 	public bool useOneHandedMode = true;
 
+	public static int counter { get; set; } = 0;
+
 	protected override void OnStart()
 	{
 		base.OnStart();
 
 		Test();
+	}
+
+	[Button("Test Log")]
+	public void IncrementCounter()
+	{
+		Log.Info($"StaticTesting::IncrementCounter() counter = {counter}");
 	}
 
 	[Button("Test Log")]

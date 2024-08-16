@@ -37,6 +37,18 @@
           "go": "d29dc4ab-931f-4e6e-a007-4c1d34303588",
           "component_type": "Rigidbody"
         },
+        "shellEjectEmitter": {
+          "_type": "component",
+          "component_id": "fc59c6e9-17aa-4adc-a189-e9ae2a1b992e",
+          "go": "ec13fa29-523e-4fe3-a9f9-fee9fb1d4854",
+          "component_type": "ParticleConeEmitter"
+        },
+        "shellEjectPFX": {
+          "_type": "component",
+          "component_id": "2a807d39-a988-45ac-997d-8d35f2d0989d",
+          "go": "ec13fa29-523e-4fe3-a9f9-fee9fb1d4854",
+          "component_type": "ParticleEffect"
+        },
         "smokePFX": "prefabs/weapons/smoke_ pfx.prefab"
       }
     ],
@@ -172,6 +184,146 @@
                 "Shadows": true
               }
             ]
+          },
+          {
+            "__guid": "ec13fa29-523e-4fe3-a9f9-fee9fb1d4854",
+            "Flags": 0,
+            "Name": "Shell Eject",
+            "Position": "0,0,4.768183",
+            "Rotation": "0.2705981,0.2705981,0.6532815,-0.6532815",
+            "Scale": "0.5,0.5,0.5",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ParticleEffect",
+                "__guid": "2a807d39-a988-45ac-997d-8d35f2d0989d",
+                "Alpha": {
+                  "Constants": "1,0,0,0"
+                },
+                "ApplyColor": false,
+                "ApplyRotation": true,
+                "ApplyShape": false,
+                "Bounce": {
+                  "Constants": "0.1,0,0,0"
+                },
+                "Brightness": {
+                  "Constants": "1,0,0,0"
+                },
+                "Bumpiness": {
+                  "Constants": "0.25,0,0,0"
+                },
+                "Collision": true,
+                "CollisionRadius": 1,
+                "Damping": {
+                  "Constants": "0.35,0,0,0"
+                },
+                "DieOnCollisionChance": {},
+                "Force": true,
+                "ForceDirection": "0,0,-200",
+                "ForceScale": {
+                  "Constants": "1,0,0,0"
+                },
+                "Friction": {
+                  "Constants": "0.9,0,0,0"
+                },
+                "Gradient": {
+                  "GradientA": {
+                    "color": [
+                      {
+                        "t": 0.5,
+                        "c": "1,1,1,1"
+                      }
+                    ],
+                    "alpha": []
+                  },
+                  "GradientB": {
+                    "color": [
+                      {
+                        "t": 0.5,
+                        "c": "1,1,1,1"
+                      }
+                    ],
+                    "alpha": []
+                  },
+                  "ConstantA": "1,1,1,1",
+                  "ConstantB": "1,1,1,1"
+                },
+                "Lifetime": {
+                  "Constants": "10,0,0,0"
+                },
+                "MaxParticles": 1000,
+                "OnParticleCreated": null,
+                "OrbitalForce": {},
+                "OrbitalPull": {},
+                "PerParticleTimeScale": {
+                  "Constants": "1,0,0,0"
+                },
+                "Pitch": {
+                  "Type": "Range",
+                  "Evaluation": "Particle",
+                  "Constants": "0,360,0,0"
+                },
+                "PreWarm": 0,
+                "PushStrength": {},
+                "Roll": {
+                  "Type": "Range",
+                  "Evaluation": "Particle",
+                  "Constants": "0,360,0,0"
+                },
+                "Scale": {
+                  "Constants": "1,0,0,0"
+                },
+                "SequenceId": {},
+                "SequenceSpeed": {
+                  "Constants": "1,0,0,0"
+                },
+                "SequenceTime": {
+                  "Constants": "1,0,0,0"
+                },
+                "SheetSequence": false,
+                "Space": "World",
+                "StartDelay": {},
+                "StartVelocity": {
+                  "Constants": "150,0,0,0"
+                },
+                "Stretch": {},
+                "TimeScale": 1,
+                "Tint": "1,1,1,1",
+                "Yaw": {
+                  "Type": "Range",
+                  "Evaluation": "Particle",
+                  "Constants": "0,360,0,0"
+                }
+              },
+              {
+                "__type": "Sandbox.ParticleConeEmitter",
+                "__guid": "fc59c6e9-17aa-4adc-a189-e9ae2a1b992e",
+                "__enabled": false,
+                "Burst": 1,
+                "ConeAngle": 10,
+                "ConeFar": 50,
+                "ConeNear": 1,
+                "Delay": 0,
+                "DestroyOnEnd": false,
+                "Duration": 1,
+                "InVolume": false,
+                "Loop": false,
+                "OnEdge": false,
+                "Rate": 0,
+                "RateOverDistance": 0
+              },
+              {
+                "__type": "Sandbox.ParticleModelRenderer",
+                "__guid": "ab290d9f-8a8e-4b49-84d7-122248c63003",
+                "CastShadows": true,
+                "Models": [
+                  "models/weapons/sbox_ammo/12g_shell/12g_shell.vmdl"
+                ],
+                "Scale": {
+                  "Constants": "0.25,0,0,0"
+                }
+              }
+            ]
           }
         ]
       }
@@ -183,6 +335,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
+    "facepunch.12g_shell",
     "facepunch.v_usp"
   ],
   "__version": 1
