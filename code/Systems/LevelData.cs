@@ -38,7 +38,7 @@ public class LevelData : GameResource
 	[Category("Metadata"), Property]
 	public string friendlyLevelName { get; set; }
 
-	[Category("Metadata"), Property]
+	[Category("Metadata"), Property, TextArea]
 	public string friendlyLevelDescription { get; set; }
 
 	[Category("Metadata"), Property]
