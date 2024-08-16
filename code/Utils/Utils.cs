@@ -3,6 +3,7 @@ using Sandbox.Citizen;
 
 public static partial class Utils
 {
+	// This does not work if you've not played this 'session'
 	public static bool isEditTime => Game.IsEditor && Game.ActiveScene == null;
 
 	public static GameObject BreakPrefab(this GameObject inst)

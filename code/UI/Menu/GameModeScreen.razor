@@ -1,5 +1,6 @@
 ﻿@using Sandbox;
 @using Sandbox.UI;
+@using Sandbox.Audio;
 @using Sandbox.Services;
 @using System;
 @inherits PanelComponent
@@ -52,28 +53,32 @@
 	void ButtonBack()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Main);
-		Sound.Play("ui.navigate.back");
+		var soundHandle = Sound.Play("ui.navigate.back");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void GoTopDownMode()
 	{
 		// TODO: Somehow select/switch into certain mode here...
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void GoFirstPersonMode()
 	{
 		// TODO: Somehow select/switch into certain mode here...
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	void GoVRMode()
 	{
 		// TODO: Somehow select/switch into certain mode here...
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
-		Sound.Play("ui.button.press");
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	/// <summary>

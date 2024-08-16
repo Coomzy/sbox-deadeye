@@ -197,7 +197,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "ee2b584c-94c2-4e0c-8877-b0ee84f02a39",
+            "component_id": "556b78b8-21da-4d5a-804f-6ea3286a2fc8",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -2223,7 +2223,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "fa32a2ae-be09-4810-a8db-0203d5d0cdb6",
+            "component_id": "a5357afe-6e85-4842-a0cb-f34dd49b2449",
             "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
             "component_type": "Weapon"
           }
@@ -2293,7 +2293,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "fa32a2ae-be09-4810-a8db-0203d5d0cdb6",
+            "component_id": "a5357afe-6e85-4842-a0cb-f34dd49b2449",
             "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
             "component_type": "Weapon"
           },
@@ -3488,13 +3488,15 @@
           "__type": "Spline",
           "__guid": "e9697e13-8a84-4d47-a04d-919b0ffc7193",
           "drawGizmo": true,
+          "endOfSplinePoint": "1533.818,-829.9077,45.7606",
           "points": [
             {}
           ],
           "segments": 100,
           "speed": 1,
-          "testTime": 661.09985,
-          "timeAlongSpline": 903.3805
+          "splineLength": 903.3805,
+          "splineTime": 903.3805,
+          "testTime": 661.09985
         }
       ],
       "Children": [
@@ -3533,13 +3535,15 @@
           "__type": "Spline",
           "__guid": "033541b5-8138-489c-b11e-c77cfeb903e4",
           "drawGizmo": true,
+          "endOfSplinePoint": "1075.414,-283.2475,46.91291",
           "points": [
             {}
           ],
           "segments": 100,
           "speed": 1,
-          "testTime": 661.09985,
-          "timeAlongSpline": 88.16134
+          "splineLength": 88.16134,
+          "splineTime": 88.16134,
+          "testTime": 661.09985
         }
       ],
       "Children": [

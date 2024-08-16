@@ -88,30 +88,36 @@
           "Name": "ActionConfirm",
           "KeyboardCode": "space",
           "GamepadCode": "A",
-          "GroupName": "Game"
+          "GroupName": "Menu"
         },
         {
           "Name": "ActionBack",
           "KeyboardCode": "BACKSPACE",
           "GamepadCode": "B",
-          "GroupName": "Game"
+          "GroupName": "Menu"
         },
         {
           "Name": "ActionAlt",
           "KeyboardCode": "Q",
           "GamepadCode": "X",
-          "GroupName": "Game"
+          "GroupName": "Menu"
         },
         {
           "Name": "ActionAccess",
           "KeyboardCode": "E",
           "GamepadCode": "Y",
-          "GroupName": "Game"
+          "GroupName": "Menu"
         },
         {
           "Name": "ActionConfirmAlt",
           "KeyboardCode": "return",
           "GamepadCode": "None",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "ToggleMusic",
+          "KeyboardCode": "m",
+          "GamepadCode": "DpadWest",
           "GroupName": "Game"
         }
       ],

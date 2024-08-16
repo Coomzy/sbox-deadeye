@@ -13,6 +13,7 @@ public static class GameStats
 	public const string WON = "won";
 	public const string DIED = "died";
 	public const string LOWEST_MEDAL = "lowest-medal";
+	public const string COMBINED_TIME = "combined-time";
 
 	public static void Increment(string stat, double incrementAmount = 1)
 	{

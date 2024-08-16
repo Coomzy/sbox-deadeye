@@ -116,6 +116,8 @@ public class GamePlayManager : Component
 	[Button("Test")]
 	public void Test()
 	{
+		Log.Info($"Game.IsPlaying: {Game.IsPlaying}");
+		//Log.Info($"MusicManagerSystem::OnLevelLoaded() Game.IsPlaying: {Game.IsPlaying}, MusicManager.instance == null {MusicManager.instance == null}, Game.ActiveScene == null {Game.ActiveScene == null}");
 		//Log.Info($"GameSave.instance.temp was '{GameSave.instance.temp}'");
 
 		//GameSave.instance.temp += 1.0f;

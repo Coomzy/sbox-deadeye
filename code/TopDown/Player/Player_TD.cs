@@ -1,5 +1,6 @@
 
 using Sandbox;
+using Sandbox.Audio;
 using Sandbox.Citizen;
 using Sandbox.UI;
 using System.Diagnostics;
@@ -229,12 +230,14 @@ public class Player_TD : Component
 		{
 			madeChoice = true;
 			targets.Add(RoomManager.instance.currentRoom.currentTarget);
-			Sound.Play("target.confirmed");
+			var soundHandle = Sound.Play("target.confirmed");
+			soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
 		}
 		if (SpareKeyIsDown())
 		{
 			madeChoice = true;
-			Sound.Play("target.passed");
+			var soundHandle = Sound.Play("target.passed");
+			soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
 		}
 
 		if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.FastestTime))

@@ -1,4 +1,6 @@
 
+using Sandbox.Audio;
+using Sandbox;
 using Sandbox.Citizen;
 
 public class Weapon : Component
@@ -26,7 +28,8 @@ public class Weapon : Component
 		//Particles.Create();
 		//muzzleFlashVFX.
 		var particles = muzzleFlashVFX.Particles;
-		var handle = Sound.Play("weapon.pistol", GameObject.Transform.Position);
+		var soundHandle = Sound.Play("weapon.pistol", GameObject.Transform.Position);
+		soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
 
 		var smokeGO = Scene.CreateObject();
 		smokeGO.SetPrefabSource(smokePFX.ResourcePath);

@@ -26,6 +26,7 @@ public enum WeaponType
 [GameResource("Game Settings", "gs", "Game Settings")]
 public class GameSettings : GameResourceSingleton<GameSettings>
 {
+	[Group("Levels"), Property] public LevelData menuLevel { get; set; }
 	[Group("Levels"), Property] public List<LevelData> topDownLevels { get; set; } = new List<LevelData>();
 
 	[Group("Weapons"), Property] public PrefabFile pistolPrefab { get; set; } = ResourceLibrary.Get<PrefabFile>("prefabs/weapons/weapon - pistol.prefab");

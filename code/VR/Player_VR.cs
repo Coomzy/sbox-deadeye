@@ -1,5 +1,6 @@
 
 using Sandbox;
+using Sandbox.Audio;
 using Sandbox.Citizen;
 using Sandbox.UI;
 using static Sandbox.Gizmo;
@@ -65,10 +66,12 @@ public class Player_VR : Component
 
 		while (!walkTime)
 		{
-			Sound.Play("footstep-concrete", Transform.Position);
+			var soundHandle = Sound.Play("footstep-concrete", Transform.Position);
+			soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
 			await GameTask.DelaySeconds(0.5f);
 		}
-		Sound.Play("footstep-concrete", Transform.Position);
+		var soundHandleLast = Sound.Play("footstep-concrete", Transform.Position);
+		soundHandleLast.TargetMixer = Mixer.FindMixerByName("Game");
 
 		await GameTask.DelaySeconds(0.25f);
 
