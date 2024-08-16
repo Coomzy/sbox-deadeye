@@ -1,0 +1,29 @@
+@import "./MenuTheme.scss";
+@import "./Stats.scss";
+
+HintBox {
+	background-color: transparent;
+
+	ul.hints {
+		background-color: rgb(255,255,255,0.4);
+		backdrop-filter: blur(2px);
+		border-radius: 0.5em;
+		flex-direction: column;
+		align-self: flex-start;
+		justify-content: flex-start;
+
+
+		color: black;
+		font-size: 40px;
+		font-family: Roboto;
+		padding: 0em 2em 0em 0em;
+
+		li.hint {
+			margin: .1em 0 0 0;
+			padding: .25em; 
+			span {
+				margin: 0 .25em;
+			}
+		}
+	}
+}
