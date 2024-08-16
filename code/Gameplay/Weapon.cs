@@ -12,6 +12,8 @@ public class Weapon : Component
 	[Group("Setup"), Property] public LineRenderer bulletTracerLineRenderer { get; set; }
 	[Group("Setup"), Property] public Light muzzleFlashLight { get; set; }
 	[Group("Setup"), Property] public PrefabFile bloodSplatPFX { get; set; }
+	[Group("Setup"), Property] public ParticleEffect shellEjectPFX { get; set; }
+	[Group("Setup"), Property] public ParticleConeEmitter shellEjectEmitter { get; set; }
 
 	protected override void OnAwake()
 	{
@@ -20,6 +22,7 @@ public class Weapon : Component
 		muzzleFlashVFX.Enabled = false;
 		bulletTracerLineRenderer.Enabled = false;
 		muzzleFlashLight.Enabled = false;
+		shellEjectEmitter.Enabled = false;
 	}
 
 	[Button("Shoot")]
@@ -44,6 +47,10 @@ public class Weapon : Component
 		bloodSplatGO.Transform.Position = hitPosition;
 		bloodSplatGO.Transform.Rotation = (-GameObject.Transform.Rotation.Forward).EulerAngles.ToRotation();
 
+		shellEjectEmitter.Enabled = true;
+		shellEjectEmitter.Emit(shellEjectPFX);
+		shellEjectEmitter.Enabled = false;
+
 		BulletTracer(hitPosition);
 		MuzzleFlashLight();
 	}
@@ -55,14 +62,14 @@ public class Weapon : Component
 		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 125.0f));
 		bulletTracerLineRenderer.VectorPoints = points;
 		bulletTracerLineRenderer.Enabled = true;
-		await GameTask.Delay(20);
+		await Task.Delay(20);
 		bulletTracerLineRenderer.Enabled = false;
 	}
 
 	async void MuzzleFlashLight()
 	{
 		muzzleFlashLight.Enabled = true;
-		await GameTask.Delay(1);
+		await Task.Delay(1);
 		muzzleFlashLight.Enabled = false;
 	}
 
