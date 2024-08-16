@@ -40,7 +40,7 @@ public class MainMenu : Component
 	[Group("Screens"), Property] public SettingsScreen settingsScreen { get; private set; }
 	[Group("Screens"), Property] public StatsScreen statsScreen { get; private set; }
 	[Group("Screens"), Property] public LeaderboardsScreen leaderboardsScreen { get; private set; }
-	[Group("Screens"), Property] public HowToPlayScreen howToPlayScreen { get; private set; }
+	[Group("Screens"), Property] public PassThruMenuScreen howToPlayScreen { get; private set; }
 
 	[Group("Setup"), Property] public CameraComponent camera { get; private set; }
 

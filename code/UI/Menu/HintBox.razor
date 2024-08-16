@@ -1,0 +1,43 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+@code {
+    [Property]
+    public List<string> hints;
+    [Property]
+    public bool useBullet = true;
+}
+
+<root>
+    <div class="container">
+        <ul class="hints">
+            @foreach(var hint in hints)
+            {
+                <li class="hint">
+                    @if (useBullet)
+                    {
+                        <span>•</span>
+                    }
+                    @hint
+                </li>
+            }
+        </ul>
+    </div>
+</root>
+
+@code
+{
+	void ButtonBack()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Main);
+		Sound.Play("ui.navigate.back");
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}
