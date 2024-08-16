@@ -44,37 +44,44 @@ public class MainMenu : Component
 	[Group("Setup"), Property] public CameraComponent camera { get; private set; }
 
 	[Group("Virtual Area"), Property]
-	public Spline TutorialSpline {
+	public Spline TutorialSpline
+	{
 		get; private set;
 	}
 	[Group("Virtual Area"), Property]
-	public Spline SideViewSpline {
+	public Spline SideViewSpline
+	{
 		get; private set;
 	}
-	
+
 	// VA Spline is short form of Virtual Area Spline
 	[Group("Virtual Area"), Property, Rename("VA Spline"), ReadOnly]
-	public Spline VASpline {
+	public Spline VASpline
+	{
 		get; private set;
 	}
 
 	[Group("Virtual Area"), Property, Range(0, 1), Rename("VA Active State"), ReadOnly]
-	public float VAActiveState {
+	public float VAActiveState
+	{
 		get; private set;
 	}
 
 	[Group("Virtual Area"), Property, Range(0, 1), Rename("VA Next State")]
-	public float VANextState {
+	public float VANextState
+	{
 		get; private set;
 	}
 
 	[Group("Virtual Area"), Property, Rename("VA Spline Move Speed")]
-	public float VASplineMoveSpeed {
+	public float VASplineMoveSpeed
+	{
 		get; private set;
 	}
 
 	[Group("Virtual Area"), Property, Rename("VA Spline Rotate Speed")]
-	public float VASplineRotationSpeed {
+	public float VASplineRotationSpeed
+	{
 		get; private set;
 	}
 
@@ -85,7 +92,8 @@ public class MainMenu : Component
 	}
 
 	[Group("Runtime"), Property, ReadOnly]
-	public MenuState menuState {
+	public MenuState menuState
+	{
 		get; private set;
 	}
 
@@ -145,7 +153,7 @@ public class MainMenu : Component
 	}
 
 	public void SetMenuState(MenuState state)
-	{ 
+	{
 		PanelComponent selected = null;
 
 		switch (state)
