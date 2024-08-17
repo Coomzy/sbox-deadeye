@@ -16,6 +16,9 @@ public enum LeaderboardGroup
 
 public static class GameLeaderboards
 {
+	public const string LOWEST_MEDAL = "lowest-medal-lb";
+	public const string COMBINED_TIME = "combined-time-lb";
+
 	public static void SetLeaderboardLevelTime(LevelData levelData, float levelTime)
 	{
 		SetLeaderboard(levelData.ResourceName, levelTime);

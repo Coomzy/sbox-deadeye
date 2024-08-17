@@ -43,5 +43,6 @@ public static class GameStats
 		Sandbox.Services.Stats.SetValue(WON, 0);
 		Sandbox.Services.Stats.SetValue(DIED, 0);
 		Sandbox.Services.Stats.SetValue(LOWEST_MEDAL, 0);
+		Sandbox.Services.Stats.SetValue(COMBINED_TIME, 99999);
 	}
 }
