@@ -76,11 +76,16 @@
 													}
 													else
 													{
+														bool completed = true;
 														@foreach (var medalIt in Enum.GetValues<MedalType>())
 														{
 															if (medalIt == MedalType.None) continue;
-															<span class="medal @medalIt.ToString()" style="background-color: @GameSettings.instance.GetMedalColour(medalIt).Rgb"></span>
-															if (medalIt == medal) break;
+															<span title="@medalIt.ToString()" aria-label="@medalIt.ToString()" class="medal @medalIt.ToString()" style="@getMedalStyle(medalIt, completed)"></span>
+															if (medalIt == medal) {
+																// Next have not been achieved
+																//break;
+																completed = false;
+															}
 														}
 													}
 												</span>
@@ -136,6 +141,25 @@
 
 @code
 {
+	string getMedalStyle(MedalType medal, bool completed)
+	{
+		string brightness = "100%";
+		string grayscale = "0";
+		string opacity = "1";
+		string backgroundcolor = GameSettings.instance.GetMedalColour(medal).Rgb;
+
+		if (!completed)
+		{
+			brightness = "200%";
+			opacity = "0.33";
+			grayscale = "0.8";
+		}
+
+		return String.Format(
+			"background: {0}; opacity: {1}; filter: brightness({2}), grayscale({3})",
+			backgroundcolor, opacity, brightness, grayscale
+		);
+	}
 
 	bool StartActiveLevel()
 	{
