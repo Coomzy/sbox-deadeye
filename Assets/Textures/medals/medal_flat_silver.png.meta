@@ -1,0 +1,19 @@
+{
+  "publish": {
+    "Enabled": false,
+    "ProjectConfig": {
+      "Title": "medal_flat_silver",
+      "Type": "asset",
+      "Org": "local",
+      "Ident": "medal_flat_silver",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "textures/medals/medal_flat_silver.png"
+      }
+    }
+  }
+}

@@ -5,13 +5,15 @@
 
 <root>
 	<div class="container">
-		<div @ref=medal class ="circle"></div>
+		<!--<div @ref=medal class="circle"></div>-->
+		<img src=@test style="width: 200px; height: 200px;" />
 		<div class="title">@GetRemainingReactTime()</div>
 	</div>
 </root>
 
 @code
 {
+	[Property, ImageAssetPath] public string test { get; set; }
 	protected Panel medal;
 
 	string GetRemainingReactTime()
@@ -24,7 +26,7 @@
 
 
 		var currentMedal = GamePlayManager.instance.currentMedal;
-		medal.Style.BackgroundColor = GameSettings.instance.GetMedalColour(currentMedal);
+		//medal.Style.BackgroundColor = GameSettings.instance.GetMedalColour(currentMedal);
 
 		var levelTime = GamePlayManager.instance.levelTime;
 		var formattedTime = FormatTime(levelTime);

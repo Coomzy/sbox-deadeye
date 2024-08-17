@@ -1,0 +1,15 @@
+@using Sandbox;
+@using Sandbox.UI;
+@attribute [StyleSheet]
+@inherits PanelComponent
+
+<root>
+    <img src=@icon />
+</root>
+
+@code
+{
+    [Property, ImageAssetPath] public string icon { get; set; }
+
+    protected override int BuildHash() => System.HashCode.Combine(icon);
+}
