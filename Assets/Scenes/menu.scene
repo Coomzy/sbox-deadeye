@@ -1121,7 +1121,7 @@
     },
     {
       "__guid": "1f584965-587a-419b-837d-c393b13c6089",
-      "Flags": 0,
+      "Flags": 32,
       "Name": "Map",
       "Enabled": true,
       "Components": [
@@ -1134,8 +1134,7 @@
           "NoOrigin": false,
           "UseMapFromLaunch": false
         }
-      ],
-      "Children": []
+      ]
     },
     {
       "__guid": "787f7e91-0b0f-45a7-9136-afe3c7a6e0d9",
