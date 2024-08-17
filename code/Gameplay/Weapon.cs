@@ -47,9 +47,9 @@ public class Weapon : Component
 		bloodSplatGO.Transform.Position = hitPosition;
 		bloodSplatGO.Transform.Rotation = (-GameObject.Transform.Rotation.Forward).EulerAngles.ToRotation();
 
-		shellEjectEmitter.Enabled = true;
+		/*shellEjectEmitter.Enabled = true;
 		shellEjectEmitter.Emit(shellEjectPFX);
-		shellEjectEmitter.Enabled = false;
+		shellEjectEmitter.Enabled = false;*/
 
 		BulletTracer(hitPosition);
 		MuzzleFlashLight();

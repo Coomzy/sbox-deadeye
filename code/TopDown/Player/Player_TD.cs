@@ -39,9 +39,8 @@ public class Player_TD : Component
 	[Group("Runtime"), Property] public GameObject weaponGameObject { get; private set; }
 	[Group("Runtime"), Property] public Weapon weapon { get; private set; }
 
-	public RealTimeSince timeSinceStartedWalking2 { get; private set; }
 	public TimeSince timeSinceStartedWalking { get; private set; }
-	public TimeSince timeSinceStartedDecisionMaking { get; private set; }
+	public RealTimeSince timeSinceStartedDecisionMaking { get; private set; }
 
 	protected override void OnAwake()
 	{
@@ -112,6 +111,7 @@ public class Player_TD : Component
 
 	void WalkingStart()
 	{
+		Game.ActiveScene.TimeScale = 1.0f;
 		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 		timeSinceStartedWalking = 0;
 
@@ -175,6 +175,8 @@ public class Player_TD : Component
 
 		thirdPersonAnimationHelper.WithWishVelocity(Vector3.Zero);
 		thirdPersonAnimationHelper.WithVelocity(Vector3.Zero);
+
+		Game.ActiveScene.TimeScale = 0.25f;
 
 		RoomManager.instance.currentRoom.Activate();
 		NextTarget();
@@ -313,6 +315,7 @@ public class Player_TD : Component
 
 	void ExecutingStart()
 	{
+		Game.ActiveScene.TimeScale = 1.0f;
 		ExecuteCommands();
 	}
 
@@ -393,6 +396,7 @@ public class Player_TD : Component
 
 	async void DeadStart()
 	{
+		Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.FailLevel(FailReason.Died);
 
 		DeathAnimate();
@@ -580,6 +584,7 @@ public class Player_TD : Component
 
 	async void KilledTooManyCivsStart()
 	{
+		Game.ActiveScene.TimeScale = 1.0f;
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 
 		LowerHead();
@@ -624,6 +629,7 @@ public class Player_TD : Component
 
 	async void WonStart()
 	{
+		Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.WonLevel();
 
 		await Task.DelaySeconds(1.5f);
