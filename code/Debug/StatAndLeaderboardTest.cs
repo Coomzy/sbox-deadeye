@@ -3,10 +3,14 @@ using Sandbox;
 using Sandbox.Citizen;
 using System;
 using System.Text.Json;
+using System.Threading;
 using static Sandbox.Gizmo;
+using static Sandbox.Services.Stats;
 
 public class StatAndLeaderboardTest : Component
 {
+	CancellationTokenSource cancellationTokenSource { get; set; } = null;
+
 	protected override void OnStart()
 	{
 		base.OnStart();
@@ -17,6 +21,14 @@ public class StatAndLeaderboardTest : Component
 
 		// For beating a level
 		//Sandbox.Services.Stats.SetValue("level-original", 900);
+	}
+
+	[Button("Set Stats")]
+	void SetStats()
+	{
+		//Sandbox.Services.Stats.SetValue("level-original", 1);
+		Sandbox.Services.Stats.Increment("level-original", -double.MaxValue);
+		Log.Info($"Set Stats!");
 	}
 
 	[Button("GetStats")]
@@ -36,8 +48,6 @@ public class StatAndLeaderboardTest : Component
 	[Button("GetStatsAlt")]
 	async void GetStatsAlt()
 	{
-		await GameTask.DelaySeconds(5.0f);
-
 		var localStat = Sandbox.Services.Stats.LocalPlayer.Get("level-original");
 		var globalStat = Sandbox.Services.Stats.Global.Get("level-original");
 
@@ -52,7 +62,13 @@ public class StatAndLeaderboardTest : Component
 	[Button("GetLeaderboard")]
 	async void GetLeaderboard()
 	{
-		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Global, 10);
+		if (cancellationTokenSource != null)
+		{
+			cancellationTokenSource.Cancel();
+		}
+		cancellationTokenSource = new CancellationTokenSource();
+
+		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Global, 10, cancellationTokenSource.Token);
 		//var board = await GameLeaderboards.GetLeaderboard("level-original", LeaderboardGroup.Friends, 10);
 
 		Log.Info($"Board: {board.DisplayName}, Group: {board.Title}, entries: {board.TotalEntries}");
