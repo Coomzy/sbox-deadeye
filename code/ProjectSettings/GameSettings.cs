@@ -34,12 +34,6 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 	[Group("Highlight"), Property] public Color badHighlightColour { get; set; } = Color.Red;
 	[Group("Highlight"), Property] public Color goodHighlightColour { get; set; } = Color.White;
 
-	[Group("Medals"), Property] public Color noneColour { get; set; } = Color.Transparent;
-	[Group("Medals"), Property] public Color bronzeColour { get; set; } = new Color(0xFF3C5E8C);
-	[Group("Medals"), Property] public Color silverColour { get; set; } = new Color(0xFFC0C0C0);
-	[Group("Medals"), Property] public Color goldColour { get; set; } = new Color(0xFF00D7FF);
-	[Group("Medals"), Property] public Color onyxColour { get; set; } = new Color(0xFF393835);
-
 	[Group("Medals"), Property, ImageAssetPath] public string noneImage { get; set; } = "";
 	[Group("Medals"), Property, ImageAssetPath] public string bronzeImage { get; set; } = "textures/medals/medal_bronze.psd";
 	[Group("Medals"), Property, ImageAssetPath] public string silverImage { get; set; } = "textures/medals/medal_silver.psd";
@@ -90,23 +84,6 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 		}
 
 		return noneImage;
-	}
-
-	public Color GetMedalColour(MedalType medalType)
-	{
-		switch (medalType)
-		{
-			case MedalType.Bronze:
-				return bronzeColour;
-			case MedalType.Silver:
-				return silverColour;
-			case MedalType.Gold:
-				return goldColour;
-			case MedalType.Onyx:
-				return onyxColour;
-		}
-
-		return noneColour;
 	}
 
 	public MedalType GetLowestMedalType()

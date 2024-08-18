@@ -5,16 +5,21 @@ using Sandbox.Services;
 using System;
 using System.ComponentModel.Design;
 using System.Text.Json;
+using static Sandbox.ClothingContainer;
 using static Sandbox.Gizmo;
 
 public class MainMenuCharacter : Component
 {
+	public static MainMenuCharacter instance { get; private set; }
+
 	[Group("Setup"), Property] public SkinnedModelRenderer bodyRenderer { get; private set; }
 	[Group("Setup"), Property] public CitizenAnimationHelper thirdPersonAnimationHelper { get; private set; }
 	[Group("Setup"), Property] public Weapon weapon { get; private set; }
 
 	protected override void OnAwake()
 	{
+		instance = this;
+
 		base.OnAwake();
 
 		LoadClothing();
@@ -26,9 +31,13 @@ public class MainMenuCharacter : Component
 
 	void LoadClothing()
 	{
-		var avatarJson = Connection.Local.GetUserData("avatar");
-		var clothing = new ClothingContainer();
-		clothing.Deserialize(avatarJson);
-		clothing.Apply(bodyRenderer);
+		var clothingContainer = CitizenSettings.instance.GetPlayerClothingContainer();
+		clothingContainer.Apply(bodyRenderer);
+	}
+
+	public void Refresh()
+	{
+		Log.Info($"MainMenuCharacter::Refresh()");
+		LoadClothing();
 	}
 }

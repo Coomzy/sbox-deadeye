@@ -50,7 +50,8 @@ public class Player_TD : Component
 
 		Mouse.Visible = true;
 
-		LoadClothing();
+		var clothingContainer = CitizenSettings.instance.GetPlayerClothingContainer();
+		clothingContainer.Apply(bodyRenderer);
 
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
@@ -63,9 +64,6 @@ public class Player_TD : Component
 
 		Apply_Weapon();
 		GoToNextRoom();
-		Log.Info($"thirdPersonAnimationHelper.MoveRotationSpeed: {thirdPersonAnimationHelper.MoveRotationSpeed}");
-		thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
-		Log.Info($"thirdPersonAnimationHelper.MoveRotationSpeed: {thirdPersonAnimationHelper.MoveRotationSpeed}");
 	}
 
 	void Apply_Weapon()
@@ -96,14 +94,6 @@ public class Player_TD : Component
 		}
 
 		weapon = weaponGameObject.Components.Get<Weapon>();
-	}
-
-	void LoadClothing()
-	{
-		var avatarJson = Connection.Local.GetUserData("avatar");
-		var clothing = new ClothingContainer();
-		clothing.Deserialize(avatarJson);
-		clothing.Apply(bodyRenderer);
 	}
 
 	void GoToNextRoom()

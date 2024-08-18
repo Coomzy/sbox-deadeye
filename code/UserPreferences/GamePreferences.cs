@@ -8,7 +8,7 @@ using Sandbox.Audio;
 
 public class GamePreferences : UserPreferences<GamePreferences>
 {
-	public bool useOneHandedMode { get; set; }
+	public bool useOriginalClothing { get; set; } = false;
 
 	public float gameVolume { get; set; } = 1.0f;
 	public float musicVolume { get; set; } = 0.35f;
@@ -35,6 +35,23 @@ public class GamePreferences : UserPreferences<GamePreferences>
 		{
 			mixerUI.Volume = uiVolume;
 		}
+	}
+
+	public void UseOriginalClothing(bool isUsing)
+	{
+		useOriginalClothing = isUsing;
+		Save();
+		if (MainMenuCharacter.instance != null)
+		{
+			MainMenuCharacter.instance.Refresh();
+		}
+	}
+
+	public void MuteMusic(bool mute)
+	{
+		muteMusic = mute;
+		ApplyVolumesToMixers();
+		Save();
 	}
 
 	public void ToggleMusic()

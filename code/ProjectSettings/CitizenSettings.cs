@@ -5,6 +5,7 @@ using System;
 using Sandbox;
 using static Sandbox.Clothing;
 using static Sandbox.Gizmo;
+using static Sandbox.ClothingContainer;
 
 public enum TargetType
 {
@@ -50,6 +51,9 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 	[Group("Character"), Property] public Curve randomHeightCurve { get; set; }
 	[Group("Character"), Property] public Curve randomDuckHeightBadGuyCurve { get; set; }
 	[Group("Character"), Property] public Curve randomDuckHeightGoodGuyCurve { get; set; }
+
+	[Group("Cowboy"), Property] public List<Clothing> cowboyClothing { get; private set; }
+	[Group("Cowboy"), Property] public List<Clothing> whitelistCowboyClothing { get; private set; }
 
 	[Group("Clothing - Hat"), Property, InlineEditor] public CitizenClothingCategory hat { get; set; }
 	[Group("Clothing - Hair"), Property, InlineEditor] public CitizenClothingCategory hair { get; set; }
@@ -214,5 +218,48 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 
 		Log.Error($"ClothingCategoryToInternalCategory() known ClothingCategory: {clothingCategory}");
 		return null;
+	}
+
+	public ClothingContainer GetPlayerClothingContainer()
+	{
+		var avatarJson = Connection.Local.GetUserData("avatar");
+		var clothingContainer = new ClothingContainer();
+		clothingContainer.Deserialize(avatarJson);
+
+		if (GamePreferences.instance.useOriginalClothing)
+		{
+			return clothingContainer;
+		}
+
+		var originalClothing = new List<ClothingEntry>(clothingContainer.Clothing);
+		foreach (var clothingItem in originalClothing)
+		{
+			if (clothingItem.Clothing.Category == Clothing.ClothingCategory.Hair)
+			{
+				continue;
+			}
+			if (clothingItem.Clothing.Category == Clothing.ClothingCategory.Facial)
+			{
+				continue;
+			}
+			if (CitizenSettings.instance.whitelistCowboyClothing.Contains(clothingItem.Clothing))
+			{
+				continue;
+			}
+
+			clothingContainer.Toggle(clothingItem.Clothing);
+		}
+
+		foreach (var clothing in CitizenSettings.instance.cowboyClothing)
+		{
+			if (clothingContainer.Has(clothing))
+			{
+				continue;
+			}
+
+			clothingContainer.Toggle(clothing);
+		}
+
+		return clothingContainer;
 	}
 }

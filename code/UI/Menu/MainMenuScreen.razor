@@ -5,7 +5,7 @@
 @inherits PanelComponent
 
 <root class="menu">
-	<div class="title">Shoot or Don't Shoot</div>
+	<!--<div class="title">DEADEYE</div>-->
 
 	<div class="container">
 		<div class="buttons">
@@ -14,6 +14,7 @@
 				<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>
 				<div class="button blue" onclick="@(() => ButtonLeaderboards())">Leaderboards</div>
 				<div class="button indigo" onclick="@(() => ButtonHowToPlay())">How to play</div>
+				<div class="button brown" onclick="@(() => ButtonSettings())">Settings</div>
 				<div class="button red" onclick="@(() => Quit())">Quit</div>
 			</div>
 		</div>
@@ -73,16 +74,16 @@
 		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
-	/*void ButtonSettings()
-	{
-		MainMenu.instance.SetMenuState(MenuState.Settings);
-		var soundHandle = Sound.Play("ui.button.press");
-		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
-	}*/
-
 	void ButtonHowToPlay()
 	{
 		MainMenu.instance.SetMenuState(MenuState.HowToPlay);
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+	}
+
+	void ButtonSettings()
+	{
+		MainMenu.instance.SetMenuState(MenuState.Settings);
 		var soundHandle = Sound.Play("ui.button.press");
 		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}

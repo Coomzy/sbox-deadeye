@@ -1,4 +1,5 @@
 ﻿@using Sandbox;
+@using Sandbox.Audio;
 @using Sandbox.UI;
 @using Sandbox.Services;
 @using System;
@@ -111,7 +112,8 @@
 	void ButtonBack()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Main);
-		Sound.Play("ui.navigate.back");
+        var soundHandle = Sound.Play("ui.navigate.back");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}
 
 	/// <summary>

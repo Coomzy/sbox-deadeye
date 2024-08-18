@@ -1,49 +1,115 @@
 ﻿@using Sandbox;
+@using Sandbox.Audio;
 @using Sandbox.UI;
+@using Sandbox.Services;
 @using System;
 @inherits PanelComponent
 
 <root class="menu">
-	<div class="container">
-		<div class="buttons">
-				<div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
-			@* <div class="button-bg">
-			</div> *@
-		</div>
-		<div class="content">
-			<div class="title">
-				<span>Settings</span>
-			</div>
-		</div>
+    <div class="container">
+        <div class="buttons">
+            <div class="button-bg">
+                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+            </div>
+        </div>
+        <div class="content bg">
+            <div class="title">
+                <span>Settings</span>
+            </div>
+            <div class="buttons">
+                <div class="label">Use Original Clothing:</div>
+                <div class="button @useOriginalClothingColorOff singular" onclick="@(() => SetUseOriginalClothing(false))">Off</div>
+                <div class="button @useOriginalClothingColorOn singular" onclick="@(() => SetUseOriginalClothing(true))">On</div>
+            </div>
+            
+            <div class="slider">
+                <div class="slider-label">Game Volume:</div>
+                <SliderControl Value="@(gameSliderValue)" OnValueChanged="@(OnGameSliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
+            </div>
+            
+            <div class="slider">
+                <div class="slider-label">Music Volume:</div>
+                <SliderControl Value="@(musicSliderValue)" OnValueChanged="@(OnMusicSliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
+            </div>
+            
+            <div class="slider">
+                <div class="slider-label">UI Volume:</div>
+                <SliderControl Value="@(uiSliderValue)" OnValueChanged="@(OnUISliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
+            </div>
 
-		<div class="buttons">
-			<div class="label">One Handed Mode:</div>
-			<div class="button @oneHandedColorOff singular" onclick="@(() => SetOneHandedMode(false))">Off</div>
-			<div class="button @oneHandedColorOn singular" onclick="@(() => SetOneHandedMode(true))">On</div>
-		</div>
-	</div>
+            <div class="buttons">
+                <div class="label">Mute Music:</div>
+                <div class="button @muteMusicOff singular" onclick="@(() => SetMuteMusic(false))">Off</div>
+                <div class="button @muteMusicOn singular" onclick="@(() => SetMuteMusic(true))">On</div>
+            </div>
+    </div>
 </root>
 
 @code
 {
-	string oneHandedColorOff => GamePreferences.instance.useOneHandedMode ? "gray" : "red";
-	string oneHandedColorOn => GamePreferences.instance.useOneHandedMode ? "green" : "gray";
+    string useOriginalClothingColorOff => GamePreferences.instance.useOriginalClothing ? "gray" : "red";
+    string useOriginalClothingColorOn => GamePreferences.instance.useOriginalClothing ? "green" : "gray";
 
-	void ButtonBack()
-	{
-		MainMenu.instance.SetMenuState(MenuState.Main);
-		Sound.Play("ui.navigate.back");
-	}
+    string muteMusicOff => GamePreferences.instance.muteMusic ? "gray" : "red";
+    string muteMusicOn => GamePreferences.instance.muteMusic ? "green" : "gray";
 
-	void SetOneHandedMode(bool enabled)
-	{
-		GamePreferences.instance.useOneHandedMode = enabled;
-		GamePreferences.instance.Save();
-		Sound.Play("ui.button.press");
-	}
+    float gameSliderValue = 0.5f;
+    float musicSliderValue = 0.5f;
+    float uiSliderValue = 0.5f;
 
-	/// <summary>
+    protected override void OnAwake()
+    {
+        base.OnAwake();
+
+        gameSliderValue = GamePreferences.instance.gameVolume;
+        musicSliderValue = GamePreferences.instance.musicVolume;
+        uiSliderValue = GamePreferences.instance.uiVolume;
+    }
+
+    void ButtonBack()
+    {
+        MainMenu.instance.SetMenuState(MenuState.Main);
+        var soundHandle = Sound.Play("ui.navigate.back");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+    }
+
+    void OnGameSliderChange(float value)
+    {
+        GamePreferences.instance.gameVolume = value;
+        GamePreferences.instance.ApplyVolumesToMixers();
+        GamePreferences.instance.Save();
+    }
+
+    void OnMusicSliderChange(float value)
+    {
+        GamePreferences.instance.musicVolume = value;
+        GamePreferences.instance.ApplyVolumesToMixers();
+        GamePreferences.instance.Save();
+    }
+
+    void OnUISliderChange(float value)
+    {
+        GamePreferences.instance.uiVolume = value;
+        GamePreferences.instance.ApplyVolumesToMixers();
+        GamePreferences.instance.Save();
+    }
+
+    void SetUseOriginalClothing(bool enabled)
+    {
+        GamePreferences.instance.UseOriginalClothing(enabled);
+        var soundHandle = Sound.Play("ui.button.press");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+    }
+
+    void SetMuteMusic(bool enabled)
+    {
+        GamePreferences.instance.MuteMusic(enabled);
+        var soundHandle = Sound.Play("ui.button.press");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+    }
+
+    /// <summary>
     /// update every second
     /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+    protected override int BuildHash() => System.HashCode.Combine(RealTime.Now.CeilToInt());
 }

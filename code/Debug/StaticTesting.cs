@@ -28,7 +28,7 @@ public class StaticTesting : Component
 	[Button("Test Log")]
 	public void Test_log()
 	{
-		Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
+		//Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
 	}
 
 	[Button("Test")]
@@ -38,14 +38,14 @@ public class StaticTesting : Component
 		//Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
 		//Log.Info($"GamePreferences.instance = {GamePreferences._instance}");
 
-		var inst = GamePreferences.instance;
-		inst.useOneHandedMode = useOneHandedMode;
+		//var inst = GamePreferences.instance;
+		//inst.useOneHandedMode = useOneHandedMode;
 		//Log.Info($"Before: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
 		//Log.Info($"inst.instance.useOneHandedMode = {inst.useOneHandedMode}");
 		//Log.Info($"GamePreferences.instance = {GamePreferences._instance}");
-		inst.Save();
+		//inst.Save();
 
-		FileSystem.Data.WriteJson("Test.json", inst);
+		//FileSystem.Data.WriteJson("Test.json", inst);
 
 		//Log.Info($"After: GamePreferences.instance.useOneHandedMode = {GamePreferences.instance.useOneHandedMode}");
 		//Log.Info($"GamePreferences.instance = {GamePreferences._instance}");

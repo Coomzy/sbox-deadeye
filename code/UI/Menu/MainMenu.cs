@@ -17,6 +17,7 @@ public enum MenuState
 	Stats,
 	Leaderboards,
 	HowToPlay,
+	Settings,
 }
 
 public enum SplineRotationType
@@ -167,9 +168,9 @@ public class MainMenu : Component
 			case MenuState.LevelSelect:
 				selected = levelSelectScreen;
 				break;
-			/*case MenuState.Settings:
+			case MenuState.Settings:
 				selected = settingsScreen;
-				break;*/
+				break;
 			case MenuState.Stats:
 				selected = statsScreen;
 				GetLeaderboard();
@@ -202,6 +203,7 @@ public class MainMenu : Component
 			case MenuState.LevelSelect:
 			case MenuState.Leaderboards:
 			case MenuState.Stats:
+			case MenuState.Settings:
 				VARotationType = SplineRotationType.None;
 				VASplineMoveSpeed = 2f;
 				VASpline = SideViewSpline;

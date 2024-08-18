@@ -185,9 +185,9 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "23f4a89c-37c5-4762-b064-290b0e60dc5c",
           "BodyGroups": 18446744073709551615,
-          "Model": "models/title_3d_text.vmdl",
-          "RenderType": "ShadowsOnly",
-          "Tint": "1,1,1,1"
+          "Model": "models/title_3d_text._deadeye.vmdl",
+          "RenderType": "On",
+          "Tint": "0.08837,0.04713,0,1"
         }
       ]
     },
@@ -216,7 +216,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "8edb4acb-2067-44ca-9d61-cdd680288b0d",
+            "component_id": "61f9698d-31fb-4cab-b546-e835fb496e12",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1121,7 +1121,7 @@
     },
     {
       "__guid": "1f584965-587a-419b-837d-c393b13c6089",
-      "Flags": 32,
+      "Flags": 0,
       "Name": "Map",
       "Enabled": true,
       "Components": [
@@ -1134,7 +1134,8 @@
           "NoOrigin": false,
           "UseMapFromLaunch": false
         }
-      ]
+      ],
+      "Children": []
     },
     {
       "__guid": "787f7e91-0b0f-45a7-9136-afe3c7a6e0d9",
@@ -1334,7 +1335,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "ac5be8f5-4d09-4efd-9431-e4f058449817",
+                    "component_id": "cff41e1c-43f3-4485-9343-50dbbb31a6a8",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -1404,7 +1405,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "ac5be8f5-4d09-4efd-9431-e4f058449817",
+                    "component_id": "cff41e1c-43f3-4485-9343-50dbbb31a6a8",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
