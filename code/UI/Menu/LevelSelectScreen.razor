@@ -61,10 +61,6 @@
 								<div class="row">
 									<div class="column">
 										<div class="misc">
-											<p class="kvp civs">
-												<span class="key">Maximum Civilian Casualties: </span>
-												<span class="value">@level.allowedCivilianCasualties</span>
-											</p>
 											<p class="kvp best">
 												@if (!(level.GetBestTime() >= float.MaxValue))
 												{
@@ -102,11 +98,17 @@
 										</div>
 									</div>
 									<div class="column">
-										<div class="buttons">
-											<div class="button red" onclick="@(() => StartActiveLevel())">Play</div>
+										<div class="misc">
+											<p class="kvp civs">
+												<span class="key">Maximum Civilian Casualties: </span>
+												<span class="value">@level.allowedCivilianCasualties</span>
+											</p>
 										</div>
 									</div>
 								</div>
+							</div>
+							<div class="buttons">
+								<div class="button red" onclick="@(() => StartActiveLevel())">Play</div>
 							</div>
 						</div>
 					</div>
