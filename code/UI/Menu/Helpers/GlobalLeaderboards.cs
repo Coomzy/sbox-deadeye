@@ -89,6 +89,7 @@ public class GlobalLeaderboards : Component
 	[Button("Get Global Leaderboard")]
 	public void GetGlobalLeaderboard()
 	{
+		isRefreshing = false;
 		if (isRefreshing)
 			return;
 
@@ -107,7 +108,7 @@ public class GlobalLeaderboards : Component
 
 		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Friends);
 		
-		List<PlayerStats> leaderboardPlayerStats = new List<PlayerStats>();
+		/*List<PlayerStats> leaderboardPlayerStats = new List<PlayerStats>();
 		foreach (var entry in board.Entries)
 		{
 			//string log = $"[{entry.Rank}] {entry.DisplayName} - {entry.Value} - Me: {entry.Me}";
@@ -125,7 +126,7 @@ public class GlobalLeaderboards : Component
 			{
 				await Task.Frame();
 			}
-		}
+		}*/
 
 		//await Stats.Global.Refresh();
 
@@ -133,8 +134,8 @@ public class GlobalLeaderboards : Component
 		for (int i = 0; i < board.Entries.Length; i++)
 		{
 			var boardEntry = board.Entries[i];
-			var playerStats = leaderboardPlayerStats[i];
-			var lowestMedalStat = playerStats.Get(GameStats.LOWEST_MEDAL);
+			//var playerStats = leaderboardPlayerStats[i];
+			//var lowestMedalStat = playerStats.Get(GameStats.LOWEST_MEDAL);
 
 			var leaderboardEntry = new GlobalLeaderboardEntry();
 
@@ -142,11 +143,12 @@ public class GlobalLeaderboards : Component
 			leaderboardEntry.displayName = boardEntry.DisplayName;
 			leaderboardEntry.combinedTimeRaw = boardEntry.Value;
 			leaderboardEntry.isMe = boardEntry.Me;
-			leaderboardEntry.medalType = (MedalType)(int)lowestMedalStat.Value;
+			//leaderboardEntry.medalType = (MedalType)(int)lowestMedalStat.Value;
 
 			globalLeaderboards.Add(leaderboardEntry);
 
-			string log = $"[{boardEntry.Rank}] {boardEntry.DisplayName} - combined time: {boardEntry.Value} - lowestMedalStat.Value: {lowestMedalStat.Value} - Me: {boardEntry.Me}";
+			string log = $"[{boardEntry.Rank}] {boardEntry.DisplayName} - combined time: {boardEntry.Value} - Me: {boardEntry.Me}";
+			//string log = $"[{boardEntry.Rank}] {boardEntry.DisplayName} - combined time: {boardEntry.Value} - lowestMedalStat.Value: {lowestMedalStat.Value} - Me: {boardEntry.Me}";
 			Log.Info(log);
 			//logs.Add(log);
 		}

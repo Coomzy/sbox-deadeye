@@ -52,10 +52,10 @@ public class StatAndLeaderboardTest : Component
 	[Button("GetLeaderboard")]
 	async void GetLeaderboard()
 	{
-		var board = await GameLeaderboards.GetLeaderboard("level-original", LeaderboardGroup.Global, 10);
+		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Global, 10);
+		//var board = await GameLeaderboards.GetLeaderboard("level-original", LeaderboardGroup.Friends, 10);
 
-		Log.Info($"Got board {board.DisplayName}, {board.Title}");
-		Log.Info($"Board has {board.TotalEntries} total entries!");
+		Log.Info($"Board: {board.DisplayName}, Group: {board.Title}, entries: {board.TotalEntries}");
 
 		foreach (var e in board.Entries)
 		{

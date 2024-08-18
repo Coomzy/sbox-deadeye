@@ -20,8 +20,6 @@ public class LevelData : GameResource
 	static Dictionary<string, LevelData> sceneNameToLevelData { get; set; } = new Dictionary<string, LevelData>(StringComparer.OrdinalIgnoreCase);
 	public static LevelData active { get; private set; }
 
-	// TODO: Figure out how to reference a scene file so we can use this for the dictionary because scene.Name doesn't work in game builds
-	// Then we'll use scene.Title instead of scene.Name
 	[Category("Setup"), Property] public SceneFile scene { get; set; }
 	[Category("Setup"), Property] public GameMode gameMode { get; set; } = GameMode.TopDown;
 
@@ -71,7 +69,7 @@ public class LevelData : GameResource
 	{
 		if (scene == null)
 		{
-			Log.Info($"Register() scene was null for LevelData '{this.ResourceName}'");
+			Log.Info($"Register() scene was null for LevelData '{ResourceName}'");
 			return;
 		}
 
@@ -97,13 +95,12 @@ public class LevelData : GameResource
 
 	public bool HasCompletedLevel()
 	{
-		if (GameSave.instance == null || LevelData.active == null)
+		if (GameSave.instance == null)
 		{
-			Log.Info("FIXME: This needs to be fixed since GameSave/LevelData here (menu)");
 			return true;
 		}
 
-		if (GameSave.instance.levelNameToBestTime.TryGetValue(LevelData.active.ResourceName, out float savedBestTime))
+		if (GameSave.instance.levelNameToBestTime.TryGetValue(ResourceName, out float savedBestTime))
 		{
 			return true;
 		}
@@ -113,13 +110,12 @@ public class LevelData : GameResource
 
 	public float GetBestTime()
 	{
-		if (GameSave.instance == null || LevelData.active == null)
+		if (GameSave.instance == null)
 		{
-			Log.Warning("FIXME: GameInstance/LevelData is null (menu)?");
 			return float.MaxValue;
 		}
 
-		if (GameSave.instance.levelNameToBestTime.TryGetValue(LevelData.active.ResourceName, out float savedBestTime))
+		if (GameSave.instance.levelNameToBestTime.TryGetValue(ResourceName, out float savedBestTime))
 		{
 			return savedBestTime;
 		}
@@ -199,7 +195,6 @@ public class LevelDataSystem : GameObjectSystem
 		LevelData.SetActiveLevelData();
 	}
 }
-
 
 public static class LevelDataExtension
 {

@@ -40,6 +40,12 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 	[Group("Medals"), Property] public Color goldColour { get; set; } = new Color(0xFF00D7FF);
 	[Group("Medals"), Property] public Color onyxColour { get; set; } = new Color(0xFF393835);
 
+	[Group("Medals"), Property, ImageAssetPath] public string noneImage { get; set; } = "";
+	[Group("Medals"), Property, ImageAssetPath] public string bronzeImage { get; set; } = "textures/medals/medal_bronze.psd";
+	[Group("Medals"), Property, ImageAssetPath] public string silverImage { get; set; } = "textures/medals/medal_silver.psd";
+	[Group("Medals"), Property, ImageAssetPath] public string goldImage { get; set; } = "textures/medals/medal_gold.psd";
+	[Group("Medals"), Property, ImageAssetPath] public string onyxImage { get; set; } = "textures/medals/medal_platinum.psd";
+
 	[Group("Time"), Property] public float civilianKilledTimePenalty { get; set; } = 5.0f;
 	[Group("Time"), Property] public float simulatedReactTime { get; set; } = 0.25f;
 
@@ -67,6 +73,23 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 		}
 
 		return CitizenAnimationHelper.HoldTypes.None;
+	}
+
+	public string GetMedalImage(MedalType medalType)
+	{
+		switch (medalType)
+		{
+			case MedalType.Bronze:
+				return bronzeImage;
+			case MedalType.Silver:
+				return silverImage;
+			case MedalType.Gold:
+				return goldImage;
+			case MedalType.Onyx:
+				return onyxImage;
+		}
+
+		return noneImage;
 	}
 
 	public Color GetMedalColour(MedalType medalType)

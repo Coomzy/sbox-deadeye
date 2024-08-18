@@ -3,21 +3,24 @@ using System.Reflection;
 
 public static class EditorMenu_Scenes
 {
+	// HACK: I don't know how to clear the menu and don't know a better event to use, this will do for now
+	public static bool hasInited = false;
+
 	[Event("refresh")]
 	public static void RegisterTopDownLevels()
 	{
-		Log.Info("Editor Event 'refresh' called, doing RegisterTopDownLevels()");
-		Type menuAttributeType = typeof(MenuAttribute);
-		FieldInfo targetsFieldInfo = menuAttributeType.GetField("Targets", BindingFlags.NonPublic | BindingFlags.Static);
+		if (hasInited)
+			return;
+		hasInited = true;
 
+		//Log.Info("Editor Event 'refresh' called, doing RegisterTopDownLevels()");
+		FieldInfo targetsFieldInfo = typeof(MenuAttribute).GetField("Targets", BindingFlags.NonPublic | BindingFlags.Static);
 		if (targetsFieldInfo == null)
 		{
-			Log.Info("Field 'Targets' not found.");
 			return;
 		}
 
 		var targetsValue = targetsFieldInfo.GetValue(null) as Dictionary<string, MenuBar>;
-
 		if (targetsValue == null)
 		{
 			return;
@@ -33,12 +36,12 @@ public static class EditorMenu_Scenes
 			return;
 		}
 
-		var scenePaths = editorMenuBar.GetPathTo("Scenes/");
+		/*var scenePaths = editorMenuBar.GetPathTo("Scenes/");
 
 		if (scenePaths != null && scenePaths.Count > 0)
 		{
 			editorMenuBar.RemovePath("Scenes/");
-		}
+		}*/
 		//editorMenuBar.RemovePath("Scenes");
 
 		if (GameSettings.instance.menuLevel != null)

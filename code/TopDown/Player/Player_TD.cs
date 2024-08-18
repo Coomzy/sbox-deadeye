@@ -63,6 +63,9 @@ public class Player_TD : Component
 
 		Apply_Weapon();
 		GoToNextRoom();
+		Log.Info($"thirdPersonAnimationHelper.MoveRotationSpeed: {thirdPersonAnimationHelper.MoveRotationSpeed}");
+		thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
+		Log.Info($"thirdPersonAnimationHelper.MoveRotationSpeed: {thirdPersonAnimationHelper.MoveRotationSpeed}");
 	}
 
 	void Apply_Weapon()
@@ -176,7 +179,7 @@ public class Player_TD : Component
 		thirdPersonAnimationHelper.WithWishVelocity(Vector3.Zero);
 		thirdPersonAnimationHelper.WithVelocity(Vector3.Zero);
 
-		Game.ActiveScene.TimeScale = 0.25f;
+		//Game.ActiveScene.TimeScale = 0.25f;
 
 		RoomManager.instance.currentRoom.Activate();
 		NextTarget();

@@ -491,5 +491,13 @@ public class CitizenVisuals : Component
 		{
 			weapon.Drop();
 		}
+
+		DisableRagdoll();
+	}
+
+	async void DisableRagdoll()
+	{
+		await Task.DelayRealtimeSeconds(5.0f);
+		bodyPhysics.PhysicsGroup.Sleeping = true;
 	}
 }

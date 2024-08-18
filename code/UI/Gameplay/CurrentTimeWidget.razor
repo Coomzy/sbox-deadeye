@@ -5,13 +5,15 @@
 
 <root>
 	<div class="container">
-		<div @ref=medal class ="circle"></div>
+		<!--<div @ref=medal class="circle"></div>-->
+		<img src=@GetCurrentMedalImage() style="width: 200px; height: 200px;" />
 		<div class="title">@GetRemainingReactTime()</div>
 	</div>
 </root>
 
 @code
 {
+	[Property, ImageAssetPath] public string test { get; set; }
 	protected Panel medal;
 
 	string GetRemainingReactTime()
@@ -22,13 +24,23 @@
 			return " ";
 		}
 
-
-		var currentMedal = GamePlayManager.instance.currentMedal;
-		medal.Style.BackgroundColor = GameSettings.instance.GetMedalColour(currentMedal);
-
 		var levelTime = GamePlayManager.instance.levelTime;
 		var formattedTime = FormatTime(levelTime);
 		return formattedTime;
+	}
+
+
+	string GetCurrentMedalImage()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			// HACK: Just doing "" didn't seem to make the UI disappear, maybe it doesn't create a valid hash or something?
+			return " ";
+		}
+
+		var currentMedal = GamePlayManager.instance.currentMedal;
+		var medalImage = GameSettings.instance.GetMedalImage(currentMedal);
+		return medalImage;
 	}
 
 	public string FormatTime(float time)

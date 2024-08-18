@@ -70,6 +70,19 @@
           "logs": []
         }
       ]
+    },
+    {
+      "__guid": "fc45be54-2a9e-45eb-ae5c-74fd0cc1a4ae",
+      "Flags": 0,
+      "Name": "Stat And Leaderboard Test",
+      "Position": "-238.0842,721.7921,455.1576",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "StatAndLeaderboardTest",
+          "__guid": "ce5a9bf5-463d-4a55-8b29-efdb32a31378"
+        }
+      ]
     }
   ],
   "SceneProperties": {
