@@ -65,7 +65,7 @@
 												@if (!(level.GetBestTime() >= float.MaxValue))
 												{
 													<span class="key">Best Time: </span>
-													<span class="value">@String.Format("{0:.00}", @level.GetBestTime())</span>
+													<span class="value">@UIManager.FormatTime(level.GetBestTime())</span>
 												}
 											</p>
 											<p class="medals">
