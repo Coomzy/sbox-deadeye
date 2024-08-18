@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Sandbox.Services;
 using static Sandbox.Gizmo;
+using System.Threading;
 
 public enum LeaderboardGroup
 {
@@ -48,14 +49,19 @@ public static class GameLeaderboards
 		Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{value}'");
 	}
 
-	public static async Task<Leaderboards.Board> GetLeaderboard(string leaderboardName, LeaderboardGroup group, int maxEntries = 10)
+	public static async Task<Leaderboards.Board> GetLeaderboard(string leaderboardName, LeaderboardGroup group, CancellationToken cancellationToken)
+	{
+		return await GetLeaderboard(leaderboardName, group, 10, cancellationToken);
+	}
+
+	public static async Task<Leaderboards.Board> GetLeaderboard(string leaderboardName, LeaderboardGroup group, int maxEntries, CancellationToken cancellationToken)
 	{
 		var board = Sandbox.Services.Leaderboards.Get(leaderboardName);
 
 		board.MaxEntries = maxEntries;
 		board.Group = GetLeaderboardGroup(group);
 
-		await board.Refresh();
+		await board.Refresh(cancellationToken);
 
 		return board;
 	}

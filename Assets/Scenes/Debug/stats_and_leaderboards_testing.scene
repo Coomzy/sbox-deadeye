@@ -48,16 +48,28 @@
       ]
     },
     {
-      "__guid": "8e4bdaa6-62aa-491f-b340-d0b02f6e335a",
+      "__guid": "fc45be54-2a9e-45eb-ae5c-74fd0cc1a4ae",
       "Flags": 0,
-      "Name": "Global Leaderboards",
-      "Position": "0,0,100",
+      "Name": "Stat And Leaderboard Test",
+      "Position": "-238.0842,721.7921,455.1576",
+      "Components": [
+        {
+          "__type": "StatAndLeaderboardTest",
+          "__guid": "ce5a9bf5-463d-4a55-8b29-efdb32a31378"
+        }
+      ]
+    },
+    {
+      "__guid": "573d6dd6-584b-4d0b-afa9-c6d4bb95d382",
+      "Flags": 0,
+      "Name": "CombinedTime Leaderboards",
+      "Position": "-238.0842,721.7921,455.1576",
       "Enabled": true,
       "Components": [
         {
-          "__type": "GlobalLeaderboards",
-          "__guid": "1d051ea0-216a-402a-8806-a686fa94c061",
-          "globalLeaderboards": [
+          "__type": "CombinedTimeLeaderboards",
+          "__guid": "436362ca-e347-4ea1-ae62-30e426e91431",
+          "entries": [
             {
               "rank": 1,
               "displayName": "Coomzy",
@@ -66,21 +78,44 @@
               "isMe": true
             }
           ],
-          "isRefreshing": false,
+          "isRefreshing": false
+        },
+        {
+          "__type": "CombinedTimeLeaderboardsGizmo",
+          "__guid": "9f8ae5cd-7cdb-4c78-a1fe-d3ce2ce473cf",
+          "combinedTimeLeaderboards": {
+            "_type": "component",
+            "component_id": "436362ca-e347-4ea1-ae62-30e426e91431",
+            "go": "573d6dd6-584b-4d0b-afa9-c6d4bb95d382",
+            "component_type": "CombinedTimeLeaderboards"
+          },
           "logs": []
         }
       ]
     },
     {
-      "__guid": "fc45be54-2a9e-45eb-ae5c-74fd0cc1a4ae",
+      "__guid": "90d9d4cb-270f-4c77-8a63-2db37c223e08",
       "Flags": 0,
-      "Name": "Stat And Leaderboard Test",
+      "Name": "Level Leaderboards",
       "Position": "-238.0842,721.7921,455.1576",
       "Enabled": true,
       "Components": [
         {
-          "__type": "StatAndLeaderboardTest",
-          "__guid": "ce5a9bf5-463d-4a55-8b29-efdb32a31378"
+          "__type": "LevelLeaderboards",
+          "__guid": "59613066-f3c2-4e88-be62-a4a6510df36b",
+          "isRefreshing": false
+        },
+        {
+          "__type": "LevelLeaderboardsGizmo",
+          "__guid": "f6e2f766-6432-459f-8e1d-352d4a364f66",
+          "leaderboardGroup": "Global",
+          "levelLeaderboards": {
+            "_type": "component",
+            "component_id": "59613066-f3c2-4e88-be62-a4a6510df36b",
+            "go": "90d9d4cb-270f-4c77-8a63-2db37c223e08",
+            "component_type": "LevelLeaderboards"
+          },
+          "testLevelData": "scenes/topdown/original.ld"
         }
       ]
     }

@@ -6,14 +6,13 @@
 <root>
 	<div class="container">
 		<!--<div @ref=medal class="circle"></div>-->
-		<img src=@GetCurrentMedalImage() style="width: 200px; height: 200px;" />
+		<img src=@GetCurrentMedalImage() style="width: 200px; height: 200px; margin: -35px 0px -55px 0px" />
 		<div class="title">@GetRemainingReactTime()</div>
 	</div>
 </root>
 
 @code
 {
-	[Property, ImageAssetPath] public string test { get; set; }
 	protected Panel medal;
 
 	string GetRemainingReactTime()
@@ -25,10 +24,9 @@
 		}
 
 		var levelTime = GamePlayManager.instance.levelTime;
-		var formattedTime = FormatTime(levelTime);
+		var formattedTime = UIManager.FormatTime(levelTime);
 		return formattedTime;
 	}
-
 
 	string GetCurrentMedalImage()
 	{
@@ -42,15 +40,6 @@
 		var medalImage = GameSettings.instance.GetMedalImage(currentMedal);
 		return medalImage;
 	}
-
-	public string FormatTime(float time)
-	{
-		int minutes = (int)(time / 60);
-		float seconds = time % 60;
-
-		return string.Format("{0:00}:{1:00.000}", minutes, seconds);
-	}
-
 
 	protected override int BuildHash() => System.HashCode.Combine(GetRemainingReactTime());
 }

@@ -43,6 +43,25 @@ public class LevelData : GameResource
 	public string artworkImageData { get; set; }
 
 	[Category("Leaderboard"), Property] public bool isLeaderboardLevel { get; set; } = true;
+	[Category("Leaderboard"), Property] public string statNameOverride { get; set; }
+
+	[Category("Leaderboard"), Property, ReadOnly]
+	public string statName
+	{
+		get
+		{
+			if (!isLeaderboardLevel)
+				return null;
+
+			if (statNameOverride != null)
+			{
+				return statNameOverride;
+			}
+
+			return $"{this.ResourceName}".ToLower();
+		}
+	}
+
 	[Category("Leaderboard"), Property, ReadOnly]
 	public string leaderboardName
 	{
@@ -51,7 +70,7 @@ public class LevelData : GameResource
 			if (!isLeaderboardLevel)
 				return null;
 
-			return $"level-{gameMode}-{this.ResourceName.ToLower()}";
+			return $"{statName}-lb".ToLower();
 		}
 	}
 

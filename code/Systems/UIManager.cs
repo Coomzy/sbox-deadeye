@@ -45,4 +45,17 @@ public class UIManager : Component
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
 		if (wonScreen != null) wonScreen.Enabled = true;
 	}
+
+	public static string FormatTime(double time)
+	{
+		return FormatTime((float)time);
+	}
+
+	public static string FormatTime(float time)
+	{
+		int minutes = (int)(time / 60);
+		float seconds = time % 60;
+
+		return string.Format("{0:00}:{1:00.000}", minutes, seconds);
+	}
 }
