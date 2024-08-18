@@ -71,19 +71,23 @@
 												}
 											</p>
 											<p class="medals">
-												<span class="key">Medal: </span>
+												@*<span class="key">Medal: </span>*@
 												<span class="value">
 													@if (medal == MedalType.None)
 													{
-														<span>None</span>
+														<span></span>
 													}
 													else
 													{
 														bool completed = true;
 														@foreach (var medalIt in Enum.GetValues<MedalType>())
 														{
+															string medalPath = GameSettings.instance.GetMedalImage(medalIt);
+														
 															if (medalIt == MedalType.None) continue;
-															<span title="@medalIt.ToString()" aria-label="@medalIt.ToString()" class="medal @medalIt.ToString()" style="@getMedalStyle(medalIt, completed)"></span>
+															<span class="medal @medalIt.ToString()" style="@getMedalStyle(medalIt, completed)">
+																<img src="@GameSettings.instance.GetMedalImage(medalIt)')" />
+															</span>
 															if (medalIt == medal) {
 																// Next have not been achieved
 																//break;
@@ -144,25 +148,21 @@
 
 @code
 {
-	string getMedalStyle(MedalType medal, bool completed)
-	{
-		string brightness = "100%";
-		string grayscale = "0";
-		string opacity = "1";
-		string backgroundcolor = GameSettings.instance.GetMedalColour(medal).Rgb;
-
-		if (!completed)
+		string getMedalStyle(MedalType medal, bool completed)
 		{
-			brightness = "200%";
-			opacity = "0.33";
-			grayscale = "0.8";
-		}
+			string brightness = "100%";
+			string grayscale = "50%";
+			string opacity = "1";
 
-		return String.Format(
-			"background: {0}; opacity: {1}; filter: brightness({2}), grayscale({3})",
-			backgroundcolor, opacity, brightness, grayscale
-		);
-	}
+			if (!completed)
+			{
+				brightness = "200%";
+				opacity = "0.33";
+				grayscale = "75%";
+			}
+
+			return $"opacity: {opacity}; filter: brightness({brightness}); filter: sepia({grayscale});";
+		}
 
 	bool StartActiveLevel()
 	{
