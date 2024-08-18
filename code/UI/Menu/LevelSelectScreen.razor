@@ -68,6 +68,13 @@
 													<span class="value">@UIManager.FormatTime(level.GetBestTime())</span>
 												}
 											</p>
+											<p class="kvp next">
+												@if (medal != MedalType.None && !(MathX.AlmostEqual(level.GetNextMedalTime(), 0.0f) || level.GetNextMedalTime() >= float.MaxValue))
+												{
+													<span class="key">Next Medal: </span>
+													<span class="value">@UIManager.FormatTime(level.GetNextMedalTime())</span>
+												}
+											</p>
 											<p class="medals">
 												@*<span class="key">Medal: </span>*@
 												<span class="value">

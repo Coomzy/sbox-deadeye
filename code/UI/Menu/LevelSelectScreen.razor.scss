@@ -181,7 +181,10 @@ LevelSelectScreen.menu {
 				font-size: 28px;
 				flex-direction: column;
 				flex-grow: 0;
-				
+
+				.kvp.best .key, .kvp.next .key {
+					width: 180px;
+				}
 
 				.key, .value {
 					margin: 0 0.2em;
