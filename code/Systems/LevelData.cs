@@ -112,6 +112,23 @@ public class LevelData : GameResource
 		return MedalType.Bronze;
 	}
 
+	public float MedalTypeToTime(MedalType medalType)
+	{
+		switch (medalType)
+		{
+			case MedalType.Onyx:
+				return onyxTime;
+			case MedalType.Gold:
+				return goldTime;
+			case MedalType.Silver:
+				return silverTime;
+			case MedalType.Bronze:
+				return 999.0f;
+		}
+
+		return 9999.0f;
+	}
+
 	public bool HasCompletedLevel()
 	{
 		if (GameSave.instance == null)
@@ -163,6 +180,49 @@ public class LevelData : GameResource
 			return MedalType.None;
 
 		return TimeToMedalType(GetBestTime());
+	}
+
+	public bool HasBestMedalType()
+	{
+		if (!HasCompletedLevel())
+		{
+			return false;
+		}
+
+		var bestMedal = GetBestTimeMedal();
+
+		if (bestMedal == MedalType.Onyx)
+			return true;
+
+		return false;
+	}
+
+	public MedalType GetNextMedalType()
+	{
+		if (!HasCompletedLevel())
+		{
+			return MedalType.Bronze;
+		}
+
+		var bestMedal = GetBestTimeMedal();
+
+		if (bestMedal == MedalType.Onyx)
+			return MedalType.Onyx;
+
+		bestMedal++;
+
+		return bestMedal;
+	}
+
+	public float GetNextMedalTime()
+	{
+		if (HasBestMedalType())
+			return 0.0f;
+
+		var nextMedalType = GetNextMedalType();
+		float nextTime = MedalTypeToTime(nextMedalType);
+
+		return nextTime;
 	}
 
 	public static LevelData GetSceneLevelData(Scene scene)
