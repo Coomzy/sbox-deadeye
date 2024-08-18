@@ -225,6 +225,13 @@ public class LevelData : GameResource
 		return nextTime;
 	}
 
+	public bool HasGotMedal(MedalType medalType)
+	{
+		var bestMedalType = GetBestTimeMedal();
+
+		return medalType <= bestMedalType;
+	}
+
 	public static LevelData GetSceneLevelData(Scene scene)
 	{
 		if (!Game.IsPlaying)
