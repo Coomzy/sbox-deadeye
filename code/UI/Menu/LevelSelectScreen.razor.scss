@@ -115,6 +115,7 @@ LevelSelectScreen.menu {
 
 		.level {
 			flex-shrink: 0;
+			flex-grow: 0;
 			border-radius: 25px;
 			padding: 25px;
 			margin: .5em;
@@ -122,6 +123,7 @@ LevelSelectScreen.menu {
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+			align-self: flex-start;
 
 			.button {
 				font-size: 40px;
@@ -178,6 +180,8 @@ LevelSelectScreen.menu {
 			.misc {
 				font-size: 28px;
 				flex-direction: column;
+				flex-grow: 0;
+				
 
 				.key, .value {
 					margin: 0 0.2em;
@@ -207,13 +211,15 @@ LevelSelectScreen.menu {
 			.table {
 				width: 100%;
 				flex-shrink: 1;
-				flex-grow: 1;
+				flex-grow: 0;
 				justify-content: center;
 
 				.row {
 					flex-direction: row;
 					width: 100%;
 					align-items: flex-start;
+					flex-grow: 0;
+					flex-shrink: 0;
 				}
 
 				.column {
@@ -225,7 +231,7 @@ LevelSelectScreen.menu {
 				.column:last-child {
 					align-items: flex-end;
 					justify-content: center;
-					height: 100%;
+					//height: 100%;
 				}
 			}
 		}
