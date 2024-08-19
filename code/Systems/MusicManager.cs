@@ -84,12 +84,12 @@ public class MusicManager : Component, IHotloadManaged
 			return;
 		}
 
-		tgtVolBass = 1.0f;
+		tgtVolGuitar = 1.0f;
 
 		if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
 		{
+			tgtVolBass = 0.0f;
 			tgtVolDrums = 0.0f;
-			tgtVolGuitar = 0.0f;
 			tgtVolInstruments = 0.0f;
 		}
 		else
@@ -104,14 +104,14 @@ public class MusicManager : Component, IHotloadManaged
 				return;
 			}
 
-			tgtVolDrums = 1.0f;
+			tgtVolBass = 1.0f;
 
 			float total = RoomManager.instance.rooms.Count;
 			float current = RoomManager.instance.roomIndex;
 
 			float pct = current / total;
 
-			tgtVolGuitar = (pct > 0.33f) ? 1.0f : 0.0f;
+			tgtVolDrums = (pct > 0.33f) ? 1.0f : 0.0f;
 			tgtVolInstruments = (pct > 0.66f) ? 1.0f : 0.0f;
 		}
 
