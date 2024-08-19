@@ -170,6 +170,10 @@ public class MusicManagerSystem : GameObjectSystem
 			musicManagerGO.Components.Create<MusicManager>();
 			Log.Info($"MusicManager.instance was null! Creating {musicManagerGO}");
 		}*/
+		if (!Game.IsEditor)
+		{
+			OnLevelLoaded();
+		}
 
 		Listen(Stage.SceneLoaded, -1, OnLevelLoaded, "OnLevelLoaded");
 	}
