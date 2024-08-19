@@ -161,7 +161,7 @@ public class Player_TD : Component
 	void DecidingStart()
 	{
 		thirdPersonAnimationHelper.IsWeaponLowered = true;
-		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Both;
+		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 
 		timeSinceStartedDecisionMaking = 0;
 		targets.Clear();

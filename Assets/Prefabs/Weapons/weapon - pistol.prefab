@@ -57,16 +57,15 @@
         "__guid": "d29dc4ab-931f-4e6e-a007-4c1d34303588",
         "Flags": 0,
         "Name": "Gun",
-        "Position": "2.799999,0,-5.799997",
-        "Scale": "2,2,2",
+        "Position": "5.351016,0.00000001598674,0.8557123",
         "Enabled": true,
         "Components": [
           {
             "__type": "Sandbox.SkinnedModelRenderer",
             "__guid": "33be6fb9-50af-43ca-af22-4beb403f8afb",
-            "BodyGroups": 17685,
+            "BodyGroups": 18446744073709551615,
             "CreateBoneObjects": false,
-            "Model": "models/weapons/sbox_pistol_usp/v_usp.vmdl",
+            "Model": "models/revolver_modern/wpn_revolver.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1",
             "UseAnimGraph": false
