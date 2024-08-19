@@ -55,6 +55,8 @@ public class MusicManager : Component, IHotloadManaged
 		//if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
 
 		MusicStart();
+
+		Log.Info($"AWAKE HERE {Time.Now}");
 	}
 
 	async void MusicStart()
