@@ -53,55 +53,39 @@
   "cowboyClothing": [
     "models/citizen_clothes/hat/cowboy_hat/cowboy_hat.clothing",
     "models/citizen_clothes/shirt/waistcoat_and_shirt/waistcoat_and_shirt.clothing",
-    "models/citizen_clothes/trousers/smarttrousers/trousers.smart.clothing",
-    "models/citizen_clothes/shoes/boots/black_boots.clothing"
-  ],
-  "whitelistCowboyClothing": [
-    "models/citizen_clothes/hat/cowboy_hat/cowboy_hat.clothing",
-    "models/citizen_clothes/shirt/waistcoat_and_shirt/waistcoat_and_shirt.clothing",
-    "models/citizen_clothes/trousers/smarttrousers/trousers.smart.clothing",
-    "models/citizen_clothes/shoes/boots/black_boots.clothing",
-    "models/citizen_clothes/hat/bandana_mask/bandana_mask.clothing",
-    "models/citizen_clothes/hat/eye_cover/eye_cover.clothing",
-    "models/citizen_clothes/necklace/necklace/necklace.clothing",
-    "models/citizen_clothes/trousers/loosetrousers/loose_trousers.clothing",
+    "models/citizen_clothes/trousers/jeans/jeans.clothing",
     "models/citizen_clothes/shoes/smartshoes/smartshoes.clothing"
   ],
+  "whitelistCowboyClothing": [],
+  "useClothingCategoriesForWhitelist": true,
   "hat": {
-    "chanceOf": 1,
+    "chanceOf": 0.8,
     "clothing": [
       {
         "clothing": "models/citizen_clothes/hat/bandana_mask/bandana_mask.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
+        "chanceForGoodGuy": 0.05,
+        "chanceForBadGuy": 0.35,
         "tintMode": "Allow",
         "tintSelection": []
       },
       {
         "clothing": "models/citizen_clothes/hat/cowboy_hat/cowboy_hat.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
+        "chanceForGoodGuy": 0.8,
+        "chanceForBadGuy": 0.8,
         "tintMode": "Allow",
         "tintSelection": []
       },
       {
         "clothing": "models/citizen_clothes/hat/eye_cover/eye_cover.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
+        "chanceForGoodGuy": 0.05,
+        "chanceForBadGuy": 0.35,
         "tintMode": "Allow",
         "tintSelection": []
       },
       {
         "clothing": "models/citizen_clothes/hat/flatcap/flatcap.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/necklace/necklace/necklace.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
+        "chanceForGoodGuy": 0.2,
+        "chanceForBadGuy": 0.15,
         "tintMode": "Allow",
         "tintSelection": []
       }
@@ -109,7 +93,7 @@
     "tintSelection": []
   },
   "hair": {
-    "chanceOf": 0.6,
+    "chanceOf": 0.75,
     "clothing": [
       {
         "clothing": "models/citizen_clothes/hair/hair_balding/hair_baldingbrown.clothing",
@@ -120,13 +104,6 @@
       },
       {
         "clothing": "models/citizen_clothes/hair/hair_bobcut/hair_bobcut.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/hair_dreaded/hair_dreaded.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -148,13 +125,6 @@
       },
       {
         "clothing": "models/citizen_clothes/hair/hair_long_bangs/hair_long_bangs.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/hair_long_dreadlocks/hair_long_dreadlocks.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -217,20 +187,6 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/hair/hair_pigtails/hair_pigtails.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/hair_ponytail/ponytail.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/hair/hair_scruffy_shaved_sides/scruffy_shaved_sides.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
@@ -238,14 +194,7 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/hair/hair_short_braids/hair_short_braids.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/hair_short_dreadlocks/short_dreadlocks.clothing",
+        "clothing": "models/citizen_clothes/hair/hair_ponytail/ponytail.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -280,20 +229,6 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/hair/hair_tied_braids/hair_tied_braids.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/hair_tied_dreads/hair_tied_dreads.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/hair/hair_tight_ponytail/hair_tight_ponytail_brown.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
@@ -308,20 +243,6 @@
     "clothing": [
       {
         "clothing": "models/citizen_clothes/hair/big_scruffy_bread/big_scruffy_beard.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/braided_long_beard/braided_long_beard.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/hair/decorated_beard/decorated_beard.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -419,13 +340,6 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/hair/thick_eyelashes/thick_eyelashes.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/makeup/freckles/freckles.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
@@ -454,28 +368,7 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/makeup/eye_makeup/eye_makeup.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/makeup/face_tattoos/face_tattoos.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/lipstick/lipstick.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/lipstick/lipstick_black.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -489,49 +382,7 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/makeup/plump_lips/plump_lips_01.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/plump_lips/plump_lips_02.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/plump_lips/plump_lips_03.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/plump_lips/plump_lips_04.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/runny_eyeliner/runny_eyeliner.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/makeup/traditional_face_tattoos/traditional_face_tattoos.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/makeup/winged_eyeliner/winged_eyeliner.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -543,13 +394,6 @@
   "tops": {
     "chanceOf": 0.99,
     "clothing": [
-      {
-        "clothing": "models/citizen_clothes/dress/posh_dress/models/posh_dress.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
       {
         "clothing": "models/citizen_clothes/full_outfit/pirate_outfit/pirate_outfit.clothing",
         "chanceForGoodGuy": 1,
@@ -579,20 +423,6 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/jacket/brown_leather_jacket/black_leather_jacket.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/jacket/office_blazer/office_blazer.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/jacket/sleeveless_jacket/sleeveless_jacket.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
@@ -607,13 +437,6 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/jacket/suitjacket/jacket.suit.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/jacket/winter_coat/winter_coat.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
@@ -621,70 +444,7 @@
         "tintSelection": []
       },
       {
-        "clothing": "models/citizen_clothes/jumper/loose_jumper/loose_jumper.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/jumper/loose_jumper/loose_jumper_goalie.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/jumper/loose_jumper/loose_jumper_wooly.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/jumper/sleeveless_jumper/sleeveless_jumper.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/jumper/sleeveless_jumper/sleeveless_jumper_grey.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/jumper/sleeveless_jumper/sleeveless_jumper_red.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/shirt/buttoned_shirt/buttoned_shirt.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
         "clothing": "models/citizen_clothes/shirt/fisherman_jumpsuit/fisherman_jumpsuit.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/shirt/flannel_shirt/flannel_shirt.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/shirt/flannel_shirt/variations/blue_shirt/blue_shirt.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -706,8 +466,8 @@
       },
       {
         "clothing": "models/citizen_clothes/vest/chefs_apron/chefs_apron.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
+        "chanceForGoodGuy": 0.2,
+        "chanceForBadGuy": 0.2,
         "tintMode": "Allow",
         "tintSelection": []
       }
@@ -715,7 +475,7 @@
     "tintSelection": []
   },
   "gloves": {
-    "chanceOf": 0.8,
+    "chanceOf": 0.5,
     "clothing": [
       {
         "clothing": "models/citizen_clothes/gloves/fingerless_gloves/fingerless_gloves.clothing",
@@ -726,13 +486,6 @@
       },
       {
         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing",
-        "chanceForGoodGuy": 1,
-        "chanceForBadGuy": 1,
-        "tintMode": "Allow",
-        "tintSelection": []
-      },
-      {
-        "clothing": "models/citizen_clothes/gloves/long_white_gloves/long_white_gloves.clothing",
         "chanceForGoodGuy": 1,
         "chanceForBadGuy": 1,
         "tintMode": "Allow",
@@ -790,7 +543,7 @@
     "tintSelection": []
   },
   "footwear": {
-    "chanceOf": 0.95,
+    "chanceOf": 1,
     "clothing": [
       {
         "clothing": "models/citizen_clothes/shoes/boots/black_boots.clothing",

@@ -216,7 +216,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "61f9698d-31fb-4cab-b546-e835fb496e12",
+            "component_id": "cace1063-1d9b-4cbd-a1fc-35795f02aad1",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1335,7 +1335,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "cff41e1c-43f3-4485-9343-50dbbb31a6a8",
+                    "component_id": "bb014c24-4c31-4e0a-9c52-2a798102358f",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -1405,7 +1405,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "cff41e1c-43f3-4485-9343-50dbbb31a6a8",
+                    "component_id": "bb014c24-4c31-4e0a-9c52-2a798102358f",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },

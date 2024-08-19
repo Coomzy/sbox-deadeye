@@ -52,8 +52,9 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 	[Group("Character"), Property] public Curve randomDuckHeightBadGuyCurve { get; set; }
 	[Group("Character"), Property] public Curve randomDuckHeightGoodGuyCurve { get; set; }
 
-	[Group("Cowboy"), Property] public List<Clothing> cowboyClothing { get; private set; }
-	[Group("Cowboy"), Property] public List<Clothing> whitelistCowboyClothing { get; private set; }
+	[Group("Cowboy"), Property, InlineEditor] public List<Clothing> cowboyClothing { get; set; } = new List<Clothing>();
+	[Group("Cowboy"), Property, InlineEditor] public List<Clothing> whitelistCowboyClothing { get; set; } = new List<Clothing>();
+	[Group("Cowboy"), Property] public bool useClothingCategoriesForWhitelist { get; set; } = true;
 
 	[Group("Clothing - Hat"), Property, InlineEditor] public CitizenClothingCategory hat { get; set; }
 	[Group("Clothing - Hair"), Property, InlineEditor] public CitizenClothingCategory hair { get; set; }
@@ -180,7 +181,8 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 		var clothing = new List<CitizenClothingInst>();
 		foreach (ClothingCategory clothingCategory in Enum.GetValues(typeof(ClothingCategory)))
 		{
-			if (clothingCategory == ClothingCategory.None || clothingCategory == ClothingCategory.Skin)
+			if (clothingCategory == ClothingCategory.None)
+			//if (clothingCategory == ClothingCategory.None || clothingCategory == ClothingCategory.Skin)
 			{
 				continue;
 			}
@@ -231,6 +233,7 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 			return clothingContainer;
 		}
 
+		// Let's remove all non-whitelisted cowboy clothing
 		var originalClothing = new List<ClothingEntry>(clothingContainer.Clothing);
 		foreach (var clothingItem in originalClothing)
 		{
@@ -242,7 +245,8 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 			{
 				continue;
 			}
-			if (CitizenSettings.instance.whitelistCowboyClothing.Contains(clothingItem.Clothing))
+
+			if (IsWhitelistedCowboyClothing(clothingItem.Clothing))
 			{
 				continue;
 			}
@@ -250,16 +254,45 @@ public class CitizenSettings : GameResourceSingleton<CitizenSettings>
 			clothingContainer.Toggle(clothingItem.Clothing);
 		}
 
-		foreach (var clothing in CitizenSettings.instance.cowboyClothing)
+		// If they don't have this cowboy clothing, try and add it!
+		foreach (var clothingInst in cowboyClothing)
 		{
-			if (clothingContainer.Has(clothing))
+			if (clothingContainer.Has(clothingInst))
 			{
 				continue;
 			}
 
-			clothingContainer.Toggle(clothing);
+			clothingContainer.Toggle(clothingInst);
 		}
 
 		return clothingContainer;
+	}
+
+	public bool IsWhitelistedCowboyClothing(Clothing clothing)
+	{
+		if (useClothingCategoriesForWhitelist)
+		{
+			var category = ClothingCategoryToInternalCategory(clothing.Category);
+
+			foreach (var clothingInst in category.clothing)
+			{
+				if (clothingInst.clothing == clothing)
+					return true;
+			}
+		}
+
+		foreach (var clothingInst in whitelistCowboyClothing)
+		{
+			if (clothingInst == clothing)
+				return true;
+		}
+
+		foreach (var clothingInst in cowboyClothing)
+		{
+			if (clothingInst == clothing)
+				return true;
+		}
+
+		return false;
 	}
 }
