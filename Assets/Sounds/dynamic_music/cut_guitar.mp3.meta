@@ -1,5 +1,5 @@
 {
-  "loop": true,
+  "loop": false,
   "start": 0,
   "end": 0,
   "rate": 44100,

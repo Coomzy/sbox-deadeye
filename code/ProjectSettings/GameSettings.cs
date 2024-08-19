@@ -40,6 +40,11 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 	[Group("Medals"), Property, ImageAssetPath] public string goldImage { get; set; } = "textures/medals/medal_gold.psd";
 	[Group("Medals"), Property, ImageAssetPath] public string onyxImage { get; set; } = "textures/medals/medal_platinum.psd";
 
+	[Group("Medals"), Property] public Texture bronzeImageTex = Texture.Load(FileSystem.Mounted, "textures/medals/medal_bronze.psd");
+	[Group("Medals"), Property] public Texture silverImageTex = Texture.Load(FileSystem.Mounted, "textures/medals/medal_silver.psd");
+	[Group("Medals"), Property] public Texture goldImageTex = Texture.Load(FileSystem.Mounted, "textures/medals/medal_gold.psd");
+	[Group("Medals"), Property] public Texture onyxImageTex = Texture.Load(FileSystem.Mounted, "textures/medals/medal_platinum.psd");
+
 	[Group("Time"), Property] public float civilianKilledTimePenalty { get; set; } = 5.0f;
 	[Group("Time"), Property] public float simulatedReactTime { get; set; } = 0.25f;
 
