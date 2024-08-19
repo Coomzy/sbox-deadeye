@@ -54,6 +54,18 @@ public class MusicManager : Component, IHotloadManaged
 
 		//if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
 
+		MusicStart();
+	}
+
+	async void MusicStart()
+	{
+		Sound.Preload(CUT_BASS);
+		Sound.Preload(CUT_DRUMS);
+		Sound.Preload(CUT_GUITAR);
+		Sound.Preload(CUT_INSTRUMENTS);
+
+		await Task.DelaySeconds(1.5f);
+
 		mixBass = Sound.Play(CUT_BASS);
 		mixDrums = Sound.Play(CUT_DRUMS);
 		mixGuitar = Sound.Play(CUT_GUITAR);
