@@ -27,39 +27,7 @@ public class ModifyCharacterClothing : Component
 
 	void LoadClothing()
 	{
-		var avatarJson = Connection.Local.GetUserData("avatar");
-		var clothingContainer = new ClothingContainer();
-		clothingContainer.Deserialize(avatarJson);
-
-		var originalClothing = new List<ClothingEntry>(clothingContainer.Clothing);
-		foreach (var clothingItem in originalClothing)
-		{
-			if (clothingItem.Clothing.Category == Clothing.ClothingCategory.Hair)
-			{
-				continue;
-			}
-			if (clothingItem.Clothing.Category == Clothing.ClothingCategory.Facial)
-			{
-				continue;
-			}
-			if (CitizenSettings.instance.whitelistCowboyClothing.Contains(clothingItem.Clothing))
-			{
-				continue;
-			}
-
-			clothingContainer.Toggle(clothingItem.Clothing);
-		}
-
-		foreach (var clothing in CitizenSettings.instance.cowboyClothing)
-		{
-			if (clothingContainer.Has(clothing))
-			{
-				continue;
-			}
-
-			clothingContainer.Toggle(clothing);
-		}
-
+		var clothingContainer = CitizenSettings.instance.GetPlayerClothingContainer();
 		clothingContainer.Apply(bodyRenderer);
 	}
 }

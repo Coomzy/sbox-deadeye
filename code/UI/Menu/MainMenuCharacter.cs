@@ -37,7 +37,6 @@ public class MainMenuCharacter : Component
 
 	public void Refresh()
 	{
-		Log.Info($"MainMenuCharacter::Refresh()");
 		LoadClothing();
 	}
 }
