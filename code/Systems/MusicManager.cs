@@ -18,13 +18,29 @@ public class MusicManager : Component, IHotloadManaged
 	public static bool currentTrackIsMainMenu { get; private set; }
 	public static Task currentMusicTask { get; private set; } = null;
 	public static Task fadingMusicTask { get; private set; } = null;
-	public static CancellationTokenSource currentCancellationToken { get; private set; }
+	//public static CancellationTokenSource currentCancellationToken { get; private set; }
 
-	public List<SoundData> menuMusic { get; private set; } = new List<SoundData>();
-	public List<SoundData> gameMusic { get; private set; } = new List<SoundData>();
+	public const string CUT_BASS = "cut_bass";
+	public const string CUT_DRUMS = "cut_drums";
+	public const string CUT_GUITAR = "cut_guitar";
+	public const string CUT_INSTRUMENTS = "cut_instruments";
 
-	int menuMusicIndex { get; set; }
-	int gameMusicIndex { get; set; }
+	public SoundHandle mixBass;
+	public SoundHandle mixDrums;
+	public SoundHandle mixGuitar;
+	public SoundHandle mixInstruments;
+
+	public float tgtVolBass;
+	public float tgtVolDrums;
+	public float tgtVolGuitar;
+	public float tgtVolInstruments;
+
+	public float currentVolBass;
+	public float currentVolDrums;
+	public float currentVolGuitar;
+	public float currentVolInstruments;
+
+	float moveRate = 1.0f;
 
 	protected override void OnAwake()
 	{
@@ -34,185 +50,24 @@ public class MusicManager : Component, IHotloadManaged
 
 		GameObject.Flags = GameObjectFlags.DontDestroyOnLoad;
 
-		var insts = Scene.GetAllComponents<MusicManager>();
-
-		//Log.Info($"MusicManager::OnAwake() MusicManager inst count: {insts.Count()}");
-
 		GamePreferences.instance.ApplyVolumesToMixers();
 
-		menuMusic = new List<SoundData>(MusicSettings.instance.menuMusic);
-		gameMusic = new List<SoundData>(MusicSettings.instance.gameMusic);
+		//if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
 
-		menuMusic.Shuffle();
-		menuMusicIndex = 0;
+		mixBass = Sound.Play(CUT_BASS);
+		mixDrums = Sound.Play(CUT_DRUMS);
+		mixGuitar = Sound.Play(CUT_GUITAR);
+		mixInstruments = Sound.Play(CUT_INSTRUMENTS);
 
-		menuMusicIndex = 99999;
-		gameMusicIndex = 99999;
+		mixBass.TargetMixer = Mixer.FindMixerByName("Music");
+		mixDrums.TargetMixer = Mixer.FindMixerByName("Music");
+		mixGuitar.TargetMixer = Mixer.FindMixerByName("Music");
+		mixInstruments.TargetMixer = Mixer.FindMixerByName("Music");
 
-		if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
-		{
-			PlayMenuMusicTrack();
-		}
-		else
-		{
-			PlayGameMusicTrack();
-		}
-	}
-
-	[Button("Start Menu Music")]
-	void PlayMenuMusicTrack()
-	{
-		var soundData = GetNextMenuMusic();
-		if (soundData.soundEvent == null)
-		{
-			Log.Warning($"PlayMenuMusicTrack() failed to get next track");
-			return;
-		}
-		StartMusicTask(soundData, PlayMenuMusicTrack);
-		currentTrackIsMainMenu = true;
-	}
-
-	[Button("Start Game Music")]
-	void PlayGameMusicTrack()
-	{
-		var soundData = GetNextGameMusic();
-		if (soundData.soundEvent == null)
-		{
-			Log.Warning($"PlayGameMusicTrack() failed to get next track");
-			return;
-		}
-		StartMusicTask(soundData, PlayGameMusicTrack);
-		currentTrackIsMainMenu = false;
-	}
-
-	SoundData GetNextMenuMusic()
-	{
-		if (menuMusic == null || menuMusic.Count == 0)
-		{
-			return new SoundData();
-		}
-
-		if (menuMusic.Count == 1)
-		{
-			return menuMusic[0];
-		}
-
-		menuMusicIndex++;
-		if (menuMusicIndex >= menuMusic.Count)
-		{
-			var lastSoundData = menuMusic[menuMusic.Count - 1];
-			menuMusicIndex = 0;
-			menuMusic.Shuffle();
-
-			if (menuMusic[0].soundEvent == lastSoundData.soundEvent)
-			{
-				menuMusic.RemoveAt(0);
-				menuMusic.Insert(Game.Random.Next(1, menuMusic.Count), lastSoundData);
-			}
-		}
-
-		return menuMusic[menuMusicIndex];
-	}
-
-	SoundData GetNextGameMusic()
-	{
-		if (gameMusic == null || gameMusic.Count == 0)
-		{
-			return new SoundData();
-		}
-
-		if (gameMusic.Count == 1)
-		{
-			return gameMusic[0];
-		}
-
-		gameMusicIndex++;
-		if (gameMusicIndex >= gameMusic.Count)
-		{
-			var lastSoundData = gameMusic[gameMusic.Count-1];
-			gameMusicIndex = 0;
-			gameMusic.Shuffle();
-
-			if (gameMusic[0].soundEvent == lastSoundData.soundEvent)
-			{
-				gameMusic.RemoveAt(0);
-				gameMusic.Insert(Game.Random.Next(1, gameMusic.Count), lastSoundData);
-			}
-		}
-
-		return gameMusic[gameMusicIndex];
-	}
-
-	void StartMusicTask(SoundData soundData, Action nextMusicCallback)
-	{
-		currentCancellationToken?.Cancel();
-		currentCancellationToken = new CancellationTokenSource();
-
-		var task = PlayMusic(soundData, nextMusicCallback, currentCancellationToken.Token);
-
-		if (currentMusicTask != null)
-		{
-			fadingMusicTask = currentMusicTask;
-		}
-		currentMusicTask = task;
-	}
-
-	async Task PlayMusic(SoundData soundData, Action nextMusicCallback, CancellationToken cancellationToken)
-	{		
-		var soundHandle = Sound.Play(soundData.soundEvent);
-		soundHandle.TargetMixer = Mixer.FindMixerByName("Music");
-		var mixer = Mixer.FindMixerByName("Music");		
-
-		TimeSince timeSinceSoundStarted = 0.0f;
-		TimeUntil fadeInTime = MusicSettings.instance.crossFadeTime / 2.0f;
-
-		while (!fadeInTime && !cancellationToken.IsCancellationRequested)
-		{
-			soundHandle.Volume = fadeInTime.Fraction * MusicSettings.instance.musicVolume;
-			await Task.Frame();
-		}
-
-		float crossFadeTarget = soundData.length - (MusicSettings.instance.crossFadeTime / 2.0f);
-
-		while (timeSinceSoundStarted < crossFadeTarget && !cancellationToken.IsCancellationRequested)
-		{
-			await Task.Frame();
-		}
-
-		TimeUntil fadeOutTime = MusicSettings.instance.crossFadeTime / 2.0f;
-
-		if (!cancellationToken.IsCancellationRequested)
-		{
-			nextMusicCallback?.Invoke();
-		}
-
-		while (!fadeOutTime)
-		{
-			soundHandle.Volume = (1.0f - fadeOutTime.Fraction) * MusicSettings.instance.musicVolume;
-			await Task.Frame();
-		}
-	}
-
-	public void OnLevelLoaded()
-	{
-		//Log.Info($"MusicManager::OnLevelLoaded() GameObject: {GameObject}");
-
-		bool isMainMenu = Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title;
-
-		if (isMainMenu == currentTrackIsMainMenu)
-		{
-			return;
-		}
-
-		// TODO: Stop it restarting on same type
-		if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
-		{
-			PlayMenuMusicTrack();
-		}
-		else
-		{
-			PlayGameMusicTrack();
-		}
+		mixBass.Volume = 0.0f;
+		mixDrums.Volume = 0.0f;
+		mixGuitar.Volume = 0.0f;
+		mixInstruments.Volume = 0.0f;
 	}
 
 	protected override void OnUpdate()
@@ -223,6 +78,52 @@ public class MusicManager : Component, IHotloadManaged
 		{
 			GamePreferences.instance.ToggleMusic();
 		}
+
+		if (mixBass == null || mixDrums == null || mixGuitar == null || mixInstruments == null)
+		{
+			return;
+		}
+
+		tgtVolGuitar = 1.0f;
+
+		if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
+		{
+			tgtVolBass = 0.0f;
+			tgtVolDrums = 0.0f;
+			tgtVolInstruments = 0.0f;
+		}
+		else
+		{
+			if (RoomManager.instance?.rooms == null)
+			{
+				return;
+			}
+
+			if (RoomManager.instance.rooms.Count <= 0)
+			{
+				return;
+			}
+
+			tgtVolBass = 1.0f;
+
+			float total = RoomManager.instance.rooms.Count;
+			float current = RoomManager.instance.roomIndex;
+
+			float pct = current / total;
+
+			tgtVolDrums = (pct > 0.33f) ? 1.0f : 0.0f;
+			tgtVolInstruments = (pct > 0.66f) ? 1.0f : 0.0f;
+		}
+
+		currentVolBass = Utils.MoveTowards(currentVolBass, tgtVolBass, moveRate * Time.Delta);
+		currentVolDrums = Utils.MoveTowards(currentVolDrums, tgtVolDrums, moveRate * Time.Delta);
+		currentVolGuitar = Utils.MoveTowards(currentVolGuitar, tgtVolGuitar, moveRate * Time.Delta);
+		currentVolInstruments = Utils.MoveTowards(currentVolInstruments, tgtVolInstruments, moveRate * Time.Delta);
+
+		mixBass.Volume = currentVolBass;
+		mixDrums.Volume = currentVolDrums;
+		mixGuitar.Volume = currentVolGuitar;
+		mixInstruments.Volume = currentVolInstruments;
 	}
 
 	protected override void OnDestroy()
@@ -276,7 +177,5 @@ public class MusicManagerSystem : GameObjectSystem
 
 		if (MusicManager.instance == null)
 			return;
-
-		MusicManager.instance.OnLevelLoaded();
 	}
 }
