@@ -15,11 +15,6 @@ public class MusicManager : Component, IHotloadManaged
 {
 	public static MusicManager instance { get; private set; }
 
-	public static bool currentTrackIsMainMenu { get; private set; }
-	public static Task currentMusicTask { get; private set; } = null;
-	public static Task fadingMusicTask { get; private set; } = null;
-	//public static CancellationTokenSource currentCancellationToken { get; private set; }
-
 	public const string CUT_BASS = "cut_bass";
 	public const string CUT_DRUMS = "cut_drums";
 	public const string CUT_GUITAR = "cut_guitar";
@@ -41,22 +36,24 @@ public class MusicManager : Component, IHotloadManaged
 	public float currentVolInstruments;
 
 	float moveRate = 1.0f;
+	public static float timeTillBeat;
 
 	protected override void OnAwake()
 	{
-		instance = this;
-
 		base.OnAwake();
 
+		instance = this;
+
 		GameObject.Flags = GameObjectFlags.DontDestroyOnLoad;
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
 
 		GamePreferences.instance.ApplyVolumesToMixers();
 
-		//if (Game.ActiveScene.Title == GameSettings.instance.menuLevel.scene.Title)
-
 		MusicStart();
-
-		Log.Info($"AWAKE HERE {Time.Now}");
 	}
 
 	async void MusicStart()
@@ -66,8 +63,20 @@ public class MusicManager : Component, IHotloadManaged
 		Sound.Preload(CUT_GUITAR);
 		Sound.Preload(CUT_INSTRUMENTS);
 
+		Sound.Preload("weapon.pistol");
+
 		await Task.DelaySeconds(1.5f);
 
+		MusicLoop();
+
+		mixBass.Volume = 0.0f;
+		mixDrums.Volume = 0.0f;
+		mixGuitar.Volume = 0.0f;
+		mixInstruments.Volume = 0.0f;
+	}
+
+	async void MusicLoop()
+	{
 		mixBass = Sound.Play(CUT_BASS);
 		mixDrums = Sound.Play(CUT_DRUMS);
 		mixGuitar = Sound.Play(CUT_GUITAR);
@@ -78,10 +87,31 @@ public class MusicManager : Component, IHotloadManaged
 		mixGuitar.TargetMixer = Mixer.FindMixerByName("Music");
 		mixInstruments.TargetMixer = Mixer.FindMixerByName("Music");
 
-		mixBass.Volume = 0.0f;
-		mixDrums.Volume = 0.0f;
-		mixGuitar.Volume = 0.0f;
-		mixInstruments.Volume = 0.0f;
+
+		float timeBase = (0.241375f * 2.0f) + -0.00775f;
+
+		timeTillBeat = timeBase + 0.1f + -0.008f;
+
+		await Task.Frame();
+
+		while (mixBass.IsPlaying)
+		{
+			timeTillBeat -= Time.Delta;
+
+			if (timeTillBeat < 0.0f)
+			{
+				float timeOver = timeTillBeat;
+				timeTillBeat = timeBase - timeOver;
+
+				//var soundHandle = Sound.Play("weapon.pistol");
+				//soundHandle.Volume = 0.4f;
+				//soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
+			}
+
+			await Task.Frame();
+		}
+
+		MusicLoop();
 	}
 
 	protected override void OnUpdate()
@@ -170,18 +200,17 @@ public class MusicManagerSystem : GameObjectSystem
 			musicManagerGO.Components.Create<MusicManager>();
 			Log.Info($"MusicManager.instance was null! Creating {musicManagerGO}");
 		}*/
-		if (!Game.IsEditor)
-		{
-			OnLevelLoaded();
-		}
 
 		Listen(Stage.SceneLoaded, -1, OnLevelLoaded, "OnLevelLoaded");
 	}
 
 	void OnLevelLoaded()
 	{
-		if (!Game.IsPlaying)
+		if (Game.IsEditor && !Game.IsPlaying)
+		{
+			Log.Info("IS EDITOR AND IS NOT PLAYING");
 			return;
+		}
 
 		if (MusicManager.instance == null)
 		{

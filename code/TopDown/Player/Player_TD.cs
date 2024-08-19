@@ -314,7 +314,9 @@ public class Player_TD : Component
 
 	async void ExecuteCommands()
 	{
-		await Task.DelaySeconds(PlayerSettings.instance.delayBeforeExecute);
+		float error = MusicManager.timeTillBeat;
+
+		await Task.DelaySeconds(PlayerSettings.instance.delayBeforeExecute - error);
 
 		foreach (var target in targets)
 		{			
@@ -341,7 +343,7 @@ public class Player_TD : Component
 			weapon.Shoot(target.Transform.Position);
 		}
 
-		await Task.DelaySeconds(PlayerSettings.instance.delayAfterExecute);
+		await Task.DelaySeconds(PlayerSettings.instance.delayAfterExecute + error);
 
 		Game.ActiveScene.TimeScale = 1.0f;
 

@@ -23,15 +23,15 @@ public class LevelData : GameResource
 	[Category("Setup"), Property] public SceneFile scene { get; set; }
 	[Category("Setup"), Property] public GameMode gameMode { get; set; } = GameMode.TopDown;
 
-	[Category("Civilians"), Property] public int allowedCivilianCasualties = 3;
+	[Category("Civilians"), Property] public int allowedCivilianCasualties { get; set; } = 3;
 
-	[Category("Times"), Property] public float silverTime = 60.0f;
-	[Category("Times"), Property] public float goldTime = 55.0f;
-	[Category("Times"), Property] public float onyxTime = 50.0f;
+	[Category("Times"), Property] public float silverTime { get; set; } = 60.0f;
+	[Category("Times"), Property] public float goldTime { get; set; } = 55.0f;
+	[Category("Times"), Property] public float onyxTime { get; set; } = 50.0f;
 
-	[Category("Times"), Property] public float slowestTime = 180.0f;
-	[Category("Times"), Property] public float fastestTime = 60.0f;
-	[Category("Times"), Property] public float simulatedTime = 80.0f;
+	[Category("Times"), Property] public float slowestTime { get; set; } = 180.0f;
+	[Category("Times"), Property] public float fastestTime { get; set; } = 60.0f;
+	[Category("Times"), Property] public float simulatedTime { get; set; } = 80.0f;
 
 	[Category("Metadata"), Property]
 	public string friendlyLevelName { get; set; }
