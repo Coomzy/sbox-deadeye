@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using static Sandbox.Gizmo;
 
 public enum GameMode
@@ -43,9 +44,9 @@ public class LevelData : GameResource
 	public string artworkImageData { get; set; }
 
 	[Category("Leaderboard"), Property] public bool isLeaderboardLevel { get; set; } = true;
-	[Category("Leaderboard"), Property] public string statNameOverride { get; set; }
+	[Category("Leaderboard"), Property] public string statNameOverride { get; set; } = null;
 
-	[Category("Leaderboard"), Property, ReadOnly]
+	[Category("Leaderboard"), Property, ReadOnly, JsonIgnore]
 	public string statName
 	{
 		get
@@ -53,7 +54,7 @@ public class LevelData : GameResource
 			if (!isLeaderboardLevel)
 				return null;
 
-			if (statNameOverride != null)
+			if (!string.IsNullOrWhiteSpace(statNameOverride))
 			{
 				return statNameOverride;
 			}
@@ -62,7 +63,7 @@ public class LevelData : GameResource
 		}
 	}
 
-	[Category("Leaderboard"), Property, ReadOnly]
+	[Category("Leaderboard"), Property, ReadOnly, JsonIgnore]
 	public string leaderboardName
 	{
 		get

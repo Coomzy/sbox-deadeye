@@ -2,9 +2,23 @@
 using Sandbox.Citizen;
 using static Sandbox.PhysicsContact;
 
+public class GeneratedTarget
+{
+	[KeyProperty] public bool isBadGuy { get; set; } = true;
+	[KeyProperty] public Vector3 localPos { get; set; } = new Vector3(0, 0, 0);
+}
+
+public class GeneratedRoom
+{
+	[KeyProperty] public Vector3 localPos { get; set; } = new Vector3(0, 0, 0);
+	[Group("Targets"), KeyProperty] public List<GeneratedTarget> targets { get; set; } = new List<GeneratedTarget>();
+}
+
 public class RoomManager : Component
 {
 	public static RoomManager instance;
+
+	[Group("Generation"), Property, InlineEditor] public List<GeneratedRoom> generatedRoom { get; set; }
 
 	[Group("Setup"), Property] public List<Room> rooms { get; set; }
 

@@ -1,11 +1,9 @@
 
-using Sandbox.Citizen;
-using static Sandbox.PhysicsContact;
-
 public class Room : Component
 {
+	[Group("Generation"), Property, InlineEditor] public List<GeneratedTarget> generatedTargets { get; set; }
+
 	[Group("Setup"), Property] public Spline walkToPath { get; set; }
-	[Group("Setup"), Property] public GameObject hiddenBlocker { get; set; }
 	[Group("Setup"), Property] public GameObject playerPosOverride { get; set; }
 	[Group("Setup"), Property] public List<Target> targets { get; set; }
 
@@ -32,13 +30,12 @@ public class Room : Component
 	{
 		base.OnAwake();
 
-		hiddenBlocker.Enabled = false;
+		targetIndex = -1;
 	}
 
 	public void Activate()
 	{
 		targetIndex = -1;
-		hiddenBlocker.Enabled = false;
 
 		foreach (var target in targets)
 		{
@@ -46,13 +43,13 @@ public class Room : Component
 		}
 	}
 
-	[Button("Get Targets")]
+	[Group("Buttons"), Button("Get Targets")]
 	public void GetTargets()
 	{
 		targets = GameObject.Components.GetAll<Target>().ToList();
 	}
 
-	[Button("Randomize Citizen Visuals")]
+	[Group("Buttons"), Button("Randomize Citizen Visuals")]
 	void ForceRandomizeCitizenVisuals()
 	{
 		ignoreRandomize = false;
@@ -64,7 +61,7 @@ public class Room : Component
 		//MakeTargetsLookAtWalkPos();
 	}
 
-	[Button("Make Targets Look At WalkPos")]
+	[Group("Buttons"), Button("Make Targets Look At WalkPos")]
 	void MakeTargetsLookAtWalkPos()
 	{
 		foreach (var target in targets)

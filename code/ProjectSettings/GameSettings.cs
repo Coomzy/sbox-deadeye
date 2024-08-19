@@ -31,6 +31,8 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 
 	[Group("Weapons"), Property] public PrefabFile pistolPrefab { get; set; } = ResourceLibrary.Get<PrefabFile>("prefabs/weapons/weapon - pistol.prefab");
 
+	[Group("Targets"), Property] public PrefabFile targetPrefab { get; set; } = ResourceLibrary.Get<PrefabFile>("prefabs/target/target_v2.prefab");
+
 	[Group("Highlight"), Property] public Color badHighlightColour { get; set; } = Color.Red;
 	[Group("Highlight"), Property] public Color goodHighlightColour { get; set; } = Color.White;
 
