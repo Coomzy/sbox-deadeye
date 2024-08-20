@@ -31,7 +31,10 @@
 	[Property, Description("How many notifications can be rendered and animated until they're popped with force (jump effect will occur)")]
 	public int CapacityTillPop = 5;
 
-	struct TimeNotification
+	[Property]
+	public bool NotificationIsMerged = false;
+
+	class TimeNotification
 	{
 		public DateTime Created { get; private set; }
 		public TimeSpan Value { get; private set; }
@@ -47,7 +50,7 @@
 		{
 			get
 			{
-				return (TimeSince.Seconds + 0.33) > Ref.SecondsTillExpiry;
+				return Opacity < 0.1f;
 			}
 		}
 
@@ -85,10 +88,10 @@
 			get {
 				double numerator = DateTime.Now.Ticks - Created.Ticks;
 				double denominatorWait = TimeSpan.FromSeconds(Ref.SecondsTillExpiring).Ticks;
-				double denominatorExpire = TimeSpan.FromSeconds(Ref.SecondsTillExpiring + Ref.SecondsTillExpiry).Ticks;
+				double denominatorExpire = TimeSpan.FromSeconds(Ref.SecondsTillExpiry).Ticks;
 
 				double wait = numerator / denominatorWait;
-				double expire = numerator / denominatorExpire;
+				double expire = (numerator - TimeSpan.FromSeconds(Ref.SecondsTillExpiring).Ticks) / denominatorExpire;
 
 				return (wait >= 0.99f ? MathX.Clamp((float)Math.Round(expire, 4), 0f, 1f) : 0f);
 			}
@@ -103,6 +106,18 @@
 		{
 			get => Ref.TranslateY * MathX.Lerp(0f, 1f, Progress * Ref.TranslateYSpeed, true);
 		}
+
+		public void Add(TimeSpan span)
+		{
+			Created = DateTime.Now; // Refresh
+			this.Value = this.Value.Add(span);
+		}
+
+		public void Update(TimeSpan span)
+		{
+			Created = DateTime.Now; // Refresh
+			this.Value = span;
+		}
 	}
 
 	[Property, ReadOnly]
@@ -110,6 +125,17 @@
 
 	public void AddTime(TimeSpan mod)
 	{
+		if (NotificationIsMerged && Notifications.Count > 0)
+		{
+			var Notification = Notifications.Last();
+
+			if ((Notification.isMinus && mod.Ticks < 0f) || (!Notification.isMinus && mod.Ticks >= 0f))
+			{
+				Notification.Add(mod);
+				return;
+			}
+		}
+
 		Notifications.Add(new TimeNotification(this, DateTime.Now, mod));
 	}
 
@@ -140,23 +166,16 @@
 	{
 		// Log.Info($"Build hash():- Notifications(count={Notifications.Count})");
 
-		if (Notifications.Count > CapacityTillPop)
+		if (Notifications.Count >= CapacityTillPop)
 		{
 			// When we have too much capacity, we will start popping those that have been animated (expired)
-			for (int i = Notifications.Count - 1; i >= 0; i--)
-			{
-				// Log.Info($"Checking Notification[{i}] expiry (since={Notifications[i].TimeSince.Seconds}, exp={Notifications[i].hasExpired})");
-				if (Notifications[i].hasExpired) {
-					Log.Info("Popping notification from high capacity");
-					Notifications.RemoveAt(i);
-				}
-			}
+			Notifications.RemoveAt(0);
 		}
 		else
 		{
 			// Only clear when they're all expired, this prevents the 'pop' / 'jump' effect
 			bool expired = true;
-			for (int i = Notifications.Count - 1; i >= 0; i--)
+			for (int i = 0; i < Notifications.Count; i++)
 			{
 				if (!(expired = Notifications[i].hasExpired)) break;
 			}
