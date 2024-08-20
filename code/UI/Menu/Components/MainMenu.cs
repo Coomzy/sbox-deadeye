@@ -43,6 +43,7 @@ public class MainMenu : Component
 	[Group("Screens"), Property] public PassThruMenuScreen howToPlayScreen { get; private set; }
 
 	[Group("Setup"), Property] public CameraComponent camera { get; private set; }
+	[Group("Setup"), Property] public ModelRenderer GameTitleText { get; private set; }
 
 	[Group("Virtual Area"), Property]
 	public Spline TutorialSpline
@@ -182,6 +183,12 @@ public class MainMenu : Component
 				selected = howToPlayScreen;
 				break;
 		}
+
+		if (GameTitleText != null) GameTitleText.RenderType = (
+			state == MenuState.Main ?
+			ModelRenderer.ShadowRenderType.On :
+			ModelRenderer.ShadowRenderType.ShadowsOnly
+		);
 
 		// Move us to the correct place to skip to the next menu transition.
 		CancelSplineAnimation();
