@@ -1,27 +1,7 @@
-@import "./MenuTheme.scss";
-@import "./Stats.scss";
+@import "./Shared/Menu.scss";
+@import "./Shared/Stats.scss";
 
 LeaderboardsScreen.menu {
-	transition: filter 250ms linear, opacity 500ms linear;
-
-	&.invisible .container .content {
-		backdrop-filter: blur(0px);
-		background-color: rgba(255,255,255,0.3);
-	}
-
-	&.visible .container .content {
-		backdrop-filter: blur(25px);
-		background-color: rgba(255,255,255,0.3);
-	}
-
-	.container .content {
-		margin: -2em -2em -2em 0;
-		background-color: rgba(255,255,255,0.9);
-		// backdrop-filter: blur(25px);
-		border-radius: 0em;
-		padding: 1em;
-	}
-
 	.title {
 		color: gold;
 		text-shadow: 0 0 5px #977F02;
