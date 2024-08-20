@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="row setting volume music">
+                <div class="row setting volume music @isMusicDisabled">
                     <div class="column key">
                         <div class="slider-label">Music Volume:</div>
                     </div>
@@ -88,6 +88,7 @@
 
     string muteMusicOff => GamePreferences.instance.muteMusic ? "gray" : "red";
     string muteMusicOn => GamePreferences.instance.muteMusic ? "green" : "gray";
+    string isMusicDisabled => GamePreferences.instance.muteMusic ? "disabled" : "enabled";
 
     float gameSliderValue = 0.5f;
     float musicSliderValue = 0.5f;

@@ -37,9 +37,14 @@ SettingsScreen.menu {
 			border-bottom: 0.2em solid rgb(30, 30, 30, 0.25);
 		}
 
+		.row.setting.volume.music.disabled {
+			opacity: 0.25;
+		}
+
 		.column.value {
 			.button {
 				width: 100px;
+				justify-content: center;
 			}
 
 			.button:first-child {
