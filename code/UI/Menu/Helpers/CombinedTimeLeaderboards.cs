@@ -1,6 +1,9 @@
 
 using Sandbox.Services;
+using Sandbox.UI.Menu.Helpers;
 using Sandbox.Utility;
+using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using static Sandbox.Services.Stats;
@@ -15,24 +18,40 @@ public struct CombinedTimeLeaderboardEntry
 	[Property] public bool isMe { get; set; }
 }
 
-public class CombinedTimeLeaderboards : Component
+public class CombinedTimeLeaderboards : Component, ILeaderboard
 {
 	[Property] public List<CombinedTimeLeaderboardEntry> entries { get; set; } = new List<CombinedTimeLeaderboardEntry>();
-
+	
 	[Property, ReadOnly] public bool isRefreshing => cancellationTokenSource != null;
+	public Leaderboards.Board board { get; set; } = null;
 	CancellationTokenSource cancellationTokenSource { get; set; } = null;
 
-	public async void GetLeaderboard()
-	{
-		entries.Clear();
+	public LevelData context { get => null; set { /* Not supported */ } }
 
+	public void SetContext(LevelData data)
+	{
+		// Do nothing.
+		// Won't throw even though I'd like to...
+	}
+
+	[Button("Cancel")]
+	public void Cancel()
+	{
 		if (cancellationTokenSource != null)
 		{
 			cancellationTokenSource.Cancel();
 		}
-		cancellationTokenSource = new CancellationTokenSource();
+		cancellationTokenSource = null;
+	}
 
-		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Friends, cancellationTokenSource.Token);
+	public async void GetLeaderboard(LeaderboardGroup group = LeaderboardGroup.Global)
+	{
+		entries.Clear();
+
+		Cancel();
+
+		cancellationTokenSource = new CancellationTokenSource();
+		board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, group, cancellationTokenSource.Token);
 		
 		/*List<PlayerStats> leaderboardPlayerStats = new List<PlayerStats>();
 		foreach (var entry in board.Entries)
@@ -55,7 +74,7 @@ public class CombinedTimeLeaderboards : Component
 
 		//await Stats.Global.Refresh();
 
-		for (int i = 0; i < board.Entries.Length; i++)
+		/*for (int i = 0; i < board.Entries.Length; i++)
 		{
 			var boardEntry = board.Entries[i];
 			//var playerStats = leaderboardPlayerStats[i];
@@ -74,7 +93,7 @@ public class CombinedTimeLeaderboards : Component
 			//string log = $"[{boardEntry.Rank}] {boardEntry.DisplayName} - combined time: {boardEntry.Value} - Me: {boardEntry.Me}";
 			//string log = $"[{boardEntry.Rank}] {boardEntry.DisplayName} - combined time: {boardEntry.Value} - lowestMedalStat.Value: {lowestMedalStat.Value} - Me: {boardEntry.Me}";
 			//Log.Info(log);
-		}
+		}*/
 
 		cancellationTokenSource = null;
 	}

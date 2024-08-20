@@ -25,7 +25,8 @@ public class LevelLeaderboardsGizmo : Component
 		if (levelLeaderboards == null)
 			return;
 
-		levelLeaderboards.GetLevelLeaderboard(testLevelData, leaderboardGroup);
+		levelLeaderboards.SetContext(testLevelData);
+		levelLeaderboards.GetLeaderboard(leaderboardGroup);
 	}
 
 	protected override void DrawGizmos()

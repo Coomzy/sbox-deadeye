@@ -119,6 +119,30 @@
           "KeyboardCode": "m",
           "GamepadCode": "DpadWest",
           "GroupName": "Game"
+        },
+        {
+          "Name": "ContextLeft",
+          "KeyboardCode": "SHIFT",
+          "GamepadCode": "SwitchLeftBumper",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "ContextRight",
+          "KeyboardCode": "TAB",
+          "GamepadCode": "SwitchRightBumper",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "NavDown",
+          "KeyboardCode": "UPARROW",
+          "GamepadCode": "DpadNorth",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "NavUp",
+          "KeyboardCode": "DOWNARROW",
+          "GamepadCode": "DpadSouth",
+          "GroupName": "Menu"
         }
       ],
       "__guid": "9c554b60-95ad-4ff5-8b25-68ca6285b49c"

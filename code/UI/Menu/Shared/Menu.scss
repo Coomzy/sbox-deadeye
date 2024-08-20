@@ -14,7 +14,7 @@
     // font-family: "paper cuts 2";
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transform: scale( 1 );
-    transition: all 0.1s ease-out;
+    transition: all 0.1s linear; // ease-out;
     pointer-events: all;
     //background-color: white; // rgba(25,25,200,1);
     background-color: transparent; // rgba(25,25,200,1);
@@ -273,6 +273,12 @@
 
             &.translucent .icon {
                 color: rgba(255,255,255, 1);
+            }
+
+            &.small {
+                font-size: 40px;
+                width: auto;
+                border-radius: 20px;
             }
         }
 

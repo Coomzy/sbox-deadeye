@@ -1,15 +1,121 @@
 @import "./Shared/Menu.scss";
 @import "./Shared/Stats.scss";
+@import "./Shared/Table.scss";
 
 LeaderboardsScreen.menu {
+	transition: none;
+
 	.title {
 		color: gold;
 		text-shadow: 0 0 5px #977F02;
 		box-shadow: none;
 	}
 
-	h1 {
+	.table.controller {
+		margin: 0 0 1em;
+
+		.column {
+			> span {
+				font-size: 35px;
+				font-weight: 600;
+				background-color: rgba(255, 255, 255,0.5);
+				box-shadow: 0 0 10px #777;
+				padding: 0.25em 0.5em;
+				border-radius: 10px;
+				cursor: pointer;
+				pointer-events: all;
+
+				align-items: center;
+				
+				span {
+					margin: 0 .25em;
+				}
+
+				span.char {
+					font-size: 75px;
+					line-height: 50px;
+					margin: -17.5px 0 0;
+				}
+			}
+		}
+
+		h1 {
+			font-size: 50px;
+			margin: 20px 0 0 0;
+		}
+	}
+
+	.table {
+		transition: none;
 		font-size: 40px;
-		margin: 20px 0 0 0;
+		width: 100%;
+
+		.row {
+			font-size: 28px;
+			font-weight: 600;
+			padding: 0.25em 0;
+
+			&:nth-child(even) {
+				background-color: rgb(255, 255, 255, 0.33);
+			}
+
+			&.error {
+				background-color: transparent;
+				width: 100%;
+
+				span {
+					align-self: center;
+					padding: 1em;
+					color: maroon;
+				}
+			}
+
+			&.refreshing {
+				background-color: transparent;
+				font-size: 46px;
+				padding: 1em;
+
+				.column {
+					flex-direction: row;
+					justify-content: center;
+
+					.icon {
+						width: 70px;
+						line-height: 20px;
+					}
+
+					.status {
+					}
+
+					span {
+						flex-shrink: 0;
+						flex-grow: 0;
+						align-self: center;
+						justify-content: center;
+					}
+				}
+			}
+
+			&.header {
+				font-size: 32px;
+				font-weight: 800;
+				padding: 0.5em 0;
+			}
+
+			&.me {
+				color: #4cff00;
+				background-color: maroon;
+				color: white;
+			}
+
+			.column {
+				width: 33%;
+			}
+
+			.column:nth-child(2) {
+				flex-direction: row;
+				justify-content: center;
+			}
+		}
 	}
 }
