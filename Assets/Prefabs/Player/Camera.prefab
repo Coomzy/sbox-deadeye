@@ -2,9 +2,9 @@
   "RootObject": {
     "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
     "Flags": 0,
-    "Name": "Camera",
+    "Name": "camera",
     "Position": "0,0,700",
-    "Rotation": "0.00000002652705,0.7071068,-0.00000002652705,0.7071068",
+    "Rotation": "0,0.7071068,0,0.7071068",
     "Enabled": true,
     "Components": [
       {
@@ -86,7 +86,9 @@
         "__type": "Sandbox.Highlight",
         "__guid": "c9dbc2d5-e1fc-4760-96ec-445e53500e1f"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
