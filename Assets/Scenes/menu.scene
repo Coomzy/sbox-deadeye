@@ -80,6 +80,12 @@
             "go": "2de4b206-7686-4243-b205-5e21452c68b8",
             "component_type": "GameModeScreen"
           },
+          "GameTitleText": {
+            "_type": "component",
+            "component_id": "23f4a89c-37c5-4762-b064-290b0e60dc5c",
+            "go": "97c1063a-18cb-4592-9864-d9eee8753c6a",
+            "component_type": "ModelRenderer"
+          },
           "howToPlayScreen": {
             "_type": "component",
             "component_id": "c855335d-1029-41a1-a30c-7ad0ac53a5bb",
@@ -216,7 +222,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "cace1063-1d9b-4cbd-a1fc-35795f02aad1",
+            "component_id": "25a0efe2-eebe-4d50-bd1c-4b7b42e72181",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -1335,7 +1341,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "bb014c24-4c31-4e0a-9c52-2a798102358f",
+                    "component_id": "ae7fb835-1c88-4d3d-a241-c807bbd1dfcc",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -1405,7 +1411,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "bb014c24-4c31-4e0a-9c52-2a798102358f",
+                    "component_id": "ae7fb835-1c88-4d3d-a241-c807bbd1dfcc",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
