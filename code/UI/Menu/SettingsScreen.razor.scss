@@ -1,9 +1,58 @@
-@import "./MenuTheme.scss";
+@import "./Shared/Menu.scss";
+@import "./Shared/Table.scss";
 
 SettingsScreen.menu {
 	.title {
-		color: cornflowerblue;
+		color: saddlebrown;
 		text-shadow: none;
 		box-shadow: none;
+	}
+
+	.buttons {
+		.button {
+			padding: 10px;
+			font-size: 30px;
+		}
+	}
+
+	.table {
+		color: #333;
+		align-self: center;
+		max-width: 1500px;
+		width: 85%;
+		font-size: 30px;
+
+		.row {
+			font-weight: 600;
+			margin: 10px 0;
+		}
+
+		.row.title {
+			color: #333;
+			margin-top: 2em;
+			padding: 5px 0;
+			justify-content: flex-start;
+			font-size: 32px;
+			font-weight: 800;
+			border-bottom: 0.2em solid rgb(30, 30, 30, 0.25);
+		}
+
+		.column.value {
+			.button {
+				width: 100px;
+			}
+
+			.button:first-child {
+				border-radius: 10px 0 0 10px;
+			}
+
+			.button:last-child {
+				border-radius: 0 10px 10px 0;
+			}
+		}
+
+		SliderControl {
+			width: 100%;
+		}
 	}
 }

@@ -16,32 +16,68 @@
             <div class="title">
                 <span>Settings</span>
             </div>
-            <div class="buttons">
-                <div class="label">Use Original Clothing:</div>
-                <div class="button @useOriginalClothingColorOff singular" onclick="@(() => SetUseOriginalClothing(false))">Off</div>
-                <div class="button @useOriginalClothingColorOn singular" onclick="@(() => SetUseOriginalClothing(true))">On</div>
+            <div class="table">
+                <div class="row title">
+                    <div class="label">Clothing</div>
+                </div>
+                <div class="row setting">
+                    <div class="column key">
+                        <div class="label">Use Personal Clothing:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="buttons">
+                            <div class="button @useOriginalClothingColorOff" onclick="@(() => SetUseOriginalClothing(false))">Off</div>
+                            <div class="button @useOriginalClothingColorOn" onclick="@(() => SetUseOriginalClothing(true))">On</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row title">
+                    <div class="label">Volume</div>
+                </div>
+                <div class="row setting mute">
+                    <div class="column key">
+                        <div class="label">Mute Music:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="buttons">
+                            <div class="button @muteMusicOff singular" onclick="@(() => SetMuteMusic(false))">Off</div>
+                            <div class="button @muteMusicOn singular" onclick="@(() => SetMuteMusic(true))">On</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setting volume game">
+                    <div class="column key">
+                        <div class="slider-label">Game Volume:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="slider">
+                            <SliderControl Value="@(gameSliderValue)" OnValueChanged="@(OnGameSliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row setting volume music">
+                    <div class="column key">
+                        <div class="slider-label">Music Volume:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="slider">
+                            <SliderControl Value="@(musicSliderValue)" OnValueChanged="@(OnMusicSliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setting volume ui">
+                    <div class="column key">
+                         <div class="slider-label">UI Volume:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="slider">
+                            <SliderControl Value="@(uiSliderValue)" OnValueChanged="@(OnUISliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            
-            <div class="slider">
-                <div class="slider-label">Game Volume:</div>
-                <SliderControl Value="@(gameSliderValue)" OnValueChanged="@(OnGameSliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
-            </div>
-            
-            <div class="slider">
-                <div class="slider-label">Music Volume:</div>
-                <SliderControl Value="@(musicSliderValue)" OnValueChanged="@(OnMusicSliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
-            </div>
-            
-            <div class="slider">
-                <div class="slider-label">UI Volume:</div>
-                <SliderControl Value="@(uiSliderValue)" OnValueChanged="@(OnUISliderChange)" Min="@(0)" Max="@(1)" Step="@(0.1f)"></SliderControl>
-            </div>
-
-            <div class="buttons">
-                <div class="label">Mute Music:</div>
-                <div class="button @muteMusicOff singular" onclick="@(() => SetMuteMusic(false))">Off</div>
-                <div class="button @muteMusicOn singular" onclick="@(() => SetMuteMusic(true))">On</div>
-            </div>
+        </div>
     </div>
 </root>
 
