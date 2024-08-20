@@ -95,10 +95,11 @@
         "__type": "TimeAddedWidget",
         "__guid": "a667d829-2dac-4310-bc5d-ed722994a7eb",
         "CapacityTillPop": 10,
+        "NotificationIsMerged": false,
         "Notifications": [],
-        "OpacitySpeed": 1,
-        "SecondsTillExpiring": 0.1,
-        "SecondsTillExpiry": 0.25,
+        "OpacitySpeed": 2,
+        "SecondsTillExpiring": 0.5,
+        "SecondsTillExpiry": 0.75,
         "TranslateY": -50,
         "TranslateYSpeed": 1
       }
