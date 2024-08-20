@@ -19,6 +19,7 @@
   "steps": [
     "prefabs/environment/steps/sm_wood_exterior_steps.prefab"
   ],
+  "roomVisualGenerator": "templates/gameobject/room visual generator.prefab",
   "__references": [],
   "__version": 0
 }

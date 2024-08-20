@@ -2,9 +2,7 @@
   "RootObject": {
     "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
     "Flags": 0,
-    "Name": "camera",
-    "Position": "0,0,700",
-    "Rotation": "0,0.7071068,0,0.7071068",
+    "Name": "Camera",
     "Enabled": true,
     "Components": [
       {
