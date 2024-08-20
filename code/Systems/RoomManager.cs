@@ -60,7 +60,7 @@ public class RoomManager : Component
 			var splineGO = Scene.CreateObject();
 			splineGO.Name = $"Spline";
 			splineGO.SetParent(roomGO);
-			splineGO.Transform.LocalPosition = Vector3.Zero;
+			splineGO.Transform.LocalPosition = new Vector3(0, 0, 5);
 
 			var spline = splineGO.Components.Create<Spline>();
 
@@ -83,7 +83,32 @@ public class RoomManager : Component
 			var targetsGO = Scene.CreateObject();
 			targetsGO.Name = "Targets";
 			targetsGO.SetParent(roomGO);
-			targetsGO.Transform.LocalPosition = Vector3.Zero;
+			targetsGO.Transform.LocalPosition = new Vector3(0,0,5);
+
+			// First room is empty by default
+			if (i != 0)
+			{
+				// Room Visual Generator
+				var roomVisualGeneratorGO = Scene.CreateObject();
+				roomVisualGeneratorGO.Name = $"Room Visual Generator";
+				roomVisualGeneratorGO.SetParent(roomGO);
+				roomVisualGeneratorGO.Transform.LocalPosition = Vector3.Zero;
+
+				roomVisualGeneratorGO.SetPrefabSource(RoomSettings.instance.roomVisualGenerator.ResourcePath);
+
+				Game.ActiveScene = GameObject.Scene;
+				if (Game.ActiveScene != null)
+				{
+					roomVisualGeneratorGO.UpdateFromPrefab();
+					roomVisualGeneratorGO.BreakFromPrefab();
+				}
+
+				var roomVisualGenerator = splineGO.Components.Get<RoomVisualGenerator>();
+				if (roomVisualGenerator != null)
+				{
+					roomVisualGenerator.RandomByConfig();
+				}
+			}
 
 			room.walkToPath = spline;
 			room.targetsHolder = targetsGO;
@@ -91,6 +116,53 @@ public class RoomManager : Component
 			rooms.Add(room);
 			room.Generate();
 		}
+
+		for (int i = 1; i < rooms.Count; i++)
+		{
+			var room = rooms[i];
+			var roomVisualGenerator = room.Components.GetInDescendantsOrSelf<RoomVisualGenerator>();
+
+			if (roomVisualGenerator == null)
+			{
+				Log.Error($"room '{room}' is missing RoomVisualGenerator");
+				continue;
+			}
+
+			var prevRoom = rooms[i - 1];
+			var prevRoomDir = DirectionFromPoints(room.Transform.Position, prevRoom.Transform.Position);
+
+			var nextRoom = (i < rooms.Count - 1) ? rooms[i + 1] : null;
+			var nextRoomDir = (nextRoom != null) ? DirectionFromPoints(room.Transform.Position, nextRoom.Transform.Position) : Direction.None;
+
+			roomVisualGenerator.northWallType = (prevRoomDir == Direction.North || nextRoomDir == Direction.North) ? WallType.Door : WallType.Wall;
+			roomVisualGenerator.eastWallType = (prevRoomDir == Direction.East || nextRoomDir == Direction.East) ? WallType.Door : WallType.Wall;
+			roomVisualGenerator.southWallType = (prevRoomDir == Direction.South || nextRoomDir == Direction.South) ? WallType.Door : WallType.Wall;
+			roomVisualGenerator.westWallType = (prevRoomDir == Direction.West || nextRoomDir == Direction.West) ? WallType.Door : WallType.Wall;
+
+			roomVisualGenerator.hasNorthBalcony = (i == 1 && prevRoomDir == Direction.North);
+			roomVisualGenerator.hasEastBalcony = (i == 1 && prevRoomDir == Direction.East);
+			roomVisualGenerator.hasSouthBalcony = (i == 1 && prevRoomDir == Direction.South);
+			roomVisualGenerator.hasWestBalcony = (i == 1 && prevRoomDir == Direction.West);
+
+			roomVisualGenerator.RandomByConfig();
+		}
+	}
+
+	Direction DirectionFromPoints(Vector3 from, Vector3 to)
+	{
+		var directionToNextRoom = Vector3.Direction(from, to);
+		float northDotProd = Vector3.Dot(Vector3.Forward, directionToNextRoom.Normal);
+		float eastDotProd = Vector3.Dot(Vector3.Right, directionToNextRoom.Normal);
+
+		bool upDownIsBetter = System.Math.Abs(northDotProd) > System.Math.Abs(eastDotProd);
+
+		if (upDownIsBetter)
+		{
+			return (northDotProd < 0.0f) ? Direction.South : Direction.North;
+		}
+
+
+		return (eastDotProd < 0.0f) ? Direction.West : Direction.East;
 	}
 
 	[Group("Times"), Button("Get Simulated Time")]

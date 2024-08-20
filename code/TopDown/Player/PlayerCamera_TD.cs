@@ -16,6 +16,8 @@ public class PlayerCamera_TD : Component
 		instance = this;
 
 		base.OnAwake();
+
+		GameObject.Transform.Rotation = new Angles(90.0f, 0.0f, 0.0f);
 	}
 
 	protected override void OnUpdate()
