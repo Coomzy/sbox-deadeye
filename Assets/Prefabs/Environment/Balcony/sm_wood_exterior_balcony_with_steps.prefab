@@ -1,0 +1,63 @@
+{
+  "RootObject": {
+    "__guid": "e7c38119-6e11-40b8-84fd-5498039cc55c",
+    "Flags": 0,
+    "Name": "sm_wood_exterior_balcony_with_steps",
+    "Position": "0,200,2.000016",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "381888c0-1a66-4623-8229-5ff56b9f5515",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_exterior_balcony.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.PlaneCollider",
+        "__guid": "4114af8b-37f2-4ebb-8e98-6fe7c7b0674b",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "512,95.5",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "0653b230-9487-4ab4-9881-3f21c4eac303",
+        "Flags": 0,
+        "Name": "sm_wood_exterior_steps",
+        "Position": "0,-56.00011,-11.93088",
+        "Rotation": "0,0,-0.7071067,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "ba6dd79c-67a7-4c9c-8dda-47cf24ce8da8",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_steps.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.PlaneCollider",
+            "__guid": "b87cda5d-3333-410d-92b3-d1986f0cdb03",
+            "Center": "15.89998,0,12",
+            "IsTrigger": false,
+            "Scale": "48,96",
+            "Static": true,
+            "Surface": "surfaces/wood.surface"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

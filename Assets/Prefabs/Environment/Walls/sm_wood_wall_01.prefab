@@ -1,0 +1,34 @@
+{
+  "RootObject": {
+    "__guid": "914a110f-149b-41f4-b886-a5d317920067",
+    "Flags": 0,
+    "Name": "sm_wood_wall_01",
+    "Position": "248,500,0",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "cc7d84dd-6491-4ab4-9638-c3858cea6292",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_wall_01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "aedf6dfa-b92f-45db-a7f3-5f96fe085d44",
+        "Center": "0,0,91",
+        "IsTrigger": false,
+        "Scale": "20,512,182",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

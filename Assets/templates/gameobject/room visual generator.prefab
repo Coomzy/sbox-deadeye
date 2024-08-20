@@ -1,0 +1,301 @@
+{
+  "RootObject": {
+    "__guid": "7c28484d-d5e9-44f8-9239-ff75bde444b1",
+    "Flags": 0,
+    "Name": "Room Visual Generator",
+    "Position": "0,504,0",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "RoomVisualGenerator",
+        "__guid": "a5f16e05-ae6c-4adb-b56f-58432a5e9e7e",
+        "eastBalcony": {
+          "_type": "gameobject",
+          "go": "dc75db53-f213-431c-89c6-0cdf00a9ea67"
+        },
+        "eastSteps": {
+          "_type": "gameobject",
+          "go": "468fc1aa-9c9e-46df-b890-cacac8c2f51f"
+        },
+        "eastWall": {
+          "_type": "gameobject",
+          "go": "04f553cb-8e33-41ec-8601-f73ca26ef467"
+        },
+        "eastWallType": "Wall",
+        "floor": {
+          "_type": "gameobject",
+          "go": "0a154c81-5ded-4703-82b5-9cad05f5c651"
+        },
+        "hasEastBalcony": false,
+        "hasNorthBalcony": true,
+        "hasSouthBalcony": true,
+        "hasWestBalcony": false,
+        "northBalcony": {
+          "_type": "gameobject",
+          "go": "dd732a09-435a-4054-8777-5661c33d7912"
+        },
+        "northSteps": {
+          "_type": "gameobject",
+          "go": "6bdb3812-bb18-47ba-a60b-54cf85b0cc7c"
+        },
+        "northWall": {
+          "_type": "gameobject",
+          "go": "ee472069-3ed6-4d3f-bd48-7879bdd62d08"
+        },
+        "northWallType": "Window",
+        "southBalcony": {
+          "_type": "gameobject",
+          "go": "d4cd433d-9f3a-4154-9062-3b0e3e105fbb"
+        },
+        "southSteps": {
+          "_type": "gameobject",
+          "go": "ea67fc8b-d75a-4753-a6f2-4d8e9a1d8ea6"
+        },
+        "southWall": {
+          "_type": "gameobject",
+          "go": "b602568a-a772-46e9-9363-6acdfb4fbf02"
+        },
+        "southWallType": "Door",
+        "westBalcony": {
+          "_type": "gameobject",
+          "go": "409a79c7-b11e-4fca-8424-ed967a0b9027"
+        },
+        "westSteps": {
+          "_type": "gameobject",
+          "go": "dc551efc-d5fb-4428-a4f7-20b05efe8a8a"
+        },
+        "westWall": {
+          "_type": "gameobject",
+          "go": "cf74c324-7649-4eed-8111-f921832ec344"
+        },
+        "westWallType": "Wall"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "0a154c81-5ded-4703-82b5-9cad05f5c651",
+        "Flags": 0,
+        "Name": "floor",
+        "Position": "0,0,5",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/floor/sm_wood_floor_02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "b26a71e2-82df-46dc-9b47-5d26bf256b3b",
+        "Flags": 0,
+        "Name": "--- NORTH ---",
+        "Position": "0,0,0",
+        "Enabled": true
+      },
+      {
+        "__guid": "ee472069-3ed6-4d3f-bd48-7879bdd62d08",
+        "Flags": 0,
+        "Name": "north wall",
+        "Position": "248,-4,5",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/windows/sm_wood_wall_01_window_02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "dd732a09-435a-4054-8777-5661c33d7912",
+        "Flags": 0,
+        "Name": "north balcony",
+        "Position": "304,2,5",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/balcony/sm_wood_exterior_balcony.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "6bdb3812-bb18-47ba-a60b-54cf85b0cc7c",
+        "Flags": 0,
+        "Name": "north steps",
+        "Position": "360,2,-6.93088",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "eb3dd3f5-0608-455d-af12-6ac4b32a8612",
+        "Flags": 0,
+        "Name": "--- EAST ---",
+        "Position": "0,0,0",
+        "Enabled": true
+      },
+      {
+        "__guid": "04f553cb-8e33-41ec-8601-f73ca26ef467",
+        "Flags": 0,
+        "Name": "east wall",
+        "Position": "4,-248,5",
+        "Rotation": "0,0,-0.7071068,0.7071068",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/walls/sm_wood_wall_01.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "dc75db53-f213-431c-89c6-0cdf00a9ea67",
+        "Flags": 0,
+        "Name": "east balcony",
+        "Position": "2,-304.0001,5",
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "35350cc7-f8dc-4ac9-ac04-b27d96cee502",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_balcony.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.PlaneCollider",
+            "__guid": "21fd2fc3-b1c7-4b17-93bf-58dc50740e9e",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "512,95.5",
+            "Static": true,
+            "Surface": "surfaces/wood.surface"
+          }
+        ]
+      },
+      {
+        "__guid": "468fc1aa-9c9e-46df-b890-cacac8c2f51f",
+        "Flags": 0,
+        "Name": "east steps",
+        "Position": "2,-360.0002,-6.93088",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "542b621a-ce66-4063-9eff-e1833f43c6e5",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_steps.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.PlaneCollider",
+            "__guid": "26ba7155-410c-41cb-b50b-dd5935925ab0",
+            "Center": "15.89998,0,12",
+            "IsTrigger": false,
+            "Scale": "48,96",
+            "Static": true,
+            "Surface": "surfaces/wood.surface"
+          }
+        ]
+      },
+      {
+        "__guid": "bbaf6727-9524-4fe2-a744-856115dd5402",
+        "Flags": 0,
+        "Name": "--- SOUTH ---",
+        "Position": "0,0,0",
+        "Enabled": true
+      },
+      {
+        "__guid": "b602568a-a772-46e9-9363-6acdfb4fbf02",
+        "Flags": 0,
+        "Name": "south wall",
+        "Position": "-244,-4,5",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/doors/sm_wood_wall_01_door_02.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "d4cd433d-9f3a-4154-9062-3b0e3e105fbb",
+        "Flags": 0,
+        "Name": "south balcony",
+        "Position": "-304,2,5",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/balcony/sm_wood_exterior_balcony.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "ea67fc8b-d75a-4753-a6f2-4d8e9a1d8ea6",
+        "Flags": 0,
+        "Name": "south steps",
+        "Position": "-360,2,-6.93088",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "02fe258b-1c12-46e5-ac61-2a05e27c3c0c",
+        "Flags": 0,
+        "Name": "--- WEST ---",
+        "Position": "0,0,0",
+        "Enabled": true
+      },
+      {
+        "__guid": "cf74c324-7649-4eed-8111-f921832ec344",
+        "Flags": 0,
+        "Name": "west wall",
+        "Position": "0,240,5",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "__Prefab": "prefabs/environment/walls/sm_wood_wall_01.prefab",
+        "__PrefabVariables": {}
+      },
+      {
+        "__guid": "dc551efc-d5fb-4428-a4f7-20b05efe8a8a",
+        "Flags": 0,
+        "Name": "west steps",
+        "Position": "2,360,-6.93088",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "5df173a6-78db-4792-8e34-ef7db4355e3f",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_steps.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.PlaneCollider",
+            "__guid": "ff67ec15-c5f6-404a-b6fe-844b6d410bb3",
+            "Center": "15.89998,0,12",
+            "IsTrigger": false,
+            "Scale": "48,96",
+            "Static": true,
+            "Surface": "surfaces/wood.surface"
+          }
+        ]
+      },
+      {
+        "__guid": "409a79c7-b11e-4fca-8424-ed967a0b9027",
+        "Flags": 0,
+        "Name": "west balcony",
+        "Position": "2,304,5",
+        "Rotation": "0,0,1,-0.00000004371139",
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "2906dcf8-5062-48e6-bed4-d2970d663817",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_balcony.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.PlaneCollider",
+            "__guid": "45e8c057-83e7-4c89-a339-0c552f7e0f5b",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "512,95.5",
+            "Static": true,
+            "Surface": "surfaces/wood.surface"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": true,
+  "MenuPath": "Room Visual Generator",
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

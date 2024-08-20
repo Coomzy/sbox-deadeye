@@ -1,0 +1,24 @@
+{
+  "RootObject": {
+    "__guid": "ac95b095-f9a1-4750-b3be-a464969ee77d",
+    "Flags": 0,
+    "Name": "GamePlay Manger",
+    "Position": "-2545.81,638.4688,2317.513",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "GamePlayManager",
+        "__guid": "cde702de-1657-463f-b886-194eefa2c35d",
+        "civiliansKilled": 0,
+        "endLevelTime": 0,
+        "isPlayingLevel": true
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

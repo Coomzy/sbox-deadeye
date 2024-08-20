@@ -1,0 +1,44 @@
+{
+  "RootObject": {
+    "__guid": "31cbf5a5-3e8d-4080-b084-407818165076",
+    "Flags": 0,
+    "Name": "sm_wood_wall_01_door_02",
+    "Position": "0,744,-0.00006103516",
+    "Rotation": "0,0,0.7071068,0.7071068",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "72891ada-3e69-4c5a-bbbc-4c52659c4cfd",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_wall_01_door_02.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "5df68254-f5dc-46b4-a98a-fcd14d6da0cf",
+        "Center": "0,-146,91",
+        "IsTrigger": false,
+        "Scale": "20,220,182",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "0b195bab-7fd5-4252-aba7-34e4e64ca339",
+        "Center": "0,146,91",
+        "IsTrigger": false,
+        "Scale": "20,220,182",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

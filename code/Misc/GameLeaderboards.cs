@@ -17,6 +17,11 @@ public enum LeaderboardGroup
 
 public static class GameLeaderboards
 {
+	public const string TARGETS_ELIMINATED = "tar-elim-lb";
+	public const string CIVILIANS_KILLED = "civs-killed-lb";
+	public const string FAILURE_TOO_MANY_CIVS_KILLED = "fail-civs-lb";
+	public const string WON = "won-lb";
+	public const string DIED = "died-lb";
 	public const string LOWEST_MEDAL = "lowest-medal-lb";
 	public const string COMBINED_TIME = "combined-time-lb";
 

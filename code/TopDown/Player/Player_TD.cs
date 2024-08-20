@@ -339,6 +339,7 @@ public class Player_TD : Component
 			{
 				GamePlayManager.instance.civiliansKilled++;
 				GameStats.Increment(GameStats.CIVILIANS_KILLED);
+				UIManager.instance.CivilianKilled();
 			}
 
 			target.Die();

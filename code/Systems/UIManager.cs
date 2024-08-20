@@ -50,6 +50,15 @@ public class UIManager : Component
 		if (wonScreen != null) wonScreen.Enabled = true;
 	}
 
+	public void CivilianKilled()
+	{
+		if (timeAddedWidget != null) 
+		{
+			timeAddedWidget.Enabled = true;
+			timeAddedWidget.AddTimePlus5s();
+		}
+	}
+
 	public static string FormatTime(double time)
 	{
 		return FormatTime((float)time);

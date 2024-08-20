@@ -64,7 +64,7 @@
 			get => Value.TotalMilliseconds < 0f;
 		}
 
-		public TimeNotification(TimeAddedWidget self, TimeSpan Mod, string CustomStyles = "")
+		public TimeNotification(TimeAddedWidget self, TimeSpan Mod, string CustomStyles = "color: red;")
 		{
 			Ref = self;
 			Created = DateTime.Now;
@@ -72,7 +72,7 @@
 			Style = CustomStyles;
 		}
 
-		public TimeNotification(TimeAddedWidget self, DateTime ManualTime, TimeSpan Mod, string CustomStyles = "")
+		public TimeNotification(TimeAddedWidget self, DateTime ManualTime, TimeSpan Mod, string CustomStyles = "color: red;")
 		{
 			Ref = self;
 			Created = ManualTime;

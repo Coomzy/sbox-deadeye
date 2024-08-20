@@ -1,0 +1,35 @@
+{
+  "RootObject": {
+    "__guid": "634cf641-7f78-473f-983d-568fc7c0c66a",
+    "Flags": 0,
+    "Name": "sm_wood_wall_01_window_02",
+    "Position": "208,1016,-0.0000591278",
+    "Rotation": "-0.0000000000000008881784,-0.00000000000000000000003882351,-0.00000001566214,-0.9999999",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "c28a6482-48e3-4dbb-834b-47ef23b98687",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_wall_01_window_02.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "d75ca0c4-3cd9-4645-bb18-e8d0109760f5",
+        "Center": "0,0,91",
+        "IsTrigger": false,
+        "Scale": "20,512,182",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

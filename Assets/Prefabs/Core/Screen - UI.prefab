@@ -1,0 +1,113 @@
+{
+  "RootObject": {
+    "__guid": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+    "Flags": 0,
+    "Name": "Screen - UI",
+    "Position": "-194.6954,90.68048,280.9606",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ScreenPanel",
+        "__guid": "d97b94b9-4aad-4f08-9b4c-56efb99ce35d",
+        "AutoScreenScale": true,
+        "Opacity": 1,
+        "Scale": 0.85,
+        "ZIndex": 100
+      },
+      {
+        "__type": "UIManager",
+        "__guid": "632ca4d3-d55a-41cc-a777-0cab64a63c6e",
+        "blackFadeAlpha": 1,
+        "currentTimeWidget": {
+          "_type": "component",
+          "component_id": "7c229e3e-a4f6-4982-84f1-a5a9b171b1a9",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "CurrentTimeWidget"
+        },
+        "diedScreen": {
+          "_type": "component",
+          "component_id": "9515e2da-1d36-46ec-befc-292c529cab90",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "DiedScreen"
+        },
+        "failedTooManyCivsKilledScreen": {
+          "_type": "component",
+          "component_id": "033c1387-5b4d-4538-adef-140909f39adc",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "FailedTooManyCivsKilledScreen"
+        },
+        "reactTimeBarWidget": {
+          "_type": "component",
+          "component_id": "48026d74-f638-448b-aa57-7e4088848fe5",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "ReactTimeBarWidget"
+        },
+        "timeAddedWidget": {
+          "_type": "component",
+          "component_id": "a667d829-2dac-4310-bc5d-ed722994a7eb",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "TimeAddedWidget"
+        },
+        "wonScreen": {
+          "_type": "component",
+          "component_id": "244d4f0b-7817-428b-b4c0-16dab9695120",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "WonScreen"
+        }
+      },
+      {
+        "__type": "CurrentTimeWidget",
+        "__guid": "7c229e3e-a4f6-4982-84f1-a5a9b171b1a9"
+      },
+      {
+        "__type": "ReactTimeBarWidget",
+        "__guid": "48026d74-f638-448b-aa57-7e4088848fe5",
+        "PulseScaleMax": 1.2,
+        "PulseScaleMin": 1,
+        "PulseScaleValue": 1,
+        "ShakeDistanceMaxHard": 15,
+        "ShakeDistanceMaxSoft": 20,
+        "ShakeDistanceMinHard": 2,
+        "ShakeDistanceMinSoft": 15,
+        "ShakeMaxSpeed": 175,
+        "ShakeMinSpeed": 30,
+        "TwistMax": 1,
+        "TwistMin": -1,
+        "TwistValue": 0,
+        "Progress": 0.5
+      },
+      {
+        "__type": "DiedScreen",
+        "__guid": "9515e2da-1d36-46ec-befc-292c529cab90",
+        "__enabled": false
+      },
+      {
+        "__type": "FailedTooManyCivsKilledScreen",
+        "__guid": "033c1387-5b4d-4538-adef-140909f39adc",
+        "__enabled": false
+      },
+      {
+        "__type": "WonScreen",
+        "__guid": "244d4f0b-7817-428b-b4c0-16dab9695120",
+        "__enabled": false
+      },
+      {
+        "__type": "TimeAddedWidget",
+        "__guid": "a667d829-2dac-4310-bc5d-ed722994a7eb",
+        "CapacityTillPop": 10,
+        "Notifications": [],
+        "OpacitySpeed": 1,
+        "SecondsTillExpiring": 0.1,
+        "SecondsTillExpiry": 0.25,
+        "TranslateY": -50,
+        "TranslateYSpeed": 1
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

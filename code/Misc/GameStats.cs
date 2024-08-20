@@ -44,5 +44,13 @@ public static class GameStats
 		Sandbox.Services.Stats.SetValue(DIED, 0);
 		Sandbox.Services.Stats.SetValue(LOWEST_MEDAL, 0);
 		Sandbox.Services.Stats.SetValue(COMBINED_TIME, 99999);
+
+		foreach (var level in GameSettings.instance.topDownLevels)
+		{
+			if (level == null || !level.isLeaderboardLevel)
+				continue;
+
+			Sandbox.Services.Stats.SetValue(level.statName, 99999);
+		}
 	}
 }
