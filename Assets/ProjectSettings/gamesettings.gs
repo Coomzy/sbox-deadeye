@@ -2,7 +2,7 @@
   "menuLevel": "scenes/menu.ld",
   "topDownLevels": [
     "scenes/topdown/original.ld",
-    "scenes/topdown/original-2-test.ld"
+    "scenes/topdown/level_02.ld"
   ],
   "pistolPrefab": "prefabs/weapons/weapon - pistol.prefab",
   "bloodDecalPrefab": "prefabs/weapons/blood decal.prefab",
