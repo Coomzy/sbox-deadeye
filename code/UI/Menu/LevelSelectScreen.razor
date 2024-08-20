@@ -66,6 +66,10 @@
 												{
 													<span class="key">Best Time: </span>
 													<span class="value">@UIManager.FormatTime(level.GetBestTime())</span>
+												} else
+												{
+													<span class="key"><label> </label></span>
+													<span class="value"> </span>
 												}
 											</p>
 											<p class="kvp next">
@@ -74,21 +78,32 @@
 													<span class="key">Next Medal: </span>
 													<span class="value">@UIManager.FormatTime(level.GetNextMedalTime())</span>
 												}
+												else
+												{
+													@* <span>Pass for Bronze</span> *@
+													<span class="key">Next Medal: </span>
+													<span class="value">Pass for Bronze</span>
+												}
 											</p>
 											<p class="medals">
 												@*<span class="key">Medal: </span>*@
 												<span class="value">
 													@if (medal == MedalType.None)
 													{
-														<span></span>
+														@foreach (var medalIt in Enum.GetValues<MedalType>())
+														{
+															if (medalIt == MedalType.None) continue;
+															// All are disabled.
+															<span class="medal @medalIt.ToString()" style="@getMedalStyle(medalIt, false)">
+																<img src=@GameSettings.instance.GetMedalImage(medalIt) />
+															</span>
+														}
 													}
 													else
 													{
 														bool completed = true;
 														@foreach (var medalIt in Enum.GetValues<MedalType>())
 														{
-															string medalPath = GameSettings.instance.GetMedalImage(medalIt);
-														
 															if (medalIt == MedalType.None) continue;
 															<span class="medal @medalIt.ToString()" style="@getMedalStyle(medalIt, completed)">
 																<img src=@GameSettings.instance.GetMedalImage(medalIt) />

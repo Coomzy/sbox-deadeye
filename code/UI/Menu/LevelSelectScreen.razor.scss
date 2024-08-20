@@ -197,7 +197,7 @@ LevelSelectScreen.menu {
 
 				.medal {
 					width: 128px;
-					height: 128px;
+					height: 100px;
 					margin: 0 5px 0 0;
 					//border-radius: 100%;
 					//box-shadow: 0px 0px 15px black;
@@ -205,6 +205,7 @@ LevelSelectScreen.menu {
 					justify-content: center;
 					
 					img {
+						margin-top: -25px;
 						width: 100px;
 						height: 100px;
 					}
