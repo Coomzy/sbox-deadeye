@@ -91,7 +91,7 @@
 														
 															if (medalIt == MedalType.None) continue;
 															<span class="medal @medalIt.ToString()" style="@getMedalStyle(medalIt, completed)">
-																<img src="@GameSettings.instance.GetMedalImage(medalIt)')" />
+																<img src=@GameSettings.instance.GetMedalImage(medalIt) />
 															</span>
 															if (medalIt == medal) {
 																// Next have not been achieved
@@ -163,7 +163,8 @@
 				grayscale = "75%";
 			}
 
-			return $"opacity: {opacity}; filter: brightness({brightness}); filter: sepia({grayscale});";
+			string width = medal == MedalType.Onyx ? "150" : "100";
+			return $"width: {width}px; height: 200px; margin: -35px 0px -55px 0px;opacity: {opacity}; filter: brightness({brightness}); filter: sepia({grayscale});";
 		}
 
 	bool StartActiveLevel()
