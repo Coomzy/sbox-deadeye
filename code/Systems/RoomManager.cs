@@ -1,30 +1,19 @@
 
 using Sandbox.Citizen;
+using System.Text.Json.Serialization;
 using static Sandbox.PhysicsContact;
-
-public class GeneratedTarget
-{
-	[KeyProperty] public bool isBadGuy { get; set; } = true;
-	[KeyProperty] public Vector3 localPos { get; set; } = new Vector3(0, 0, 0);
-}
-
-public class GeneratedRoom
-{
-	[KeyProperty] public Vector3 localPos { get; set; } = new Vector3(0, 0, 0);
-	[Group("Targets"), KeyProperty] public List<GeneratedTarget> targets { get; set; } = new List<GeneratedTarget>();
-}
 
 public class RoomManager : Component
 {
 	public static RoomManager instance;
 
-	[Group("Generation"), Property, InlineEditor] public List<GeneratedRoom> generatedRoom { get; set; }
+	[Group("Generation"), Order(25), Property, InlineEditor] public List<GeneratedRoom> generatedRooms { get; set; } = new List<GeneratedRoom>();
 
 	[Group("Setup"), Property] public List<Room> rooms { get; set; }
 
-	[Group("Runtime"), Property] public int roomIndex { get; set; }
-	[Group("Runtime"), Property] public Room currentRoom => rooms.ContainsIndex(roomIndex) ? rooms[roomIndex] : null;
-	[Group("Runtime"), Property] public bool isFinalRoom => roomIndex == rooms.Count - 1;
+	[Group("Runtime"), Property, JsonIgnore] public int roomIndex { get; set; }
+	[Group("Runtime"), Property, JsonIgnore] public Room currentRoom => rooms.ContainsIndex(roomIndex) ? rooms[roomIndex] : null;
+	[Group("Runtime"), Property, JsonIgnore] public bool isFinalRoom => roomIndex == rooms.Count - 1;
 
 	protected override void OnAwake()
 	{
@@ -35,7 +24,76 @@ public class RoomManager : Component
 		roomIndex = 0;
 	}
 
-	[Button("Get Simulated Time")]
+	[Button("Generate Rooms")]
+	void GenerateRooms()
+	{
+		if (GameObject.Transform.Position == Vector3.Zero)
+		{
+			GameObject.Transform.Position = Vector3.Forward;	
+		}
+
+		var children = new List<GameObject>(GameObject.Children);
+		foreach (var child in children)
+		{
+			child.Destroy();
+		}
+
+		rooms.Clear();
+
+		Vector3 relativePos = Vector3.Zero;
+		for (int i = 0; i < generatedRooms.Count; i++)
+		{
+			var generatedRoom = generatedRooms[i];
+
+			relativePos += generatedRoom.relativePos;
+
+			// Room
+			var roomGO = Scene.CreateObject();
+			roomGO.Name = $"Room - {i}";
+			roomGO.SetParent(GameObject);
+			roomGO.Transform.LocalPosition = relativePos;
+
+			var room = roomGO.Components.Create<Room>();
+			room.generatedTargetsRaw = generatedRoom.targetsRaw;
+
+			// Spline
+			var splineGO = Scene.CreateObject();
+			splineGO.Name = $"Spline";
+			splineGO.SetParent(roomGO);
+			splineGO.Transform.LocalPosition = Vector3.Zero;
+
+			var spline = splineGO.Components.Create<Spline>();
+
+			var splineStart = Scene.CreateObject();
+			splineStart.Name = "Point";
+			splineStart.SetParent(splineGO);
+			splineStart.Transform.LocalPosition = -generatedRoom.relativePos;
+
+			var splineCurve = Scene.CreateObject();
+			splineCurve.Name = "Curve";
+			splineCurve.SetParent(splineGO);
+			splineCurve.Transform.LocalPosition = Vector3.Lerp(-generatedRoom.relativePos, Vector3.Zero, 0.5f);
+
+			var splineEnd = Scene.CreateObject();
+			splineEnd.Name = "Point";
+			splineEnd.SetParent(splineGO);
+			splineEnd.Transform.LocalPosition = Vector3.Zero;
+
+			// Targets
+			var targetsGO = Scene.CreateObject();
+			targetsGO.Name = "Targets";
+			targetsGO.SetParent(roomGO);
+			targetsGO.Transform.LocalPosition = Vector3.Zero;
+
+			room.walkToPath = spline;
+			room.targetsHolder = targetsGO;
+
+			rooms.Add(room);
+			room.Generate();
+		}
+	}
+
+	[Group("Times"), Button("Get Simulated Time")]
 	void GetSimulatedTime()
 	{
 		var levelData = Scene.GetSceneLevelData();
@@ -64,7 +122,7 @@ public class RoomManager : Component
 		}
 	}
 
-	[Button("Randomize All Citizen Height And Duck")]
+	[Group("Randomize"), Button("Randomize All Citizen Height And Duck")]
 	void ApplyRandomHeights()
 	{
 		var all = Scene.GetAllComponents<CitizenVisuals>();
@@ -75,7 +133,7 @@ public class RoomManager : Component
 		}
 	}
 
-	[Button("Randomize Citizen Visuals")]
+	[Group("Randomize"), Button("Randomize Citizen Visuals")]
 	void RandomizeCitizenVisuals()
 	{
 		foreach (var room in rooms)
@@ -84,7 +142,7 @@ public class RoomManager : Component
 		}
 	}
 
-	[Button("Get Rooms")]
+	[Group("Getters"), Button("Get Rooms")]
 	void GetRooms()
 	{
 		rooms = GameObject.Components.GetAll<Room>().ToList();

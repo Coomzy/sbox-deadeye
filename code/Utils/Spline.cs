@@ -16,7 +16,7 @@ public struct SplinePoint
 public class Spline : Component
 {
 	[Group("Config"), Property] public int segments { get; set; } = 100;
-	[Group("Config"), Property] public float speed { get; set; } = 1.0f;
+	[Group("Config"), Property] public float speed { get; set; } = 350.0f;
 
 	[Group("Runtime"), Property] public float splineTime => GetTotalSplineTime();
 	[Group("Runtime"), Property] public float splineLength => CalculateTotalSplineLength();

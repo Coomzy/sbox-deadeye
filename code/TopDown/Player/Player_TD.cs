@@ -3,7 +3,9 @@ using Sandbox;
 using Sandbox.Audio;
 using Sandbox.Citizen;
 using Sandbox.UI;
+using System;
 using System.Diagnostics;
+using System.Numerics;
 using System.Threading;
 using static Sandbox.Gizmo;
 using static Sandbox.PhysicsContact;
@@ -341,6 +343,20 @@ public class Player_TD : Component
 
 			target.Die();
 			weapon.Shoot(target.Transform.Position);
+
+			var bloodDecalGO = Scene.CreateObject();
+			bloodDecalGO.SetPrefabSource(GameSettings.instance.bloodDecalPrefab.ResourcePath);
+			bloodDecalGO.UpdateFromPrefab();
+			bloodDecalGO.Transform.Position = target.GetHeadPos();
+			Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
+
+			float randomRange = 3.0f;
+			float randomX = (Game.Random.NextSingle() * randomRange) - (randomRange/2.0f);
+			float randomY = (Game.Random.NextSingle() * randomRange) - (randomRange/2.0f);
+			float randomZ = (Game.Random.NextSingle() * randomRange) - (randomRange/2.0f);
+
+			Vector3 randomizedRotation = bloodSplatDir + new Vector3(randomX, randomY, randomZ);
+			bloodDecalGO.Transform.Rotation = Rotation.From(randomizedRotation.EulerAngles);
 		}
 
 		await Task.DelaySeconds(PlayerSettings.instance.delayAfterExecute + error);

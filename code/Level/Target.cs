@@ -29,6 +29,16 @@ public class Target : Component
 		highlightOutline.Enabled = false;
 	}
 
+	public Vector3 GetHeadPos()
+	{
+		var headBone = bodyRenderer.GetBoneObject("head");
+		if (headBone != null)
+		{
+			return headBone.Transform.Position;
+		}
+		return Transform.Position;
+	}
+
 	public void Activate()
 	{
 		citizenVisuals.RuntimeApply();
@@ -62,7 +72,12 @@ public class Target : Component
 			}
 		}
 
-		var dirToWalkPos = Vector3.Direction(GameObject.Transform.Position, walkPos).WithZ(0.0f);
+		LookAtPoint(walkPos);
+	}
+
+	public void LookAtPoint(Vector3 point)
+	{
+		var dirToWalkPos = Vector3.Direction(GameObject.Transform.Position, point).WithZ(0.0f);
 		Transform.Rotation = Rotation.From(dirToWalkPos.Normal.EulerAngles);
 	}
 

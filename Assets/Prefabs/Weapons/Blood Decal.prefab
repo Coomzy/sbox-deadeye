@@ -1,0 +1,29 @@
+{
+  "RootObject": {
+    "__guid": "62b672df-4fda-489f-b680-7a606e4e08da",
+    "Flags": 0,
+    "Name": "Blood Decal",
+    "Position": "154.7567,1348.87,60.46143",
+    "Rotation": "-0.08822925,-0.2423983,-0.3304565,0.9078861",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.DecalRenderer",
+        "__guid": "78933232-24a4-48b1-8ac2-789e8afd0146",
+        "CutoffAngle": 60,
+        "CutoffAngleSoftness": 4,
+        "Material": "materials/decals/blood1.vmat",
+        "Mod2XBlending": false,
+        "Size": "32,32,256",
+        "TintColor": "1,1,1,1",
+        "TriPlanar": false
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

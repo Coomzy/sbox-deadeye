@@ -16,7 +16,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 	static string fileName => $"{typeof(T).ToSimpleString(false)}.json";
 
 #pragma warning disable SB3000 // Hotloading not supported
-	public static T _instance = null;
+	static T _instance = null;
 #pragma warning restore SB3000 // Hotloading not supported
 	public static T instance
 	{
@@ -24,7 +24,7 @@ public abstract class UserPreferences<T> : IHotloadManaged where T : UserPrefere
 		{
 			if (!Game.IsPlaying)
 			{
-				_instance = null;
+				//_instance = null;
 			}
 
 			if (_instance != null)
