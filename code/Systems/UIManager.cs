@@ -9,6 +9,7 @@ public class UIManager : Component
 	public static UIManager instance;
 
 	[Group("Setup"), Property] public CurrentTimeWidget currentTimeWidget { get; private set; }
+	[Group("Setup"), Property] public TimeAddedWidget timeAddedWidget { get; private set; }
 	[Group("Setup"), Property] public ReactTimeBarWidget reactTimeBarWidget { get; private set; }
 	[Group("Setup"), Property] public DiedScreen diedScreen { get; private set; }
 	[Group("Setup"), Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
@@ -29,6 +30,7 @@ public class UIManager : Component
 	{
 		//if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (diedScreen != null) diedScreen.Enabled = true;
 	}
 
@@ -36,6 +38,7 @@ public class UIManager : Component
 	{
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (failedTooManyCivsKilledScreen != null) failedTooManyCivsKilledScreen.Enabled = true;
 	}
 
@@ -43,6 +46,7 @@ public class UIManager : Component
 	{
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (wonScreen != null) wonScreen.Enabled = true;
 	}
 
@@ -51,11 +55,13 @@ public class UIManager : Component
 		return FormatTime((float)time);
 	}
 
-	public static string FormatTime(float time)
+	public static string FormatTime(float time, bool useSign = false)
 	{
 		int minutes = (int)(time / 60);
 		float seconds = time % 60;
+		
+		string sign = minutes < 0 || seconds < 0 ? "-" : "+";
 
-		return string.Format("{0:00}:{1:00.000}", minutes, seconds);
+		return (useSign ? sign : "") + string.Format("{0:00}:{1:00.000}", MathF.Abs(minutes), MathF.Abs(seconds));
 	}
 }

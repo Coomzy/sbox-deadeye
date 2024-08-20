@@ -1,0 +1,169 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="table">
+		@foreach (var n in Notifications)
+		{
+			<div class="row @(n.isMinus ? "minus" : "positive")" style="transform: translate(0px, @(n.Y)px); opacity: @n.Opacity; @n.Style">
+				<div class="label">@UIManager.FormatTime((float)(n.Value.TotalMilliseconds / 1000f), true)</div>
+			</div>
+		}
+	</div>
+</root>
+
+@code
+{
+	[Property]
+	public float SecondsTillExpiry = 1f;
+	[Property]
+	public float SecondsTillExpiring = 0.25f;
+
+	[Property]
+	public float TranslateY = -50;
+	[Property]
+	public float TranslateYSpeed = 1f;
+	[Property]
+	public float OpacitySpeed = 1f;
+
+	[Property, Description("How many notifications can be rendered and animated until they're popped with force (jump effect will occur)")]
+	public int CapacityTillPop = 5;
+
+	struct TimeNotification
+	{
+		public DateTime Created { get; private set; }
+		public TimeSpan Value { get; private set; }
+		public TimeAddedWidget Ref { get; set; }
+		public string Style { get; set;  }
+
+		public TimeSpan TimeSince
+		{
+			get => TimeSpan.FromTicks(DateTime.Now.Ticks - Created.Ticks);
+		}
+
+		public bool hasExpired
+		{
+			get
+			{
+				return (TimeSince.Seconds + 0.33) > Ref.SecondsTillExpiry;
+			}
+		}
+
+		public bool isExpiring
+		{
+			get
+			{
+				return TimeSince.Seconds >= Ref.SecondsTillExpiring && !this.hasExpired;
+			}
+		}
+
+		public bool isMinus
+		{
+			get => Value.TotalMilliseconds < 0f;
+		}
+
+		public TimeNotification(TimeAddedWidget self, TimeSpan Mod, string CustomStyles = "")
+		{
+			Ref = self;
+			Created = DateTime.Now;
+			Value = Mod;
+			Style = CustomStyles;
+		}
+
+		public TimeNotification(TimeAddedWidget self, DateTime ManualTime, TimeSpan Mod, string CustomStyles = "")
+		{
+			Ref = self;
+			Created = ManualTime;
+			Value = Mod;
+			Style = CustomStyles;
+		}
+
+		public float Progress
+		{
+			get {
+				double numerator = DateTime.Now.Ticks - Created.Ticks;
+				double denominatorWait = TimeSpan.FromSeconds(Ref.SecondsTillExpiring).Ticks;
+				double denominatorExpire = TimeSpan.FromSeconds(Ref.SecondsTillExpiring + Ref.SecondsTillExpiry).Ticks;
+
+				double wait = numerator / denominatorWait;
+				double expire = numerator / denominatorExpire;
+
+				return (wait >= 0.99f ? MathX.Clamp((float)Math.Round(expire, 4), 0f, 1f) : 0f);
+			}
+		}
+
+		public float Opacity
+		{
+			get => MathX.Lerp(1f, 0f, Progress * Ref.OpacitySpeed, true);
+		}
+
+		public float Y
+		{
+			get => Ref.TranslateY * MathX.Lerp(0f, 1f, Progress * Ref.TranslateYSpeed, true);
+		}
+	}
+
+	[Property, ReadOnly]
+	List<TimeNotification> Notifications = new List<TimeNotification>();
+
+	public void AddTime(TimeSpan mod)
+	{
+		Notifications.Add(new TimeNotification(this, DateTime.Now, mod));
+	}
+
+	[Property, Button("Add +5 Notification")]
+	public void AddTimePlus5s()
+	{
+		AddTime(TimeSpan.FromSeconds(5));
+	}
+
+	[Property, Button("Minus -5 Notification")]
+	public void AddTimeMinus5s()
+	{
+		AddTime(TimeSpan.FromSeconds(-5));
+	}
+
+	[Property, Button("Fill Notifications")]
+	public void Fill()
+	{
+		Notifications.AddRange(new List<TimeNotification>() {
+			new TimeNotification(this, TimeSpan.FromSeconds(5)),
+			new TimeNotification(this, new DateTime(DateTime.Now.Ticks + TimeSpan.FromMilliseconds(25).Ticks), TimeSpan.FromSeconds(5)),
+			new TimeNotification(this, new DateTime(DateTime.Now.Ticks + TimeSpan.FromMilliseconds(50).Ticks), TimeSpan.FromSeconds(5)),
+			new TimeNotification(this, new DateTime(DateTime.Now.Ticks + TimeSpan.FromMilliseconds(75).Ticks), TimeSpan.FromSeconds(-5))
+		});
+	}
+
+	protected override int BuildHash()
+	{
+		// Log.Info($"Build hash():- Notifications(count={Notifications.Count})");
+
+		if (Notifications.Count > CapacityTillPop)
+		{
+			// When we have too much capacity, we will start popping those that have been animated (expired)
+			for (int i = Notifications.Count - 1; i >= 0; i--)
+			{
+				// Log.Info($"Checking Notification[{i}] expiry (since={Notifications[i].TimeSince.Seconds}, exp={Notifications[i].hasExpired})");
+				if (Notifications[i].hasExpired) {
+					Log.Info("Popping notification from high capacity");
+					Notifications.RemoveAt(i);
+				}
+			}
+		}
+		else
+		{
+			// Only clear when they're all expired, this prevents the 'pop' / 'jump' effect
+			bool expired = true;
+			for (int i = Notifications.Count - 1; i >= 0; i--)
+			{
+				if (!(expired = Notifications[i].hasExpired)) break;
+			}
+
+			if (expired) Notifications.Clear();
+		}
+
+		return Notifications.Count > 0 ? (Time.Now * 1000f).CeilToInt() : RealTime.Now.CeilToInt(); // System.HashCode.Combine(alpha * 10000);
+	}
+}

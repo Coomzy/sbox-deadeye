@@ -1,5 +1,6 @@
 
 using Sandbox.Citizen;
+using System;
 
 public static class Extensions
 {
@@ -12,5 +13,20 @@ public static class Extensions
 			return false;
 
 		return true;
+	}
+
+	public static string ToFixed(this decimal value, int decimalPlaces)
+	{
+		return Math.Round(value, decimalPlaces).ToString($"F{decimalPlaces}");
+	}
+
+	public static string ToFixed(this float value, int decimalPlaces)
+	{
+		return Math.Round(value, decimalPlaces).ToString($"F{decimalPlaces}");
+	}
+
+	public static string ToFixed(this double value, int decimalPlaces)
+	{
+		return Math.Round(value, decimalPlaces).ToString($"F{decimalPlaces}");
 	}
 }
