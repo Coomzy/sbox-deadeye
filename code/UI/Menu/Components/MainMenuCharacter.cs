@@ -26,7 +26,7 @@ public class MainMenuCharacter : Component
 
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
-		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Both;
+		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 	}
 
 	void LoadClothing()

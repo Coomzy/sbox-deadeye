@@ -1,5 +1,6 @@
 {
   "floors": [
+    "prefabs/environment/floor/sm_wood_floor.prefab",
     "prefabs/environment/floor/sm_wood_floor_02.prefab"
   ],
   "doors": [
@@ -8,6 +9,9 @@
   ],
   "walls": [
     "prefabs/environment/walls/sm_wood_wall_01.prefab"
+  ],
+  "wallsHalf": [
+    "prefabs/environment/walls_half/sm_wood_wall_01_half.prefab"
   ],
   "windows": [
     "prefabs/environment/windows/sm_wood_wall_01_window.prefab",

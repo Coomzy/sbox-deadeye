@@ -8,6 +8,7 @@ public static class EditorMenu_Room
 		roomSettings.floors = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/floor/").ToList();
 		roomSettings.doors = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/doors/").ToList();
 		roomSettings.walls = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/walls/").ToList();
+		roomSettings.wallsHalf = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/walls_half/").ToList();
 		roomSettings.windows = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/windows/").ToList();
 		roomSettings.balcony = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/balcony/").ToList();
 		roomSettings.steps = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/steps/").ToList();

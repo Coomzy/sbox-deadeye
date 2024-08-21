@@ -35,6 +35,7 @@ public class RoomVisualGenerator : Component
 
 	[Group("Random - North"), Button("Door")] public void rnd() => SetPrefab(northWall, WallType.Door);
 	[Group("Random - North"), Button("Wall")] public void rnw() => SetPrefab(northWall, WallType.Wall);
+	[Group("Random - North"), Button("Wall Half")] public void rnwh() => SetPrefab(northWall, WallType.WallHalf);
 	[Group("Random - North"), Button("Window")] public void rnwd() => SetPrefab(northWall, WallType.Window);
 
 	[Group("Random"), Button("Random By Config")]
@@ -72,6 +73,9 @@ public class RoomVisualGenerator : Component
 			case WallType.Wall:
 				SetPrefab(prefabInst, RoomSettings.instance.walls);
 				break;
+			case WallType.WallHalf:
+				SetPrefab(prefabInst, RoomSettings.instance.wallsHalf);
+				break;				
 			case WallType.Window:
 				SetPrefab(prefabInst, RoomSettings.instance.windows);
 				break;

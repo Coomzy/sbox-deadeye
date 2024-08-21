@@ -1,0 +1,35 @@
+{
+  "RootObject": {
+    "__guid": "323147e4-f3c8-422e-aa7a-660a07739c83",
+    "Flags": 0,
+    "Name": "sm_wood_wall_01_half",
+    "Position": "1312,1544,0.00001525879",
+    "Rotation": "0,0,1,-0.00000004371139",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "56ac0e93-cd90-42a9-bb7c-e13aaa9afcd5",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_wall_01_half.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "388a1aaf-decb-4b10-ab05-ef4070ae7c34",
+        "Center": "0,-117.4999,91",
+        "IsTrigger": false,
+        "Scale": "20,277,182",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

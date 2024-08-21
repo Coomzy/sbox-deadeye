@@ -330,7 +330,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "d650a370-59ef-415f-b46e-bfd7907e2ba4",
+                    "component_id": "8bec5cbc-7427-4c89-96f0-a3e885ce7889",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -400,7 +400,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "d650a370-59ef-415f-b46e-bfd7907e2ba4",
+                    "component_id": "8bec5cbc-7427-4c89-96f0-a3e885ce7889",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -4101,7 +4101,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "f031cc25-501c-45d7-af19-9aef7df807f6",
+            "component_id": "ad040f2b-d84e-4aec-9bae-d868ef16c86c",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -5061,6 +5061,58 @@
       "Enabled": true,
       "__Prefab": "prefabs/environment/floor/sm_wood_floor.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "e680d3b1-3c55-4a36-9455-cbaa4446637a",
+      "Flags": 0,
+      "Name": "floor (2)",
+      "Position": "418.3123,-4.431824,185.6369",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "7ebcd9da-b9d0-4ec0-a2ca-6dcb52d680f7",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_floor.vmdl",
+          "RenderType": "ShadowsOnly",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "11ce248f-17cd-4d93-9533-41bd89cd1dc7",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
+        }
+      ]
+    },
+    {
+      "__guid": "bb237bd5-6363-4661-aaeb-f7934fcaa8b6",
+      "Flags": 0,
+      "Name": "floor (3)",
+      "Position": "418.3123,-512,185.6369",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "35198175-960d-4ff2-9264-9d3c8bb0de1a",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_floor.vmdl",
+          "RenderType": "ShadowsOnly",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "dc65330d-40ea-4f9d-87a2-9c2a42900c71",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
+        }
+      ]
     },
     {
       "__guid": "905fbcb4-37fc-4c70-8762-de1ec591f94b",
@@ -6984,6 +7036,46 @@
               "Surface": "surfaces/wood.surface"
             }
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "43d47491-6b9e-45b2-b220-fb083f7057de",
+      "Flags": 0,
+      "Name": "Point Light",
+      "Position": "420.5799,-8.231552,72.71484",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "139aa2b0-39f1-480e-84fc-200121849a91",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "58ad1663-2b58-46fd-adc3-36a4834af65e",
+      "Flags": 0,
+      "Name": "Point Light (1)",
+      "Position": "420.5799,-512,72.71484",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.PointLight",
+          "__guid": "005b8024-4e3b-461d-865d-81f140682507",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
         }
       ]
     }

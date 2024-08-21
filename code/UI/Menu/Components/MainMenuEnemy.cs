@@ -21,6 +21,6 @@ public class MainMenuEnemy : Component
 
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
 		thirdPersonAnimationHelper.HoldType = isBadGuy ? CitizenAnimationHelper.HoldTypes.Pistol : CitizenAnimationHelper.HoldTypes.None;
-		thirdPersonAnimationHelper.Handedness = isBadGuy ? CitizenAnimationHelper.Hand.Both : CitizenAnimationHelper.Hand.Right;
+		thirdPersonAnimationHelper.Handedness = isBadGuy ? CitizenAnimationHelper.Hand.Right : CitizenAnimationHelper.Hand.Right;
 	}
 }
