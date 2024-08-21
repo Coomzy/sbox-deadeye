@@ -5,7 +5,7 @@
   "Ident": "shootordontshoot",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "\nTextures/medals/*",
+  "Resources": "Textures/medals/*\ntextures/levels/thumbnail/*",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
