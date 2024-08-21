@@ -18,7 +18,7 @@
         "__guid": "303c850d-b3cd-46a0-b804-d5e782c782ae",
         "Center": "0,0,0",
         "IsTrigger": false,
-        "Scale": "512.5,512.5",
+        "Scale": "512,512",
         "Static": true,
         "Surface": "surfaces/wood.surface"
       }
