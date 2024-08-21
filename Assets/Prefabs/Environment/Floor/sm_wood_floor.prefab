@@ -1,0 +1,35 @@
+{
+  "RootObject": {
+    "__guid": "defffd47-c614-42f6-8aae-11d817e9d84b",
+    "Flags": 0,
+    "Name": "sm_wood_floor",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "f5b62f5b-d6ad-487e-b2f4-8d932b694e4c",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_floor.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.PlaneCollider",
+        "__guid": "303c850d-b3cd-46a0-b804-d5e782c782ae",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "512.5,512.5",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

@@ -30,7 +30,6 @@ public class CitizenClothingInst
 public class CitizenClothing
 {
 	[Group("Clothing"), Property] public Clothing clothing { get; set; }
-	[Group("Target"), Property] public TargetType targetType { get; set; }
 	[Group("Randomizer"), Property, Range(0.0f, 1.0f)] public float chanceForGoodGuy { get; set; } = 1.0f;
 	[Group("Randomizer"), Property, Range(0.0f, 1.0f)] public float chanceForBadGuy { get; set; } = 1.0f;
 	[Group("Tinting"), Property] public TintMode tintMode { get; set; } = TintMode.Allow;

@@ -29,24 +29,24 @@ public class UIManager : Component
 	public void Died()
 	{
 		//if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
+		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
-		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (diedScreen != null) diedScreen.Enabled = true;
 	}
 
 	public void FailedTooManyCivsKilled()
 	{
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
-		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (failedTooManyCivsKilledScreen != null) failedTooManyCivsKilledScreen.Enabled = true;
 	}
 
 	public void Won()
 	{
-		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
-		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (wonScreen != null) wonScreen.Enabled = true;
 	}
 

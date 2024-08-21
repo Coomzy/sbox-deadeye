@@ -102,6 +102,7 @@ public class RoomManager : Component
 					roomVisualGeneratorGO.UpdateFromPrefab();
 					roomVisualGeneratorGO.BreakFromPrefab();
 				}
+				Game.ActiveScene = null;
 
 				var roomVisualGenerator = splineGO.Components.Get<RoomVisualGenerator>();
 				if (roomVisualGenerator != null)
@@ -160,7 +161,6 @@ public class RoomManager : Component
 		{
 			return (northDotProd < 0.0f) ? Direction.South : Direction.North;
 		}
-
 
 		return (eastDotProd < 0.0f) ? Direction.West : Direction.East;
 	}

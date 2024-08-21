@@ -156,7 +156,15 @@ public class Player_TD : Component
 
 		if (Vector3.DistanceBetween(Transform.Position, endOfSplinePoint) < 0.01f)
 		{
-			SetState(PlayerState_TD.Deciding);
+			if (RoomManager.instance.currentRoom.targets == null || RoomManager.instance.currentRoom.targets.Count < 1)
+			{
+				RoomManager.instance.roomIndex++;
+				SetState(PlayerState_TD.Walking);
+			}
+			else
+			{
+				SetState(PlayerState_TD.Deciding);
+			}
 		}
 	}
 

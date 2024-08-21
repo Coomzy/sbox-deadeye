@@ -83,11 +83,14 @@ public class Room : Component
 				newTarget.UpdateFromPrefab();
 				newTarget.BreakFromPrefab();
 			}
+			Game.ActiveScene = null;
 
 			var target = newTarget.Components.Get<Target>();
 			if (target != null)
 			{
 				target.isBadTarget = generatedTarget.isBadGuy;
+				target.citizenVisuals.weaponType = generatedTarget.isBadGuy ? WeaponType.Pistol : WeaponType.None;
+				target.citizenVisuals.weaponGameObject.Enabled = generatedTarget.isBadGuy ? true : false;
 				target.citizenVisuals.RandomClothing();
 				target.LookAtPoint(GameObject.Transform.Position);
 				targets.Add(target);

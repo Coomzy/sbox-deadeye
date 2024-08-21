@@ -184,11 +184,11 @@ public class MainMenu : Component
 				break;
 		}
 
-		if (GameTitleText != null) GameTitleText.RenderType = (
+		/*if (GameTitleText != null) GameTitleText.RenderType = (
 			state == MenuState.Main ?
 			ModelRenderer.ShadowRenderType.On :
 			ModelRenderer.ShadowRenderType.ShadowsOnly
-		);
+		);*/
 
 		// Move us to the correct place to skip to the next menu transition.
 		CancelSplineAnimation();
