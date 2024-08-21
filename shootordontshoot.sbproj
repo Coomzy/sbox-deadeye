@@ -8,6 +8,7 @@
   "Resources": "\nTextures/medals/*",
   "PackageReferences": [],
   "EditorReferences": null,
+  "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 1,
     "MinPlayers": 1,

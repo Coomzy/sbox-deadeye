@@ -89,7 +89,7 @@ public class LevelData : GameResource
 	{
 		if (scene == null)
 		{
-			Log.Error($"Register() scene was null for LevelData '{scene.Title}'");
+			Log.Error($"Register() scene was null for LevelData '{ResourcePath}'");
 			return;
 		}
 
