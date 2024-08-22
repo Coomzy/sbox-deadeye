@@ -74,10 +74,13 @@ public class Weapon : Component
 	}
 
 	[Button("Drop")]
-	public void Drop()
+	public void Drop(Vector3 force)
 	{
 		GameObject.SetParent(null, true);
 		rigidbody.Enabled = true;
+		rigidbody.ApplyImpulse(force);
+		var weaponRandomTorque = Game.Random.Float(1500.0f, 3500.0f);
+		rigidbody.ApplyTorque(Game.Random.Rotation().Forward * weaponRandomTorque);
 	}
 
 	public override void Reset()

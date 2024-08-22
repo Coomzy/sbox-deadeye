@@ -1,4 +1,5 @@
 
+using Sandbox;
 using Sandbox.Citizen;
 
 public static partial class Utils
@@ -13,6 +14,15 @@ public static partial class Utils
 	{
 		var index = System.Random.Shared.Next(list.Count);
 		return list[index];
+	}
+
+	public static T Random<T>(this IEnumerable<T> list)
+	{
+		if (list == null || list.Count() < 1)
+			return default(T);
+
+		var index = System.Random.Shared.Next(list.Count());
+		return list.ElementAt(index);
 	}
 
 	public static void Shuffle<T>(this IList<T> list)
@@ -57,5 +67,22 @@ public static partial class Utils
 		}
 
 		return current + System.Math.Sign(target - current) * maxDelta;
+	}
+
+	public static Vector3 GetRandomizedDirection(Vector3 originalDirection, float maxAngle)
+	{
+		float pitch = Game.Random.Float(-maxAngle, maxAngle);
+		float yaw = Game.Random.Float(-maxAngle, maxAngle);
+		float roll = Game.Random.Float(-maxAngle, maxAngle);
+
+		Rotation randomRotation = Rotation.From(pitch, yaw, roll);
+		Vector3 randomizedDirection = randomRotation * originalDirection;
+
+		return randomizedDirection.Normal;
+	}
+
+	public static float RandomRange(this Vector2 inst)
+	{
+		return Game.Random.Float(inst.x, inst.y);
 	}
 }

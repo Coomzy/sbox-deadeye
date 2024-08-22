@@ -87,9 +87,11 @@ public class CitizenVisuals : Component
 		animationHelper.Handedness = handedness;
 		animationHelper.DuckLevel = duckHeight;
 
+		bool shouldHaveWeapon = target != null ? target.isBadTarget : false;
+
 		if (weaponGameObject != null)
 		{
-			weaponGameObject.Enabled = true;
+			weaponGameObject.Enabled = shouldHaveWeapon;
 		}
 	}
 
@@ -469,7 +471,7 @@ public class CitizenVisuals : Component
 		//bodyRenderer.SetBodyGroup("feet", (bodyGroups & Clothing.BodyGroups.Feet) == Clothing.BodyGroups.Feet ? 1 : 0);
 	}
 
-	public void Die()
+	public void Die(Vector3 force)
 	{
 		bodyPhysics.Enabled = true;
 		bodyRenderer.UseAnimGraph = false;
@@ -477,6 +479,15 @@ public class CitizenVisuals : Component
 		bodyRenderer.GameObject.Tags.Set("ragdoll", true);
 		bodyRenderer.GameObject.SetParent(null);
 		bodyRenderer.Transform.ClearInterpolation();
+
+		//var randomBody = bodyPhysics.PhysicsGroup.Bodies.ToList().Random();
+		var randomBody = bodyPhysics.PhysicsGroup.Bodies.Random();
+		randomBody.ApplyImpulse(force * 10.0f);
+		foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
+		{
+			//body.ApplyImpulseAt(hitPosition, force);
+			//body.ApplyImpulse(force);
+		}
 
 		if (weaponGameObject == null)
 		{
@@ -489,7 +500,8 @@ public class CitizenVisuals : Component
 		}
 		if (weapon != null)
 		{
-			weapon.Drop();
+			var weaponForce = force + Utils.GetRandomizedDirection(force, 35.0f);
+			weapon.Drop(weaponForce * 0.10f);
 		}
 
 		DisableRagdoll();

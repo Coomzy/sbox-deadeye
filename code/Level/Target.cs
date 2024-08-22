@@ -82,9 +82,9 @@ public class Target : Component
 	}
 
 	[Button("Die")]
-	public void Die()
+	public void Die(Vector3 force)
 	{
 		isDead = true;
-		citizenVisuals.Die();
+		citizenVisuals.Die(force);
 	}
 }

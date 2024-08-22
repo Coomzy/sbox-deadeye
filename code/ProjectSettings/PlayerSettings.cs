@@ -13,4 +13,8 @@ public class PlayerSettings : GameResourceSingleton<PlayerSettings>
 	[Group("Executing"), Property] public float delayBeforeExecute { get; set; } = 0.2375f;
 	[Group("Executing"), Property] public float delayPerExecute { get; set; } = 0.2375f;
 	[Group("Executing"), Property] public float delayAfterExecute { get; set; } = 0.2375f;
+
+	[Group("Executing"), Property] public float shootForceRandomAngle { get; set; } = 25.0f;
+	[Group("Executing"), Property] public Vector2 shootForceRange { get; set; } = new Vector2(350.0f, 1000.0f);
+
 }

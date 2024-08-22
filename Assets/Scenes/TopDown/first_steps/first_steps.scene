@@ -3131,6 +3131,7 @@
                         "go": "aef54d2e-0fc2-4ba2-9e41-518ac51003bd",
                         "component_type": "SkinnedModelRenderer"
                       },
+                      "bottomsClothing": {},
                       "characterHeight": 0.9915775,
                       "chest": true,
                       "clothingHolder": {
@@ -3148,11 +3149,14 @@
                         "clothing": "models/citizen_clothes/makeup/face_tattoos/face_tattoos.clothing"
                       },
                       "feet": true,
+                      "footwearClothing": {},
+                      "glovesClothing": {},
                       "hairClothing": {
                         "clothing": "models/citizen_clothes/hair/hair_scruffy_shaved_sides/scruffy_shaved_sides.clothing"
                       },
                       "handedness": "Right",
                       "hands": false,
+                      "hatClothing": {},
                       "head": false,
                       "legs": true,
                       "skinClothing": {},

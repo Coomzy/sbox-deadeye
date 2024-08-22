@@ -350,7 +350,10 @@ public class Player_TD : Component
 				UIManager.instance.CivilianKilled();
 			}
 
-			target.Die();
+			Vector3 force = weapon.Transform.World.Forward;
+			force = Utils.GetRandomizedDirection(force, PlayerSettings.instance.shootForceRandomAngle) * PlayerSettings.instance.shootForceRange.RandomRange();
+
+			target.Die(force);
 			weapon.Shoot(target.Transform.Position);
 
 			var bloodDecalGO = Scene.CreateObject();
@@ -359,13 +362,9 @@ public class Player_TD : Component
 			bloodDecalGO.Transform.Position = target.GetHeadPos();
 			Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
 
-			float randomRange = 3.0f;
-			float randomX = (Game.Random.NextSingle() * randomRange) - (randomRange/2.0f);
-			float randomY = (Game.Random.NextSingle() * randomRange) - (randomRange/2.0f);
-			float randomZ = (Game.Random.NextSingle() * randomRange) - (randomRange/2.0f);
-
-			Vector3 randomizedRotation = bloodSplatDir + new Vector3(randomX, randomY, randomZ);
-			bloodDecalGO.Transform.Rotation = Rotation.From(randomizedRotation.EulerAngles);
+			float bloodSplatRandomRange = 45.0f;
+			bloodSplatDir = Utils.GetRandomizedDirection(bloodSplatDir, bloodSplatRandomRange);
+			bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
 		}
 
 		await Task.DelaySeconds(PlayerSettings.instance.delayAfterExecute + error);
@@ -584,7 +583,7 @@ public class Player_TD : Component
 
 		if (weapon != null)
 		{
-			weapon.Drop();
+			weapon.Drop(force);
 		}
 	}
 
@@ -613,7 +612,8 @@ public class Player_TD : Component
 
 		await Task.DelaySeconds(0.15f);
 
-		weapon.Drop();
+		Vector3 force = Transform.Rotation.Forward;
+		weapon.Drop(force);
 
 		await Task.DelaySeconds(1.5f);
 
