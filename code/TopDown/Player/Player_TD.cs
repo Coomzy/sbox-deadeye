@@ -332,6 +332,8 @@ public class Player_TD : Component
 	{
 		float error = MusicManager.timeTillBeat;
 
+		error = MathX.Clamp(error, 0.0f, MusicManager.TIME_BASE - 0.0001f);
+
 		await Task.DelaySeconds(MusicManager.TIME_BASE - error);
 
 		foreach (var target in targets)
