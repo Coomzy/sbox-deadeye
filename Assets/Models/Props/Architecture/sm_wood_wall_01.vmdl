@@ -21,6 +21,10 @@
 								from = "02 - default.vmat"
 								to = "materials/m_wood_planks_02.vmat"
 							},
+							{
+								from = "03 - default.vmat"
+								to = "materials/m_wood_planks_red.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = "materials/m_wood_planks.vmat"
