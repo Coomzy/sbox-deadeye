@@ -41,6 +41,8 @@ public class MusicManager : Component, IHotloadManaged
 	public const float TIME_BASE = 0.24f;
 	//public const float TIME_BASE = 0.2375f;
 
+	public readonly bool TEST_AUDIO = false;
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
@@ -90,9 +92,6 @@ public class MusicManager : Component, IHotloadManaged
 		mixGuitar.TargetMixer = Mixer.FindMixerByName("Music");
 		mixInstruments.TargetMixer = Mixer.FindMixerByName("Music");
 
-
-		//float timeBase = 0.2375f * 2.0f;
-
 		timeTillBeat = TIME_BASE + 0.1f + -0.008f;
 
 		await Task.Frame();
@@ -106,10 +105,12 @@ public class MusicManager : Component, IHotloadManaged
 				float timeOver = timeTillBeat;
 				timeTillBeat = TIME_BASE - timeOver;
 
-				/// FOR TESTING
-				var soundHandle = Sound.Play("test.click");
-				soundHandle.Volume = 0.2f;
-				soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
+				if (TEST_AUDIO)
+				{
+					var soundHandle = Sound.Play("test.click");
+					soundHandle.Volume = 0.2f;
+					soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
+				}
 			}
 
 			await Task.Frame();
@@ -173,11 +174,13 @@ public class MusicManager : Component, IHotloadManaged
 		mixGuitar.Volume = currentVolGuitar;
 		mixInstruments.Volume = currentVolInstruments;
 
-		/// FOR TESTING
-		mixBass.Volume = 1.0f;
-		mixDrums.Volume = 1.0f;
-		mixGuitar.Volume = 0.0f;
-		mixInstruments.Volume = 0.0f;
+		if (TEST_AUDIO)
+		{
+			mixBass.Volume = 1.0f;
+			mixDrums.Volume = 1.0f;
+			mixGuitar.Volume = 0.0f;
+			mixInstruments.Volume = 0.0f;
+		}
 	}
 
 	protected override void OnDestroy()
