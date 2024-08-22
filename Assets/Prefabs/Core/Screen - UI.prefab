@@ -75,7 +75,8 @@
       {
         "__type": "LeaderboardsScreen",
         "__guid": "86997ff4-6169-411c-9cef-40309e34cf25",
-        "__enabled": false
+        "__enabled": false,
+        "isMainMenu": false
       },
       {
         "__type": "CurrentTimeWidget",

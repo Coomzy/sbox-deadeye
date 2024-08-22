@@ -141,6 +141,7 @@
 
 @code
 {
+    [Property] public bool isMainMenu { get; set; } = true;
     public bool HasRetrievingStarted = false;
     public DateTime LastRetrievingState = DateTime.Now;
     public LeaderboardGroup ActiveTab = LeaderboardGroup.Global;
@@ -191,15 +192,22 @@
 
     void ButtonBack()
     {
-        if (UIManager.instance != null)
+        // I really don't get what's going on with this, MainMenu instance should be null in game and UI Manager on the menu but checking them doesn't seem to work
+        if (isMainMenu)
         {
-            UIManager.instance.CloseLeaderboard();
+            if (MainMenu.instance != null)
+            {
+                MainMenu.instance.SetMenuState(MenuState.Main);
+                var soundHandle = Sound.Play("ui.navigate.back");
+                soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+            }
         }
-        else if (MainMenu.instance != null)
+        else
         {
-            MainMenu.instance.SetMenuState(MenuState.Main);
-            var soundHandle = Sound.Play("ui.navigate.back");
-            soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+            if (UIManager.instance != null)
+            {
+                UIManager.instance.CloseLeaderboard();
+            }
         }
     }
 
