@@ -183,6 +183,12 @@ public class Player_TD : Component
 
 		RoomManager.instance.currentRoom.Activate();
 		NextTarget();
+
+		if (RoomManager.instance.currentRoom.targets?.Count > 0)
+		{
+			var soundHandle = Sound.Play("encounterstart");
+			soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+		}
 	}
 
 	void NextTarget()
