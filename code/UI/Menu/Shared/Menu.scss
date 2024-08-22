@@ -54,6 +54,14 @@
             // gap: 8px;
         }
 
+        > .buttonsalt {
+            flex-direction: row;
+            justify-content: flex-end;
+            flex-shrink: 0;
+            align-items: flex-end;
+            // gap: 8px;
+        }
+
         .button {
             flex-shrink: 0;
             background-color: rgb(20,20,20);
@@ -259,6 +267,37 @@
 
                 &:active {
                     background-color: #663919;
+                }
+            }
+
+            &.transparent {
+                background-color: transparent;
+                text-shadow: 1px 1px 1px #7700EF;
+                color: white;
+                border: none;
+
+                &:hover {
+                    color: yellow;
+                }
+
+                &:active {
+                    color: #FFA500;
+                }
+            }
+
+            &.fake {
+                background-color: transparent;
+                text-shadow: 1px 1px 0px #7700EF;
+                color: white;
+                pointer-events: none;
+                cursor: default;
+
+                &:hover {
+                    background-color: transparent;
+                }
+
+                &:active {
+                    background-color: transparent;
                 }
             }
 

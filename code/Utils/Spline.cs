@@ -4,6 +4,7 @@ using Sandbox.Citizen;
 using System;
 using System.Diagnostics;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using static Sandbox.Gizmo;
 
 public struct SplinePoint
@@ -18,14 +19,14 @@ public class Spline : Component
 	[Group("Config"), Property] public int segments { get; set; } = 100;
 	[Group("Config"), Property] public float speed { get; set; } = 350.0f;
 
-	[Group("Runtime"), Property] public float splineTime => GetTotalSplineTime();
-	[Group("Runtime"), Property] public float splineLength => CalculateTotalSplineLength();
-	[Group("Runtime"), Property] public Vector3 endOfSplinePoint => GetEndOfSplinePoint();
+	[Group("Runtime"), Property, JsonIgnore] public float splineTime => GetTotalSplineTime();
+	[Group("Runtime"), Property, JsonIgnore] public float splineLength => CalculateTotalSplineLength();
+	[Group("Runtime"), Property, JsonIgnore] public Vector3 endOfSplinePoint => GetEndOfSplinePoint();
 
 	[Group("Debug"), Property] public bool drawGizmo { get; set; } = true;
 	[Group("Debug"), Property] public float? testTime { get; set; }
 
-	[Group("Runtime"), Property, ReadOnly] public List<SplinePoint> points { get; set; } = new List<SplinePoint>();
+	[Group("Runtime"), Property, ReadOnly, JsonIgnore] public List<SplinePoint> points { get; set; } = new List<SplinePoint>();
 
 	protected override void OnAwake()
 	{

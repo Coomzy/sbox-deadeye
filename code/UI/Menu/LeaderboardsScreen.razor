@@ -191,9 +191,16 @@
 
     void ButtonBack()
     {
-        MainMenu.instance.SetMenuState(MenuState.Main);
-        var soundHandle = Sound.Play("ui.navigate.back");
-        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+        if (UIManager.instance != null)
+        {
+            UIManager.instance.CloseLeaderboard();
+        }
+        else if (MainMenu.instance != null)
+        {
+            MainMenu.instance.SetMenuState(MenuState.Main);
+            var soundHandle = Sound.Play("ui.navigate.back");
+            soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+        }
     }
 
     private void RetrieveLeaderboard() {

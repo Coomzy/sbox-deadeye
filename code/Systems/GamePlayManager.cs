@@ -22,6 +22,8 @@ public class GamePlayManager : Component
 	[Category("Runtime"), Property] public bool isPlayingLevel { get; private set; } = true;
 	[Category("Runtime"), Property] public float endLevelTime { get; private set; }
 	[Group("Runtime"), Property] public int civiliansKilled { get; set; }
+	[Group("Runtime"), Property] public bool isNewPersonalBest { get; set; }
+	[Group("Runtime"), Property] public float? previousBestTime { get; set; }
 
 	TimeSince timeSinceLevelStart { get; set; }
 
@@ -38,6 +40,18 @@ public class GamePlayManager : Component
 			}
 			time += civiliansKilled * GameSettings.instance.civilianKilledTimePenalty;
 			return time;
+		}
+	}
+
+	public float levelTimeDiff
+	{
+		get
+		{
+			if (previousBestTime == null)
+			{
+				return 0.0f;
+			}
+			return levelTime - previousBestTime.Value;
 		}
 	}
 
@@ -82,13 +96,31 @@ public class GamePlayManager : Component
 		}
 
 		bool hasBeatLevel = LevelData.active.HasCompletedLevel();
-		float previousBest = LevelData.active.GetBestTime();
+		float previousBestCache = LevelData.active.GetBestTime();
 
-		bool isNewPersonalBest = LevelData.active.SetBestTime(levelTime);
+		if (BotModePreferences.instance.IsInAnyBotMode())
+		{
+			if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.FastestTime))
+			{
+				LevelData.active.fastestTime = endLevelTime;
+			}
+			else if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.SlowestTime))
+			{
+				LevelData.active.slowestTime = endLevelTime;
+			}
+
+			isNewPersonalBest = hasBeatLevel ? previousBestTime <= levelTime : true;
+			previousBestTime = hasBeatLevel ? previousBestCache : null;
+			return;
+		}
+
+		isNewPersonalBest = LevelData.active.SetBestTime(levelTime);
+
+		previousBestTime = previousBestCache;
 
 		if (hasBeatLevel)
 		{
-			Log.Info($"WonLevel() levelTime: {levelTime}, previousBest: {previousBest}, isNewPersonalBest: {isNewPersonalBest}");
+			Log.Info($"WonLevel() levelTime: {levelTime}, previousBestCache: {previousBestCache}, isNewPersonalBest: {isNewPersonalBest}");
 		}
 		else
 		{
@@ -101,15 +133,6 @@ public class GamePlayManager : Component
 
 			var bestMedalType = GameSettings.instance.GetLowestMedalType();
 			GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
-		}
-
-		if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.FastestTime))
-		{
-			LevelData.active.fastestTime = endLevelTime;
-		}
-		else if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.SlowestTime))
-		{
-			LevelData.active.slowestTime = endLevelTime;
 		}
 	}
 

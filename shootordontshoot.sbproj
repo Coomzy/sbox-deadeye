@@ -144,6 +144,18 @@
           "KeyboardCode": "DOWNARROW",
           "GamepadCode": "DpadSouth",
           "GroupName": "Menu"
+        },
+        {
+          "Name": "Leaderboard",
+          "KeyboardCode": "x",
+          "GamepadCode": "X",
+          "GroupName": "Game"
+        },
+        {
+          "Name": "Next_Level",
+          "KeyboardCode": "space",
+          "GamepadCode": "A",
+          "GroupName": "Game"
         }
       ],
       "__guid": "9c554b60-95ad-4ff5-8b25-68ca6285b49c"

@@ -175,7 +175,7 @@ public class LevelData : GameResource
 		return true;
 	}
 
-	public MedalType GetBestTimeMedal()
+	public MedalType GetBestMedal()
 	{
 		if (!HasCompletedLevel())
 			return MedalType.None;
@@ -190,7 +190,7 @@ public class LevelData : GameResource
 			return false;
 		}
 
-		var bestMedal = GetBestTimeMedal();
+		var bestMedal = GetBestMedal();
 
 		if (bestMedal == MedalType.Onyx)
 			return true;
@@ -205,7 +205,7 @@ public class LevelData : GameResource
 			return MedalType.Bronze;
 		}
 
-		var bestMedal = GetBestTimeMedal();
+		var bestMedal = GetBestMedal();
 
 		if (bestMedal == MedalType.Onyx)
 			return MedalType.Onyx;
@@ -228,7 +228,7 @@ public class LevelData : GameResource
 
 	public bool HasGotMedal(MedalType medalType)
 	{
-		var bestMedalType = GetBestTimeMedal();
+		var bestMedalType = GetBestMedal();
 
 		return medalType <= bestMedalType;
 	}

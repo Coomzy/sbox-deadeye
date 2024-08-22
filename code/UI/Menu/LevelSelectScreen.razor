@@ -28,7 +28,7 @@
 				{
 					currentIndex = Math.Clamp(currentIndex, 0, levels.Count() - 1);
 					level = levels[currentIndex];
-					medal = level.GetBestTimeMedal();
+					medal = level.GetBestMedal();
 
 					<div class="column">
 						<span class="arrow prev @(currentIndex < 1 ? "disabled" : "")" onclick="@(() => --currentIndex)">

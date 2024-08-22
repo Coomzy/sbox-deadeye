@@ -231,14 +231,8 @@
                   "__type": "Spline",
                   "__guid": "8babd545-3a61-48a9-993b-4159afd96a8a",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "1,0,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 1.1206797E-05,
-                  "splineTime": 3.2019422E-08
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -329,14 +323,8 @@
                   "__type": "Spline",
                   "__guid": "e4ec59f3-2c04-41ca-8bf1-429fe383df79",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "501,0,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -3042,14 +3030,8 @@
                   "__type": "Spline",
                   "__guid": "600f251e-d4a6-44db-a5df-369e7127a270",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "1001,0,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -4273,6 +4255,32 @@
                   "__PrefabVariables": {}
                 },
                 {
+                  "__guid": "9626ace4-8bab-46c3-bd00-04ae744bbf40",
+                  "Flags": 0,
+                  "Name": "roof",
+                  "Position": "0,0,190",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "03f299bd-fab9-4fc0-a1c8-042e2c8fe79b",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "27a2c015-dfa8-464f-be62-caa9aab9ee31",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512.5,512.5",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
                   "__guid": "92b79fef-47bf-4494-9f7c-ff56040c48f7",
                   "Flags": 0,
                   "Name": "--- NORTH ---",
@@ -4512,6 +4520,26 @@
                       "Surface": "surfaces/wood.surface"
                     }
                   ]
+                },
+                {
+                  "__guid": "079814cc-a0ec-4044-9b96-b4e0a9dcd9d6",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "0,0,185",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "24d5f0bc-4a4a-4af3-967f-95fc7c6a866d",
+                      "Attenuation": 1,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "0.91373,0.98039,1,1",
+                      "Radius": 400,
+                      "Shadows": true
+                    }
+                  ]
                 }
               ]
             }
@@ -4579,14 +4607,8 @@
                   "__type": "Spline",
                   "__guid": "ff074cdc-a967-4ecf-b7c7-fbf31dfa20fb",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "1001,-500,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -8106,6 +8128,32 @@
                   "__PrefabVariables": {}
                 },
                 {
+                  "__guid": "3acd6ba6-9ffc-4ba7-98ad-81d5bc967d54",
+                  "Flags": 0,
+                  "Name": "roof",
+                  "Position": "0,0,190",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "c7d0b9bd-2724-4e96-8396-df1dfd8f476b",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "b0008f24-d68c-4e67-b93e-f8a5412128f0",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512.5,512.5",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
                   "__guid": "c7e97169-9f55-48de-ae17-3318b9a308c8",
                   "Flags": 0,
                   "Name": "--- NORTH ---",
@@ -8345,6 +8393,26 @@
                       "Surface": "surfaces/wood.surface"
                     }
                   ]
+                },
+                {
+                  "__guid": "aeed9e2f-020a-4e4d-bcad-68d2bdd34e4e",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "0,0,185",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "3c424f99-b5af-48e3-a4ce-60dc4dd1dd7c",
+                      "Attenuation": 1,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "0.91373,0.98039,1,1",
+                      "Radius": 400,
+                      "Shadows": true
+                    }
+                  ]
                 }
               ]
             }
@@ -8389,14 +8457,8 @@
                   "__type": "Spline",
                   "__guid": "2e10e0e6-c7bb-4273-ac91-7c5f2b239199",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "1501,-500,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -8850,14 +8912,8 @@
                   "__type": "Spline",
                   "__guid": "8cb2786d-8daa-48ee-a703-3cf51ccffe53",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "2001,-500,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -12489,6 +12545,32 @@
                   "__PrefabVariables": {}
                 },
                 {
+                  "__guid": "744fcd02-874a-47ab-8ac0-40278a5f6dfd",
+                  "Flags": 0,
+                  "Name": "roof",
+                  "Position": "0,0,190",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "03db113a-799c-4c7e-be36-768c3a280ee8",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "83208848-027f-424c-8275-6b53778e7315",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512.5,512.5",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
                   "__guid": "7d7f89fe-4f5e-4ac8-81f7-e0f7ede3fb9d",
                   "Flags": 0,
                   "Name": "--- NORTH ---",
@@ -12728,6 +12810,26 @@
                       "Surface": "surfaces/wood.surface"
                     }
                   ]
+                },
+                {
+                  "__guid": "ed6d1005-ac56-4f7a-8b87-74386e63e7c4",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "0,0,185",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "29246c3f-d762-4004-9b94-26c6e3824263",
+                      "Attenuation": 1,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "0.91373,0.98039,1,1",
+                      "Radius": 400,
+                      "Shadows": true
+                    }
+                  ]
                 }
               ]
             }
@@ -12802,14 +12904,8 @@
                   "__type": "Spline",
                   "__guid": "c5ca742d-2bb9-43cd-aff4-fe2863d9ba93",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "2001,-1000,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -17602,6 +17698,32 @@
                   "__PrefabVariables": {}
                 },
                 {
+                  "__guid": "2eb9644f-e014-4ee5-a7ed-4160a06692de",
+                  "Flags": 0,
+                  "Name": "roof",
+                  "Position": "0,0,190",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "46815d44-165b-4ac0-828e-cb0326f41a15",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "75e8c70a-64a7-4eb6-ada5-8a52e83f81ad",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512.5,512.5",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
                   "__guid": "95a644da-e1d7-4af4-b0ef-b9ed34d69126",
                   "Flags": 0,
                   "Name": "--- NORTH ---",
@@ -17873,6 +17995,26 @@
                       "Surface": "surfaces/wood.surface"
                     }
                   ]
+                },
+                {
+                  "__guid": "87d5e4ba-b9c5-4c65-b62a-ef4dc2af3da2",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "0,0,185",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "c65d8e9c-5b4e-4d17-9dcb-d7ed077c0de9",
+                      "Attenuation": 1,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "0.91373,0.98039,1,1",
+                      "Radius": 400,
+                      "Shadows": true
+                    }
+                  ]
                 }
               ]
             }
@@ -17954,14 +18096,8 @@
                   "__type": "Spline",
                   "__guid": "4e00a0f3-4549-4047-8587-444e1080e830",
                   "drawGizmo": true,
-                  "endOfSplinePoint": "2001,-1500,5",
-                  "points": [
-                    {}
-                  ],
                   "segments": 100,
-                  "speed": 350,
-                  "splineLength": 500,
-                  "splineTime": 1.4285715
+                  "speed": 350
                 }
               ],
               "Children": [
@@ -23814,6 +23950,32 @@
                   "__PrefabVariables": {}
                 },
                 {
+                  "__guid": "e79c68b0-8d9e-475e-b4d5-5a88441aee08",
+                  "Flags": 0,
+                  "Name": "roof",
+                  "Position": "0,0,190",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "41eb3f52-8457-4dfa-b5ca-23f7a1e82c3b",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "954513a0-27fb-4b52-af19-456ef82770f5",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512.5,512.5",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
                   "__guid": "0bdf1a68-2f00-4400-88ff-e116c7157f20",
                   "Flags": 0,
                   "Name": "--- NORTH ---",
@@ -24051,6 +24213,26 @@
                       "Scale": "512,95.5",
                       "Static": true,
                       "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "0bd6ea7c-aa41-48c3-a907-2aaf4671b2bf",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "0,0,185",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "20f9c7f4-b02a-43ae-9550-9a0fcfd57506",
+                      "Attenuation": 1,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "0.91373,0.98039,1,1",
+                      "Radius": 400,
+                      "Shadows": true
                     }
                   ]
                 }

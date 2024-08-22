@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
     "Flags": 0,
-    "Name": "Screen - UI",
-    "Position": "-194.6954,90.68048,280.9606",
+    "Name": "screen - ui",
     "Enabled": true,
     "Components": [
       {
@@ -17,6 +16,12 @@
       {
         "__type": "UIManager",
         "__guid": "632ca4d3-d55a-41cc-a777-0cab64a63c6e",
+        "afterActionReportScreen": {
+          "_type": "component",
+          "component_id": "58dc6b71-6a21-497f-9f55-0092f4052a44",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "AfterActionReportScreen"
+        },
         "blackFadeAlpha": 1,
         "currentTimeWidget": {
           "_type": "component",
@@ -35,6 +40,18 @@
           "component_id": "033c1387-5b4d-4538-adef-140909f39adc",
           "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
           "component_type": "FailedTooManyCivsKilledScreen"
+        },
+        "leaderboardsScreen": {
+          "_type": "component",
+          "component_id": "86997ff4-6169-411c-9cef-40309e34cf25",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "LeaderboardsScreen"
+        },
+        "levelLeaderboards": {
+          "_type": "component",
+          "component_id": "a20687f4-5e4f-495e-aa98-d8f1a45476c8",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "LevelLeaderboards"
         },
         "reactTimeBarWidget": {
           "_type": "component",
@@ -56,6 +73,11 @@
         }
       },
       {
+        "__type": "LeaderboardsScreen",
+        "__guid": "86997ff4-6169-411c-9cef-40309e34cf25",
+        "__enabled": false
+      },
+      {
         "__type": "CurrentTimeWidget",
         "__guid": "7c229e3e-a4f6-4982-84f1-a5a9b171b1a9"
       },
@@ -75,6 +97,11 @@
         "TwistMin": -1,
         "TwistValue": 0,
         "Progress": 0.5
+      },
+      {
+        "__type": "AfterActionReportScreen",
+        "__guid": "58dc6b71-6a21-497f-9f55-0092f4052a44",
+        "__enabled": false
       },
       {
         "__type": "DiedScreen",
@@ -102,8 +129,16 @@
         "SecondsTillExpiry": 0.75,
         "TranslateY": -50,
         "TranslateYSpeed": 1
+      },
+      {
+        "__type": "LevelLeaderboards",
+        "__guid": "a20687f4-5e4f-495e-aa98-d8f1a45476c8",
+        "__enabled": false,
+        "isRefreshing": false
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

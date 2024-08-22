@@ -8,6 +8,11 @@
 		<!--<div @ref=medal class="circle"></div>-->
 		<img src=@GetCurrentMedalImage() style="width: 200px; height: 200px; margin: -35px 0px -55px 0px" />
 		<div class="title">@GetRemainingReactTime()</div>
+
+		@if (@ShouldShowTimeDiff())
+		{ 
+			<div class="title" style="color: @GetTimeDiffColor(); margin: -0px -200px -200px -535px">@GetTimeDiff()</div>
+		}
 	</div>
 </root>
 
@@ -39,6 +44,51 @@
 		var currentMedal = GamePlayManager.instance.currentMedal;
 		var medalImage = GameSettings.instance.GetMedalImage(currentMedal);
 		return medalImage;
+	}
+
+	string GetTimeDiff()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			return "";
+		}
+
+		if (!GamePlayManager.instance.previousBestTime.HasValue)
+		{
+			return "";
+		}
+
+		var formattedTime = UIManager.FormatTime(GamePlayManager.instance.levelTimeDiff, true);
+		return formattedTime;
+	}
+
+	bool ShouldShowTimeDiff()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			return false;
+		}
+		return GamePlayManager.instance.previousBestTime.HasValue;
+	}
+
+	string GetTimeDiffColor()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			return "";
+		}
+
+		if (!GamePlayManager.instance.previousBestTime.HasValue)
+		{
+			return "";
+		}
+
+		if (GamePlayManager.instance.levelTimeDiff > 0.0f)
+		{
+			return "red";
+		}
+
+		return "lime";
 	}
 
 	protected override int BuildHash() => System.HashCode.Combine(GetRemainingReactTime());

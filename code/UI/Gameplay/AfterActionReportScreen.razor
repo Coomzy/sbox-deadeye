@@ -1,0 +1,236 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Services;
+@using System;
+@using Sandbox.Audio;
+@inherits PanelComponent
+
+<root class="menu">
+	<div class="title" style="font-size: 65px">
+		<span>@GetActionStateMessage()</span>
+	</div>
+
+	@if (!isFailState)
+	{
+		// TODO: I couldn't figure out how to do a background around this stuff
+		<img src=@GetMedalImage(MedalType.Bronze) style="width: 200px; height: 200px; margin: -115px 500px -50px 0px;" />
+		<img src=@GetMedalImage(MedalType.Silver) style="width: 200px; height: 200px; margin: -115px 166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Silver)" />
+		<img src=@GetMedalImage(MedalType.Gold) style="width: 200px; height: 200px; margin: -115px -166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Gold)" />
+		<img src=@GetMedalImage(MedalType.Onyx) style="width: 200px; height: 200px; margin: -115px -500px 50px 0px; opacity: @GetMedalOpacity(MedalType.Onyx)" />
+		@if (IsNewPersonalBest())
+		{
+			<div class="label" style="width: 200px; height: 00px; margin: -0px 350px 00px 0px; color: white;">New Personal Best!</div>
+		}
+		<div class="label" style="width: 350px; height: 00px; margin: -0px -500px 00px 0px; color: white;">@GetNextTime()</div>
+	}
+
+	<div class="container">
+		<div class="buttonsalt">
+			<div class="button-group">
+				<div class="button transparent" onclick="@(() => ReturnToMenu())">
+					<span class="icon"><InputGlyph button="Quit"/></span>
+					Exit
+				</div>
+			</div>
+			<div class="button-group">
+				<div class="button transparent" onclick="@(() => Retry())">
+					<span class="icon"><InputGlyph button="Restart" /></span>
+					Retry
+				</div>
+			</div>
+			@if (isFailState)
+			{
+				<div class="button-group">
+					<div class="button fake">
+						<span class="icon"><InputGlyph button="Shoot" /></span>
+						Shoot
+					</div>
+				</div>
+					<div class="button-group">
+					<div class="button fake">
+						<span class="icon"><InputGlyph button="Shoot" /></span>
+						Spare
+					</div>
+				</div>
+			}
+			else
+			{
+				<div class="button-group">
+					<div class="button transparent" onclick="@(() => Next_Level())">
+						<span class="icon"><InputGlyph button="Next_Level"/></span>
+						Next
+					</div>
+				</div>
+				<!-- We don't have to add this, but it's not too hard it would be a nice quality of life thing-->
+				<div class="button-group">
+					<div class="button transparent" onclick="@(() => OpenLeaderboard())">
+						<span class="icon"><InputGlyph button="Leaderboard"/></span>
+						Leaderboard
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</root>
+
+@code
+{
+	bool isFailState => (Player_TD.instance == null || Player_TD.instance.state != PlayerState_TD.Won);
+
+	string GetActionStateMessage()
+	{
+		if (Player_TD.instance == null)
+		{
+			return "You Died?";
+		}
+		if (Player_TD.instance.state == PlayerState_TD.KilledTooManyCivs)
+		{
+			return "Too many civilian casualties";
+		}
+		if (Player_TD.instance.state == PlayerState_TD.Won)
+		{
+			return "Level Complete";
+		}
+		return "You Died";	
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (!isFailState)
+		{
+			if (Input.Pressed("Next_level"))
+			{
+				Next_Level();
+			}
+
+			if (Input.Pressed("Leaderboard"))
+			{
+				OpenLeaderboard();
+			}
+		}
+	}
+
+	void ReturnToMenu()
+	{
+		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
+		var soundHandle = Sound.Play("ui.navigate.back");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+	}
+
+	void Retry()
+	{
+		Game.ActiveScene.Load(Game.ActiveScene.Source);
+		var soundHandle = Sound.Play("ui.navigate.back");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+	}
+
+	void Next_Level()
+	{
+		bool foundLevel = false;
+		foreach (var level in GameSettings.instance.topDownLevels)
+		{
+			if (level == null)
+			{
+				continue;	
+			}
+
+			if (foundLevel)
+			{
+				Game.ActiveScene.Load(level.scene);
+				return;
+			}
+
+			if (level == LevelData.active)
+			{
+				foundLevel = true;
+				continue;
+			}
+		}
+
+		if (foundLevel)
+		{
+			Game.ActiveScene.Load(GameSettings.instance.topDownLevels[0].scene);
+			return;	
+		}
+
+		Log.Error($"Next_Level() failed to find next level for {LevelData.active}");
+	}
+
+	void OpenLeaderboard()
+	{
+		if (UIManager.instance == null)
+		{
+			Log.Warning($"No UI Manager!?");
+			return;	
+		}
+
+		UIManager.instance.OpenLevelLeaderboard();
+	}
+
+	string GetMedalImage(MedalType medalType)
+	{
+		if (LevelData.active == null)
+		{
+			return "";
+		}
+
+		if (GameSettings.instance == null)
+		{
+			return "";
+		}
+
+		if (medalType > LevelData.active.GetBestMedal())
+		{
+			return GameSettings.instance.lockedImage;
+		}
+
+		var medalImage = GameSettings.instance.GetMedalImage(medalType);
+		return medalImage;
+	}
+
+	bool IsNewPersonalBest()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			return false;
+		}
+		return GamePlayManager.instance.isNewPersonalBest;
+	}
+
+	float GetMedalOpacity(MedalType medalType)
+	{
+		if (LevelData.active == null)
+		{
+			return 0.0f;
+		}
+
+		if (medalType <= LevelData.active.GetBestMedal())
+		{
+			return 1.0f;
+		}
+
+		return 0.75f;
+	}
+
+	string GetNextTime()
+	{
+		if (LevelData.active == null)
+		{
+			return "LevelData.active null :(";
+		}
+
+		if (LevelData.active.GetBestMedal() == MedalType.Onyx)
+		{
+			return "Time attack to #1";
+		}
+
+		return $"{LevelData.active.GetNextMedalType()} Time: {UIManager.FormatTime(LevelData.active.GetNextMedalTime())}";
+	}
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

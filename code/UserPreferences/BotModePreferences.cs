@@ -26,4 +26,14 @@ public class BotModePreferences : UserPreferences<BotModePreferences>
 
 		return checkingMode == mode;
 	}
+
+	public bool IsInAnyBotMode()
+	{
+		if (!Game.IsEditor)
+		{
+			return false;
+		}
+
+		return mode != PlayerBotMode.None;
+	}
 }

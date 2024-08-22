@@ -1,0 +1,78 @@
+@import "../Menu/Shared/Menu.scss";
+
+AfterActionReport.menu {
+	background-color: transparent;
+	pointer-events: none;
+
+	.container {
+		height: 10%;
+		display: flex;
+		justify-content: flex-end; /* Pushes items to the right */
+		flex-direction: row;
+		position: absolute;
+		bottom: 20px; /* Distance from the bottom of the screen */
+		transform: translateX(-50%); /* Centers the container horizontally */
+		align-items: flex-end;
+		gap: 20px;
+	}
+
+	.container .buttonsalt {
+		.button-group {
+			align-items: flex-end;
+			flex-direction: row;
+			align-items: center;
+			color: black;
+			background-color: black;
+
+			InputGlyph {
+				margin-left: 0.5em;
+			}
+		}
+
+		.button {
+			width: 600px;
+			pointer-events: all;
+
+			.icon.hand {
+				padding: 5px 0;
+			}
+		}
+	}
+
+	.title {
+		align-self: flex-end;
+		font-size: 88px;
+		//color: lightgray;
+	}
+
+	.table {
+		flex-direction: column;
+		width: 600px;
+		mix-blend-mode: lighten;
+
+		.header {
+			opacity: 0.3;
+		}
+
+		.row {
+			white-space: nowrap;
+
+			> .name {
+				flex-grow: 1;
+			}
+
+			> .stat {
+				width: 100px;
+				justify-content: flex-end;
+			}
+
+			> * {
+				padding: 0px 8px;
+			}
+		}
+
+		.me {
+			color: #4cff00;
+		}
+	}
+}

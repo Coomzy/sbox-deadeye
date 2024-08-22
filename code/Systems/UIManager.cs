@@ -11,9 +11,13 @@ public class UIManager : Component
 	[Group("Setup"), Property] public CurrentTimeWidget currentTimeWidget { get; private set; }
 	[Group("Setup"), Property] public TimeAddedWidget timeAddedWidget { get; private set; }
 	[Group("Setup"), Property] public ReactTimeBarWidget reactTimeBarWidget { get; private set; }
+	[Group("Setup"), Property] public AfterActionReportScreen afterActionReportScreen { get; private set; }
 	[Group("Setup"), Property] public DiedScreen diedScreen { get; private set; }
 	[Group("Setup"), Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
 	[Group("Setup"), Property] public WonScreen wonScreen { get; private set; }
+
+	[Group("Setup"), Property] public LeaderboardsScreen leaderboardsScreen { get; private set; }
+	[Group("Setup"), Property] public LevelLeaderboards levelLeaderboards { get; private set; }
 
 	[Group("Setup"), Property] public BlackFadeWidget blackFadeWidget { get; private set; }
 
@@ -31,7 +35,8 @@ public class UIManager : Component
 		//if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
-		if (diedScreen != null) diedScreen.Enabled = true;
+		//if (diedScreen != null) diedScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 	}
 
 	public void FailedTooManyCivsKilled()
@@ -39,7 +44,8 @@ public class UIManager : Component
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
-		if (failedTooManyCivsKilledScreen != null) failedTooManyCivsKilledScreen.Enabled = true;
+		//if (failedTooManyCivsKilledScreen != null) failedTooManyCivsKilledScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 	}
 
 	public void Won()
@@ -47,7 +53,8 @@ public class UIManager : Component
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
-		if (wonScreen != null) wonScreen.Enabled = true;
+		//if (wonScreen != null) wonScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 	}
 
 	public void CivilianKilled()
@@ -56,6 +63,38 @@ public class UIManager : Component
 		{
 			timeAddedWidget.Enabled = true;
 			timeAddedWidget.AddTimePlus5s();
+		}
+	}
+
+	public void OpenLevelLeaderboard()
+	{
+		if (levelLeaderboards == null)
+		{
+			Log.Warning($"UI Manager no levelLeaderboards");
+		}
+
+		if (leaderboardsScreen == null)
+		{
+			Log.Warning($"UI Manager no leaderboardsScreen");
+		}
+
+		if (levelLeaderboards != null)
+		{
+			levelLeaderboards.SetContext(LevelData.active);
+			levelLeaderboards.GetLeaderboard(LeaderboardGroup.Global);
+		}
+
+		if (leaderboardsScreen != null)
+		{
+			leaderboardsScreen.Enabled = true;
+		}
+	}
+
+	public void CloseLeaderboard()
+	{
+		if (leaderboardsScreen != null)
+		{
+			leaderboardsScreen.Enabled = false;
 		}
 	}
 

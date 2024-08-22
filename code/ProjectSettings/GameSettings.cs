@@ -42,6 +42,7 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 	[Group("Medals"), Property, ImageAssetPath] public string silverImage { get; set; } = "textures/medals/medal_silver.psd";
 	[Group("Medals"), Property, ImageAssetPath] public string goldImage { get; set; } = "textures/medals/medal_gold.psd";
 	[Group("Medals"), Property, ImageAssetPath] public string onyxImage { get; set; } = "textures/medals/medal_platinum.psd";
+	[Group("Medals"), Property, ImageAssetPath] public string lockedImage { get; set; } = "textures/medals/medal_locked.psd";
 
 	[Group("Medals"), Property] public Texture bronzeImageTex = Texture.Load(FileSystem.Mounted, "textures/medals/medal_bronze.psd");
 	[Group("Medals"), Property] public Texture silverImageTex = Texture.Load(FileSystem.Mounted, "textures/medals/medal_silver.psd");
@@ -105,7 +106,7 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 				break;
 			}
 
-			var levelMedalType = level.GetBestTimeMedal();
+			var levelMedalType = level.GetBestMedal();
 			if (levelMedalType >= lowestMedalType)
 				continue;
 
