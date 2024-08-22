@@ -93,6 +93,12 @@ public class LevelData : GameResource
 			return;
 		}
 
+		if (string.IsNullOrEmpty(scene.Title))
+		{
+			Log.Error($"Register() scene.Title was null or empty for LevelData '{ResourcePath}'");
+			return;
+		}
+
 		sceneNameToLevelData[scene.Title] = this;
 	}
 
