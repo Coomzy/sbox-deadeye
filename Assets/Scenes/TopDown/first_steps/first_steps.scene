@@ -17641,7 +17641,7 @@
                     "_type": "gameobject",
                     "go": "c11980ea-cb1e-4565-affc-332a35ebc428"
                   },
-                  "eastWallType": "Door",
+                  "eastWallType": "None",
                   "floor": {
                     "_type": "gameobject",
                     "go": "f6c6420f-627d-43f8-a9ec-f75b7560d661"
@@ -17688,7 +17688,7 @@
                     "_type": "gameobject",
                     "go": "6be94517-0cac-416b-81c5-ebba53dbdfbc"
                   },
-                  "westWallType": "Door"
+                  "westWallType": "None"
                 }
               ],
               "Children": [
@@ -17807,7 +17807,6 @@
                   "Name": "east wall",
                   "Position": "4,-248,5",
                   "Rotation": "0,0,-0.7071068,0.7071068",
-                  "Enabled": true,
                   "__Prefab": "prefabs/environment/doors/sm_wood_wall_01_door_02.prefab",
                   "__PrefabVariables": {}
                 },
@@ -17944,7 +17943,6 @@
                   "Name": "west wall",
                   "Position": "0,240,5",
                   "Rotation": "0,0,0.7071068,0.7071068",
-                  "Enabled": true,
                   "__Prefab": "prefabs/environment/doors/sm_wood_wall_01_door.prefab",
                   "__PrefabVariables": {}
                 },

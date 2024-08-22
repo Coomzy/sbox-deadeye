@@ -13,15 +13,18 @@
 	@if (!isFailState)
 	{
 		// TODO: I couldn't figure out how to do a background around this stuff
-		<img src=@GetMedalImage(MedalType.Bronze) style="width: 200px; height: 200px; margin: -115px 500px -50px 0px;" />
+		<img src=@GetMedalImage(MedalType.Bronze) style="width: 200px; height: 200px; margin: -115px 500px -50px 0px;"/>
 		<img src=@GetMedalImage(MedalType.Silver) style="width: 200px; height: 200px; margin: -115px 166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Silver)" />
 		<img src=@GetMedalImage(MedalType.Gold) style="width: 200px; height: 200px; margin: -115px -166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Gold)" />
 		<img src=@GetMedalImage(MedalType.Onyx) style="width: 200px; height: 200px; margin: -115px -500px 50px 0px; opacity: @GetMedalOpacity(MedalType.Onyx)" />
-		@if (IsNewPersonalBest())
+		@if (true)//IsNewPersonalBest())
 		{
-			<div class="label" style="width: 200px; height: 00px; margin: -0px 350px 00px 0px; color: white;">New Personal Best!</div>
+			<div class="label" style="width: 350px; height: 00px; margin: -0px 200px 00px 0px; color: white;">New Personal Best!</div>
 		}
-		<div class="label" style="width: 350px; height: 00px; margin: -0px -500px 00px 0px; color: white;">@GetNextTime()</div>
+		@if (true)//IsNewPersonalBest())
+		{
+			<div class="label" style="width: 350px; height: 00px; margin: -0px -500px 00px 0px; color: white;">@GetNextTime()</div>
+		}
 	}
 
 	<div class="container">
@@ -35,6 +38,8 @@
 			<div class="button-group">
 				<div class="button transparent" onclick="@(() => Retry())">
 					<span class="icon"><InputGlyph button="Restart" /></span>
+					/
+					<span class="icon"><InputGlyph button="Restart_Alt" /></span>
 					Retry
 				</div>
 			</div>
@@ -43,12 +48,16 @@
 				<div class="button-group">
 					<div class="button fake">
 						<span class="icon"><InputGlyph button="Shoot" /></span>
+						/
+						<span class="icon"><InputGlyph button="Shoot_Alt" /></span>
 						Shoot
 					</div>
 				</div>
 					<div class="button-group">
 					<div class="button fake">
-						<span class="icon"><InputGlyph button="Shoot" /></span>
+						<span class="icon"><InputGlyph button="Spare" /></span>
+						/
+						<span class="icon"><InputGlyph button="Spare_Alt" /></span>
 						Spare
 					</div>
 				</div>
@@ -57,7 +66,7 @@
 			{
 				<div class="button-group">
 					<div class="button transparent" onclick="@(() => Next_Level())">
-						<span class="icon"><InputGlyph button="Next_Level"/></span>
+						<span class="icon"><InputGlyph button="Play"/></span>
 						Next
 					</div>
 				</div>
@@ -100,7 +109,7 @@
 
 		if (!isFailState)
 		{
-			if (Input.Pressed("Next_level"))
+			if (Input.Pressed("Play"))
 			{
 				Next_Level();
 			}
@@ -212,6 +221,20 @@
 		}
 
 		return 0.75f;
+	}
+
+	bool HasBestMedal()
+	{
+		if (LevelData.active == null)
+		{
+			return true;
+		}
+
+		if (LevelData.active.GetBestMedal() == MedalType.Onyx)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	string GetNextTime()

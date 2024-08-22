@@ -231,4 +231,14 @@ public class RoomManager : Component
 
 		GetRooms();
 	}
+
+	protected override void OnDestroy()
+	{
+		if (instance == this)
+		{
+			instance = null;
+		}
+
+		base.OnDestroy();
+	}
 }

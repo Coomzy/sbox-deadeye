@@ -7,16 +7,16 @@
 
 @inherits PanelComponent
 
-<root class="menu translucent-bg stretched">
-	<div class="container">
-		<div class="buttons">
+<root class="menu translucent-bg">
+    <div class="container">
+        <!--<div class="buttons">
             <div class="button-bg">
-                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+                <div class="button cowboy singular" onclick="@(() => ButtonBack())">Back</div>
             </div>
-		</div>
+        </div>-->
 		<div class="content bg">
 	        <div class="title">
-		        <span>Leaderboards</span>
+                <span>@GetNamedLeaderboardTitle()</span>
 	        </div>
             <div class="table controller">
                 <div class="row">
@@ -25,7 +25,7 @@
                         <span class="arrow prev @(CanLeaderboardMoveLeft ? "" : "disabled")" onclick="@(() => MoveLeaderboardLeft())">
                             @if (Input.UsingController)
                             {
-                                <InputGlyph button="ContextLeft" size="Medium" style="Dark" />
+                                <InputGlyph button="Previous" size="Medium" style="Dark" />
                             } else {
                                 <span class="char">&larr;</span>
                             }
@@ -40,7 +40,7 @@
                         <span class="arrow next @(CanLeaderboardMoveRight ? "" : "disabled")" onclick="@(() => MoveLeaderboardRight())">
                             <span class="text">Next</span>
                             @if (Input.UsingController) {
-                                <InputGlyph button="ContextRight" size="Medium" style="Dark"/>
+                                <InputGlyph button="Next" size="Medium" style="Dark"/>
                             } else {
                             <span class="char">&rarr;</span>
                             }
@@ -115,7 +115,12 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <div class="button red" onclick="@(() => RetrieveLeaderboard())">Try again?</div>
+                            <div class="button red" onclick="@(() => RetrieveLeaderboard(true))">Try again?</div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">Back</div>
                         </div>
                     </div>
                     return;
@@ -135,7 +140,12 @@
                     </div>
                 }
             </div>
-		</div>
+            <div class="buttons">
+                <div class="button-bg">
+                    <div class="button cowboy singular" onclick="@(() => ButtonBack())">Back</div>
+                </div>
+            </div>
+        </div>
 	</div>
 </root>
 
@@ -149,6 +159,15 @@
     private float RefreshRotation = 0;
     private float RefreshYLocation = 0;
     private int row = 0;
+
+    public string GetNamedLeaderboardTitle()
+    {
+        if (Leaderboards?.context != null)
+        {            
+            return $"{Leaderboards.context.friendlyLevelName} Leaderboards";
+        }
+        return $"Combined Time Leaderboards";
+    }
 
     public string GetLeaderboardTitle() {
         return ActiveTab.ToString();
@@ -211,7 +230,11 @@
         }
     }
 
-    private void RetrieveLeaderboard() {
+    private void RetrieveLeaderboard(bool forceRefresh = false) {
+        if (forceRefresh)
+        {
+            HasRetrievingStarted = false;
+        }
         if (Leaderboards != null && this.Panel.IsVisibleSelf && !HasRetrievingStarted)
         {
             Leaderboards.GetLeaderboard(ActiveTab);
@@ -233,9 +256,9 @@
                 RetrieveLeaderboard();
             }
 
-            if (Input.Pressed("ContextLeft") && CanLeaderboardMoveLeft) MoveLeaderboardLeft();
-            else if (Input.Pressed("ContextRight") && CanLeaderboardMoveRight) MoveLeaderboardRight();
-            else if (Input.Pressed("ActionBack")) ButtonBack();
+            if (Input.Pressed("Previous") && CanLeaderboardMoveLeft) MoveLeaderboardLeft();
+            else if (Input.Pressed("Next") && CanLeaderboardMoveRight) MoveLeaderboardRight();
+            else if (Input.Pressed("Back")) ButtonBack();
         }
 
 

@@ -51,6 +51,7 @@ public class Player_TD : Component
 		base.OnAwake();
 
 		Mouse.Visible = true;
+		state = PlayerState_TD.Idle;
 
 		var clothingContainer = CitizenSettings.instance.GetPlayerClothingContainer();
 		clothingContainer.Apply(bodyRenderer);
@@ -126,13 +127,23 @@ public class Player_TD : Component
 
 	void WalkingUpdate()
 	{
+		if (RoomManager.instance == null)
+			return;
+
+		if (RoomManager.instance.currentRoom == null)
+			return;
+
+		if (RoomManager.instance?.currentRoom?.GameObject == null)
+			return;
+
 		if (RoomManager.instance?.currentRoom?.GameObject?.Transform == null)
 			return;
 
 		if (RoomManager.instance?.currentRoom?.walkToPath == null)
 			return;
 
-		var currentPos = Transform.Position;
+		// FUCK YOU SPLINES
+		/*var currentPos = Transform.Position;
 		var walkToPath = RoomManager.instance.currentRoom.walkToPath;
 		float totalSplineLength = walkToPath.GetTotalSplineTime();
 		float timeLeftAlongSpline = totalSplineLength - timeSinceStartedWalking;
@@ -143,18 +154,22 @@ public class Player_TD : Component
 		if (timeLeftAlongSpline < 0.015f)
 		{
 			moveToPos = Utils.MoveTowards(Transform.Position, endOfSplinePoint, PlayerSettings.instance.walkSpeed * Time.Delta);
-		}
+		}*/
 
-		Transform.Position = moveToPos;
+		var currentPos = Transform.Position;
+		var moveToPoint = RoomManager.instance.currentRoom.walkToPos;
+		var nextPos = Utils.MoveTowards(Transform.Position, moveToPoint, PlayerSettings.instance.walkSpeed * Time.Delta);
 
-		var moveDelta = Vector3.Direction(currentPos, moveToPos);
+		Transform.Position = nextPos;
+
+		var moveDelta = Vector3.Direction(currentPos, nextPos);
 		
 		Transform.Rotation = Rotation.Slerp(Transform.Rotation, Rotation.From(moveDelta.EulerAngles), PlayerSettings.instance.faceMovementSpeed * Time.Delta);
 
 		thirdPersonAnimationHelper.WithWishVelocity(moveDelta * 100.0f);
 		thirdPersonAnimationHelper.WithVelocity(moveDelta * 100.0f);
 
-		if (Vector3.DistanceBetween(Transform.Position, endOfSplinePoint) < 0.01f)
+		if (Vector3.DistanceBetween(Transform.Position, moveToPoint) < 0.01f)
 		{
 			if (RoomManager.instance.currentRoom.targets == null || RoomManager.instance.currentRoom.targets.Count < 1)
 			{
@@ -335,6 +350,7 @@ public class Player_TD : Component
 		error = MathX.Clamp(error, 0.0f, MusicManager.TIME_BASE - 0.0001f);
 
 		await Task.DelaySeconds(MusicManager.TIME_BASE - error);
+		bool killedAnyCivs = false;
 
 		foreach (var target in targets)
 		{			
@@ -353,6 +369,7 @@ public class Player_TD : Component
 			}
 			else
 			{
+				killedAnyCivs = true;
 				GamePlayManager.instance.civiliansKilled++;
 				GameStats.Increment(GameStats.CIVILIANS_KILLED);
 				UIManager.instance.CivilianKilled();
@@ -376,6 +393,12 @@ public class Player_TD : Component
 		}
 
 		await Task.DelaySeconds(MusicManager.TIME_BASE + error);
+
+		if (killedAnyCivs && GamePreferences.instance.restartLevelOnCivKill)
+		{
+			LoadingScreen.ReloadLevel();
+			return;
+		}
 
 		Game.ActiveScene.TimeScale = 1.0f;
 
@@ -434,6 +457,12 @@ public class Player_TD : Component
 		}
 
 		await Task.DelaySeconds(1.5f);
+
+		if (GamePreferences.instance.restartLevelOnFail)
+		{
+			LoadingScreen.ReloadLevel();
+			return;
+		}
 
 		UIManager.instance.Died();
 	}
@@ -625,6 +654,12 @@ public class Player_TD : Component
 
 		await Task.DelaySeconds(1.5f);
 
+		if (GamePreferences.instance.restartLevelOnFail)
+		{
+			LoadingScreen.ReloadLevel();
+			return;
+		}
+
 		UIManager.instance.FailedTooManyCivsKilled();
 	}
 
@@ -686,7 +721,7 @@ public class Player_TD : Component
 		if (!pressed)
 			return;
 
-		Game.ActiveScene.Load(GameSettings.instance.menuLevel.scene);
+		LoadingScreen.SwitchToMenu();
 	}
 
 	void CheckForReloadLevelInput()
@@ -699,7 +734,7 @@ public class Player_TD : Component
 		if (!pressed)
 			return;
 
-		Game.ActiveScene.Load(Game.ActiveScene.Source);
+		LoadingScreen.ReloadLevel();
 	}
 
 	void StateMachineUpdate()
@@ -740,5 +775,15 @@ public class Player_TD : Component
 				WonStart();
 				break;
 		}
+	}
+
+	protected override void OnDestroy()
+	{
+		if (instance == this)
+		{
+			instance = null;
+		}
+
+		base.OnDestroy();
 	}
 }

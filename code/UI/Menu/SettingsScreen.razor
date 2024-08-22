@@ -17,6 +17,32 @@
                 <span>Settings</span>
             </div>
             <div class="table">
+
+                <div class="row title">
+                    <div class="label">Gameplay</div>
+                </div>            
+                <div class="row setting">
+                    <div class="column key">
+                        <div class="label">Restart Level On Fail:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="buttons">
+                            <div class="button @restartLevelOnFailColorOff" onclick="@(() => SetRestartLevelOnFail(false))">Off</div>
+                            <div class="button @restartLevelOnFailColorOn" onclick="@(() => SetRestartLevelOnFail(true))">On</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row setting">
+                    <div class="column key">
+                        <div class="label">Restart Level On Civilian Killed:</div>
+                    </div>
+                    <div class="column value">
+                        <div class="buttons">
+                            <div class="button @restartLevelOnCivKillColorOff" onclick="@(() => SetRestartLevelOnCivKill(false))">Off</div>
+                            <div class="button @restartLevelOnCivKillColorOn" onclick="@(() => SetRestartLevelOnCivKill(true))">On</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row title">
                     <div class="label">Clothing</div>
                 </div>
@@ -83,6 +109,12 @@
 
 @code
 {
+    string restartLevelOnFailColorOff => GamePreferences.instance.restartLevelOnFail ? "gray" : "red";
+    string restartLevelOnFailColorOn => GamePreferences.instance.restartLevelOnFail ? "green" : "gray";
+
+    string restartLevelOnCivKillColorOff => GamePreferences.instance.restartLevelOnCivKill ? "gray" : "red";
+    string restartLevelOnCivKillColorOn => GamePreferences.instance.restartLevelOnCivKill ? "green" : "gray";
+
     string useOriginalClothingColorOff => GamePreferences.instance.useOriginalClothing ? "gray" : "red";
     string useOriginalClothingColorOn => GamePreferences.instance.useOriginalClothing ? "green" : "gray";
 
@@ -129,6 +161,22 @@
         GamePreferences.instance.uiVolume = value;
         GamePreferences.instance.ApplyVolumesToMixers();
         GamePreferences.instance.Save();
+    }
+    
+    void SetRestartLevelOnFail(bool enabled)
+    {
+        GamePreferences.instance.restartLevelOnFail = enabled;
+        GamePreferences.instance.Save();
+        var soundHandle = Sound.Play("ui.button.press");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+    }
+
+    void SetRestartLevelOnCivKill(bool enabled)
+    {
+        GamePreferences.instance.restartLevelOnCivKill = enabled;
+        GamePreferences.instance.Save();
+        var soundHandle = Sound.Play("ui.button.press");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
     }
 
     void SetUseOriginalClothing(bool enabled)

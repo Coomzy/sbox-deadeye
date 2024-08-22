@@ -64,25 +64,12 @@
 											<p class="kvp best">
 												@if (!(level.GetBestTime() >= float.MaxValue))
 												{
-													<span class="key">Best Time: </span>
+													<span class="key" style="width: auto">Best Time: </span>
 													<span class="value">@UIManager.FormatTime(level.GetBestTime())</span>
 												} else
 												{
-													<span class="key"><label> </label></span>
+													<span class="key" style="width: auto"><label> </label></span>
 													<span class="value"> </span>
-												}
-											</p>
-											<p class="kvp next">
-												@if (medal != MedalType.None && !(MathX.AlmostEqual(level.GetNextMedalTime(), 0.0f) || level.GetNextMedalTime() >= float.MaxValue))
-												{
-													<span class="key">Next Medal: </span>
-													<span class="value">@UIManager.FormatTime(level.GetNextMedalTime())</span>
-												}
-												else
-												{
-													@* <span>Pass for Bronze</span> *@
-													<span class="key">Next Medal: </span>
-													<span class="value">Pass for Bronze</span>
 												}
 											</p>
 											<p class="medals">
@@ -117,20 +104,36 @@
 													}
 												</span>
 											</p>
+											<p class="kvp next">
+												@if (medal != MedalType.None && !(MathX.AlmostEqual(level.GetNextMedalTime(), 0.0f) || level.GetNextMedalTime() >= float.MaxValue))
+												{
+													<span class="key" style="width: auto">Next Medal: </span>
+													<span class="value">@UIManager.FormatTime(level.GetNextMedalTime())</span>
+												}
+												else
+												{
+													@* <span>Pass for Bronze</span> *@
+													<span class="key" style="width: auto">Next Medal: </span>
+													<span class="value">Pass for Bronze</span>
+												}
+											</p>
 										</div>
 									</div>
 									<div class="column">
 										<div class="misc">
 											<p class="kvp civs">
 												<span class="key">Maximum Civilian Casualties: </span>
-												<span class="value">@level.allowedCivilianCasualties</span>
+												<span class="value">@(level.allowedCivilianCasualties-1)</span>
 											</p>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="buttons">
-								<div class="button red" onclick="@(() => StartActiveLevel())">Play</div>
+								<div class="button red" onclick="@(() => StartActiveLevel())">
+									<span class="icon"><InputGlyph button="Play" /></span>
+									Play
+								</div>
 							</div>
 						</div>
 					</div>
@@ -156,8 +159,11 @@
 	<div class="container controls">
 		<div class="buttons">
 			<div class="button-bg">
-				@* <div class="button green" onclick="@(() => StartGame())">Start</div> *@
-				<div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+				@* <div class="button green" onclick="@(() => StartGame())">Start</div> *@				
+				<div class="button cowboy singular" onclick="@(() => ButtonBack())"><span class="icon">
+					<InputGlyph button="Back" /></span>
+					Back
+				</div>
 			</div>
 		</div>
 	</div>
