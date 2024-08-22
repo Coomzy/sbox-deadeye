@@ -1,12 +1,11 @@
 {
   "UI": true,
-  "Volume": "0.85 0.95",
+  "Volume": "0.88 0.92",
   "Pitch": "0.99 1.01",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/weapons/glock_18_shot_2.vsnd",
-    "sounds/weapons/glock_18_shot_6.vsnd"
+    "sounds/weapons/wtail_357-magnum-revolver-gunshot.vsnd"
   ],
   "Occlusion": false,
   "AirAbsorption": false,

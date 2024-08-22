@@ -1,12 +1,11 @@
 {
   "UI": true,
-  "Volume": "0.85 0.95",
-  "Pitch": "0.99 1.01",
+  "Volume": "1 1",
+  "Pitch": "1 1",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/weapons/glock_18_shot_2.vsnd",
-    "sounds/weapons/glock_18_shot_6.vsnd"
+    "sounds/weapons/50070__m1rk0__metronom_klack.vsnd"
   ],
   "Occlusion": false,
   "AirAbsorption": false,
