@@ -1,7 +1,7 @@
 {
   "scene": "scenes/topdown/first_steps/first_steps.scene",
   "gameMode": "TopDown",
-  "allowedCivilianCasualties": 10,
+  "allowedCivilianCasualties": 1,
   "silverTime": 23.5,
   "goldTime": 20.5,
   "onyxTime": 18.5,
