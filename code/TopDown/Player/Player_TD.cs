@@ -326,7 +326,7 @@ public class Player_TD : Component
 	{
 		float error = MusicManager.timeTillBeat;
 
-		await Task.DelaySeconds(PlayerSettings.instance.delayBeforeExecute - error);
+		await Task.DelaySeconds(MusicManager.TIME_BASE - error);
 
 		foreach (var target in targets)
 		{			
@@ -335,7 +335,7 @@ public class Player_TD : Component
 			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
 			//thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
 
-			await Task.DelaySeconds(PlayerSettings.instance.delayPerExecute);
+			await Task.DelaySeconds(MusicManager.TIME_BASE);
 
 			//Game.ActiveScene.TimeScale = 0.0f;
 
@@ -367,7 +367,7 @@ public class Player_TD : Component
 			bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
 		}
 
-		await Task.DelaySeconds(PlayerSettings.instance.delayAfterExecute + error);
+		await Task.DelaySeconds(MusicManager.TIME_BASE + error);
 
 		Game.ActiveScene.TimeScale = 1.0f;
 

@@ -38,6 +38,9 @@ public class MusicManager : Component, IHotloadManaged
 	float moveRate = 1.0f;
 	public static float timeTillBeat;
 
+	public const float TIME_BASE = 0.24f;
+	//public const float TIME_BASE = 0.2375f;
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
@@ -88,9 +91,9 @@ public class MusicManager : Component, IHotloadManaged
 		mixInstruments.TargetMixer = Mixer.FindMixerByName("Music");
 
 
-		float timeBase = (0.241375f * 2.0f) + -0.00775f;
+		//float timeBase = 0.2375f * 2.0f;
 
-		timeTillBeat = timeBase + 0.1f + -0.008f;
+		timeTillBeat = TIME_BASE + 0.1f + -0.008f;
 
 		await Task.Frame();
 
@@ -101,11 +104,12 @@ public class MusicManager : Component, IHotloadManaged
 			if (timeTillBeat < 0.0f)
 			{
 				float timeOver = timeTillBeat;
-				timeTillBeat = timeBase - timeOver;
+				timeTillBeat = TIME_BASE - timeOver;
 
-				//var soundHandle = Sound.Play("weapon.pistol");
-				//soundHandle.Volume = 0.4f;
-				//soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
+				/// FOR TESTING
+				var soundHandle = Sound.Play("test.click");
+				soundHandle.Volume = 0.2f;
+				soundHandle.TargetMixer = Mixer.FindMixerByName("Game");
 			}
 
 			await Task.Frame();
@@ -168,6 +172,12 @@ public class MusicManager : Component, IHotloadManaged
 		mixDrums.Volume = currentVolDrums;
 		mixGuitar.Volume = currentVolGuitar;
 		mixInstruments.Volume = currentVolInstruments;
+
+		/// FOR TESTING
+		mixBass.Volume = 1.0f;
+		mixDrums.Volume = 1.0f;
+		mixGuitar.Volume = 0.0f;
+		mixInstruments.Volume = 0.0f;
 	}
 
 	protected override void OnDestroy()
