@@ -1,23 +1,19 @@
 @import "../Menu/Shared/Table.scss";
 
-TimeAddedWidget
-{
+TimeAddedWidget {
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-
 	width: 100%;
 	height: 100%;
 	background-color: transparent;
-
 	font-weight: 400;
 	font-family: Consolas;
-
 	padding: 0px;
-
 	transition: all 0.1s ease-out;
+	pointer-events: none;
 
 	.table {
 		margin-top: 150px;
@@ -31,6 +27,7 @@ TimeAddedWidget
 	.row {
 		color: white;
 		align-self: flex-start;
+
 		label {
 			text-align: right;
 			width: 100%;
@@ -38,7 +35,6 @@ TimeAddedWidget
 			font-size: 50px;
 		}
 	}
-
 	/*.row.minus {
 		color: red;
 	}

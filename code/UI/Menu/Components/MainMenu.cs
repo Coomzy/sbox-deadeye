@@ -232,11 +232,15 @@ public class MainMenu : Component
 		currentMenu = selected;
 	}
 
-	protected void ToggleMenu(PanelComponent Component, bool Visibility)
+	async protected void ToggleMenu(PanelComponent Component, bool Visibility)
 	{
 		if (Component == null) return;
 
 		// Component.Enabled = Visibility;
+
+		// HACK: This is a fix so that if two screens share a bind it doesn't press the button for both lol
+		await Task.FrameEnd();
+
 		Component.Enabled = true;
 		Component.SetClass("visible", Visibility);
 		Component.SetClass("invisible", !Visibility);

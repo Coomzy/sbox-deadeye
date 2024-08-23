@@ -42,6 +42,10 @@
 								&#10148;
 							</span>
 							<span class="text">Previous</span>
+							@if (Input.UsingController)
+							{
+								<span class="icon"><InputGlyph button="Previous" /></span>
+							}
 						</span>
 					</div>
 					<div class="column">
@@ -130,8 +134,11 @@
 								</div>
 							</div>
 							<div class="buttons">
-								<div class="button red" onclick="@(() => StartActiveLevel())">
-									<span class="icon"><InputGlyph button="Play" /></span>
+								<div class="button red" onclick="@(() => StartActiveLevel())">		
+									@if (Input.UsingController)
+									{
+										<span class="icon"><InputGlyph button="Play" /></span>
+									}
 									Play
 								</div>
 							</div>
@@ -149,6 +156,10 @@
 								&#10148;
 							</span>
 							<span class="text">Next</span>
+							@if (Input.UsingController)
+							{
+								<span class="icon"><InputGlyph button="Next" /></span>
+							}
 						</span>
 					</div>
 				}
@@ -157,12 +168,22 @@
     </div>
 
 	<div class="container controls">
-		<div class="buttons">
-			<div class="button-bg">
+		<div class="buttonsalt">
+			<div class="button-group">
 				@* <div class="button green" onclick="@(() => StartGame())">Start</div> *@				
-				<div class="button cowboy singular" onclick="@(() => ButtonBack())"><span class="icon">
-					<InputGlyph button="Back" /></span>
+				<div class="button cowboy singular" onclick="@(() => ButtonBack(true))">
+                    @if (Input.UsingController)
+                    {
+                        <InputGlyph button="Back" /></span>
+                    }
 					Back
+				</div>			
+				<div class="button cowboy singular" style="width: contain" onclick="@(() => OpenLeaderboard())">
+                    @if (Input.UsingController)
+                    {
+                        <InputGlyph button="Leaderboard" /></span>
+                    }
+					Leaderboard
 				</div>
 			</div>
 		</div>
@@ -171,22 +192,67 @@
 
 @code
 {
-		string getMedalStyle(MedalType medal, bool completed)
+	int timeOffset = 0;
+	bool isInLeaderboardMode = false;
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (MainMenu.instance?.leaderboardsScreen != null && MainMenu.instance.leaderboardsScreen.HasClass("visible"))
 		{
-			string brightness = "100%";
-			string grayscale = "50%";
-			string opacity = "1";
-
-			if (!completed)
-			{
-				brightness = "200%";
-				opacity = "0.33";
-				grayscale = "75%";
-			}
-
-			string width = medal == MedalType.Onyx ? "150" : "100";
-			return $"width: {width}px; height: 200px; margin: -35px 0px -55px 0px;opacity: {opacity}; filter: brightness({brightness}); filter: sepia({grayscale});";
+			return;
 		}
+
+		if (!HasClass("visible"))
+		{
+			return;
+		}
+
+		if (Input.Pressed("Play"))
+		{
+			StartActiveLevel();
+		}
+
+		if (Input.Pressed("Previous"))
+		{
+			--currentIndex;
+			timeOffset++;
+		}
+
+		if (Input.Pressed("Next"))
+		{
+			++currentIndex;
+			timeOffset++;
+		}
+
+		if (Input.Pressed("Leaderboard"))
+		{
+			OpenLeaderboard();
+		}
+
+		if (Input.Pressed("Back"))
+		{
+			ButtonBack();
+		}
+	}
+
+	string getMedalStyle(MedalType medal, bool completed)
+	{
+		string brightness = "100%";
+		string grayscale = "50%";
+		string opacity = "1";
+
+		if (!completed)
+		{
+			brightness = "200%";
+			opacity = "0.33";
+			grayscale = "75%";
+		}
+
+		string width = medal == MedalType.Onyx ? "150" : "100";
+		return $"width: {width}px; height: 200px; margin: -35px 0px -55px 0px;opacity: {opacity}; filter: brightness({brightness}); filter: sepia({grayscale});";
+	}
 
 	bool StartActiveLevel()
 	{
@@ -207,7 +273,7 @@
 	}
 
 	/*void StartLevel(PanelEvent t)
-	{
+		{
 		t.StopPropagation();
 
 		var _event = (MousePanelEvent) t;
@@ -221,19 +287,35 @@
 		var SceneName = target.GetAttribute("data-map");
 		var SceneFilePath = $"scenes/topdown/{SceneName}.scene";
 
-		try
-		{
+			try
+			{
 			Game.ActiveScene.LoadFromFile(SceneFilePath);
 		}
 		catch (Exception ex)
-		{
+			{
 			Log.Error(String.Format("Failed to load from file: {0}", ex.StackTrace));
 			Log.Info("Unable to load level because it cannot be found!");
 		}
 	}*/
 
-	void ButtonBack()
+	void OpenLeaderboard()
 	{
+		if (MainMenu.instance.leaderboardsScreen == null)
+		{
+			Log.Error($"OpenLeaderboard() MainMenu.instance.leaderboardsScreen is null!");
+			return;
+		}
+		MainMenu.instance.leaderboardsScreen.SetupLevelLeaderboard(level);
+		isInLeaderboardMode = true;
+	}
+
+	void ButtonBack(bool wasClick = false)
+	{
+		if (!wasClick && isInLeaderboardMode)
+		{
+			isInLeaderboardMode = false;
+			return;
+		}
 		// Other gamemodes have been dropped
 		//MainMenu.instance.SetMenuState(MenuState.GameMode);
 
@@ -243,7 +325,7 @@
 	}
 
 	/*void StartGame()
-	{
+		{
 		Game.ActiveScene.LoadFromFile("scenes/original.scene");
 	}*/
 
@@ -260,7 +342,12 @@
 	}
 
 	/// <summary>
-    /// update every second
-    /// </summary>
-    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+	/// update every second
+	/// </summary>
+	protected override int BuildHash() 
+	{
+		int time = RealTime.Now.CeilToInt();
+		time += timeOffset;
+		return System.HashCode.Combine(time);
+	}
 }

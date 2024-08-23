@@ -9,7 +9,13 @@
     <div class="container">
         <div class="buttons">
             <div class="button-bg">
-                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+                <div class="button cowboy singular" onclick="@(() => ButtonBack())">
+                    @if (Input.UsingController)
+                    {
+                        <InputGlyph button="Back" /></span>
+                    }
+					Back
+                </div>
             </div>
         </div>
         <div class="content bg">
@@ -101,7 +107,10 @@
                         </div>
                     </div>
                 </div>
-                
+                @if (Input.UsingController)
+                {
+                    <div class="label">Menu does not support controller, use keyboard</div>
+                }                
             </div>
         </div>
     </div>
@@ -133,6 +142,19 @@
         gameSliderValue = GamePreferences.instance.gameVolume;
         musicSliderValue = GamePreferences.instance.musicVolume;
         uiSliderValue = GamePreferences.instance.uiVolume;
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (!HasClass("visible"))
+            return;
+
+        if (Input.Pressed("Back"))
+        {
+            ButtonBack();
+        }
     }
 
     void ButtonBack()

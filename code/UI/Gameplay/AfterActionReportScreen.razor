@@ -5,8 +5,8 @@
 @using Sandbox.Audio;
 @inherits PanelComponent
 
-<root class="menu">
-	<div class="title" style="font-size: 65px">
+<root class="menu" style="pointer-events: none; cursor: default;">
+	<div class="title" style="font-size: 65px; margin: -00px 100px -00px 0px;">
 		<span>@GetActionStateMessage()</span>
 	</div>
 
@@ -16,12 +16,12 @@
 		<img src=@GetMedalImage(MedalType.Bronze) style="width: 200px; height: 200px; margin: -115px 500px -50px 0px;"/>
 		<img src=@GetMedalImage(MedalType.Silver) style="width: 200px; height: 200px; margin: -115px 166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Silver)" />
 		<img src=@GetMedalImage(MedalType.Gold) style="width: 200px; height: 200px; margin: -115px -166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Gold)" />
-		<img src=@GetMedalImage(MedalType.Onyx) style="width: 200px; height: 200px; margin: -115px -500px 50px 0px; opacity: @GetMedalOpacity(MedalType.Onyx)" />
-		@if (true)//IsNewPersonalBest())
+		<img src=@GetMedalImage(MedalType.Onyx) style="width: 200px; height: 200px; margin: -115px -500px 80px 0px; opacity: @GetMedalOpacity(MedalType.Onyx)" />
+		@if (IsNewPersonalBest())
 		{
 			<div class="label" style="width: 350px; height: 00px; margin: -0px 200px 00px 0px; color: white;">New Personal Best!</div>
 		}
-		@if (true)//IsNewPersonalBest())
+		@if (!HasBestMedal())
 		{
 			<div class="label" style="width: 350px; height: 00px; margin: -0px -500px 00px 0px; color: white;">@GetNextTime()</div>
 		}
@@ -30,13 +30,13 @@
 	<div class="container">
 		<div class="buttonsalt">
 			<div class="button-group">
-				<div class="button transparent" onclick="@(() => ReturnToMenu())">
+				<div class="button transparent" style="pointer-events: all;" onclick="@(() => ReturnToMenu())">
 					<span class="icon"><InputGlyph button="Quit"/></span>
 					Exit
 				</div>
 			</div>
 			<div class="button-group">
-				<div class="button transparent" onclick="@(() => Retry())">
+				<div class="button transparent" style="pointer-events: all;" onclick="@(() => Retry())">
 					<span class="icon"><InputGlyph button="Restart" /></span>
 					/
 					<span class="icon"><InputGlyph button="Restart_Alt" /></span>
@@ -65,14 +65,13 @@
 			else
 			{
 				<div class="button-group">
-					<div class="button transparent" onclick="@(() => Next_Level())">
+					<div class="button transparent" style="pointer-events: all;" onclick="@(() => Next_Level())">
 						<span class="icon"><InputGlyph button="Play"/></span>
 						Next
 					</div>
 				</div>
-				<!-- We don't have to add this, but it's not too hard it would be a nice quality of life thing-->
 				<div class="button-group">
-					<div class="button transparent" onclick="@(() => OpenLeaderboard())">
+					<div class="button transparent" style="pointer-events: all;" onclick="@(() => OpenLeaderboard())">
 						<span class="icon"><InputGlyph button="Leaderboard"/></span>
 						Leaderboard
 					</div>

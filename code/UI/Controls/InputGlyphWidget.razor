@@ -7,6 +7,8 @@
 	[Property]
 	public string Action { get; set; }
 	[Property]
+	public string ActionAlt { get; set; }
+	[Property]
 	public string Size   { get; set; }
 	[Property]
 	public string Style  { get; set; }
@@ -17,7 +19,8 @@
 <root>
 	<div class="container">
 		<div class="glyph">
-			<InputGlyph button="@Action" size="@Size" style="@Style"/>
+			<InputGlyph button="@Action" size="@Size" style="@Style" />
+			<InputGlyph button="@ActionAlt" size="@Size" style="@Style"/>
 		</div>
 		<div class="text">@Action</div>
 	</div>

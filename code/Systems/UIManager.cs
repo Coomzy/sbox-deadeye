@@ -35,6 +35,9 @@ public class UIManager : Component
 		//if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
+		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		//if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
 		//if (diedScreen != null) diedScreen.Enabled = true;
 		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 	}
@@ -76,26 +79,31 @@ public class UIManager : Component
 		if (leaderboardsScreen == null)
 		{
 			Log.Warning($"UI Manager no leaderboardsScreen");
-		}
-
-		if (levelLeaderboards != null)
-		{
-			levelLeaderboards.SetContext(LevelData.active);
-			levelLeaderboards.GetLeaderboard(LeaderboardGroup.Global);
+			return;
 		}
 
 		if (leaderboardsScreen != null)
-		{
-			leaderboardsScreen.Enabled = true;
+		{			
+			leaderboardsScreen.SetupLevelLeaderboard(LevelData.active);
 		}
+
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
 	}
 
-	public void CloseLeaderboard()
+	public async void CloseLeaderboard()
 	{
+		await Task.FrameEnd();
+
 		if (leaderboardsScreen != null)
 		{
 			leaderboardsScreen.Enabled = false;
 		}
+
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 	}
 
 	public static string FormatTime(double time)

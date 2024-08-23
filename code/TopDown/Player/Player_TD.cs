@@ -223,6 +223,11 @@ public class Player_TD : Component
 
 	void DecidingUpdate()
 	{
+		if (RoomManager.instance?.currentRoom == null)
+		{
+			return;
+		}
+
 		if (timeSinceStartedDecisionMaking >= RoomManager.instance.currentRoom.reactTime)
 		{
 			if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.SlowestTime))
@@ -711,14 +716,22 @@ public class Player_TD : Component
 
 	void CheckForExitLevelInput()
 	{
-		bool pressed = Input.Pressed("Quit");
 		if (Input.EscapePressed)
 		{
+			if (!Input.UsingController)
+			{
+				LoadingScreen.SwitchToMenu();
+				return;
+			}
 			Input.EscapePressed = false;
-			pressed = true;
 		}
 
-		if (!pressed)
+		if (!Input.Pressed("Quit"))
+		{
+			return;
+		}
+
+		if (UIManager.instance.leaderboardsScreen.Enabled)
 			return;
 
 		LoadingScreen.SwitchToMenu();

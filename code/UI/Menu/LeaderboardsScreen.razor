@@ -7,7 +7,7 @@
 
 @inherits PanelComponent
 
-<root class="menu translucent-bg">
+<root class="@GetMenuClass()">
     <div class="container">
         <!--<div class="buttons">
             <div class="button-bg">
@@ -61,6 +61,17 @@
                             <span>Cannot retrieve leaderboards due to an invalid configuration</span>
                         </div>
                     </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
+                        </div>
+                    </div>
                     return;
                 }
 
@@ -74,7 +85,18 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <div class="button red" onclick="@(() => RetrieveLeaderboard())">Try again?</div>
+                            <div class="button red" onclick="@(() => RetrieveLeaderboard(true))">Try again?</div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -86,6 +108,17 @@
                         <div class="column">
                             <span class="status">Refreshing</span>
                             <span class="icon refresh" style="transform: rotate(@(RefreshRotation)deg, 0, 0) translate(0px, @(RefreshYLocation)px);">⟳</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -100,7 +133,18 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <div class="button red small" onclick="@(() => RetrieveLeaderboard())">Try again?</div>
+                            <div class="button red small" onclick="@(() => RetrieveLeaderboard(true))">Try again?</div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -120,7 +164,13 @@
                     </div>
                     <div class="buttons">
                         <div class="button-bg">
-                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">Back</div>
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -142,7 +192,13 @@
             </div>
             <div class="buttons">
                 <div class="button-bg">
-                    <div class="button cowboy singular" onclick="@(() => ButtonBack())">Back</div>
+                    <div class="button cowboy singular" onclick="@(() => ButtonBack())">
+					    @if (Input.UsingController)
+					    {
+						    <InputGlyph button="Back" />
+					    }
+                        Back
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,6 +215,47 @@
     private float RefreshRotation = 0;
     private float RefreshYLocation = 0;
     private int row = 0;
+    bool isInLevelLeaderboardMode = false;
+
+    string GetMenuClass()
+    {
+        if (!isMainMenu)
+        {
+            return "menu bg";
+        }
+        return "menu translucent-bg";
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (!HasClass("visible"))
+            return;
+
+        if (Input.Pressed("Back"))
+        {
+            // Done in build hash
+            //ButtonBack();
+        }
+    }
+
+    public void SetupLevelLeaderboard(LevelData level)
+    {
+        isInLevelLeaderboardMode = true;
+        Leaderboards = new LevelLeaderboards();
+        Leaderboards.SetContext(level);
+        Enabled = true;
+        SetClass("visible", true);
+        SetClass("invisible", false);
+    }
+
+    public void CloseLevelLeaderboard()
+    {
+        isInLevelLeaderboardMode = false;
+        SetClass("visible", false);
+        SetClass("invisible", true);
+    }
 
     public string GetNamedLeaderboardTitle()
     {
@@ -214,7 +311,11 @@
         // I really don't get what's going on with this, MainMenu instance should be null in game and UI Manager on the menu but checking them doesn't seem to work
         if (isMainMenu)
         {
-            if (MainMenu.instance != null)
+            if (isInLevelLeaderboardMode)
+            {
+                CloseLevelLeaderboard();
+            }
+            else if (MainMenu.instance != null)
             {
                 MainMenu.instance.SetMenuState(MenuState.Main);
                 var soundHandle = Sound.Play("ui.navigate.back");
@@ -248,6 +349,8 @@
     /// </summary>
     protected override int BuildHash() {
         var NeedQuickRefresh = false;
+
+        //CheckInputs();
 
         if (this.Panel.IsVisibleSelf)
         {
