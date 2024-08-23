@@ -116,7 +116,7 @@ public class GamePlayManager : Component
 
 		isNewPersonalBest = LevelData.active.SetBestTime(levelTime);
 
-		previousBestTime = previousBestCache;
+		previousBestTime = hasBeatLevel ? previousBestCache : null;
 
 		if (hasBeatLevel)
 		{
