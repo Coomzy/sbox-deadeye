@@ -51290,7 +51290,7 @@
       "__guid": "6d94274f-8e11-4cac-84f1-615245fbb676",
       "Flags": 0,
       "Name": "sm_wood_exterior_facade_01",
-      "Position": "-310,1450,0",
+      "Position": "-310,1460,0",
       "Rotation": "0,0,0.7071068,0.7071068",
       "Enabled": true,
       "Components": [
@@ -51628,10 +51628,27 @@
       ]
     },
     {
+      "__guid": "e5c8b285-99dc-4e9a-8169-ef0d4d4d15f4",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_02",
+      "Position": "590,1190,-10",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "78275555-94c8-47f2-8618-c63db40886c5",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
       "__guid": "5f2429a4-bc11-40ed-b51c-0957cb2b7753",
       "Flags": 0,
       "Name": "sm_wood_exterior_facade_02",
-      "Position": "-570,1190,-10",
+      "Position": "-570,1200,-10",
       "Enabled": true,
       "Components": [
         {
@@ -52448,6 +52465,148 @@
       "Enabled": true,
       "__Prefab": "prefabs/environment/props/barrels_03.prefab",
       "__PrefabVariables": {}
+    },
+    {
+      "__guid": "901c5972-1058-4ce7-8cf9-297635c6d6eb",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "-310,1450,300",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "59802cf4-936f-46dc-a14c-9ee9770c8249",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "a3fdc570-60f2-4c99-ad29-edfef3b86e96",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "470,2690,290",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ff3f8d9b-0ee4-4cd7-9967-ca3657c20f56",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "0cb4cbd1-3ffe-4a6e-9394-11a1721c2399",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "-1010,2760,290",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "a562ad90-30ac-47f7-a511-626ea62c16bd",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "76df7a9b-86e8-446c-adc1-cfaa6c823999",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "-520,2760,290",
+      "Scale": "1.047541,1,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "3a6b595d-acb5-4fd7-8fb4-2ddee0c41bae",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "8250bdca-e2d7-47b3-894c-f2285b8ec258",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "870,1940,290",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "54467711-27f1-4435-bee3-023b5f595c16",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "60a505f0-2475-4da6-ae72-d136f0e84577",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "870,1460,290",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "a33ec073-f871-40b7-bc9b-3e77fc283b9e",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "cdb8a949-234e-450f-bddc-92785496dfcb",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "-2070,2160,300",
+      "Rotation": "0,0,1,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "90591f83-446e-4aa9-9ee3-ed6edf52b082",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "045456a4-dbb2-4438-b1cd-1c1286d25843",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_roof",
+      "Position": "-310,1940,300",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "17916fc7-8e65-4c47-a49a-31504a9cb814",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
