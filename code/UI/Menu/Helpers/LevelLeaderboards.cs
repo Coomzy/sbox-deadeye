@@ -9,7 +9,7 @@ using static Sandbox.Services.Stats;
 
 public class LevelLeaderboards : Component, ILeaderboard
 {
-	public Leaderboards.Board board { get; set; } = null;
+	public Leaderboards.Board2 board { get; set; } = null;
 
 	[Property, ReadOnly] public bool isRefreshing => cancellationTokenSource != null;
 	CancellationTokenSource cancellationTokenSource { get; set; } = null;
@@ -41,7 +41,7 @@ public class LevelLeaderboards : Component, ILeaderboard
 		Cancel();
 
 		cancellationTokenSource = new CancellationTokenSource();
-		board = await GameLeaderboards.GetLeaderboard(context.leaderboardName, group, cancellationTokenSource.Token);
+		board = await GameLeaderboards.GetLeaderboard(context.statName, group, cancellationTokenSource.Token);
 
 		cancellationTokenSource = null;
 	}

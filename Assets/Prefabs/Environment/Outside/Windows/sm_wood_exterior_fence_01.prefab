@@ -1,0 +1,43 @@
+{
+  "RootObject": {
+    "__guid": "f2ab36fa-cdb2-4956-920a-fba51dff4652",
+    "Flags": 0,
+    "Name": "sm_wood_exterior_fence_01",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "73b4da31-b9fc-4fac-b13d-bd00555b7349",
+        "Flags": 0,
+        "Name": "sm_wood_exterior_fence_01",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "3f8e36a0-3e21-4a26-abe0-1c85c0343b83",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_fence_01.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "7f03678b-efa1-48d7-b10c-d8a1dac15f3a",
+            "Center": "0,0,91",
+            "IsTrigger": false,
+            "Scale": "512,20,182",
+            "Static": true,
+            "Surface": "surfaces/wood.surface"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

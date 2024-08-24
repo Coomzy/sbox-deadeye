@@ -71,7 +71,7 @@ public class LevelLeaderboardsGizmo : Component
 			Vector2 pos = new Vector2(x, y);
 
 			var entry = levelLeaderboards.board.Entries[i];
-			string log = $"[{entry.Rank}] {entry.DisplayName} - Level Time: {UIManager.FormatTime(entry.Value)} - Me: {entry.Me}";
+			string log = $"[{entry.Rank}] {entry.DisplayName} - Level Time: {UIManager.FormatTime(entry.Value)} - Me: {entry.SteamId == levelLeaderboards.board.TargetSteamId}";
 			Gizmo.Draw.ScreenText(log, pos);
 		}
 	}

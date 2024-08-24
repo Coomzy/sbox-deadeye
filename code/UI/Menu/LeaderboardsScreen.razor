@@ -2,6 +2,7 @@
 @using Sandbox.Audio;
 @using Sandbox.UI;
 @using Sandbox.Services;
+@using Sandbox.Utility;
 @using System;
 @using Sandbox.UI.Menu.Helpers;
 
@@ -180,7 +181,7 @@
                 {
                     if (++row >= 10) break;
                     string specialClass = "";
-                    if (entry.Me) specialClass = "me";
+                    if (entry.SteamId == (long)Steam.SteamId) specialClass = "me";
 
                     <div class="row @specialClass">
                         <div class="column row">@entry.Rank</div>
@@ -267,6 +268,10 @@
     }
 
     public string GetLeaderboardTitle() {
+        if (ActiveTab == LeaderboardGroup.MyScore)
+        {
+            return "My Score";
+        }
         return ActiveTab.ToString();
     }
 
@@ -282,25 +287,37 @@
         if (ActiveTab == LeaderboardGroup.Global)
         {
             // Move to far right. Will need updating if the enum changes
-            ActiveTab = LeaderboardGroup.Friends;
+            ActiveTab = LeaderboardGroup.MyScore;
         }
-        else
+        else if (ActiveTab == LeaderboardGroup.Friends)
         {
-            ActiveTab -= 1;
+            // Move to far right. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.Global;
+        }
+        else if (ActiveTab == LeaderboardGroup.MyScore)
+        {
+            // Move to far right. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.Friends;
         }
 
         HasRetrievingStarted = false;
     }
 
     public void MoveLeaderboardRight() {
-        if (ActiveTab == LeaderboardGroup.Friends)
+        if (ActiveTab == LeaderboardGroup.Global)
+        {
+            // Move to far left. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.Friends;
+        }
+        else if (ActiveTab == LeaderboardGroup.Friends)
+        {
+            // Move to far left. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.MyScore;
+        }
+        else if (ActiveTab == LeaderboardGroup.MyScore)
         {
             // Move to far left. Will need updating if the enum changes
             ActiveTab = LeaderboardGroup.Global;
-        }
-        else
-        {
-            ActiveTab += 1;
         }
 
         HasRetrievingStarted = false;

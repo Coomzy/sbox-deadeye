@@ -109,13 +109,18 @@
 												</span>
 											</p>
 											<p class="kvp next">
-												@if (medal != MedalType.None && !(MathX.AlmostEqual(level.GetNextMedalTime(), 0.0f) || level.GetNextMedalTime() >= float.MaxValue))
+												@if (medal == MedalType.Onyx)
+												{
+													<span class="key" style="width: auto">You have the ONYX medal</span>
+												}
+												else if (medal != MedalType.None && !(MathX.AlmostEqual(level.GetNextMedalTime(), 0.0f) || level.GetNextMedalTime() >= float.MaxValue))
 												{
 													<span class="key" style="width: auto">Next Medal: </span>
 													<span class="value">@UIManager.FormatTime(level.GetNextMedalTime())</span>
 												}
 												else
 												{
+													Log.Info($"medal: {medal}, level.GetNextMedalTime(): {level.GetNextMedalTime()}");
 													@* <span>Pass for Bronze</span> *@
 													<span class="key" style="width: auto">Next Medal: </span>
 													<span class="value">Pass for Bronze</span>

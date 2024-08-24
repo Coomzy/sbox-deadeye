@@ -1,0 +1,70 @@
+{
+  "RootObject": {
+    "__guid": "c67ab74a-1ec3-4106-9397-1e41e45ebbac",
+    "Flags": 0,
+    "Name": "sm_wood_platform",
+    "Position": "5.350342,-135.4114,0.00001525999",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "8263dde9-9ecd-42f8-bf4e-f03dabacc33f",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_platform.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "87cca4ab-244d-45ee-be72-0f2be652c015",
+        "Center": "0,0,6.599994",
+        "IsTrigger": false,
+        "Scale": "512,185.9998,5",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "c16b542e-3259-4624-95c1-e167a3bcc4dd",
+        "Center": "112.1001,88.85,34.40004",
+        "IsTrigger": false,
+        "Scale": "284.6993,5,51.49998",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "db7ef348-beb2-4898-b29e-62ecd013535a",
+        "Center": "-188.2997,88.85,34.40004",
+        "IsTrigger": false,
+        "Scale": "126,5,51.49998",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "f4fc9aa6-3d19-46a1-89a4-c3d2eebfecae",
+        "Center": "-249.0997,0,34.40004",
+        "IsTrigger": false,
+        "Scale": "5,182.6001,51.49998",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "2efa1bf7-7f6c-4a05-9ed0-3ebe8cf3b021",
+        "Center": "251.5001,0,34.40004",
+        "IsTrigger": false,
+        "Scale": "5,182.6001,51.49998",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

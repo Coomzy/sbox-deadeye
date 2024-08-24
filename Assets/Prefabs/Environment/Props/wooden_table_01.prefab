@@ -1,0 +1,37 @@
+{
+  "RootObject": {
+    "__guid": "43d88ffd-003b-4516-b5dd-b4a6db8e61a0",
+    "Flags": 0,
+    "Name": "wooden_table_01",
+    "Position": "-64.86761,-117.4114,0",
+    "Rotation": "0,0,0.7071068,0.7071068",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "36efd7f8-fb57-436c-abac-001ca846077f",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/wooden_table_01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "65dfab69-0c07-4460-8a3e-e8647a443528",
+        "Center": "0,0,0",
+        "IsTrigger": false,
+        "Scale": "26.60001,71,44",
+        "Static": false,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "polyhaven.wooden_table_01"
+  ],
+  "__version": 1
+}

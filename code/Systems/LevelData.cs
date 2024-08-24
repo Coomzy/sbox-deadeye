@@ -140,7 +140,7 @@ public class LevelData : GameResource
 	{
 		if (GameSave.instance == null)
 		{
-			return true;
+			return false;
 		}
 
 		if (GameSave.instance.levelNameToBestTime.TryGetValue(ResourceName, out float savedBestTime))

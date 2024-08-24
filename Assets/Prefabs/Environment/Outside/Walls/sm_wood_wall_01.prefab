@@ -1,0 +1,72 @@
+{
+  "RootObject": {
+    "__guid": "914a110f-149b-41f4-b886-a5d317920067",
+    "Flags": 0,
+    "Name": "sm_wood_wall_01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "cc7d84dd-6491-4ab4-9638-c3858cea6292",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_wall_01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "aedf6dfa-b92f-45db-a7f3-5f96fe085d44",
+        "Center": "0,0,91",
+        "IsTrigger": false,
+        "Scale": "20,512,182",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "b4d69372-204d-46ce-9587-717e4a40274d",
+        "Flags": 0,
+        "Name": "sm_wood_exterior_balcony",
+        "Position": "-60,-0.000005245367,0",
+        "Rotation": "0,0,0.7071068,-0.7071069",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "27ce9d81-7d77-457a-b199-2b621c9c670a",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_balcony.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "76ebca14-d0a3-498d-aa97-5fd019fbd5c5",
+        "Flags": 0,
+        "Name": "sm_wood_exterior_balcony_02",
+        "Position": "-60,-0.000005245367,0",
+        "Rotation": "0,0,0.7071068,-0.7071069",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "a82c4e8b-574c-4f26-aede-bbe429ffa86a",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/architecture/sm_wood_exterior_balcony_02.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

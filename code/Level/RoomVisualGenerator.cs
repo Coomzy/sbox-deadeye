@@ -1,4 +1,6 @@
 
+using Microsoft.VisualBasic;
+
 public class RoomVisualGenerator : Component
 {
 	[Group("Setup"), Property] public Room roomReference { get; set; }
@@ -21,6 +23,8 @@ public class RoomVisualGenerator : Component
 	[Group("Setup - Children"), Property] public GameObject westBalcony { get; set; }
 	[Group("Setup - Children"), Property] public GameObject westSteps { get; set; }
 
+	[Group("Config"), Property] public RoomType roomType { get; set; } = RoomType.Inside;
+
 	[Group("Config - Walls"), Property] public WallType northWallType { get; set; } = WallType.Wall;
 	[Group("Config - Walls"), Property] public WallType eastWallType { get; set; } = WallType.Door;
 	[Group("Config - Walls"), Property] public WallType southWallType { get; set; } = WallType.Wall;
@@ -31,55 +35,55 @@ public class RoomVisualGenerator : Component
 	[Group("Config - Balcony"), Property] public bool hasSouthBalcony { get; set; } = false;
 	[Group("Config - Balcony"), Property] public bool hasWestBalcony { get; set; } = false;
 
-	[Group("Random - Floor"), Button("Floor")] public void rf() => SetPrefab(floor, RoomSettings.instance.floors);
+	[Group("Random"), Button("Random By Config")]
+	public void RandomByConfig()
+	{
+		SetPrefab(floor, RoomSettings.instance.GetRandomFloor(roomType));
+		SetPrefab(northWall, northWallType);
+		SetPrefab(eastWall, eastWallType);
+		SetPrefab(southWall, southWallType);
+		SetPrefab(westWall, westWallType);
+
+		SetPrefab(northBalcony, hasNorthBalcony ? RoomSettings.instance.GetRandomBalcony(roomType) : null);
+		SetPrefab(northSteps, hasNorthBalcony ? RoomSettings.instance.GetRandomSteps(roomType) : null);
+
+		SetPrefab(eastBalcony, hasEastBalcony ? RoomSettings.instance.GetRandomBalcony(roomType) : null);
+		SetPrefab(eastSteps, hasEastBalcony ? RoomSettings.instance.GetRandomSteps(roomType) : null);
+
+		SetPrefab(southBalcony, hasSouthBalcony ? RoomSettings.instance.GetRandomBalcony(roomType) : null);
+		SetPrefab(southSteps, hasSouthBalcony ? RoomSettings.instance.GetRandomSteps(roomType) : null);
+
+		SetPrefab(westBalcony, hasWestBalcony ? RoomSettings.instance.GetRandomBalcony(roomType) : null);
+		SetPrefab(westSteps, hasWestBalcony ? RoomSettings.instance.GetRandomSteps(roomType) : null);
+	}
+
+	[Group("Random - Floor"), Button("Floor")] public void rf() => SetPrefab(floor, RoomSettings.instance.GetRandomFloor(roomType));
 
 	[Group("Random - North"), Button("Door")] public void rnd() => SetPrefab(northWall, WallType.Door);
 	[Group("Random - North"), Button("Wall")] public void rnw() => SetPrefab(northWall, WallType.Wall);
 	[Group("Random - North"), Button("Wall Half")] public void rnwh() => SetPrefab(northWall, WallType.WallHalf);
 	[Group("Random - North"), Button("Window")] public void rnwd() => SetPrefab(northWall, WallType.Window);
 
-	[Group("Random"), Button("Random By Config")]
-	public void RandomByConfig()
-	{
-		SetPrefab(floor, RoomSettings.instance.floors);
-		SetPrefab(northWall, northWallType);
-		SetPrefab(eastWall, eastWallType);
-		SetPrefab(southWall, southWallType);
-		SetPrefab(westWall, westWallType);
 
-		SetPrefab(northBalcony, hasNorthBalcony ? RoomSettings.instance.balcony : null);
-		SetPrefab(northSteps, hasNorthBalcony ? RoomSettings.instance.steps : null);
+	[Group("Random - East"), Button("Door")] public void rsd() => SetPrefab(eastWall, WallType.Door);
+	[Group("Random - East"), Button("Wall")] public void rsw() => SetPrefab(eastWall, WallType.Wall);
+	[Group("Random - East"), Button("Wall Half")] public void rswh() => SetPrefab(eastWall, WallType.WallHalf);
+	[Group("Random - East"), Button("Window")] public void rswd() => SetPrefab(eastWall, WallType.Window);
 
-		SetPrefab(eastBalcony, hasEastBalcony ? RoomSettings.instance.balcony : null);
-		SetPrefab(eastSteps, hasEastBalcony ? RoomSettings.instance.steps : null);
+	[Group("Random - EaSouthst"), Button("Door")] public void red() => SetPrefab(southWall, WallType.Door);
+	[Group("Random - South"), Button("Wall")] public void rew() => SetPrefab(southWall, WallType.Wall);
+	[Group("Random - South"), Button("Wall Half")] public void rewh() => SetPrefab(southWall, WallType.WallHalf);
+	[Group("Random - South"), Button("Window")] public void rewd() => SetPrefab(southWall, WallType.Window);
 
-		SetPrefab(southBalcony, hasSouthBalcony ? RoomSettings.instance.balcony : null);
-		SetPrefab(southSteps, hasSouthBalcony ? RoomSettings.instance.steps : null);
+	[Group("Random - West"), Button("Door")] public void rwd() => SetPrefab(westWall, WallType.Door);
+	[Group("Random - West"), Button("Wall")] public void rww() => SetPrefab(westWall, WallType.Wall);
+	[Group("Random - West"), Button("Wall Half")] public void rwwh() => SetPrefab(westWall, WallType.WallHalf);
+	[Group("Random - West"), Button("Window")] public void rwwd() => SetPrefab(westWall, WallType.Window);
 
-		SetPrefab(westBalcony, hasWestBalcony ? RoomSettings.instance.balcony : null);
-		SetPrefab(westSteps, hasWestBalcony ? RoomSettings.instance.steps : null);
-	}
 
 	public void SetPrefab(GameObject prefabInst, WallType wallType)
 	{
-		switch (wallType)
-		{
-			case WallType.None:
-				SetPrefab(prefabInst, null);
-				break;
-			case WallType.Door:
-				SetPrefab(prefabInst, RoomSettings.instance.doors);
-				break;
-			case WallType.Wall:
-				SetPrefab(prefabInst, RoomSettings.instance.walls);
-				break;
-			case WallType.WallHalf:
-				SetPrefab(prefabInst, RoomSettings.instance.wallsHalf);
-				break;				
-			case WallType.Window:
-				SetPrefab(prefabInst, RoomSettings.instance.windows);
-				break;
-		}
+		SetPrefab(prefabInst, RoomSettings.instance.GetRandomWall(roomType, wallType));
 	}
 
 	public void SetPrefab(GameObject prefabInst, List<PrefabFile> prefabFiles)

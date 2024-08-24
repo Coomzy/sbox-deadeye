@@ -187,12 +187,11 @@ public class Player_TD : Component
 	{
 		thirdPersonAnimationHelper.IsWeaponLowered = true;
 		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
+		thirdPersonAnimationHelper.WithWishVelocity(Vector3.Zero);
+		thirdPersonAnimationHelper.WithVelocity(Vector3.Zero);
 
 		timeSinceStartedDecisionMaking = 0;
 		targets.Clear();
-
-		thirdPersonAnimationHelper.WithWishVelocity(Vector3.Zero);
-		thirdPersonAnimationHelper.WithVelocity(Vector3.Zero);
 
 		//Game.ActiveScene.TimeScale = 0.25f;
 
@@ -223,6 +222,8 @@ public class Player_TD : Component
 
 	void DecidingUpdate()
 	{
+		GamePlayManager.instance.decidingTime += Time.Delta;
+
 		if (RoomManager.instance?.currentRoom == null)
 		{
 			return;
@@ -344,7 +345,7 @@ public class Player_TD : Component
 
 	void ExecutingStart()
 	{
-		Game.ActiveScene.TimeScale = 1.0f;
+		//Game.ActiveScene.TimeScale = 1.0f;
 		ExecuteCommands();
 	}
 
@@ -392,7 +393,7 @@ public class Player_TD : Component
 			bloodDecalGO.Transform.Position = target.GetHeadPos();
 			Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
 
-			float bloodSplatRandomRange = 45.0f;
+			float bloodSplatRandomRange = 10.0f;
 			bloodSplatDir = Utils.GetRandomizedDirection(bloodSplatDir, bloodSplatRandomRange);
 			bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
 		}
@@ -405,7 +406,7 @@ public class Player_TD : Component
 			return;
 		}
 
-		Game.ActiveScene.TimeScale = 1.0f;
+		//Game.ActiveScene.TimeScale = 1.0f;
 
 		bool anyTargetsLeft = false;
 		foreach (var target in RoomManager.instance.currentRoom.targets)
@@ -731,7 +732,7 @@ public class Player_TD : Component
 			return;
 		}
 
-		if (UIManager.instance.leaderboardsScreen.Enabled)
+		if (UIManager.instance?.leaderboardsScreen != null && UIManager.instance.leaderboardsScreen.Enabled)
 			return;
 
 		LoadingScreen.SwitchToMenu();
@@ -745,6 +746,9 @@ public class Player_TD : Component
 			pressed = true;
 		}
 		if (!pressed)
+			return;
+
+		if (UIManager.instance?.leaderboardsScreen != null && UIManager.instance.leaderboardsScreen.Enabled)
 			return;
 
 		LoadingScreen.ReloadLevel();

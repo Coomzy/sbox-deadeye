@@ -71,11 +71,11 @@ public class StatAndLeaderboardTest : Component
 		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Global, 10, cancellationTokenSource.Token);
 		//var board = await GameLeaderboards.GetLeaderboard("level-original", LeaderboardGroup.Friends, 10);
 
-		Log.Info($"Board: {board.DisplayName}, Group: {board.Title}, entries: {board.TotalEntries}");
+		Log.Info($"Board: {board.Stat}, entries: {board.TotalEntries}");
 
 		foreach (var e in board.Entries)
 		{
-			Log.Info($"[{e.Rank}] {e.DisplayName} - {e.Value} - Me: {e.Me}");
+			Log.Info($"[{e.Rank}] {e.DisplayName} - {e.Value} - Me: {e.SteamId == board.TargetSteamId}");
 		}
 	}
 }

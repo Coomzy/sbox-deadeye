@@ -20,13 +20,22 @@ public class Target : Component
 
 	[Group("Runtime"), Property] public bool isDead { get; set; } = false;
 
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+		
+		highlightOutline.Enabled = true;
+		highlightOutline.Color = Color.Transparent;
+		highlightOutline.ObscuredColor = highlightOutline.Color;
+	}
+
 	protected override void OnStart()
 	{
 		base.OnStart();
 
-		highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
-		highlightOutline.ObscuredColor = highlightOutline.Color;
-		highlightOutline.Enabled = false;
+		//highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
+		//highlightOutline.ObscuredColor = highlightOutline.Color;
+		//highlightOutline.Enabled = false;
 	}
 
 	public Vector3 GetHeadPos()
@@ -46,12 +55,16 @@ public class Target : Component
 
 	public void Select()
 	{
-		highlightOutline.Enabled = true;
+		highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
+		highlightOutline.ObscuredColor = highlightOutline.Color;
+		//highlightOutline.Enabled = true;
 	}
 
 	public void Deselect()
 	{
-		highlightOutline.Enabled = false;
+		//highlightOutline.Enabled = false;
+		highlightOutline.Color = Color.Transparent;
+		highlightOutline.ObscuredColor = highlightOutline.Color;
 	}
 
 	[Button("LookAtPlayer")]

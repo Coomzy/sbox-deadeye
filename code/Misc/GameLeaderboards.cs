@@ -11,8 +11,9 @@ using System.Threading;
 public enum LeaderboardGroup
 {
 	Global,
-	Country,
-	Friends
+	Friends,
+	MyScore,
+	//Country
 }
 
 public static class GameLeaderboards
@@ -54,17 +55,23 @@ public static class GameLeaderboards
 		Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{value}'");
 	}
 
-	public static async Task<Leaderboards.Board> GetLeaderboard(string leaderboardName, LeaderboardGroup group, CancellationToken cancellationToken)
+	public static async Task<Leaderboards.Board2> GetLeaderboard(string leaderboardName, LeaderboardGroup group, CancellationToken cancellationToken)
 	{
 		return await GetLeaderboard(leaderboardName, group, 10, cancellationToken);
 	}
 
-	public static async Task<Leaderboards.Board> GetLeaderboard(string leaderboardName, LeaderboardGroup group, int maxEntries, CancellationToken cancellationToken)
+	public static async Task<Leaderboards.Board2> GetLeaderboard(string leaderboardName, LeaderboardGroup group, int maxEntries, CancellationToken cancellationToken)
 	{
-		var board = Sandbox.Services.Leaderboards.Get(leaderboardName);
+		var board = Sandbox.Services.Leaderboards.GetFromStat(leaderboardName);
 
+		board.SetSortAscending();
+		board.SetAggregationMin();
 		board.MaxEntries = maxEntries;
-		board.Group = GetLeaderboardGroup(group);
+		board.SetFriendsOnly(group == LeaderboardGroup.Friends);
+		if (group == LeaderboardGroup.MyScore)
+		{
+			board.CenterOnMe();
+		}
 
 		await board.Refresh(cancellationToken);
 
@@ -77,8 +84,8 @@ public static class GameLeaderboards
 		{
 			case LeaderboardGroup.Global:
 				return "global";
-			case LeaderboardGroup.Country:
-				return "country";
+			case LeaderboardGroup.MyScore:
+				return "global";
 			case LeaderboardGroup.Friends:
 				return "friends";
 		}

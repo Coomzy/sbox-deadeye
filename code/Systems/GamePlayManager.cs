@@ -20,12 +20,10 @@ public class GamePlayManager : Component
 	public static GamePlayManager instance;
 
 	[Category("Runtime"), Property] public bool isPlayingLevel { get; private set; } = true;
-	[Category("Runtime"), Property] public float endLevelTime { get; private set; }
+	[Group("Runtime"), Property] public float decidingTime { get; set; }
 	[Group("Runtime"), Property] public int civiliansKilled { get; set; }
 	[Group("Runtime"), Property] public bool isNewPersonalBest { get; set; }
 	[Group("Runtime"), Property] public float? previousBestTime { get; set; }
-
-	TimeSince timeSinceLevelStart { get; set; }
 
 	public MedalType currentMedal => LevelData.active != null ? LevelData.active.TimeToMedalType(levelTime) : MedalType.None;
 
@@ -33,11 +31,8 @@ public class GamePlayManager : Component
 	{ 
 		get
 		{
-			float time = timeSinceLevelStart;
-			if (!isPlayingLevel)
-			{
-				time = endLevelTime;
-			}
+			float time = decidingTime;
+			// Might consider rapidly adding the time rather than instant
 			time += civiliansKilled * GameSettings.instance.civilianKilledTimePenalty;
 			return time;
 		}
@@ -60,8 +55,6 @@ public class GamePlayManager : Component
 		instance = this;
 
 		base.OnAwake();
-
-		timeSinceLevelStart = 0.0f;
 	}
 
 	public void FailLevel(FailReason failReason)
@@ -77,7 +70,6 @@ public class GamePlayManager : Component
 		}
 
 		isPlayingLevel = false;
-		endLevelTime = timeSinceLevelStart;
 	}
 
 	public void WonLevel()
@@ -85,7 +77,6 @@ public class GamePlayManager : Component
 		GameStats.Increment(GameStats.WON);
 
 		isPlayingLevel = false;
-		endLevelTime = timeSinceLevelStart;
 
 		string levelName = LevelData.active.ResourceName;
 
@@ -102,11 +93,11 @@ public class GamePlayManager : Component
 		{
 			if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.FastestTime))
 			{
-				LevelData.active.fastestTime = endLevelTime;
+				LevelData.active.fastestTime = levelTime;
 			}
 			else if (BotModePreferences.instance.IsInBotMode(PlayerBotMode.SlowestTime))
 			{
-				LevelData.active.slowestTime = endLevelTime;
+				LevelData.active.slowestTime = levelTime;
 			}
 
 			isNewPersonalBest = hasBeatLevel ? previousBestTime <= levelTime : true;
@@ -133,6 +124,26 @@ public class GamePlayManager : Component
 
 			var bestMedalType = GameSettings.instance.GetLowestMedalType();
 			GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
+		}
+
+		if (isNewPersonalBest || !hasBeatLevel)
+		{
+			float combinedTime = 0.0f;
+			bool hasBeatAllLevels = true;
+			foreach (var level in GameSettings.instance.topDownLevels)
+			{
+				if (!level.HasCompletedLevel())
+				{
+					hasBeatAllLevels = false;
+					break;
+				}
+				combinedTime += level.GetBestTime();
+			}
+
+			if (hasBeatAllLevels)
+			{
+				GameStats.Set(GameStats.COMBINED_TIME, combinedTime);
+			}
 		}
 	}
 

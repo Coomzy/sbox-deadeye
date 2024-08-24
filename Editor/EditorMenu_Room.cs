@@ -13,6 +13,14 @@ public static class EditorMenu_Room
 		roomSettings.balcony = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/balcony/").ToList();
 		roomSettings.steps = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/steps/").ToList();
 
+		roomSettings.floorsOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/floor/").ToList();
+		roomSettings.doorsOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/doors/").ToList();
+		roomSettings.wallsOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/walls/").ToList();
+		roomSettings.wallsHalfOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/walls_half/").ToList();
+		roomSettings.windowsOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/windows/").ToList();
+		roomSettings.balconyOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/balcony/").ToList();
+		roomSettings.stepsOutside = ResourceLibrary.GetAll<PrefabFile>("prefabs/environment/outside/steps/").ToList();
+
 		var sceneAsset = AssetSystem.CreateResource(RoomSettings.fileExtension, RoomSettings.fullFilePath);
 		if (sceneAsset != null)
 		{

@@ -102,7 +102,7 @@ public class UIManager : Component
 		}
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
-		if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
+		//if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
 		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 	}
 
@@ -113,11 +113,10 @@ public class UIManager : Component
 
 	public static string FormatTime(float time, bool useSign = false)
 	{
-		int minutes = (int)(time / 60);
 		float seconds = time % 60;
 		
-		string sign = minutes < 0 || seconds < 0 ? "-" : "+";
+		string sign = seconds < 0 ? "-" : "+";
 
-		return (useSign ? sign : "") + string.Format("{0:00}:{1:00.000}", MathF.Abs(minutes), MathF.Abs(seconds));
+		return (useSign ? sign : "") + string.Format("{0:00.000}", MathF.Abs(seconds));
 	}
 }
