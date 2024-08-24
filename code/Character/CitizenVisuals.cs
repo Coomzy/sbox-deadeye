@@ -4,6 +4,7 @@ using Sandbox.Citizen;
 using System;
 using System.Security;
 using System.Text.Json;
+using System.Threading;
 using static Sandbox.Citizen.CitizenAnimationHelper;
 using static Sandbox.Clothing;
 using static Sandbox.ClothingContainer;
@@ -50,9 +51,13 @@ public class CitizenVisuals : Component
 	[Group("Runtime"), Property] public Weapon weapon { get; set; }
 	[Group("Runtime"), Property] public Target target => _target ?? GameObject.Components.Get<Target>();
 
+	CancellationTokenSource cancellationTokenSource;
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
+
+		cancellationTokenSource = new CancellationTokenSource();
 
 		// Need this while UpdateFromPrefab() is broken in edit time
 		if (weapon == null && weaponGameObject != null)
@@ -568,7 +573,22 @@ public class CitizenVisuals : Component
 
 	async void DisableRagdoll()
 	{
-		await Task.DelayRealtimeSeconds(5.0f);
+		//await Task.DelayRealtimeSeconds(5.0f);
+		await GameTask.DelayRealtimeSeconds(5.0f, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 		bodyPhysics.PhysicsGroup.Sleeping = true;
+	}
+
+	protected override void OnDestroy()
+	{
+		if (cancellationTokenSource != null)
+		{
+			cancellationTokenSource.Cancel();
+		}
+
+		base.OnDestroy();
 	}
 }

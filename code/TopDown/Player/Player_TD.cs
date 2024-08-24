@@ -43,6 +43,7 @@ public class Player_TD : Component
 
 	public TimeSince timeSinceStartedWalking { get; private set; }
 	public RealTimeSince timeSinceStartedDecisionMaking { get; private set; }
+	CancellationTokenSource cancellationTokenSource;
 
 	protected override void OnAwake()
 	{
@@ -59,6 +60,8 @@ public class Player_TD : Component
 		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
 		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
+
+		cancellationTokenSource = new CancellationTokenSource();
 	}
 
 	protected override void OnStart()
@@ -346,78 +349,141 @@ public class Player_TD : Component
 	void ExecutingStart()
 	{
 		//Game.ActiveScene.TimeScale = 1.0f;
+		executeCommandsStage = 0;
+		loop = -1;
 		ExecuteCommands();
 	}
 
+	static int executeCommandsStage = -1;
+	static int loop = -1;
+
 	async void ExecuteCommands()
 	{
+		executeCommandsStage = 1;
 		float error = MusicManager.timeTillBeat;
 
-		error = MathX.Clamp(error, 0.0f, MusicManager.TIME_BASE - 0.0001f);
+		executeCommandsStage = 2;
+		error = MathX.Clamp(error, 0.0001f, MusicManager.TIME_BASE - 0.0001f);
 
-		await Task.DelaySeconds(MusicManager.TIME_BASE - error);
+		executeCommandsStage = 3;
+		//await Task.DelaySeconds(MusicManager.TIME_BASE - error);
+		await GameTask.DelaySeconds(MusicManager.TIME_BASE - error, cancellationTokenSource.Token);
+		executeCommandsStage = 4;
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			executeCommandsStage = -2;
+			return;
+		}
+		executeCommandsStage = 4;
 		bool killedAnyCivs = false;
 
+		loop = -1;
 		foreach (var target in targets)
-		{			
+		{
+			TimeUntil timeUntilShot = MusicManager.TIME_BASE;
+			executeCommandsStage = 5;
+			loop++;
 			var directionToTarget = Vector3.Direction(Transform.Position, target.Transform.Position);
 			directionToTarget.z = 0;
 			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
+			executeCommandsStage = 6;
 			//thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
 
-			await Task.DelaySeconds(MusicManager.TIME_BASE);
+			//await Task.DelaySeconds(MusicManager.TIME_BASE);
+			await GameTask.DelaySeconds(MusicManager.TIME_BASE, cancellationTokenSource.Token);
+			/*while (!timeUntilShot)
+			{
+				await Task.Frame();
+			}*/
+
+			executeCommandsStage = 7;
+			if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+			{
+				executeCommandsStage = -3;
+				return;
+			}
+			executeCommandsStage = 8;
 
 			//Game.ActiveScene.TimeScale = 0.0f;
 
 			if (target.isBadTarget)
 			{
+				executeCommandsStage = 9;
 				GameStats.Increment(GameStats.TARGETS_ELIMINATED);
+				executeCommandsStage = 10;
 			}
 			else
 			{
+				executeCommandsStage = 11;
 				killedAnyCivs = true;
+				executeCommandsStage = 12;
 				GamePlayManager.instance.civiliansKilled++;
+				executeCommandsStage = 13;
 				GameStats.Increment(GameStats.CIVILIANS_KILLED);
+				executeCommandsStage = 14;
 				UIManager.instance.CivilianKilled();
+				executeCommandsStage = 15;
 			}
+			executeCommandsStage = 16;
 
 			Vector3 force = weapon.Transform.World.Forward;
 			force = Utils.GetRandomizedDirection(force, PlayerSettings.instance.shootForceRandomAngle) * PlayerSettings.instance.shootForceRange.RandomRange();
+			executeCommandsStage = 17;
 
 			target.Die(force);
+			executeCommandsStage = 18;
 			weapon.Shoot(target.Transform.Position);
+			executeCommandsStage = 19;
 
 			var bloodDecalGO = Scene.CreateObject();
 			bloodDecalGO.SetPrefabSource(GameSettings.instance.bloodDecalPrefab.ResourcePath);
 			bloodDecalGO.UpdateFromPrefab();
 			bloodDecalGO.Transform.Position = target.GetHeadPos();
 			Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
+			executeCommandsStage = 20;
 
 			float bloodSplatRandomRange = 10.0f;
 			bloodSplatDir = Utils.GetRandomizedDirection(bloodSplatDir, bloodSplatRandomRange);
 			bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
+			executeCommandsStage = 21;
 		}
+		executeCommandsStage = 22;
 
-		await Task.DelaySeconds(MusicManager.TIME_BASE + error);
+		//await Task.DelaySeconds(MusicManager.TIME_BASE + error);
+		await GameTask.DelaySeconds(MusicManager.TIME_BASE + error, cancellationTokenSource.Token);
+		executeCommandsStage = 22;
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			executeCommandsStage = -4;
+			return;
+		}
+		executeCommandsStage = 23;
 
 		if (killedAnyCivs && GamePreferences.instance.restartLevelOnCivKill)
 		{
+			executeCommandsStage = -5;
 			LoadingScreen.ReloadLevel();
 			return;
 		}
+		executeCommandsStage = 24;
 
 		//Game.ActiveScene.TimeScale = 1.0f;
 
 		bool anyTargetsLeft = false;
-		foreach (var target in RoomManager.instance.currentRoom.targets)
+
+		if (RoomManager.instance?.currentRoom?.targets != null)
 		{
-			if (!target.isBadTarget)
-				continue;
+			executeCommandsStage = 25;
+			foreach (var target in RoomManager.instance.currentRoom.targets)
+			{
+				if (!target.isBadTarget)
+					continue;
 
-			if (target.isDead)
-				continue;
+				if (target.isDead)
+					continue;
 
-			anyTargetsLeft = true;
+				anyTargetsLeft = true;
+			}
 		}
 
 		int civilianKillLimit = 3;
@@ -430,6 +496,7 @@ public class Player_TD : Component
 		{
 			Log.Error($"Failed to get LevelData.active!");
 		}
+		executeCommandsStage = 26;
 
 		if (anyTargetsLeft)
 		{
@@ -448,6 +515,7 @@ public class Player_TD : Component
 			RoomManager.instance.roomIndex++;
 			SetState(PlayerState_TD.Walking);
 		}
+		executeCommandsStage = 27;
 	}
 
 	async void DeadStart()
@@ -459,10 +527,20 @@ public class Player_TD : Component
 
 		while (!bodyPhysics.Enabled)
 		{
-			await Task.Frame();
+			//await Task.Frame();
+			await GameTask.Delay(1, cancellationTokenSource.Token);
+			if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+			{
+				return;
+			}
 		}
 
-		await Task.DelaySeconds(1.5f);
+		//await Task.DelaySeconds(1.5f);
+		await GameTask.DelaySeconds(1.5f, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 
 		if (GamePreferences.instance.restartLevelOnFail)
 		{
@@ -569,7 +647,7 @@ public class Player_TD : Component
 			//var damageInfo = new DamageInfo(100.0f, currentTarget.GameObject, currentTarget.citizenVisuals?.weaponGameObject);
 			var randomIndex = System.Random.Shared.Next(hitBoxes.Count);
 			//Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
-			var boneIndex = hitBoxes[randomIndex].Bone.Index;			
+			var boneIndex = (hitBoxes.ContainsIndex(randomIndex) && hitBoxes[randomIndex].Bone != null) ? hitBoxes[randomIndex].Bone.Index : 3;			
 			//Gizmo.Draw.LineSphere(hitBoxes[randomIndex].Bone.LocalTransform.PointToWorld(hitBoxes[randomIndex].RandomPointInside), 1.0f);
 			var damageScale = 10.0f;
 			//force = new Vector3(-Transform.Rotation.Forward * 25.0f);
@@ -590,7 +668,12 @@ public class Player_TD : Component
 
 			if (shootTime < 1.5f)
 			{
-				await Task.DelaySeconds(0.3f);
+				//await Task.DelaySeconds(0.3f);
+				await GameTask.DelaySeconds(0.3f, cancellationTokenSource.Token);
+				if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+				{
+					return;
+				}
 			}
 			else
 			{
@@ -653,12 +736,22 @@ public class Player_TD : Component
 
 		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
 
-		await Task.DelaySeconds(0.15f);
+		//await Task.DelaySeconds(0.15f);
+		await GameTask.DelaySeconds(0.15f, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 
 		Vector3 force = Transform.Rotation.Forward;
 		weapon.Drop(force);
 
-		await Task.DelaySeconds(1.5f);
+		//await Task.DelaySeconds(1.5f);
+		await GameTask.DelaySeconds(1.5f, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 
 		if (GamePreferences.instance.restartLevelOnFail)
 		{
@@ -690,7 +783,12 @@ public class Player_TD : Component
 		{
 			var lerp = Vector3.Lerp(currentHeadForward, dirToFloor, lowerHeadTime.Fraction);
 			thirdPersonAnimationHelper.WithLook(lerp);
-			await Task.Frame();
+			//await Task.Frame();
+			await GameTask.Delay(1, cancellationTokenSource.Token);
+			if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+			{
+				return;
+			}
 		}
 
 		thirdPersonAnimationHelper.WithLook(dirToFloor);
@@ -701,7 +799,12 @@ public class Player_TD : Component
 		Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.WonLevel();
 
-		await Task.DelaySeconds(1.5f);
+		//await Task.DelaySeconds(1.5f);
+		await GameTask.DelaySeconds(1.5f, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 
 		UIManager.instance.Won();
 	}
@@ -713,6 +816,8 @@ public class Player_TD : Component
 		CheckForExitLevelInput();
 		CheckForReloadLevelInput();
 		StateMachineUpdate();
+
+		//Log.Warning($"Execute Commands Stage: {executeCommandsStage}, loop: {loop}");
 	}
 
 	void CheckForExitLevelInput()
@@ -799,6 +904,11 @@ public class Player_TD : Component
 		if (instance == this)
 		{
 			instance = null;
+		}
+
+		if (cancellationTokenSource != null)
+		{
+			cancellationTokenSource.Cancel();
 		}
 
 		base.OnDestroy();

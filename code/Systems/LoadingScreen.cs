@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 
 public class LoadingScreen : Component
 {
@@ -29,7 +31,6 @@ public class LoadingScreen : Component
 	{
 		nextLevel = Game.ActiveScene.Source;
 		Game.ActiveScene.LoadFromFile("scenes/loadingscreen.scene");
-		var sceneLoadOptions = new SceneLoadOptions();
 	}
 
 	public static void SwitchToMenu()
