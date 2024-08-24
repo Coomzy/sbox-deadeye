@@ -11,8 +11,18 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
-						remaps = [  ]
-						use_global_default = true
+						remaps = 
+						[
+							{
+								from = "01 - default.vmat"
+								to = "materials/m_wood_planks_02.vmat"
+							},
+							{
+								from = "02 - default.vmat"
+								to = "materials/m_wood_planks.vmat"
+							},
+						]
+						use_global_default = false
 						global_default_material = "materials/m_wood_planks_02.vmat"
 					},
 				]

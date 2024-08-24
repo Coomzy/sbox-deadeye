@@ -11,9 +11,19 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
-						remaps = [  ]
-						use_global_default = true
-						global_default_material = "materials/m_wood_planks.vmat"
+						remaps = 
+						[
+							{
+								from = "01 - default.vmat"
+								to = "materials/m_wood_planks.vmat"
+							},
+							{
+								from = "02 - default.vmat"
+								to = "materials/m_wood_planks_02.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = "materials/default.vmat"
 					},
 				]
 			},
@@ -36,7 +46,7 @@
 							exclude_by_default = true
 							exception_list = 
 							[
-								"Object012",
+								"SM_Wood_Exterior_Facade_01",
 							]
 						}
 					},
