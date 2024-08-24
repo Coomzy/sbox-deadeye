@@ -3,7 +3,6 @@
     "__guid": "62244cfd-6e66-43d6-9050-f146e998f109",
     "Flags": 0,
     "Name": "sm_ground_plane_01",
-    "Position": "72,1860,-4",
     "Enabled": true,
     "Components": [
       {
@@ -11,7 +10,7 @@
         "__guid": "1fb0c34a-78f2-4d4b-bd09-3a1b218b9f57",
         "BodyGroups": 18446744073709551615,
         "Model": "models/props/architecture/sm_ground_plane_01.vmdl",
-        "RenderType": "On",
+        "RenderType": "Off",
         "Tint": "1,1,1,1"
       },
       {
@@ -23,7 +22,9 @@
         "Static": true,
         "Surface": "surfaces/sand.surface"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
