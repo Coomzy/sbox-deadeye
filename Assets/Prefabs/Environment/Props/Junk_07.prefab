@@ -1,0 +1,109 @@
+{
+  "RootObject": {
+    "__guid": "ddf9ebe8-1891-493a-b7fb-47e371958580",
+    "Flags": 0,
+    "Name": "junk_07",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "71d6f8fb-935c-404b-a762-517b0f624b65",
+        "Flags": 0,
+        "Name": "sm_metal_jug",
+        "Position": "0,-30.01675,-3.989996",
+        "Rotation": "0,0,0.5657212,0.8245966",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "de23dc2a-e6f4-4e13-9baa-88625a66c6e2",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_metal_jug.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "0018e403-6836-44c4-80e0-3c71b77ff415",
+        "Flags": 0,
+        "Name": "wooden_barrel_01a",
+        "Position": "0,37.63151,-3.999154",
+        "Rotation": "0,0,0.3936476,0.9192614",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "6822c4bc-973e-410e-9205-c1015ae74e00",
+            "BodyGroups": 18446744073709551615,
+            "Health": 85,
+            "IsStatic": false,
+            "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "5c134105-f8fe-4cc0-970c-6863d325ff5a",
+        "Flags": 0,
+        "Name": "sm_chest",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "23bed39a-81fa-4dc5-9b41-549ad8fa7a59",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_chest.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "30e07739-96ea-44b9-a4c2-eb8e7f561e76",
+        "Flags": 0,
+        "Name": "wooden_crate_02",
+        "Position": "-27.3144,10.03237,-4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "cb015582-c8a5-4d1b-9477-528244d909c1",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "702c0970-4f4c-4f55-9d0e-55545bbf6406",
+        "Flags": 0,
+        "Name": "sm_folding_wooden_stool",
+        "Position": "-26.88492,18.90085,-3.998351",
+        "Rotation": "0,0,0.6633446,0.748314",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "8b142af0-d2d0-4748-905a-e263d3a473b3",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_folding_wooden_stool.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.wooden_crate_02",
+    "polyhaven.wooden_barrel_01a"
+  ],
+  "__version": 1
+}

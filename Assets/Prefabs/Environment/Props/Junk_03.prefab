@@ -1,0 +1,106 @@
+{
+  "RootObject": {
+    "__guid": "c9ff3a75-be6a-4552-b1a6-27050baac8d1",
+    "Flags": 0,
+    "Name": "junk_03",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "fbd9516f-17d6-40e0-885a-f413071cbeba",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/detail/sm_wooden_stool.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "69cb03a0-bd14-48e6-bdc5-5d135736c155",
+        "Flags": 0,
+        "Name": "beer_bottle (1)",
+        "Position": "-1.012387,12.3399,25.968",
+        "Rotation": "0.7034827,0.07149798,0.3845067,0.5934262",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "00a5d1a6-5588-40e1-9ddf-2f2f29afcda4",
+            "BodyGroups": 18446744073709551615,
+            "Health": 1,
+            "IsStatic": false,
+            "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "62cf784d-d208-4b3e-9c93-e691284ce9c1",
+        "Flags": 0,
+        "Name": "beer_bottle",
+        "Position": "-3.519629,17.19302,24.76747",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "5839f587-871c-4fa2-bf06-6dffcbf6987d",
+            "BodyGroups": 18446744073709551615,
+            "Health": 1,
+            "IsStatic": false,
+            "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c2571c3e-30b5-4fd4-b11a-9a3a63aa88c0",
+        "Flags": 0,
+        "Name": "wooden_crate_02",
+        "Position": "-1.364265,-28.44608,12.48124",
+        "Rotation": "-0.8212788,0,0,0.5705271",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "44069d01-ad95-4ef5-961e-ed434fc6e768",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f3219b04-98a9-4411-8e15-dd8ba988503c",
+        "Flags": 0,
+        "Name": "compost_bag_02",
+        "Position": "0,22.01646,0",
+        "Rotation": "0,0,0.6012443,0.7990653",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "48957ae7-e663-42a0-8e95-e5cc4980d729",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/compost_bag_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.beer_bottle",
+    "facepunch.wooden_crate_02",
+    "polyhaven.compost_bag_02"
+  ],
+  "__version": 1
+}

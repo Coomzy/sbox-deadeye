@@ -1,0 +1,126 @@
+{
+  "RootObject": {
+    "__guid": "ddc62ebe-187f-4a06-91f1-0fedd1bb7b5f",
+    "Flags": 0,
+    "Name": "junk_02",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "60df696d-e7ae-4d34-a4ba-7c5361ac75bf",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/detail/sm_wooden_crate.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "2d8ae411-265b-4728-a2fb-8899aee472a0",
+        "Flags": 0,
+        "Name": "flourbag_crumple",
+        "Position": "0,31.15696,-3.962541",
+        "Rotation": "0,0,0.9999944,-0.003355302",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "f43746ee-c050-462e-95f1-d7078cba56bd",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "8f09b71c-7038-4f67-a09c-83d487ded2a4",
+        "Flags": 0,
+        "Name": "compost_bag_02",
+        "Position": "-17.73235,-30.48081,0",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "796851d3-9d7e-4764-a92a-3edc83ff15dd",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/compost_bag_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "4817d73b-e571-451f-8bd5-5c50d95a0d6d",
+        "Flags": 0,
+        "Name": "sm_metal_jug",
+        "Position": "-0.612885,-34.65993,0",
+        "Rotation": "0,0,0.5261477,0.8503932",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "1696d72d-6b74-43d4-b4cc-91cb259542ff",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_metal_jug.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "198fb4a5-ea38-4d63-b5d9-163d62aca76b",
+        "Flags": 0,
+        "Name": "flourbag (1)",
+        "Position": "5.311039,-17.55227,26.86033",
+        "Rotation": "-0.6803085,-0.1364303,0.1415942,0.7060582",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "b9ef15df-86de-4cf8-aa60-1dcb626ef4f2",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "6833a65c-8b00-4ba0-a092-330d3ecc7442",
+        "Flags": 0,
+        "Name": "flourbag",
+        "Position": "0,17.83158,21.74029",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "78d32688-7244-4358-8d49-8559d6b7ab35",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.flourbag",
+    "facepunch.flourbag_crumple",
+    "polyhaven.compost_bag_02"
+  ],
+  "__version": 1
+}

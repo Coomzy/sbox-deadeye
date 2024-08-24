@@ -1,0 +1,94 @@
+{
+  "RootObject": {
+    "__guid": "9e7c4c2d-39f7-4fdb-ab5a-4fcc06d136b5",
+    "Flags": 0,
+    "Name": "tables_01",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "daf21c82-7e6a-4e6a-87a4-b0297100640d",
+        "Flags": 0,
+        "Name": "wooden_chair_a (2)",
+        "Position": "20.88246,33.73339,0",
+        "Rotation": "0,0,0.9259038,-0.3777598",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "e50d44e8-fd35-49c7-a36f-8bc3d4691415",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "8cba84e9-4926-462d-8f57-3164b2c39e45",
+        "Flags": 0,
+        "Name": "wooden_chair_a (1)",
+        "Position": "7.699135,-37.01933,0",
+        "Rotation": "0,0,0.9916908,0.128646",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "63ebeeee-f23e-48bb-b72d-27ea41eedd91",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "ec05ef6f-2231-46da-994f-e9c81938179c",
+        "Flags": 0,
+        "Name": "wooden_chair_a",
+        "Position": "-37.83498,7,0",
+        "Rotation": "0,0,0.08662334,0.9962412",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "451eac62-32f6-445f-b73b-58468341772e",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "94cdfdf3-2848-48d3-93cc-36611ddb7536",
+        "Flags": 0,
+        "Name": "round_wooden_table_01",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "86cb8d57-a74f-4b25-8cd3-3f199c6b62e8",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/furniture/round_wooden_table_01.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "additionproject.roundwoodentable",
+    "facepunch.wooden_chair_a"
+  ],
+  "__version": 1
+}

@@ -1,0 +1,106 @@
+{
+  "RootObject": {
+    "__guid": "c48c8cc7-4012-4eb2-92d4-d7a78ba47caa",
+    "Flags": 0,
+    "Name": "barrels_03",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "b436575f-cee1-4c9f-a82a-883a46ed5b2b",
+        "BodyGroups": 18446744073709551615,
+        "Health": 85,
+        "IsStatic": false,
+        "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "1636f573-8958-4b6c-84b3-f1712f6fb1da",
+        "Flags": 0,
+        "Name": "barrels",
+        "Position": "-10.73094,-33.64656,0",
+        "Rotation": "0,0,0.3826835,0.9238795",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "da975d3e-be84-4c53-b8de-57e9731595ea",
+            "BodyGroups": 18446744073709551615,
+            "Health": 85,
+            "IsStatic": false,
+            "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "1be6ca99-92c5-4840-842c-c747af85540a",
+        "Flags": 0,
+        "Name": "barrels_02 (2)",
+        "Position": "-7.264328,-51.55929,34.42617",
+        "Rotation": "0,0,0.9254989,-0.3787501",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "f2eee58e-c35c-4dc4-b3a2-aec2cf6f5c6c",
+            "BodyGroups": 18446744073709551615,
+            "Health": 85,
+            "IsStatic": false,
+            "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "55b07ae6-d81f-4839-aa72-e2718aa8c050",
+        "Flags": 0,
+        "Name": "barrels_02 (1)",
+        "Position": "-5.75156,-65.4338,0",
+        "Rotation": "0,0,0.9993157,0.03698835",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "0b7ef3e1-cd35-4ad2-8a8b-709a58904ad3",
+            "BodyGroups": 18446744073709551615,
+            "Health": 85,
+            "IsStatic": false,
+            "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "3ef2ae49-b32c-4bdb-811c-6ae6eb96f244",
+        "Flags": 0,
+        "Name": "barrels_02",
+        "Position": "17.95891,-25.7267,0",
+        "Rotation": "0,0,0.5162379,0.8564453",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "8a276218-f6f9-45ae-b683-cb73d37c67bc",
+            "BodyGroups": 18446744073709551615,
+            "Health": 85,
+            "IsStatic": false,
+            "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "polyhaven.wooden_barrel_01a"
+  ],
+  "__version": 1
+}
