@@ -4858,6 +4858,7 @@
                       "__type": "Sandbox.ModelRenderer",
                       "__guid": "03f299bd-fab9-4fc0-a1c8-042e2c8fe79b",
                       "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/m_wood_planks_02.vmat",
                       "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
                       "RenderType": "ShadowsOnly",
                       "Tint": "1,1,1,1"
@@ -24804,48 +24805,6 @@
       "__PrefabVariables": {}
     },
     {
-      "__guid": "5a79ddcd-ff7a-48c3-9e83-148feb8be0dd",
-      "Flags": 0,
-      "Name": "Hint - Shoot",
-      "Position": "565,0,0.0002050061",
-      "Rotation": "0,0.7071068,0,0.7071068",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.TextRenderer",
-          "__guid": "a6bc940d-a290-4839-8b90-d311894987d2",
-          "Color": "0.5814,0.42969,0.30557,1",
-          "FontFamily": "Roboto Mono",
-          "FontSize": 128,
-          "FontWeight": 800,
-          "Scale": 0.5,
-          "Text": "SHOOT",
-          "TextAlignment": "Center"
-        }
-      ]
-    },
-    {
-      "__guid": "e71ca9c2-6c5a-4607-8739-fdc20f8f648a",
-      "Flags": 0,
-      "Name": "Hint - Don\u0027t Shoot",
-      "Position": "1106.717,0,7.13103",
-      "Rotation": "0,0.7071068,0,0.7071068",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.TextRenderer",
-          "__guid": "fea2e973-fb95-4867-a719-2695c7fa0063",
-          "Color": "0.45581,0.39242,0.30953,1",
-          "FontFamily": "Roboto Mono",
-          "FontSize": 128,
-          "FontWeight": 800,
-          "Scale": 0.5,
-          "Text": "DON\u0027T SHOOT",
-          "TextAlignment": "Center"
-        }
-      ]
-    },
-    {
       "__guid": "bbdcbe61-60a8-4ee9-bfd1-851200ba55c8",
       "Flags": 0,
       "Name": "sm_outside_floor_02 (1)",
@@ -26756,6 +26715,65 @@
           "__guid": "e753dae7-9080-456a-820a-f7ce3a50a1c8",
           "BodyGroups": 18446744073709551615,
           "Model": "models/props/detail/sm_rug_03.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b6ad81da-f80d-41c6-a04a-7403ff47f76a",
+      "Flags": 0,
+      "Name": "sm_shoot",
+      "Position": "544.2183,-5.662771,-6.477703",
+      "Rotation": "0,0,1,-0.00000004371139",
+      "Scale": "0.7596175,0.7596175,0.7596175",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "fe7cded5-b791-4695-a8d0-aee778ab5414",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_ground_dirt_02_lighter.vmat",
+          "Model": "models/props/detail/sm_shoot.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "98de5a1d-e835-4f38-9c77-9b746121910b",
+      "Flags": 0,
+      "Name": "sm_don\u0027t",
+      "Position": "1086.346,102.1882,7.083566",
+      "Rotation": "0,0,1,-0.00000004371139",
+      "Scale": "0.768638,0.768638,0.768638",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c949e2e7-a4bb-41f5-b0ed-58e76468ec75",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_don\u0027t.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b93bb067-e945-4ef8-ac81-8a75076ca558",
+      "Flags": 0,
+      "Name": "sm_shoot",
+      "Position": "1086.556,-112.3042,3.392869",
+      "Rotation": "0,0,1,-0.00000004371139",
+      "Scale": "0.7596175,0.7596175,0.7596175",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "f1f3f715-c751-4884-9e8b-61d86edbb8cd",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_02.vmat",
+          "Model": "models/props/detail/sm_shoot.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         }
