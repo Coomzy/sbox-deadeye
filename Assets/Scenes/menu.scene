@@ -242,6 +242,7 @@
           "__guid": "59aea2ef-ac9b-495a-a67f-805b8a8fc3b7",
           "Flags": 0,
           "Name": "sm_ground_plane_01",
+          "Position": "0,0,-4.941802",
           "Enabled": true,
           "__Prefab": "prefabs/environment/ground/sm_ground_plane_01.prefab",
           "__PrefabVariables": {}
@@ -345,7 +346,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "4b55cbc7-d50a-4baa-83a1-c080ca6ea51e",
+                    "component_id": "6c0b32ea-2674-4e39-93bc-335daa9d28c3",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -415,7 +416,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "4b55cbc7-d50a-4baa-83a1-c080ca6ea51e",
+                    "component_id": "6c0b32ea-2674-4e39-93bc-335daa9d28c3",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -436,6 +437,7 @@
                   "__enabled": false,
                   "isBadTarget": true,
                   "isDead": false,
+                  "isTonyLazuto": false,
                   "lookAtPlayer": true
                 }
               ],
@@ -1685,6 +1687,7 @@
                   "__enabled": false,
                   "isBadTarget": false,
                   "isDead": false,
+                  "isTonyLazuto": false,
                   "lookAtPlayer": true
                 }
               ],
@@ -2977,6 +2980,7 @@
           "__enabled": false,
           "isBadTarget": false,
           "isDead": false,
+          "isTonyLazuto": false,
           "lookAtPlayer": true
         }
       ],
@@ -4104,7 +4108,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "b04ee66d-6a98-4f76-b6f7-fecf0d5ffe3e",
+            "component_id": "16a8069e-f330-4bf4-9704-f09a8b4cf20d",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -5007,10 +5011,85 @@
       ]
     },
     {
+      "__guid": "d9fb4552-b9e8-4d48-a59f-abebf9404624",
+      "Flags": 0,
+      "Name": "sm_dartboard",
+      "Position": "593.815,-732.6508,63.52544",
+      "Rotation": "0.07017484,-0.07017485,0.7036161,0.703616",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "a413e354-afce-4a20-b214-78c03decb8fc",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_dartboard.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "7c5d72f3-dc25-4204-b8c2-62c5ed07814e",
+      "Flags": 0,
+      "Name": "lantern_01 (2)",
+      "Position": "594.8791,-637.4849,29.91711",
+      "Rotation": "0,0,0.9238796,0.3826833",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "f72a1055-899d-45a3-8f94-6b4f4f3798b7",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "88d366e1-f2de-4063-b97f-295df381eade",
+      "Flags": 0,
+      "Name": "lantern_01 (1)",
+      "Position": "677.9358,-118.3109,57.66159",
+      "Rotation": "0,0,0.9238796,0.3826833",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "bb148c93-2dd5-4fac-a568-a6e8d7be484c",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "34cb66dc-18f4-4a8d-b51b-69af84ae93b9",
+      "Flags": 0,
+      "Name": "lantern_01",
+      "Position": "152.369,-80.54926,46.19885",
+      "Rotation": "0,0,0.9238796,0.3826833",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "49aa06e2-4518-4009-9b9b-df399cb06b65",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
       "__guid": "97c1063a-18cb-4592-9864-d9eee8753c6a",
       "Flags": 0,
       "Name": "3D Text - Title",
-      "Position": "239.7894,130.4585,110.0531",
+      "Position": "235.1843,130.4585,120.5816",
       "Rotation": "-0.00000005960464,0,1,-0.00000002980232",
       "Scale": "3,3,3",
       "Enabled": true,
@@ -5179,10 +5258,6 @@
           "southSteps": {
             "_type": "gameobject",
             "go": "d55ff880-c9d5-49c8-bd64-248fc9e009b4"
-          },
-          "southWall": {
-            "_type": "gameobject",
-            "go": "57da906c-9453-48c4-9078-ea641447120d"
           },
           "southWallType": "Door",
           "westBalcony": {
@@ -5353,16 +5428,6 @@
           "Enabled": true
         },
         {
-          "__guid": "57da906c-9453-48c4-9078-ea641447120d",
-          "Flags": 0,
-          "Name": "south wall",
-          "Position": "-244,-4,5",
-          "Rotation": "0,0,1,-0.00000004371139",
-          "Enabled": true,
-          "__Prefab": "prefabs/environment/doors/sm_wood_wall_01_door.prefab",
-          "__PrefabVariables": {}
-        },
-        {
           "__guid": "93797e8a-7142-43d9-a49a-b15da51eafa4",
           "Flags": 0,
           "Name": "south balcony",
@@ -5373,10 +5438,60 @@
           "__PrefabVariables": {}
         },
         {
+          "__guid": "4a4e23f5-2627-4646-8473-6ff3dc8754fa",
+          "Flags": 0,
+          "Name": "south steps (5)",
+          "Position": "-334.6293,-194.9888,3.617456",
+          "Rotation": "-0.7071068,0.00000003090862,0.7071068,-0.00000003090862",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "a1f7fc68-18d6-437d-baa3-111e16b1818c",
+          "Flags": 0,
+          "Name": "south steps (3)",
+          "Position": "-331.4869,-108.1812,3.617456",
+          "Rotation": "-0.7071068,0.00000003090862,0.7071068,-0.00000003090862",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "90749a9e-42f4-4414-a973-d11fb2874170",
+          "Flags": 0,
+          "Name": "south steps (4)",
+          "Position": "-331.3053,-12.85592,3.617456",
+          "Rotation": "-0.7071068,0.00000003090862,0.7071068,-0.00000003090862",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "c59e9765-4b35-4b66-b606-38db35b12215",
+          "Flags": 0,
+          "Name": "south steps (2)",
+          "Position": "-331.4869,82.1213,3.617456",
+          "Rotation": "-0.7071068,0.00000003090862,0.7071068,-0.00000003090862",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "06c31cb3-6a91-4ae3-a4e9-fa74d1d23d4c",
+          "Flags": 0,
+          "Name": "south steps (1)",
+          "Position": "-331.3053,177.4466,3.617456",
+          "Rotation": "-0.7071068,0.00000003090862,0.7071068,-0.00000003090862",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
+          "__PrefabVariables": {}
+        },
+        {
           "__guid": "d55ff880-c9d5-49c8-bd64-248fc9e009b4",
           "Flags": 0,
           "Name": "south steps",
-          "Position": "-360,2,-6.93088",
+          "Position": "-359.4427,2,-6.93088",
           "Rotation": "0,0,1,-0.00000004371139",
           "Enabled": true,
           "__Prefab": "prefabs/environment/steps/sm_wood_exterior_steps.prefab",
@@ -7086,6 +7201,694 @@
           "Shadows": true
         }
       ]
+    },
+    {
+      "__guid": "f5ca8651-45fd-4036-b9ef-f25b647b0151",
+      "Flags": 0,
+      "Name": "sm_wood_scatter_01 (1)",
+      "Position": "53.10772,179.2447,-1.110661",
+      "Rotation": "0,0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ded42db7-df69-481e-b5c1-a673ef7fdacb",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_scatter_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "061c806f-dbb7-4ff9-83b5-f0887d449e8e",
+      "Flags": 0,
+      "Name": "vintage_cabinet_01",
+      "Position": "638.4916,47.77116,5.477565",
+      "Rotation": "0,0,0.9999996,0.0008030683",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "af371aaf-09ca-4a14-9c86-ece9ca633735",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/vintage_cabinet_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "85b2395b-f822-41f9-8425-17ce8c90b93d",
+      "Flags": 0,
+      "Name": "sm_wood_scatter_01 (3)",
+      "Position": "304.9276,-522.6687,4.74127",
+      "Rotation": "0,0,0.760767,0.6490251",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "70693bfd-e60f-47e1-be8f-f917927ad80f",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_scatter_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b148a264-4dae-4cab-9c80-7dd77e2eee29",
+      "Flags": 0,
+      "Name": "sm_wood_scatter_01 (2)",
+      "Position": "525.4677,-629.0428,4.74127",
+      "Rotation": "0,0,0.4347905,0.9005316",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ef27465c-3817-46f7-93f0-1dbec331841f",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_scatter_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "c9aa0375-4d20-4ff0-8cc8-24a2f0785afb",
+      "Flags": 0,
+      "Name": "sm_wood_scatter_01",
+      "Position": "62.84739,-116.2974,-1.110661",
+      "Rotation": "0,0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ee278dd4-b596-4bbb-862e-531b20e35cdd",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_scatter_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "ddda7f18-fa22-45e4-b69c-fd1864e296fa",
+      "Flags": 0,
+      "Name": "junk_07",
+      "Position": "147.9585,-112.051,15.89802",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "f19ad5d8-2794-4e24-b06c-83703b3e3d30",
+          "Flags": 0,
+          "Name": "sm_metal_jug",
+          "Position": "0,-30.01675,-3.989996",
+          "Rotation": "0,0,0.5657212,0.8245966",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "4d8b04a4-68e8-4664-b9d5-158abcce84f0",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_metal_jug.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "58b9191d-8a22-4307-82e4-be3b19ef9509",
+          "Flags": 0,
+          "Name": "sm_cards (2)",
+          "Position": "-40.08389,29.82892,-3.700089",
+          "Rotation": "0,0,0.3826835,0.9238795",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "093df694-b891-4f54-b198-a9df6341fe9c",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_cards.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2682e319-1911-4d61-bafc-c114b3166cd6",
+          "Flags": 0,
+          "Name": "sm_cards (1)",
+          "Position": "-40.08386,44.66006,-3.700087",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "5425a3f6-b3d0-4888-bcf2-5ba944850431",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_cards.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "cfc62527-c137-45a4-87db-4016100152f6",
+          "Flags": 0,
+          "Name": "wooden_barrel_01a",
+          "Position": "0,37.63152,-3.968511",
+          "Rotation": "0,0,0.3936476,0.9192614",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "af80a1a1-a93e-4c2a-a74d-86013521ec38",
+              "BodyGroups": 18446744073709551615,
+              "Health": 85,
+              "IsStatic": true,
+              "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f4a0d062-2568-447a-b5e7-54bb71332a1d",
+          "Flags": 0,
+          "Name": "sm_chest",
+          "Position": "0,0,-3.949405",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "50152237-147e-4de9-8d86-43d38c1c6bf0",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_chest.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "59aa234a-7170-40c5-b789-45e36f400ac4",
+          "Flags": 0,
+          "Name": "wooden_crate_02",
+          "Position": "-27.3144,10.03237,-4",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "e765397d-9928-4fbb-a868-5ea5d7425198",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2eb40762-8070-46e8-8f5a-3ea24235ee9e",
+          "Flags": 0,
+          "Name": "sm_folding_wooden_stool",
+          "Position": "-26.88492,18.90085,-3.998351",
+          "Rotation": "0,0,0.6633446,0.748314",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "892727e2-afc8-4e2c-a207-dfd71b2bf6df",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_folding_wooden_stool.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "f2d53d85-334a-4ec9-9f97-fec8da443576",
+      "Flags": 0,
+      "Name": "junk_01",
+      "Position": "127.7631,-161.1746,12.66144",
+      "Rotation": "0,0,-0.9238794,0.3826834",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "157f0a52-f285-468f-b7d0-e957feb00da5",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wooden_bucket.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "47bd7c3f-5e76-4b21-942c-4ecb5775c96e",
+          "Flags": 0,
+          "Name": "plastic_bucket_a_open",
+          "Position": "6.821546,3.44978,7.284376",
+          "Rotation": "0,-0.6370955,0,0.7707849",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "3b1b71d7-27a7-4eb3-a27b-8bba05a9303f",
+              "BodyGroups": 18446744073709551615,
+              "Health": 500,
+              "IsStatic": true,
+              "Model": "models/sbox_props/plastic_bucket_a/plastic_bucket_a_open.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "b7e512a5-8b32-40ae-be75-aebd91ed4bdb",
+          "Flags": 0,
+          "Name": "flourbag_crumple",
+          "Position": "1.636904,24.45859,-3.962541",
+          "Rotation": "0,0,0.2067988,0.9783835",
+          "Scale": "4,4,4",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "961b036d-c0b0-413d-9fe7-8ef224bc419e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "05f32563-2224-4138-80ca-66a430c3df56",
+          "Flags": 0,
+          "Name": "sm_wooden_bucket_02 (1)",
+          "Position": "10.47516,-26.62736,5.971102",
+          "Rotation": "0.1464513,-0.6917745,0.1464513,0.6917745",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "f1dd04a1-b016-4aff-9185-1e34c231a60f",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "f09c90f9-40f6-4d33-aead-cd222db26d12",
+      "Flags": 0,
+      "Name": "sm_outside_floor_02",
+      "Position": "-107.986,-6.2202,-0.4868374",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "74545f51-0eb5-48c1-b46f-48b772aabb51",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "65827a9b-2dac-4c3b-890c-295df8bea497",
+      "Flags": 0,
+      "Name": "junk_08",
+      "Position": "144.4776,48.81196,11.78234",
+      "Rotation": "0,0,0.9912009,-0.1323654",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "10f29dc6-6bbb-45b4-9414-0237737c4ebd",
+          "Flags": 0,
+          "Name": "beer_bottle (1)",
+          "Position": "3.543434,-1.68852,22.02567",
+          "Rotation": "-0.6532815,-0.2705981,0.2705981,0.6532815",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "96a08ea7-10d7-4615-a2d1-4629d593c707",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f6ea7158-a81f-4ebe-a031-32892785956a",
+          "Flags": 0,
+          "Name": "beer_bottle (5)",
+          "Position": "-471.7453,308.5684,46.37138",
+          "Rotation": "0,0,0.5145463,0.8574626",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "4cf6de6c-f75f-4749-84df-819a49af84c8",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "02f5b8fa-5e6c-4b30-b5dd-4ee2b975b86c",
+          "Flags": 0,
+          "Name": "beer_bottle (6)",
+          "Position": "-460.3698,337.5097,47.26604",
+          "Rotation": "-0.5593843,0.432538,-0.2705981,0.6532814",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "95ec69c7-3b4d-485d-8ddd-d9bd6f49d1da",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "38fbd97b-9ebe-44bc-9f5d-1a68c089d9af",
+          "Flags": 0,
+          "Name": "beer_bottle (4)",
+          "Position": "-466.4177,315.2689,46.37138",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "811d70da-c5ce-43e5-81b4-e3d5183eda37",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f9a66b9f-46b0-4228-b840-6025356961ba",
+          "Flags": 0,
+          "Name": "beer_bottle",
+          "Position": "5.932788,-7.038551,20.88031",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "c372c869-c12b-462d-99d7-973631a142c6",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "aec8882e-3f0a-4d2d-b73e-e07f5d9fb777",
+          "Flags": 0,
+          "Name": "beer_bottle (3)",
+          "Position": "140.2489,-80.60558,-11.26169",
+          "Rotation": "-0.3383193,0.6209186,0.5103855,-0.4893941",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "813488dd-78fc-4421-9159-27983dca0345",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "7ec41a07-ec95-47ef-bb1d-9912759b91f1",
+          "Flags": 0,
+          "Name": "beer_bottle (2)",
+          "Position": "155.7074,-55.81509,-11.26169",
+          "Rotation": "0.7013949,0.08969398,0.270598,0.6532814",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a56914d9-da32-4bbc-a36d-877179204e8d",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e579ac12-1c42-46b3-83f9-a6c072030874",
+          "Flags": 0,
+          "Name": "beer_bottle",
+          "Position": "68.41698,126.7732,21.49599",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "127c82fb-7fbf-4128-a05b-9bbfd638aa6e",
+              "BodyGroups": 18446744073709551615,
+              "Health": 1,
+              "IsStatic": true,
+              "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e846144f-2694-470a-aa85-333b3eea5a8e",
+          "Flags": 0,
+          "Name": "wooden_chair_a",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.Prop",
+              "__guid": "a15dd620-695a-4c8c-a9f6-c991e407c028",
+              "BodyGroups": 18446744073709551615,
+              "Health": 0,
+              "IsStatic": true,
+              "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "500513fd-8942-43fa-afe4-bfa580ec61a4",
+      "Flags": 0,
+      "Name": "sm_wood_exterior_facade_menu",
+      "Position": "158.3372,-12.92206,5.062037",
+      "Rotation": "0,0,0.7071067,-0.7071068",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c09a2bac-2958-48b5-9fae-f7ae2050bb29",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_exterior_facade_menu.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "907b3fdc-e02c-4233-a018-e4a962890030",
+      "Flags": 0,
+      "Name": "sm_rug_02",
+      "Position": "279.1875,-34.20769,6.477117",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "f862b8de-8f74-432d-9a58-a8ef074fd303",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rug_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "28db95d0-dd08-44b5-b8f6-2cc22a488393",
+      "Flags": 0,
+      "Name": "barrels_03",
+      "Position": "622.883,-627.0181,4.999992",
+      "Enabled": true,
+      "__Prefab": "prefabs/environment/props/barrels_03.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "ed7d4189-1774-4f51-850e-e16cc80ea174",
+      "Flags": 0,
+      "Name": "junk_07 (1)",
+      "Position": "200.1414,-680.3534,9",
+      "Rotation": "0,0,0.9999999,-0.00000004371138",
+      "Enabled": true,
+      "__Prefab": "prefabs/environment/props/junk_07.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "f1efed26-92f1-4434-a9f4-d5f50d5079c7",
+      "Flags": 0,
+      "Name": "barrels",
+      "Position": "558.8066,-720.1383,15",
+      "Rotation": "0,0,0.8299851,0.5577853",
+      "Enabled": true,
+      "__Prefab": "prefabs/environment/props/barrels.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "bfa80d52-6b18-409e-9d83-bbd402bc8026",
+      "Flags": 0,
+      "Name": "fancy_picture_frame_01 (1)",
+      "Position": "513.8885,-241.7237,102.078",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Scale": "1.932498,1.932498,1.932498",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "d43bdb81-fbe9-4d49-95b4-25d00ef41421",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": true,
+          "Model": "models/furniture/fancy_picture_frame_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "45521e18-c104-4c04-a9ec-1218f4e853aa",
+      "Flags": 0,
+      "Name": "sofa_03 (1)",
+      "Position": "563.4822,-212.4683,4.296447",
+      "Rotation": "0,0,0.7230753,0.6907693",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "73fb465b-47ff-4b43-9da3-428321bde182",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/sofa_03.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b11c2df9-9afe-4529-b076-5b61dcac2a5b",
+      "Flags": 0,
+      "Name": "sm_rug_01",
+      "Position": "537.2,-103.4162,5.359323",
+      "Rotation": "0,0,-0.0913065,0.9958228",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "7bf4eec2-cbb0-4345-9e1d-0250c7aed211",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rug_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e810259a-fda9-4a84-8afe-67d2d2106bd0",
+      "Flags": 0,
+      "Name": "sm_wood_table_01",
+      "Position": "483.0437,-218.8181,5.000004",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c6afb44b-ec11-49ec-be43-0486c1c3411b",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wood_table_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "113deef3-6f42-413a-88b0-1f2a1701d8a7",
+      "Flags": 0,
+      "Name": "sm_wooden_stool",
+      "Position": "591.0098,-649.2241,5.023256",
+      "Rotation": "0,0,-0.1634121,0.9865579",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "5cdb5606-a056-43b7-a750-de27331a16ad",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wooden_stool.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "90a301e7-5d19-4165-a983-4bfb29df3ed6",
+      "Flags": 0,
+      "Name": "sm_wooden_bucket_02",
+      "Position": "623.3056,14.36625,54.6545",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "4ddb0132-aa0b-4b3f-99f4-3c15e512da64",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "692379af-197c-4614-ac93-5cd9b1f4e211",
+      "Flags": 0,
+      "Name": "sm_rockingchair",
+      "Position": "558.7113,102.0768,9.001548",
+      "Rotation": "0,0,-0.8731568,0.4874394",
+      "Scale": "1.458438,1.458438,1.458438",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "10905264-613d-4e7b-8945-78193d746808",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rockingchair.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -7112,6 +7915,17 @@
   "Title": "menu",
   "Description": "",
   "ResourceVersion": 1,
-  "__references": [],
+  "__references": [
+    "additionproject.lantern_01",
+    "additionproject.picture_frame1",
+    "additionproject.sofa_03",
+    "additionproject.vintagecabinet_1",
+    "facepunch.beer_bottle",
+    "facepunch.flourbag_crumple",
+    "facepunch.plasticbucketa2",
+    "facepunch.wooden_chair_a",
+    "facepunch.wooden_crate_02",
+    "polyhaven.wooden_barrel_01a"
+  ],
   "__version": 1
 }
