@@ -46,6 +46,9 @@ public class Player_TD : Component
 	public RealTimeSince timeSinceStartedDecisionMaking { get; private set; }
 	CancellationTokenSource cancellationTokenSource;
 
+	bool queueShoot;
+	bool queueSpare;
+
 	protected override void OnAwake()
 	{
 		instance = this;
@@ -336,36 +339,60 @@ public class Player_TD : Component
 		}
 	}
 
+
 	bool ShootKeyIsDown()
 	{
 		if (FUCKING_STOP_YOU_CUNT())
 			return false;
 
-		bool pressed = Input.Pressed("Shoot");
-		if (Input.Pressed("Shoot_Alt"))
-		{
-			pressed = true;
-		}
-		if (!pressed)
-			return false;
+		bool input1 = Input.Pressed("Shoot");
+		bool input2 = Input.Pressed("Shoot_Alt");
 
-		return true;
+		if (input1 && input2)
+		{
+			queueShoot = true;
+		}
+
+		if (input1 || input2)
+		{
+			return true;
+		}
+
+		if (queueShoot)
+		{
+			queueShoot = false;
+			return true;
+		}
+
+		return false;
 	}
+
 
 	bool SpareKeyIsDown()
 	{
 		if (FUCKING_STOP_YOU_CUNT())
 			return false;
 
-		bool pressed = Input.Pressed("Spare");
-		if (Input.Pressed("Spare_Alt"))
-		{
-			pressed = true;
-		}
-		if (!pressed)
-			return false;
+		bool input1 = Input.Pressed("Spare");
+		bool input2 = Input.Pressed("Spare_Alt");
 
-		return true;
+		if (input1 && input2)
+		{
+			queueSpare = true;
+		}
+
+		if (input1 || input2)
+		{
+			return true;
+		}
+
+		if (queueSpare)
+		{
+			queueSpare = false;
+			return true;
+		}
+
+		return false;
 	}
 
 	enum ExecuteSubState
