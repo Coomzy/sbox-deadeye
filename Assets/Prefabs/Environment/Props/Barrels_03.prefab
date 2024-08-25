@@ -10,7 +10,7 @@
         "__guid": "b436575f-cee1-4c9f-a82a-883a46ed5b2b",
         "BodyGroups": 18446744073709551615,
         "Health": 85,
-        "IsStatic": false,
+        "IsStatic": true,
         "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
         "Tint": "1,1,1,1"
       }
@@ -29,7 +29,7 @@
             "__guid": "da975d3e-be84-4c53-b8de-57e9731595ea",
             "BodyGroups": 18446744073709551615,
             "Health": 85,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -48,7 +48,7 @@
             "__guid": "f2eee58e-c35c-4dc4-b3a2-aec2cf6f5c6c",
             "BodyGroups": 18446744073709551615,
             "Health": 85,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -67,7 +67,7 @@
             "__guid": "0b7ef3e1-cd35-4ad2-8a8b-709a58904ad3",
             "BodyGroups": 18446744073709551615,
             "Health": 85,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -86,7 +86,7 @@
             "__guid": "8a276218-f6f9-45ae-b683-cb73d37c67bc",
             "BodyGroups": 18446744073709551615,
             "Health": 85,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
             "Tint": "1,1,1,1"
           }

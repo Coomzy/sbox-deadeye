@@ -568,7 +568,7 @@ public class CitizenVisuals : Component
 			weapon.Drop(weaponForce * 0.10f);
 		}
 
-		DisableRagdoll();
+		//DisableRagdoll();
 	}
 
 	async void DisableRagdoll()

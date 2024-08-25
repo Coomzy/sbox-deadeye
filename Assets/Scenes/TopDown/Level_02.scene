@@ -2,6 +2,19 @@
   "__guid": "7aa87460-1ca2-4eaf-b391-e4503f8fbeb6",
   "GameObjects": [
     {
+      "__guid": "fcecde1f-cb27-49a8-a436-4b188a036d6e",
+      "Flags": 0,
+      "Name": "Level Data Setter",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LevelDataSetter",
+          "__guid": "9c725b4e-677f-4f33-97b0-19da30fca503",
+          "levelData": "scenes/topdown/level_02.ld"
+        }
+      ]
+    },
+    {
       "__guid": "7b411764-559a-4390-a42b-262b9e925493",
       "Flags": 0,
       "Name": "GamePlay Manger",
@@ -41630,7 +41643,7 @@
                 "_type": "gameobject",
                 "go": "0db53704-a4b4-43dc-9cb0-bce529c600e5"
               },
-              "reactTime": 1,
+              "reactTime": 1.25,
               "targetIndex": -1,
               "targets": [
                 {
@@ -41728,7 +41741,7 @@
                   "Flags": 0,
                   "Name": "Target - Enemy",
                   "Position": "73.47315,101.1271,0",
-                  "Rotation": "0,0,0.8910066,-0.4539904",
+                  "Rotation": "0,0,0.9629225,0.2697784",
                   "Enabled": true,
                   "Components": [
                     {
@@ -42838,7 +42851,7 @@
                   "Flags": 0,
                   "Name": "Target - Enemy",
                   "Position": "-73.47315,101.1271,0",
-                  "Rotation": "0,0,0.4539906,-0.8910065",
+                  "Rotation": "0,0,0.3658991,0.9306546",
                   "Enabled": true,
                   "Components": [
                     {
@@ -44029,7 +44042,7 @@
                   "Flags": 0,
                   "Name": "Target - Enemy",
                   "Position": "118.8821,-38.62713,0",
-                  "Rotation": "0,0,0.9876884,0.1564343",
+                  "Rotation": "0,0,0.9120542,0.4100695",
                   "Enabled": true,
                   "Components": [
                     {
@@ -45166,7 +45179,7 @@
                   "Flags": 0,
                   "Name": "Target - Enemy",
                   "Position": "-118.8821,-38.62712,0",
-                  "Rotation": "0,0,0.1564343,0.9876884",
+                  "Rotation": "0,0,0.3434634,0.9391661",
                   "Enabled": true,
                   "Components": [
                     {
@@ -46417,6 +46430,7 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/fingerless_gloves/fingerless_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
                       "hatClothing": {

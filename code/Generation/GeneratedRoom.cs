@@ -30,6 +30,7 @@ public class GeneratedRoom
 			var rotation = Rotation.FromYaw(target.x);
 			var direction = rotation.Forward.Normal * target.y;
 			var localPos = direction;
+			localPos.z = target.z;
 			//var localPos = new Vector3(target.x, target.y, target.z);
 			generatedTarget.localPos = localPos;
 

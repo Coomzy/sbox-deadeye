@@ -10,6 +10,7 @@ using System.Threading;
 using static Sandbox.Gizmo;
 using static Sandbox.PhysicsContact;
 using static Sandbox.VertexLayout;
+using static Sandbox.VoxResource;
 
 public enum PlayerState_TD
 {
@@ -66,8 +67,6 @@ public class Player_TD : Component
 
 	protected override void OnStart()
 	{
-		base.OnStart();
-
 		Apply_Weapon();
 		GoToNextRoom();
 	}
@@ -104,16 +103,21 @@ public class Player_TD : Component
 
 	void GoToNextRoom()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		RoomManager.instance.roomIndex++;
 		SetState(PlayerState_TD.Walking);
 	}
 
 	void WalkingStart()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		Game.ActiveScene.TimeScale = 1.0f;
 		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 		timeSinceStartedWalking = 0;
-
 
 		if (RoomManager.instance?.currentRoom?.walkToPath == null)
 		{
@@ -130,6 +134,9 @@ public class Player_TD : Component
 
 	void WalkingUpdate()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		if (RoomManager.instance == null)
 			return;
 
@@ -188,6 +195,9 @@ public class Player_TD : Component
 
 	void DecidingStart()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		thirdPersonAnimationHelper.IsWeaponLowered = true;
 		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
 		thirdPersonAnimationHelper.WithWishVelocity(Vector3.Zero);
@@ -210,6 +220,9 @@ public class Player_TD : Component
 
 	void NextTarget()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		if (RoomManager.instance.currentRoom.currentTarget != null)
 		{
 			RoomManager.instance.currentRoom.currentTarget.Deselect();
@@ -225,6 +238,9 @@ public class Player_TD : Component
 
 	void DecidingUpdate()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		GamePlayManager.instance.decidingTime += Time.Delta;
 
 		if (RoomManager.instance?.currentRoom == null)
@@ -322,6 +338,9 @@ public class Player_TD : Component
 
 	bool ShootKeyIsDown()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return false;
+
 		bool pressed = Input.Pressed("Shoot");
 		if (Input.Pressed("Shoot_Alt"))
 		{
@@ -335,6 +354,9 @@ public class Player_TD : Component
 
 	bool SpareKeyIsDown()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return false;
+
 		bool pressed = Input.Pressed("Spare");
 		if (Input.Pressed("Spare_Alt"))
 		{
@@ -346,126 +368,151 @@ public class Player_TD : Component
 		return true;
 	}
 
-	void ExecutingStart()
+	enum ExecuteSubState
 	{
-		//Game.ActiveScene.TimeScale = 1.0f;
-		executeCommandsStage = 0;
-		loop = -1;
-		ExecuteCommands();
+		InitalDelay,
+		Shooting,
+		PostDelay
 	}
 
-	static int executeCommandsStage = -1;
-	static int loop = -1;
+	ExecuteSubState executeSubState = ExecuteSubState.InitalDelay;
+	float executeError = 0.0f;
 
-	async void ExecuteCommands()
+	void ExecutingStart()
 	{
-		executeCommandsStage = 1;
-		float error = MusicManager.timeTillBeat;
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
 
-		executeCommandsStage = 2;
-		error = MathX.Clamp(error, 0.0001f, MusicManager.TIME_BASE - 0.0001f);
+		//Game.ActiveScene.TimeScale = 1.0f;
+		executeSubState = ExecuteSubState.InitalDelay;
+		killedAnyCivs2 = false;
+		initDelay = 0;
+		executeError = MathX.Clamp(MusicManager.timeTillBeat, 0.0001f, MusicManager.TIME_BASE - 0.0001f);
+		initDelay = MusicManager.TIME_BASE - executeError;
+		//ExecuteCommands();
+	}
 
-		executeCommandsStage = 3;
-		//await Task.DelaySeconds(MusicManager.TIME_BASE - error);
-		await GameTask.DelaySeconds(MusicManager.TIME_BASE - error, cancellationTokenSource.Token);
-		executeCommandsStage = 4;
-		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+	void ExecutingUpdate()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		switch (executeSubState)
 		{
-			executeCommandsStage = -2;
+			case ExecuteSubState.InitalDelay:
+				Executing_InitalDelay();
+				return;
+			case ExecuteSubState.Shooting:
+				Executing_Shooting();
+				return;
+			case ExecuteSubState.PostDelay:
+				Executing_PostDelay();
+				return;
+		}
+	}
+
+	TimeUntil initDelay;
+	void Executing_InitalDelay()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		if (!initDelay)
+		{
 			return;
 		}
-		executeCommandsStage = 4;
-		bool killedAnyCivs = false;
 
-		loop = -1;
-		foreach (var target in targets)
+		executeSubState = ExecuteSubState.Shooting;
+		killedAnyCivs2 = false;
+		isWaitingForShoot = false;
+		shootingTargetIndex = 0;
+		TimeUntil timeUntilShot = MusicManager.TIME_BASE;
+	}
+
+	bool killedAnyCivs2 = false;
+	bool isWaitingForShoot = false;
+	TimeUntil timeUntilShoot;
+	int shootingTargetIndex = -1;
+	Target shootingTarget = null;
+	void Executing_Shooting()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		if (targets == null || !targets.ContainsIndex(shootingTargetIndex))
 		{
-			TimeUntil timeUntilShot = MusicManager.TIME_BASE;
-			executeCommandsStage = 5;
-			loop++;
-			var directionToTarget = Vector3.Direction(Transform.Position, target.Transform.Position);
+			postDelay = executeError;
+			executeSubState = ExecuteSubState.PostDelay;
+			return;
+		}
+
+		if (!isWaitingForShoot)
+		{
+			shootingTarget = targets[shootingTargetIndex];
+			var directionToTarget = Vector3.Direction(Transform.Position, shootingTarget.Transform.Position);
 			directionToTarget.z = 0;
 			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
-			executeCommandsStage = 6;
-			//thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
-
-			//await Task.DelaySeconds(MusicManager.TIME_BASE);
-			await GameTask.DelaySeconds(MusicManager.TIME_BASE, cancellationTokenSource.Token);
-			/*while (!timeUntilShot)
-			{
-				await Task.Frame();
-			}*/
-
-			executeCommandsStage = 7;
-			if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
-			{
-				executeCommandsStage = -3;
-				return;
-			}
-			executeCommandsStage = 8;
-
-			//Game.ActiveScene.TimeScale = 0.0f;
-
-			if (target.isBadTarget)
-			{
-				executeCommandsStage = 9;
-				GameStats.Increment(GameStats.TARGETS_ELIMINATED);
-				executeCommandsStage = 10;
-			}
-			else
-			{
-				executeCommandsStage = 11;
-				killedAnyCivs = true;
-				executeCommandsStage = 12;
-				GamePlayManager.instance.civiliansKilled++;
-				executeCommandsStage = 13;
-				GameStats.Increment(GameStats.CIVILIANS_KILLED);
-				executeCommandsStage = 14;
-				UIManager.instance.CivilianKilled();
-				executeCommandsStage = 15;
-			}
-			executeCommandsStage = 16;
-
-			Vector3 force = weapon.Transform.World.Forward;
-			force = Utils.GetRandomizedDirection(force, PlayerSettings.instance.shootForceRandomAngle) * PlayerSettings.instance.shootForceRange.RandomRange();
-			executeCommandsStage = 17;
-
-			target.Die(force);
-			executeCommandsStage = 18;
-			weapon.Shoot(target.Transform.Position);
-			executeCommandsStage = 19;
-
-			var bloodDecalGO = Scene.CreateObject();
-			bloodDecalGO.SetPrefabSource(GameSettings.instance.bloodDecalPrefab.ResourcePath);
-			bloodDecalGO.UpdateFromPrefab();
-			bloodDecalGO.Transform.Position = target.GetHeadPos();
-			Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
-			executeCommandsStage = 20;
-
-			float bloodSplatRandomRange = 10.0f;
-			bloodSplatDir = Utils.GetRandomizedDirection(bloodSplatDir, bloodSplatRandomRange);
-			bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
-			executeCommandsStage = 21;
-		}
-		executeCommandsStage = 22;
-
-		//await Task.DelaySeconds(MusicManager.TIME_BASE + error);
-		await GameTask.DelaySeconds(MusicManager.TIME_BASE + error, cancellationTokenSource.Token);
-		executeCommandsStage = 22;
-		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
-		{
-			executeCommandsStage = -4;
+			isWaitingForShoot = true;
+			//shootingTargetIndex = 0;
+			timeUntilShoot = MusicManager.TIME_BASE;
 			return;
 		}
-		executeCommandsStage = 23;
 
-		if (killedAnyCivs && GamePreferences.instance.restartLevelOnCivKill)
+		if (!timeUntilShoot)
 		{
-			executeCommandsStage = -5;
+			return;
+		}
+
+		shootingTarget = targets[shootingTargetIndex];
+		shootingTargetIndex++;
+		isWaitingForShoot = false;
+		timeUntilShoot = MusicManager.TIME_BASE;
+
+		if (shootingTarget.isBadTarget)
+		{
+			GameStats.Increment(GameStats.TARGETS_ELIMINATED);
+		}
+		else
+		{
+			killedAnyCivs2 = true;
+			GamePlayManager.instance.civiliansKilled++;
+			GameStats.Increment(GameStats.CIVILIANS_KILLED);
+			UIManager.instance.CivilianKilled();
+		}
+
+		Vector3 force = weapon.Transform.World.Forward;
+		force = Utils.GetRandomizedDirection(force, PlayerSettings.instance.shootForceRandomAngle) * PlayerSettings.instance.shootForceRange.RandomRange();
+
+		shootingTarget.Die(force);
+		weapon.Shoot(shootingTarget.Transform.Position);
+
+		var bloodDecalGO = Scene.CreateObject();
+		bloodDecalGO.SetPrefabSource(GameSettings.instance.bloodDecalPrefab.ResourcePath);
+		bloodDecalGO.UpdateFromPrefab();
+		bloodDecalGO.Transform.Position = shootingTarget.GetHeadPos();
+		Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
+
+		float bloodSplatRandomRange = 10.0f;
+		bloodSplatDir = Utils.GetRandomizedDirection(bloodSplatDir, bloodSplatRandomRange);
+		bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
+	}
+
+	TimeUntil postDelay;
+	void Executing_PostDelay()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		if (!postDelay)
+		{
+			return;
+		}
+
+		if (killedAnyCivs2 && GamePreferences.instance.restartLevelOnCivKill)
+		{
 			LoadingScreen.ReloadLevel();
 			return;
 		}
-		executeCommandsStage = 24;
 
 		//Game.ActiveScene.TimeScale = 1.0f;
 
@@ -473,7 +520,6 @@ public class Player_TD : Component
 
 		if (RoomManager.instance?.currentRoom?.targets != null)
 		{
-			executeCommandsStage = 25;
 			foreach (var target in RoomManager.instance.currentRoom.targets)
 			{
 				if (!target.isBadTarget)
@@ -496,7 +542,6 @@ public class Player_TD : Component
 		{
 			Log.Error($"Failed to get LevelData.active!");
 		}
-		executeCommandsStage = 26;
 
 		if (anyTargetsLeft)
 		{
@@ -515,15 +560,143 @@ public class Player_TD : Component
 			RoomManager.instance.roomIndex++;
 			SetState(PlayerState_TD.Walking);
 		}
-		executeCommandsStage = 27;
 	}
 
-	async void DeadStart()
+	// Async can get really fucky sometime :/
+	async void ExecuteCommands()
 	{
-		Game.ActiveScene.TimeScale = 1.0f;
-		GamePlayManager.instance.FailLevel(FailReason.Died);
+		float error = MusicManager.timeTillBeat;
 
-		DeathAnimate();
+		error = MathX.Clamp(error, 0.0001f, MusicManager.TIME_BASE - 0.0001f);
+
+		//await Task.DelaySeconds(MusicManager.TIME_BASE - error);
+		await GameTask.DelaySeconds(MusicManager.TIME_BASE - error, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
+		bool killedAnyCivs = false;
+
+		foreach (var target in targets)
+		{
+			TimeUntil timeUntilShot = MusicManager.TIME_BASE;
+			var directionToTarget = Vector3.Direction(Transform.Position, target.Transform.Position);
+			directionToTarget.z = 0;
+			GameObject.Transform.Rotation = directionToTarget.Normal.EulerAngles.ToRotation();
+			//thirdPersonAnimationHelper.MoveRotationSpeed = 10000.0f;
+
+			//await Task.DelaySeconds(MusicManager.TIME_BASE);
+			await GameTask.DelaySeconds(MusicManager.TIME_BASE, cancellationTokenSource.Token);
+			/*while (!timeUntilShot)
+			{
+				await Task.Frame();
+			}*/
+
+			if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+			{
+				return;
+			}
+
+			//Game.ActiveScene.TimeScale = 0.0f;
+
+			if (target.isBadTarget)
+			{
+				GameStats.Increment(GameStats.TARGETS_ELIMINATED);
+			}
+			else
+			{
+				killedAnyCivs = true;
+				GamePlayManager.instance.civiliansKilled++;
+				GameStats.Increment(GameStats.CIVILIANS_KILLED);
+				UIManager.instance.CivilianKilled();
+			}
+
+			Vector3 force = weapon.Transform.World.Forward;
+			force = Utils.GetRandomizedDirection(force, PlayerSettings.instance.shootForceRandomAngle) * PlayerSettings.instance.shootForceRange.RandomRange();
+
+			target.Die(force);
+			weapon.Shoot(target.Transform.Position);
+
+			var bloodDecalGO = Scene.CreateObject();
+			bloodDecalGO.SetPrefabSource(GameSettings.instance.bloodDecalPrefab.ResourcePath);
+			bloodDecalGO.UpdateFromPrefab();
+			bloodDecalGO.Transform.Position = target.GetHeadPos();
+			Vector3 bloodSplatDir = weapon.Transform.Rotation.Forward;
+
+			float bloodSplatRandomRange = 10.0f;
+			bloodSplatDir = Utils.GetRandomizedDirection(bloodSplatDir, bloodSplatRandomRange);
+			bloodDecalGO.Transform.Rotation = Rotation.From(bloodSplatDir.EulerAngles);
+		}
+
+		//await Task.DelaySeconds(MusicManager.TIME_BASE + error);
+		await GameTask.DelaySeconds(MusicManager.TIME_BASE + error, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
+
+		if (killedAnyCivs && GamePreferences.instance.restartLevelOnCivKill)
+		{
+			LoadingScreen.ReloadLevel();
+			return;
+		}
+
+		//Game.ActiveScene.TimeScale = 1.0f;
+
+		bool anyTargetsLeft = false;
+
+		if (RoomManager.instance?.currentRoom?.targets != null)
+		{
+			foreach (var target in RoomManager.instance.currentRoom.targets)
+			{
+				if (!target.isBadTarget)
+					continue;
+
+				if (target.isDead)
+					continue;
+
+				anyTargetsLeft = true;
+			}
+		}
+
+		int civilianKillLimit = 3;
+
+		if (LevelData.active != null)
+		{
+			civilianKillLimit = LevelData.active.allowedCivilianCasualties;
+		}
+		else
+		{
+			Log.Error($"Failed to get LevelData.active!");
+		}
+
+		if (anyTargetsLeft)
+		{
+			SetState(PlayerState_TD.Dead);
+		}
+		else if (GamePlayManager.instance.civiliansKilled >= civilianKillLimit)
+		{
+			SetState(PlayerState_TD.KilledTooManyCivs);
+		}
+		else if (RoomManager.instance.isFinalRoom)
+		{
+			SetState(PlayerState_TD.Won);
+		}
+		else
+		{
+			RoomManager.instance.roomIndex++;
+			SetState(PlayerState_TD.Walking);
+		}
+	}
+
+	/*async*/ void DeadStart()
+	{
+		//Game.ActiveScene.TimeScale = 1.0f;
+		GamePlayManager.instance.FailLevel(FailReason.Died);
+		diedScreenDelay = 1.75f;
+
+		DeathAnimeNoAsyncStart();
+		/*DeathAnimate();
 
 		while (!bodyPhysics.Enabled)
 		{
@@ -548,7 +721,219 @@ public class Player_TD : Component
 			return;
 		}
 
-		UIManager.instance.Died();
+		UIManager.instance.Died();*/
+	}
+
+
+	TimeUntil diedScreenDelay;
+	bool hasShownDiedScreen = false;
+	void DeadUpdate()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		DeathAnimateNoAsync();
+
+		if (isDeathAnimating)
+		{
+			return;
+		}
+
+		if (!hasShownDiedScreen && diedScreenDelay)
+		{
+			if (GamePreferences.instance.restartLevelOnFail)
+			{
+				LoadingScreen.ReloadLevel();
+				return;
+			}
+
+			UIManager.instance.Died();
+			hasShownDiedScreen = true;
+		}
+	}
+
+	List<Target> shooters2 = new List<Target>();
+	int shooterIndex2 = 0;
+	List<HitboxSet.Box> hitBoxes2 = new List<HitboxSet.Box>();
+	bool isDeathAnimating = false;
+	void DeathAnimeNoAsyncStart()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		var currentTarget = RoomManager.instance.currentRoom.currentTarget;
+
+		foreach (var target in RoomManager.instance.currentRoom.targets)
+		{
+			if (!target.isBadTarget)
+				continue;
+
+			if (target.isDead)
+				continue;
+
+			if (target?.citizenVisuals?.weapon == null)
+				continue;
+
+			shooters2.Add(target);
+		}
+
+		shooters2.Shuffle();
+
+		foreach (var hitbox in bodyRenderer.Model.HitboxSet.All)
+		{
+			//HB_pelvis
+			//HB_spine_0
+			//HB_spine_1
+			//HB_spine_2
+			//HB_neck_0
+			//HB_head
+			//HB_clavicle_R
+			//HB_arm_upper_R
+			//HB_arm_lower_R
+			//HB_hand_R
+			//HB_clavicle_L
+			//HB_arm_upper_L
+			//HB_arm_lower_L
+			//HB_hand_L
+			//HB_leg_upper_R
+			//HB_leg_lower_R
+			//HB_ankle_R
+			//HB_leg_upper_L
+			//HB_leg_lower_L
+			//HB_ankle_L
+			if (hitbox.Name == "HB_head" ||
+				hitbox.Name == "HB_neck_0" ||
+				hitbox.Name == "HB_arm_upper_R" ||
+				hitbox.Name == "HB_arm_upper_L" ||
+				hitbox.Name == "HB_arm_lower_R" ||
+				hitbox.Name == "HB_arm_lower_L" ||
+				hitbox.Name == "HB_neck_0" ||
+				hitbox.Name == "HB_spine_2") //||
+											 //hitbox.Name == "HB_clavicle_R" ||
+											 //hitbox.Name == "HB_clavicle_L")
+			{
+				continue;
+			}
+			if (hitbox.Name == "HB_leg_upper_R" ||
+				hitbox.Name == "HB_leg_upper_L" ||
+				hitbox.Name == "HB_leg_lower_R" ||
+				hitbox.Name == "HB_leg_lower_L" ||
+				hitbox.Name == "HB_ankle_R" ||
+				hitbox.Name == "HB_ankle_L" ||
+				hitbox.Name == "HB_hand_R" ||
+				hitbox.Name == "HB_hand_L" ||
+				//hitbox.Name == "HB_arm_lower_R" ||
+				//hitbox.Name == "HB_arm_lower_L" ||
+				hitbox.Name == "HB_pelvis" ||
+				hitbox.Name == "HB_spine_0" ||
+				hitbox.Name == "HB_spine_1")
+			{
+				continue;
+			}
+			hitBoxes2.Add(hitbox);
+			//Log.Info($"hitbox = {hitbox.Name}");
+		}
+
+		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
+		isDeathAnimating = true;
+		deathAnimatingTime = 1.5f;
+	}
+
+	TimeUntil nextShotDelay;
+	TimeUntil deathAnimatingTime;
+	void DeathAnimateNoAsync()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		if (!isDeathAnimating)
+		{
+			return;
+		}
+
+		if (shooters2 == null || !shooters2.ContainsIndex(shooterIndex2))
+		{
+			isDeathAnimating = false;
+			DeathAnimeNoAsyncEnd();
+			return;
+		}
+
+		if (!nextShotDelay)
+		{
+			return;
+		}
+
+		nextShotDelay = 0.3f;
+		//isDeathAnimating = false;
+
+		TimeSince shootTime = 0;
+
+		var shooter = shooters2[shooterIndex2];
+
+		if (shooter?.citizenVisuals?.weapon == null)
+		{
+			shooterIndex2++;
+			if (shooterIndex2 >= shooters2.Count)
+			{
+				shooterIndex2 = 0;
+				shooters2.Shuffle();
+			}
+			return;
+		}
+
+		//var damageInfo = new DamageInfo(100.0f, currentTarget.GameObject, currentTarget.citizenVisuals?.weaponGameObject);
+		var randomIndex = System.Random.Shared.Next(hitBoxes2.Count);
+		//Log.Info($"random hitbox = {hitBoxes[randomIndex].Name}");
+		var boneIndex = (hitBoxes2.ContainsIndex(randomIndex) && hitBoxes2[randomIndex]?.Bone != null) ? hitBoxes2[randomIndex].Bone.Index : 3;
+		//Gizmo.Draw.LineSphere(hitBoxes[randomIndex].Bone.LocalTransform.PointToWorld(hitBoxes[randomIndex].RandomPointInside), 1.0f);
+		var damageScale = 10.0f;
+		//force = new Vector3(-Transform.Rotation.Forward * 25.0f);
+		force2 = new Vector3(shooter.citizenVisuals.weapon.Transform.Rotation.Forward * 25.0f);
+		hitPosition2 = hitBoxes2[randomIndex].RandomPointInside;
+		ProceduralHitReaction(boneIndex, damageScale, force2);
+		//thirdPersonAnimationHelper.ProceduralHitReaction(damageInfo, 10, force);
+
+		var hitBoneGO = thirdPersonAnimationHelper.Target.GetBoneObject(boneIndex);
+		shooter.citizenVisuals.weapon.Shoot(hitBoneGO.Transform.Position);
+
+		shooterIndex2++;
+		if (shooterIndex2 >= shooters2.Count)
+		{
+			shooterIndex2 = 0;
+			shooters2.Shuffle();
+		}
+
+		if (deathAnimatingTime)
+		{
+			isDeathAnimating = false;
+			DeathAnimeNoAsyncEnd();
+			return;
+		}
+	}
+
+	Vector3 hitPosition2;
+	Vector3 force2;
+	void DeathAnimeNoAsyncEnd()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		diedScreenDelay = 0.75f;
+		bodyPhysics.Enabled = true;
+		bodyRenderer.UseAnimGraph = false;
+
+		bodyRenderer.GameObject.Tags.Set("ragdoll", true);
+		bodyRenderer.GameObject.SetParent(null);
+
+		foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
+		{
+			body.ApplyImpulseAt(hitPosition2, force2);
+		}
+
+		if (weapon != null)
+		{
+			weapon.Drop(force2);
+		}
 	}
 
 	async void DeathAnimate()
@@ -727,17 +1112,24 @@ public class Player_TD : Component
 		thirdPersonAnimationHelper.Target.Set("hit_strength", (force.Length / 1000.0f) * damageScale);
 	}
 
-	async void KilledTooManyCivsStart()
+	/*async*/ void KilledTooManyCivsStart()
 	{
-		Game.ActiveScene.TimeScale = 1.0f;
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		//Game.ActiveScene.TimeScale = 1.0f;
 		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 
-		LowerHead();
+		//LowerHead();
 
 		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
 
+		lowerHeadTime = 0.25f;
+		hasDroppedWeaponDelay = 0.15f;
+		civsKilledScreenDelay = 1.5f;
+
 		//await Task.DelaySeconds(0.15f);
-		await GameTask.DelaySeconds(0.15f, cancellationTokenSource.Token);
+		/*await GameTask.DelaySeconds(0.15f, cancellationTokenSource.Token);
 		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
 		{
 			return;
@@ -759,7 +1151,67 @@ public class Player_TD : Component
 			return;
 		}
 
-		UIManager.instance.FailedTooManyCivsKilled();
+		UIManager.instance.FailedTooManyCivsKilled();*/
+	}
+
+	TimeUntil civsKilledScreenDelay;
+	TimeUntil hasDroppedWeaponDelay;
+	TimeUntil lowerHeadTime;
+	bool hasShownCivsKilledScreen = false;
+	bool hasDroppedWeapon = false;
+	void KilledTooManyCivsUpdate()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		LowerHeadNoAsync();
+
+		if (!hasDroppedWeapon && hasDroppedWeaponDelay)
+		{
+			hasDroppedWeapon = true;
+			Vector3 force = Transform.Rotation.Forward;
+			weapon.Drop(force);
+		}
+
+		if (!hasShownCivsKilledScreen && civsKilledScreenDelay)
+		{
+			if (GamePreferences.instance.restartLevelOnFail)
+			{
+				LoadingScreen.ReloadLevel();
+				return;
+			}
+
+			UIManager.instance.FailedTooManyCivsKilled();
+			hasShownCivsKilledScreen = true;
+		}
+	}
+
+	void LowerHeadNoAsync()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		thirdPersonAnimationHelper.LookAtEnabled = true;
+
+		Vector3 lookAtPos = GameObject.Transform.Position;
+		lookAtPos += GameObject.Transform.Rotation.Forward * 10.0f;
+		var headBone = bodyRenderer.GetBoneObject("head");
+		if (headBone == null)
+		{
+			return;
+		}
+		Vector3 headPos = headBone.Transform.Position;
+		Vector3 dirToFloor = Vector3.Direction(headPos, lookAtPos).Normal;
+		Vector3 currentHeadForward = GameObject.Transform.Rotation.Forward;
+
+		var lerp = Vector3.Lerp(currentHeadForward, dirToFloor, lowerHeadTime.Fraction);
+		thirdPersonAnimationHelper.WithLook(lerp);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
+
+		thirdPersonAnimationHelper.WithLook(dirToFloor);
 	}
 
 	async void LowerHead()
@@ -794,23 +1246,46 @@ public class Player_TD : Component
 		thirdPersonAnimationHelper.WithLook(dirToFloor);
 	}
 
-	async void WonStart()
+	/*async*/ void WonStart()
 	{
-		Game.ActiveScene.TimeScale = 1.0f;
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		//Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.WonLevel();
 
+		wonScreenDelay = 1.5f;
+
 		//await Task.DelaySeconds(1.5f);
-		await GameTask.DelaySeconds(1.5f, cancellationTokenSource.Token);
+		/*await GameTask.DelaySeconds(1.5f, cancellationTokenSource.Token);
 		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
 		{
 			return;
 		}
 
+		UIManager.instance.Won();*/
+	}
+
+	TimeUntil wonScreenDelay;
+	bool hasShownWonScreen = false;
+	void WonUpdate()
+	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
+		if (hasShownWonScreen || !wonScreenDelay)
+		{
+			return;
+		}
 		UIManager.instance.Won();
+		hasShownWonScreen = true;
 	}
 
 	protected override void OnUpdate()
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		base.OnUpdate();
 
 		CheckForExitLevelInput();
@@ -824,11 +1299,7 @@ public class Player_TD : Component
 	{
 		if (Input.EscapePressed)
 		{
-			if (!Input.UsingController)
-			{
-				LoadingScreen.SwitchToMenu();
-				return;
-			}
+			LoadingScreen.SwitchToMenu();
 			Input.EscapePressed = false;
 		}
 
@@ -868,12 +1339,27 @@ public class Player_TD : Component
 				break;
 			case PlayerState_TD.Deciding:
 				DecidingUpdate();
-				break;			
+				break;
+			case PlayerState_TD.Executing:
+				ExecutingUpdate();
+				break;
+			case PlayerState_TD.Dead:
+				DeadUpdate();
+				break;
+			case PlayerState_TD.KilledTooManyCivs:
+				KilledTooManyCivsUpdate();
+				break;
+			case PlayerState_TD.Won:
+				WonUpdate();
+				break;
 		}
 	}
 
 	void SetState(PlayerState_TD newState)
 	{
+		if (FUCKING_STOP_YOU_CUNT())
+			return;
+
 		state = newState;
 
 		switch (state)
@@ -912,5 +1398,31 @@ public class Player_TD : Component
 		}
 
 		base.OnDestroy();
+	}
+
+	public bool FUCKING_STOP_YOU_CUNT()
+	{
+		if (LoadingScreen.isLoading)
+			return false;
+
+		if (GameObject == null || !GameObject.IsValid)
+			return false;
+
+		if (weapon == null || !weapon.IsValid)
+			return true;
+
+		if (RoomManager.instance == null || !RoomManager.instance.IsValid)
+			return true;
+
+		if (GamePlayManager.instance == null || !GamePlayManager.instance.IsValid)
+			return true;
+
+		if (CitizenSettings.instance == null)
+			return true;
+
+		if (GameSettings.instance == null)
+			return true;
+
+		return false;
 	}
 }

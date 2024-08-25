@@ -28,7 +28,7 @@
             "__guid": "963b5fb8-07dd-4186-a95a-b00c76c09aef",
             "BodyGroups": 18446744073709551615,
             "Health": 500,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/sbox_props/plastic_bucket_a/plastic_bucket_a_open.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -48,7 +48,7 @@
             "__guid": "2b7db200-039a-4144-a15f-8c838dda5721",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -81,7 +81,7 @@
   "ResourceVersion": 1,
   "__references": [
     "facepunch.flourbag_crumple",
-    "facepunch.plasticbucketa2"
+    "facepunch.plasticbucketa1"
   ],
   "__version": 1
 }

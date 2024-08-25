@@ -2,7 +2,9 @@
   "menuLevel": "scenes/menu.ld",
   "topDownLevels": [
     "scenes/topdown/first_steps/first_steps.ld",
+    "scenes/topdown/level_04.ld",
     "scenes/topdown/level_02.ld",
+    "scenes/topdown/level_03.ld",
     "scenes/topdown/original.ld"
   ],
   "pistolPrefab": "prefabs/weapons/weapon - pistol.prefab",

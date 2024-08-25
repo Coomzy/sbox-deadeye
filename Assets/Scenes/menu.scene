@@ -2,6 +2,19 @@
   "__guid": "84300573-e855-4e8c-8e59-c25327ea7cdb",
   "GameObjects": [
     {
+      "__guid": "1c4bba59-50e1-4218-8cd0-d70feacaf733",
+      "Flags": 0,
+      "Name": "Level Data Setter",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LevelDataSetter",
+          "__guid": "5c53ea3e-cc39-49b5-9056-69b578d8fbfb",
+          "levelData": "scenes/menu.ld"
+        }
+      ]
+    },
+    {
       "__guid": "670c0ce3-f1fd-465e-a30a-276ddb188100",
       "Flags": 0,
       "Name": "Directional Light",
@@ -332,7 +345,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "5d4d659c-38d2-403f-a08f-f33ad82564e9",
+                    "component_id": "4b55cbc7-d50a-4baa-83a1-c080ca6ea51e",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -402,7 +415,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "5d4d659c-38d2-403f-a08f-f33ad82564e9",
+                    "component_id": "4b55cbc7-d50a-4baa-83a1-c080ca6ea51e",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -4091,7 +4104,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "1277e8bc-dccc-462a-9c3b-85e6e59e52c9",
+            "component_id": "b04ee66d-6a98-4f76-b6f7-fecf0d5ffe3e",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -5158,6 +5171,7 @@
             "go": "3c42b201-bd11-44a2-bb74-826b80162b3e"
           },
           "northWallType": "Window",
+          "roomType": "Inside",
           "southBalcony": {
             "_type": "gameobject",
             "go": "93797e8a-7142-43d9-a49a-b15da51eafa4"
@@ -5483,6 +5497,7 @@
             "go": "a3fa8c37-5624-4bec-97c0-4700bb85c073"
           },
           "northWallType": "Window",
+          "roomType": "Inside",
           "southBalcony": {
             "_type": "gameobject",
             "go": "dd210c48-bc1e-4dd3-9778-635513e710b8"
@@ -5856,6 +5871,7 @@
             "go": "6087b116-e2d8-4476-aab4-8b243992f687"
           },
           "northWallType": "Window",
+          "roomType": "Inside",
           "southBalcony": {
             "_type": "gameobject",
             "go": "4503a3e7-58d1-4c82-b532-f30d03f8878f"
@@ -6245,6 +6261,7 @@
             "go": "65490809-8568-42e2-b8a5-420c9628f6e3"
           },
           "northWallType": "None",
+          "roomType": "Inside",
           "southBalcony": {
             "_type": "gameobject",
             "go": "25f87942-a381-4dc1-b103-dc33504fbf7b"
@@ -6659,6 +6676,7 @@
             "go": "33deed0e-7240-4b8e-98ca-59a0723a1fca"
           },
           "northWallType": "None",
+          "roomType": "Inside",
           "southBalcony": {
             "_type": "gameobject",
             "go": "41b782eb-e7cf-45c9-b744-b112c87a8ce1"

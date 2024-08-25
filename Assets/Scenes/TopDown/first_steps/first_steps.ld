@@ -9,7 +9,7 @@
   "fastestTime": 0.12233609,
   "simulatedTime": 4.6223364,
   "friendlyLevelName": "First Steps",
-  "friendlyLevelDescription": "This is a warm up",
+  "friendlyLevelDescription": "Before you can be the fastest gun, you\u2019ve got to be the fastest learner",
   "artworkImageData": "textures/levels/thumbnail/level_original_thumbnail_temp.png",
   "isLeaderboardLevel": true,
   "statNameOverride": null,

@@ -2,6 +2,19 @@
   "__guid": "5422826c-14c7-43a5-9390-63e68a68d9c2",
   "GameObjects": [
     {
+      "__guid": "4a27f3c8-2668-4052-93e3-c46632b9091a",
+      "Flags": 0,
+      "Name": "Level Data Setter",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LevelDataSetter",
+          "__guid": "0d1467a6-6295-4ce7-bf8a-7b8cfef34005",
+          "levelData": "scenes/topdown/first_steps/first_steps.ld"
+        }
+      ]
+    },
+    {
       "__guid": "ac95b095-f9a1-4750-b3be-a464969ee77d",
       "Flags": 0,
       "Name": "GamePlay Manger",
@@ -2699,6 +2712,7 @@
                     "go": "31e64ed7-0bb6-442a-a6ff-11c11ae74487"
                   },
                   "northWallType": "Door",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "5cb5ef9c-b843-4202-aa03-b4d3dbea47a4"
@@ -4220,6 +4234,7 @@
                     "go": "6725907e-c537-4424-9277-abcd71ba556f"
                   },
                   "northWallType": "Window",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "8f16c8db-c5fa-4933-96de-9901a23d7d96"
@@ -8093,6 +8108,7 @@
                     "go": "936d83c7-2a61-49c7-b306-10867c8c452f"
                   },
                   "northWallType": "Door",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "7a2d99fe-eab7-4a3d-aa74-22596dff78ba"
@@ -8539,6 +8555,7 @@
                     "go": "83994ef4-f2fa-4719-a2ce-d7b1d7121c57"
                   },
                   "northWallType": "Door",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "72ea213f-f157-4178-a2fd-b667cb06e2fd"
@@ -12510,6 +12527,7 @@
                     "go": "148370f5-2f75-4b57-adb5-16b80e051bfb"
                   },
                   "northWallType": "Wall",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "091200a5-c1c1-4d69-901f-d7a0709be453"
@@ -17663,6 +17681,7 @@
                     "go": "1610f4e0-2f4c-4003-a95b-cf153f60d16a"
                   },
                   "northWallType": "Window",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "49f6b9ca-aa04-49f5-b896-5ed8f12f9727"
@@ -23913,6 +23932,7 @@
                     "go": "dda80ec5-0c54-4f10-9320-0c2b74d01d12"
                   },
                   "northWallType": "Wall",
+                  "roomType": "Inside",
                   "southBalcony": {
                     "_type": "gameobject",
                     "go": "5676afd8-a930-4b65-aba4-c4bc8929c872"

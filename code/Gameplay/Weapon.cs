@@ -16,6 +16,7 @@ public class Weapon : Component
 	[Group("Setup"), Property] public ParticleEffect shellEjectPFX { get; set; }
 	[Group("Setup"), Property] public ParticleConeEmitter shellEjectEmitter { get; set; }
 	CancellationTokenSource cancellationTokenSource { get; set; }
+	TimeSince timeSinceLastShot {  get; set; }
 
 	protected override void OnAwake()
 	{
@@ -53,8 +54,16 @@ public class Weapon : Component
 		shellEjectEmitter.Emit(shellEjectPFX);
 		shellEjectEmitter.Enabled = false;*/
 
-		BulletTracer(hitPosition);
-		MuzzleFlashLight();
+		//BulletTracer(hitPosition);
+		//MuzzleFlashLight();
+
+		timeSinceLastShot = 0;
+		List<Vector3> points = new List<Vector3>();
+		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 25.0f));
+		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 125.0f));
+		bulletTracerLineRenderer.VectorPoints = points;
+		bulletTracerLineRenderer.Enabled = true;
+		muzzleFlashLight.Enabled = true;
 	}
 
 	async void BulletTracer(Vector3 hitPosition)
@@ -83,6 +92,20 @@ public class Weapon : Component
 			return;
 		}
 		muzzleFlashLight.Enabled = false;
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (bulletTracerLineRenderer.Enabled && timeSinceLastShot > 0.02f)
+		{
+			bulletTracerLineRenderer.Enabled = false;
+		}
+		if (muzzleFlashLight.Enabled && timeSinceLastShot > 0.001f)
+		{
+			muzzleFlashLight.Enabled = false;
+		}
 	}
 
 	[Button("Drop")]

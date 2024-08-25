@@ -246,9 +246,12 @@
         isInLevelLeaderboardMode = true;
         Leaderboards = new LevelLeaderboards();
         Leaderboards.SetContext(level);
+
         Enabled = true;
         SetClass("visible", true);
         SetClass("invisible", false);
+
+        RetrieveLeaderboard(true);
     }
 
     public void CloseLevelLeaderboard()
@@ -359,6 +362,11 @@
             HasRetrievingStarted = true;
             LastRetrievingState = DateTime.Now;
         }
+    }
+
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
     }
 
     /// <summary>
