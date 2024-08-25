@@ -98,7 +98,7 @@
           "GroupName": "Menu"
         },
         {
-          "Name": "HowToPlay",
+          "Name": "Controls",
           "KeyboardCode": "h",
           "GamepadCode": "Y",
           "GroupName": "Menu"

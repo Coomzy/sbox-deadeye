@@ -6,6 +6,9 @@ public static class Extensions
 {
 	public static bool ContainsIndex<T>(this List<T> list, int index)
 	{
+		if (list == null)
+			return false;
+
 		if (index < 0)
 			return false;
 

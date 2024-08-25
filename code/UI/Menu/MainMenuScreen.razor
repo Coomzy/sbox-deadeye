@@ -28,9 +28,9 @@
 				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonHowToPlay())">
 					@if (Input.UsingController)
 					{
-						<span class="icon"><InputGlyph button="HowToPlay" /></span>
+						<span class="icon"><InputGlyph button="Controls" /></span>
 					}
-					How to play
+					Controls
 				</div>
 				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonSettings())">
 					@if (Input.UsingController)
@@ -95,7 +95,7 @@
 		{
 			ButtonLeaderboards();
 		}
-		if (Input.Pressed("HowToPlay"))
+		if (Input.Pressed("Controls"))
 		{
 			ButtonHowToPlay();
 		}
@@ -128,6 +128,7 @@
 
 	void ButtonLeaderboards()
 	{
+		MainMenu.instance.leaderboardsScreen.OpenCombinedTimed();
 		MainMenu.instance.SetMenuState(MenuState.Leaderboards);
 		var soundHandle = Sound.Play("ui.button.press");
 		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");

@@ -120,6 +120,12 @@
 		}
 	}
 
+	public void Unfuck()
+	{
+		SetClass("visible", true);
+		SetClass("invisible", false);
+	}
+
 	void ReturnToMenu()
 	{
 		Game.ActiveScene.LoadFromFile("scenes/menu.scene");
@@ -173,6 +179,9 @@
 			Log.Warning($"No UI Manager!?");
 			return;	
 		}
+
+		SetClass("visible", false);
+		SetClass("invisible", true);
 
 		UIManager.instance.OpenLevelLeaderboard();
 	}
