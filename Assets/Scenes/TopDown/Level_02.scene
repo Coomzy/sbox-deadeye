@@ -406,6 +406,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -1540,6 +1541,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -2674,6 +2676,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -4643,6 +4646,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -5832,6 +5836,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -6965,6 +6970,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -8654,6 +8660,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -9815,6 +9822,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -11402,6 +11410,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -12591,6 +12600,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -14253,6 +14263,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -15417,6 +15428,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -16581,6 +16593,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -17744,6 +17757,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -18880,6 +18894,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -20672,6 +20687,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -21834,6 +21850,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -22995,6 +23012,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -25060,6 +25078,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -26224,6 +26243,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -27360,6 +27380,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -28551,6 +28572,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -29714,6 +29736,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -30878,6 +30901,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -32041,6 +32065,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -33217,8 +33242,26 @@
                   "Name": "floor (1)",
                   "Position": "500,0,0",
                   "Enabled": true,
-                  "__Prefab": "prefabs/environment/floor/sm_wood_floor.prefab",
-                  "__PrefabVariables": {}
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "a55ddc1b-3227-4d3c-9246-f016fc1a64be",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/m_floor_tile.vmat",
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "On",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "8c43fb70-64c7-4193-b6cf-f9228e034a91",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
                 },
                 {
                   "__guid": "4a3d78ac-6edf-4145-82a3-869336a3e532",
@@ -33695,6 +33738,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -34856,6 +34900,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -36018,6 +36063,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -37207,6 +37253,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -39335,6 +39382,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -40525,6 +40573,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -41726,8 +41775,26 @@
                   "Name": "floor",
                   "Position": "0,0,0",
                   "Enabled": true,
-                  "__Prefab": "prefabs/environment/floor/sm_wood_floor.prefab",
-                  "__PrefabVariables": {}
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "b24b592a-b3b1-40e3-be22-e1e4d7df9548",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/m_wood_planks_varnished.vmat",
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "On",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "979bb008-1cfb-4db0-8348-f8c4e206a4ba",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
                 },
                 {
                   "__guid": "5dc4f5c6-02d2-422d-8a76-a06ad209d834",
@@ -42146,6 +42213,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -43256,6 +43324,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -44447,6 +44516,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -45584,6 +45654,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -46748,6 +46819,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -47979,8 +48051,26 @@
                   "Position": "0,0,0",
                   "Rotation": "0,0,1,-0.00000004371139",
                   "Enabled": true,
-                  "__Prefab": "prefabs/environment/floor/sm_wood_floor.prefab",
-                  "__PrefabVariables": {}
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "92235762-a6db-49a8-b8a2-0106aba97afd",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/m_wood_planks_varnished.vmat",
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "On",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "49587f3c-295a-4725-b545-bdf182bac14e",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
                 },
                 {
                   "__guid": "bade783e-ace0-4ee5-8ef1-85eb5723d3bf",
@@ -51028,7 +51118,7 @@
           "__guid": "0b8c2502-4662-4a2d-b6ed-8129db160475",
           "Flags": 0,
           "Name": "beer_bottle (12)",
-          "Position": "784.0907,-262.7975,9.75896",
+          "Position": "784.0902,-262.7992,9.75896",
           "Rotation": "0.6532823,0.2705984,-0.6532822,0.2705985",
           "Enabled": true,
           "Components": [
@@ -51047,7 +51137,7 @@
           "__guid": "cd000c78-f74e-4f9e-929b-3e5fbf39d2c3",
           "Flags": 0,
           "Name": "beer_bottle (11)",
-          "Position": "765.3146,-244.018,9.75896",
+          "Position": "765.3143,-244.0197,9.75896",
           "Rotation": "0.5000004,-0.5000004,-0.5000006,-0.5000003",
           "Enabled": true,
           "Components": [
@@ -51066,7 +51156,7 @@
           "__guid": "be723146-5813-427a-b675-b2e9043860b1",
           "Flags": 0,
           "Name": "beer_bottle (10)",
-          "Position": "741.1803,-240.6643,9.75896",
+          "Position": "741.1798,-240.6661,9.75896",
           "Rotation": "0.2705981,-0.6532819,-0.2705984,-0.6532817",
           "Enabled": true,
           "Components": [
@@ -51085,7 +51175,7 @@
           "__guid": "52436361-1e90-4ac4-b3fb-063c5b0620e4",
           "Flags": 0,
           "Name": "beer_bottle (9)",
-          "Position": "778.1279,-277.611,9.758957",
+          "Position": "778.1275,-277.6129,9.758957",
           "Rotation": "-0.707107,0.0000001341105,0.7071069,-0.0000001788139",
           "Enabled": true,
           "Components": [
@@ -51104,7 +51194,7 @@
           "__guid": "12a2b7f2-eaad-42ec-8c1f-c6d13b2e79b1",
           "Flags": 0,
           "Name": "beer_bottle (8)",
-          "Position": "857.9744,-383.404,44.23459",
+          "Position": "857.9738,-383.4059,44.23459",
           "Rotation": "0,0,0.9238798,0.3826834",
           "Enabled": true,
           "Components": [
@@ -51123,7 +51213,7 @@
           "__guid": "190f020b-2b4e-444d-ac73-83bce6214e75",
           "Flags": 0,
           "Name": "beer_bottle (7)",
-          "Position": "853.8286,-402.361,44.23459",
+          "Position": "853.8279,-402.3629,44.23459",
           "Rotation": "0,0,0.9238798,0.3826835",
           "Enabled": true,
           "Components": [
@@ -51142,7 +51232,7 @@
           "__guid": "1d1ff2b4-e83d-403d-b47d-71efb2454a57",
           "Flags": 0,
           "Name": "beer_bottle (6)",
-          "Position": "849.8435,-393.8211,44.23459",
+          "Position": "849.843,-393.8231,44.23459",
           "Rotation": "0,0,0.9238799,0.3826835",
           "Enabled": true,
           "Components": [
@@ -51161,7 +51251,7 @@
           "__guid": "f67f15de-3ccd-4622-8ddc-d2b7c8846e6e",
           "Flags": 0,
           "Name": "beer_bottle (5)",
-          "Position": "879.3998,-393.5267,44.23459",
+          "Position": "879.399,-393.5287,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51180,7 +51270,7 @@
           "__guid": "ef4eae47-9340-4a22-9b9f-e3fd1ec3b631",
           "Flags": 0,
           "Name": "beer_bottle (4)",
-          "Position": "614.0734,-128.189,44.23459",
+          "Position": "614.0734,-128.1904,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51199,7 +51289,7 @@
           "__guid": "eb7b477a-56a7-40bb-8e58-fe46994f0991",
           "Flags": 0,
           "Name": "beer_bottle (3)",
-          "Position": "590.4284,-141.6506,44.23459",
+          "Position": "590.4285,-141.652,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51218,7 +51308,7 @@
           "__guid": "905ff593-8314-4988-ae05-d39c497b51b2",
           "Flags": 0,
           "Name": "beer_bottle (2)",
-          "Position": "602.7686,-148.3855,44.23459",
+          "Position": "602.7686,-148.3869,44.23459",
           "Enabled": true,
           "Components": [
             {
@@ -52918,7 +53008,7 @@
       "__guid": "156a60fd-d96d-4e9d-84c6-f8b2cb3f8ce1",
       "Flags": 0,
       "Name": "junk_01",
-      "Position": "3184.104,311.3187,0.5830622",
+      "Position": "3180.292,311.3187,0.5830622",
       "Rotation": "0,0,0.9552261,0.2958769",
       "Scale": "1.859088,1.859088,1.859088",
       "Enabled": true,
