@@ -51262,6 +51262,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "ab4ff499-3759-4e6a-a5b2-fa9bae129e72",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_white.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51280,6 +51281,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "23e2628d-ba62-45d9-8f0c-a12997172776",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_red.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51316,6 +51318,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "3c5164a3-a93e-4192-a6ae-4452f6b3da45",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_red.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51370,6 +51373,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "bfa28853-2bd0-4f3e-9514-1f2e9555c726",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_red.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51388,6 +51392,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "f4f74600-2c1c-47af-8b22-995bbd40c9be",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_white.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51442,6 +51447,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "0c86b99e-da9c-447d-a32e-d65fa64aba05",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_blue.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51549,6 +51555,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "5dbcc5dd-7204-49c9-978f-2ca9aaf02655",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_white.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51567,6 +51574,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "8cd39a7a-d66f-4634-87cb-ee0e0f501c1f",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_white.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51603,6 +51611,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "cab070dd-450b-4939-97b7-6ac154c44421",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_blue.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51638,6 +51647,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "78275555-94c8-47f2-8618-c63db40886c5",
           "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/m_wood_planks_white.vmat",
           "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
@@ -51710,6 +51720,65 @@
           "BodyGroups": 18446744073709551615,
           "Model": "models/props/architecture/sm_wood_floor.vmdl",
           "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "f02a46b7-40d8-4eec-914d-d70719b330fe",
+      "Flags": 0,
+      "Name": "standing_picture_frame_02",
+      "Position": "-1709.555,2998.423,58.72173",
+      "Rotation": "0,0,0.3826835,0.9238795",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "f7f3d9d0-8272-460c-8024-4e7b76ab07dd",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/props/standing_picture_frame_02.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "90f3ef34-f910-4286-b700-73834c012418",
+      "Flags": 0,
+      "Name": "fancy_picture_frame_01",
+      "Position": "-1729.668,2972.909,100.1096",
+      "Rotation": "0,0,-0.00000008742278,-1",
+      "Scale": "2,2,2",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "512ed0bb-2adf-4994-b676-99ecb85231d6",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/fancy_picture_frame_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e36283c7-649e-4a71-a6b4-0d1a66d98e0b",
+      "Flags": 0,
+      "Name": "fancy_picture_frame_01",
+      "Position": "-1270.068,3592.952,100.1096",
+      "Rotation": "0,0,1,-0.00000004371139",
+      "Scale": "2,2,2",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "cf4b1922-a28d-4753-bcb2-a90b9896cd36",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/fancy_picture_frame_01.vmdl",
           "Tint": "1,1,1,1"
         }
       ]
@@ -52607,6 +52676,357 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "c2ab6530-6e21-48aa-9b13-f87e8fd6e061",
+      "Flags": 0,
+      "Name": "sm_rug_01",
+      "Position": "-1500,2970,11.27783",
+      "Rotation": "0,0,0.1388096,0.9903191",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "b27cbccf-e4ac-4ae9-811b-35956287deae",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rug_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "f339ac3d-91bc-49c9-8e17-7760f929c2e2",
+      "Flags": 0,
+      "Name": "sm_rug_02",
+      "Position": "-1480.873,3512.404,11.44278",
+      "Rotation": "0,0,-0.8059739,0.5919511",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "b75b0d15-e17e-424d-967f-46b3899b1925",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rug_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "d242cec3-c4ed-4b86-8281-391129f7a7c9",
+      "Flags": 0,
+      "Name": "sm_rockingchair",
+      "Position": "-1701.52,2961.391,4.12369",
+      "Rotation": "0,0,0.1694049,0.9855465",
+      "Scale": "1.394234,1.394234,1.394234",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "51d80f19-cb91-41fb-ab57-e615df986e8b",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rockingchair.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "b7da4aff-a872-40b8-a06a-746ab477e3c0",
+      "Flags": 0,
+      "Name": "sm_rockingchair",
+      "Position": "-1528.967,3701.75,4.12369",
+      "Rotation": "0,0,-0.5309849,0.8473813",
+      "Scale": "1.394234,1.394234,1.394234",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "c4ba642b-9605-4049-90ad-87ef0a9942cf",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rockingchair.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "1473e045-6655-4d7d-91d6-04f16b978536",
+      "Flags": 0,
+      "Name": "sm_wood_table_01",
+      "Position": "-1710.224,3476.318,12.60858",
+      "Rotation": "0,0,-0.8111689,-0.5848119",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "133fd5eb-6e6a-4665-b51c-791f2e8f9e70",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wood_table_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "0badb5d1-f105-4195-a221-e55bf008f306",
+      "Flags": 0,
+      "Name": "sm_wood_table_01",
+      "Position": "-1710.224,3424.455,12.60858",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "5e847c97-fc46-42d4-8245-b10035f4ac7d",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wood_table_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "6c8c4472-b6b5-4545-92c0-20dd0455b81c",
+      "Flags": 0,
+      "Name": "sm_bench",
+      "Position": "-1289.849,2988.984,9.725605",
+      "Rotation": "0,0,0.9999387,-0.01107436",
+      "Scale": "1.399217,1.399217,1.399217",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "cb8e72f9-d800-428b-876d-5a41747a881d",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_bench.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "a88f7569-aa74-4c74-b34a-adb9a847dd36",
+      "Flags": 0,
+      "Name": "sm_wooden_crate",
+      "Position": "-1419.74,3244.216,9.701924",
+      "Rotation": "0,0,0.7077678,0.7064451",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "530e265d-a131-4213-af6d-4aff86e639e7",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wooden_crate.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "917d1fe2-22f0-4346-8b09-72dba128a205",
+      "Flags": 0,
+      "Name": "sm_wooden_bucket_02",
+      "Position": "-1436.27,3242.189,31.85442",
+      "Rotation": "0,0,0.2338643,0.9722692",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "2faf8af2-15a2-4948-8c6a-af212fd9c3ec",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "29ba085d-c091-4fd8-9261-1039ff5c34b0",
+      "Flags": 0,
+      "Name": "sm_metal_jug",
+      "Position": "-1286.268,2945.889,10.34132",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "f9c6fd41-cfaa-4ef9-9f22-51914e2210b0",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_metal_jug.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e135921d-a715-488b-a947-f06600a79464",
+      "Flags": 0,
+      "Name": "sm_chest",
+      "Position": "-1283.174,2912.841,10.07219",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ff582be9-73b0-4834-814e-f31a9484a474",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_chest.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "505acce7-292d-440a-ad77-90654fe2bc71",
+      "Flags": 0,
+      "Name": "sm_wood_table_01",
+      "Position": "-1432.788,3293.946,9.938509",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "7bd86712-4045-4cfb-bb94-fd7ac742b79b",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wood_table_01.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3b619331-f3f5-4a71-8679-ee5a24277657",
+      "Flags": 0,
+      "Name": "plastic_bucket_a",
+      "Position": "-1289.555,3566.317,31.16402",
+      "Rotation": "0,0,0.3625942,0.9319471",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "846b40b0-8358-4dce-b964-1c9a7b0cf226",
+          "BodyGroups": 18446744073709551615,
+          "Health": 300,
+          "IsStatic": false,
+          "Model": "models/sbox_props/plastic_bucket_a/plastic_bucket_a.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "93604b69-7464-4b33-99d4-9da2de9755a1",
+      "Flags": 0,
+      "Name": "vintage_cabinet_01",
+      "Position": "-1283.204,3209.955,10.06786",
+      "Rotation": "0,0,-1,-0.00000004371139",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "dab816ee-222f-425b-9211-75b247235b78",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/vintage_cabinet_01.vmdl",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.HullCollider",
+          "__guid": "c649c722-a923-42ac-a5b9-5f09247bc7df",
+          "BoxSize": "50,90,90",
+          "Center": "0,0,0",
+          "Height": 50,
+          "IsTrigger": false,
+          "Radius": 25,
+          "Radius2": 0,
+          "Slices": 16,
+          "Static": true,
+          "Type": "Box"
+        }
+      ]
+    },
+    {
+      "__guid": "9fb1ccca-6854-4cbf-81b3-af583c572b0f",
+      "Flags": 0,
+      "Name": "gothiccommode_01",
+      "Position": "-1711.114,3009.395,10.03864",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "271fa107-c3f1-4a07-85e7-695b3c84df31",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/gothiccommode_01.vmdl",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "080ac4ef-3e93-4adc-aeea-d11b597171e2",
+      "Flags": 0,
+      "Name": "sofa_03",
+      "Position": "-1294.201,3366.381,10.07003",
+      "Rotation": "0,0,1,-0.00000004371139",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.Prop",
+          "__guid": "86137af1-70c7-4227-890e-23de7657785d",
+          "BodyGroups": 18446744073709551615,
+          "Health": 0,
+          "IsStatic": false,
+          "Model": "models/furniture/sofa_03.vmdl",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.HullCollider",
+          "__guid": "fa122019-c71c-44ca-b7d4-58ac8969fd22",
+          "BoxSize": "50,100,60",
+          "Center": "0,0,0",
+          "Height": 50,
+          "IsTrigger": false,
+          "Radius": 25,
+          "Radius2": 0,
+          "Slices": 16,
+          "Static": false,
+          "Type": "Box"
+        }
+      ]
+    },
+    {
+      "__guid": "a37dfd28-4c7a-4b95-aed5-4cb6e85120f0",
+      "Flags": 0,
+      "Name": "sm_wooden_crate",
+      "Position": "-1286.688,3585.869,9.750255",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "0fbedddf-eb1b-4621-a33e-fdbcf0f5fe78",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_wooden_crate.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "e304782f-0feb-46a2-b9f9-63e28ca85a91",
+      "Flags": 0,
+      "Name": "sm_rug_03",
+      "Position": "-1674.059,2991.509,11.23269",
+      "Scale": "0.5614713,0.5614713,0.5614713",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "81574fb7-2146-433d-ad48-e8685cf4167e",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/detail/sm_rug_03.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -52634,7 +53054,13 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
+    "additionproject.gothiccommode_01",
+    "additionproject.picture_frame1",
+    "additionproject.pictureframe_02",
+    "additionproject.sofa_03",
+    "additionproject.vintagecabinet_1",
     "facepunch.12g_shell",
+    "facepunch.plasticbucketa1",
     "facepunch.wooden_chair_a"
   ],
   "__version": 1
