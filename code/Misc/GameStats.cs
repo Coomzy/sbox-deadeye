@@ -12,6 +12,7 @@ public static class GameStats
 	public const string FAILURE_TOO_MANY_CIVS_KILLED = "failure-too-many-civs-killed";
 	public const string WON = "won";
 	public const string DIED = "died";
+	public const string KILLED_TONY_LAZUTO = "killed-tony-lazuto";
 	public const string LOWEST_MEDAL = "lowest-medal";
 	public const string COMBINED_TIME = "combined-time";
 

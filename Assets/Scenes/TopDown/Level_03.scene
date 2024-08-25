@@ -387,6 +387,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -1549,6 +1550,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -2711,6 +2713,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -3844,6 +3847,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -5011,6 +5015,10 @@
                 "-90,250,184.871,1"
               ],
               "ignoreRandomize": false,
+              "playerPosOverride": {
+                "_type": "gameobject",
+                "go": "690a8605-fd11-415e-b39a-cb04d3d978b7"
+              },
               "reactTime": 2.5,
               "targetIndex": 0,
               "targets": [
@@ -5164,6 +5172,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -5203,6 +5212,7 @@
                         "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
                       ],
                       "duckHeight": 0.19145021,
+                      "facialClothing": {},
                       "feet": true,
                       "footwearClothing": {
                         "clothing": "models/citizen_clothes/shoes/boots/army_boots.clothing"
@@ -5210,8 +5220,10 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
+                      "hatClothing": {},
                       "head": false,
                       "legs": true,
                       "skinClothing": {},
@@ -6298,6 +6310,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -7431,6 +7444,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -8579,6 +8593,13 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "690a8605-fd11-415e-b39a-cb04d3d978b7",
+              "Flags": 0,
+              "Name": "Walk To Pos",
+              "Position": "80,-0.00001441987,0",
+              "Enabled": true
             }
           ]
         },
@@ -8866,6 +8887,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -10055,6 +10077,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -11217,6 +11240,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -12407,6 +12431,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -13597,6 +13622,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -14821,6 +14847,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -16010,6 +16037,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -17172,6 +17200,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -18334,6 +18363,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -19496,6 +19526,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -20923,6 +20954,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -22087,6 +22119,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -23251,6 +23284,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -24441,6 +24475,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -25605,6 +25640,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -26769,6 +26805,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -27905,6 +27942,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -29042,6 +29080,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -30329,6 +30368,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -31463,6 +31503,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -32877,6 +32918,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -34038,6 +34080,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -35200,6 +35243,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -36390,6 +36434,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -37551,6 +37596,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -38656,6 +38702,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -39796,6 +39843,10 @@
                 "70,245,165,1"
               ],
               "ignoreRandomize": false,
+              "playerPosOverride": {
+                "_type": "gameobject",
+                "go": "5270f93f-03c3-4277-89ee-4b1bd2618b0f"
+              },
               "reactTime": 2.75,
               "targetIndex": 0,
               "targets": [
@@ -39960,6 +40011,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -40009,8 +40061,10 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
+                      "hatClothing": {},
                       "head": false,
                       "legs": true,
                       "skinClothing": {},
@@ -41122,6 +41176,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -42255,6 +42310,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -43388,6 +43444,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -44550,6 +44607,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -45698,6 +45756,13 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "5270f93f-03c3-4277-89ee-4b1bd2618b0f",
+              "Flags": 0,
+              "Name": "Walk To Pos",
+              "Position": "0,40,0",
+              "Enabled": true
             }
           ]
         },
@@ -45892,6 +45957,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -47056,6 +47122,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -48246,6 +48313,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -49407,6 +49475,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -50568,6 +50637,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -51758,6 +51828,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -53059,6 +53130,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -54193,6 +54265,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -55354,6 +55427,7 @@
                       },
                       "isBadTarget": false,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {
@@ -56459,6 +56533,7 @@
                       },
                       "isBadTarget": true,
                       "isDead": false,
+                      "isTonyLazuto": false,
                       "lookAtPlayer": true
                     },
                     {

@@ -2,6 +2,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 using System;
+using System.Numerics;
 using System.Security;
 using System.Text.Json;
 using System.Threading;
@@ -10,7 +11,7 @@ using static Sandbox.Clothing;
 using static Sandbox.ClothingContainer;
 using static Sandbox.Gizmo;
 
-public class CitizenVisuals : Component
+public class CitizenVisuals : Component, IRestartable, IShutdown
 {
 	[Group("Setup"), Property] public GameObject clothingHolder { get; set; }
 	[Group("Setup"), Property] public GameObject weaponHolder { get; set; }
@@ -53,10 +54,15 @@ public class CitizenVisuals : Component
 
 	CancellationTokenSource cancellationTokenSource;
 
+	Vector3 startPos;
+	Rotation startRot;
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 
+		startPos = GameObject.Transform.Position;
+		startRot = GameObject.Transform.Rotation;
 		cancellationTokenSource = new CancellationTokenSource();
 
 		// Need this while UpdateFromPrefab() is broken in edit time
@@ -74,6 +80,40 @@ public class CitizenVisuals : Component
 
 		//RuntimeApply();
 		//animationHelper.HoldType = HoldTypes.None;
+	}
+
+	public void PreRestart()
+	{
+		GameObject.Transform.Position = startPos;
+		GameObject.Transform.Rotation = startRot;
+
+		bodyPhysics.Enabled = false;
+		bodyRenderer.UseAnimGraph = true;
+
+		bodyRenderer.GameObject.Tags.Set("ragdoll", false);
+		//bodyRenderer.GameObject.SetParent(null);
+		bodyRenderer.Transform.ClearInterpolation();
+		bodyRenderer.Transform.LocalPosition = Vector3.Zero;
+		bodyRenderer.Transform.LocalRotation = Quaternion.Identity;
+
+		animationHelper.HoldType = HoldTypes.None;
+		animationHelper.Handedness = Hand.Right;
+		animationHelper.DuckLevel = 0.0f;
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	[Group("Body Groups"), Button("Apply")]
@@ -487,7 +527,7 @@ public class CitizenVisuals : Component
 		bodyRenderer.UseAnimGraph = false;
 
 		bodyRenderer.GameObject.Tags.Set("ragdoll", true);
-		bodyRenderer.GameObject.SetParent(null);
+		//bodyRenderer.GameObject.SetParent(null);
 		bodyRenderer.Transform.ClearInterpolation();
 
 		PhysicsBody hitPhysBody = null;

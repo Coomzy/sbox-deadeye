@@ -155,6 +155,10 @@
         "__type": "LifeTime",
         "__guid": "68ef3ed6-5f14-415d-a78e-0975947fd3f2",
         "time": 3
+      },
+      {
+        "__type": "DestroyOnRestart",
+        "__guid": "02dc853f-f129-4635-a725-cb57415e3a62"
       }
     ],
     "Children": [],

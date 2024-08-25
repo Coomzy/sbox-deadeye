@@ -2,9 +2,7 @@
   "RootObject": {
     "__guid": "62b672df-4fda-489f-b680-7a606e4e08da",
     "Flags": 0,
-    "Name": "Blood Decal",
-    "Position": "154.7567,1348.87,60.46143",
-    "Rotation": "-0.08822925,-0.2423983,-0.3304565,0.9078861",
+    "Name": "blood decal",
     "Enabled": true,
     "Components": [
       {
@@ -17,8 +15,14 @@
         "Size": "32,32,256",
         "TintColor": "1,1,1,1",
         "TriPlanar": false
+      },
+      {
+        "__type": "DestroyOnRestart",
+        "__guid": "29eba21f-923e-4f1c-8837-8fbdf5248a43"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

@@ -23,6 +23,12 @@
           "component_type": "AfterActionReportScreen"
         },
         "blackFadeAlpha": 1,
+        "countDownWidget": {
+          "_type": "component",
+          "component_id": "c11a1976-4f4e-4b00-9593-5e959dcb6c66",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "CountdownWidget"
+        },
         "currentTimeWidget": {
           "_type": "component",
           "component_id": "7c229e3e-a4f6-4982-84f1-a5a9b171b1a9",
@@ -71,6 +77,10 @@
           "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
           "component_type": "WonScreen"
         }
+      },
+      {
+        "__type": "CountdownWidget",
+        "__guid": "c11a1976-4f4e-4b00-9593-5e959dcb6c66"
       },
       {
         "__type": "LeaderboardsScreen",

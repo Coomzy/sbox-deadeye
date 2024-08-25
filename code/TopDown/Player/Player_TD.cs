@@ -24,7 +24,7 @@ public enum PlayerState_TD
 };
 
 
-public class Player_TD : Component
+public class Player_TD : Component, IRestartable, IShutdown
 {
 	public static Player_TD instance;
 
@@ -49,6 +49,9 @@ public class Player_TD : Component
 	bool queueShoot;
 	bool queueSpare;
 
+	Vector3 startPos;
+	Rotation startRot;
+
 	protected override void OnAwake()
 	{
 		instance = this;
@@ -56,6 +59,8 @@ public class Player_TD : Component
 		base.OnAwake();
 
 		Mouse.Visible = true;
+		startPos = GameObject.Transform.Position;
+		startRot = GameObject.Transform.Rotation;
 		state = PlayerState_TD.Idle;
 
 		var clothingContainer = CitizenSettings.instance.GetPlayerClothingContainer();
@@ -71,7 +76,46 @@ public class Player_TD : Component
 	protected override void OnStart()
 	{
 		Apply_Weapon();
+	}
+
+	public void PreRestart()
+	{
+		state = PlayerState_TD.Idle;
+		GameObject.Transform.Position = startPos;
+		GameObject.Transform.Rotation = startRot;
+
+		target = null;
+		targets.Clear();
+
+		bodyPhysics.Enabled = false;
+		bodyRenderer.UseAnimGraph = true;
+
+		bodyRenderer.GameObject.Tags.Set("ragdoll", false);
+		//bodyRenderer.GameObject.SetParent(null);
+		bodyRenderer.Transform.ClearInterpolation();
+		bodyRenderer.Transform.LocalPosition = Vector3.Zero;
+		bodyRenderer.Transform.LocalRotation = Quaternion.Identity;
+
+		thirdPersonAnimationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Walk;
+		thirdPersonAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.Pistol;
+		thirdPersonAnimationHelper.Handedness = CitizenAnimationHelper.Hand.Right;
+		thirdPersonAnimationHelper.LookAtEnabled = false;
+		thirdPersonAnimationHelper.WithLook(GameObject.Transform.Rotation.Forward);
+	}
+
+	public void PostRestart()
+	{
 		GoToNextRoom();
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	void Apply_Weapon()
@@ -111,6 +155,21 @@ public class Player_TD : Component
 
 		RoomManager.instance.roomIndex++;
 		SetState(PlayerState_TD.Walking);
+	}
+
+	void IdleUpdate()
+	{
+		if (GamePlayManager.instance == null)
+		{
+			return;
+		}
+
+		if (!GamePlayManager.instance.hasFinishedCountDown)
+		{
+			return;
+		}
+
+		GoToNextRoom();
 	}
 
 	void WalkingStart()
@@ -452,6 +511,7 @@ public class Player_TD : Component
 		executeSubState = ExecuteSubState.Shooting;
 		killedAnyCivs2 = false;
 		isWaitingForShoot = false;
+		shootingTarget = null;
 		shootingTargetIndex = 0;
 		TimeUntil timeUntilShot = MusicManager.TIME_BASE;
 	}
@@ -718,6 +778,7 @@ public class Player_TD : Component
 
 	/*async*/ void DeadStart()
 	{
+		hasShownDiedScreen = false;
 		//Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.FailLevel(FailReason.Died);
 		diedScreenDelay = 1.75f;
@@ -788,6 +849,16 @@ public class Player_TD : Component
 		if (FUCKING_STOP_YOU_CUNT())
 			return;
 
+		if (shooters2 == null)
+		{
+			shooters2 = new List<Target>();
+		}
+		else
+		{
+			shooters2.Clear();
+		}
+
+		shooterIndex2 = 0;
 		var currentTarget = RoomManager.instance.currentRoom.currentTarget;
 
 		foreach (var target in RoomManager.instance.currentRoom.targets)
@@ -950,7 +1021,7 @@ public class Player_TD : Component
 		bodyRenderer.UseAnimGraph = false;
 
 		bodyRenderer.GameObject.Tags.Set("ragdoll", true);
-		bodyRenderer.GameObject.SetParent(null);
+		//bodyRenderer.GameObject.SetParent(null);
 
 		foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
 		{
@@ -1112,7 +1183,7 @@ public class Player_TD : Component
 		bodyRenderer.UseAnimGraph = false;
 
 		bodyRenderer.GameObject.Tags.Set("ragdoll", true);
-		bodyRenderer.GameObject.SetParent(null);
+		//bodyRenderer.GameObject.SetParent(null);
 
 		foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
 		{
@@ -1151,6 +1222,8 @@ public class Player_TD : Component
 
 		GamePlayManager.instance.FailLevel(FailReason.KilledTooManyCivs);
 
+		hasShownCivsKilledScreen = false;
+		hasDroppedWeapon = false;
 		lowerHeadTime = 0.25f;
 		hasDroppedWeaponDelay = 0.15f;
 		civsKilledScreenDelay = 1.5f;
@@ -1278,6 +1351,7 @@ public class Player_TD : Component
 		if (FUCKING_STOP_YOU_CUNT())
 			return;
 
+		hasShownWonScreen = false;
 		//Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.WonLevel();
 
@@ -1315,52 +1389,18 @@ public class Player_TD : Component
 
 		base.OnUpdate();
 
-		CheckForExitLevelInput();
-		CheckForReloadLevelInput();
 		StateMachineUpdate();
 
 		//Log.Warning($"Execute Commands Stage: {executeCommandsStage}, loop: {loop}");
-	}
-
-	void CheckForExitLevelInput()
-	{
-		if (Input.EscapePressed)
-		{
-			LoadingScreen.SwitchToMenu();
-			Input.EscapePressed = false;
-		}
-
-		if (!Input.Pressed("Quit"))
-		{
-			return;
-		}
-
-		if (UIManager.instance?.leaderboardsScreen != null && UIManager.instance.leaderboardsScreen.Enabled)
-			return;
-
-		LoadingScreen.SwitchToMenu();
-	}
-
-	void CheckForReloadLevelInput()
-	{
-		bool pressed = Input.Pressed("Restart");
-		if (Input.Pressed("Restart_Alt"))
-		{
-			pressed = true;
-		}
-		if (!pressed)
-			return;
-
-		if (UIManager.instance?.leaderboardsScreen != null && UIManager.instance.leaderboardsScreen.Enabled)
-			return;
-
-		LoadingScreen.ReloadLevel();
 	}
 
 	void StateMachineUpdate()
 	{
 		switch (state)
 		{
+			case PlayerState_TD.Idle:
+				IdleUpdate();
+				break;
 			case PlayerState_TD.Walking:
 				WalkingUpdate();
 				break;

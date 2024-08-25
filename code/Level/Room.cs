@@ -1,5 +1,5 @@
 
-public class Room : Component
+public class Room : Component, IRestartable, IShutdown
 {
 	[Group("Generation"), Property, InlineEditor] public List<Vector4> generatedTargetsRaw { get; set; } = new List<Vector4>();
 
@@ -32,6 +32,26 @@ public class Room : Component
 		base.OnAwake();
 
 		targetIndex = -1;
+	}
+
+	public void PreRestart()
+	{
+		targetIndex = -1;
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	public void Activate()

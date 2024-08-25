@@ -1,0 +1,19 @@
+{
+  "UI": true,
+  "Volume": "0.5",
+  "Pitch": "1",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "sounds/target/levelstart_001.vsnd",
+    "sounds/target/levelstart_002.vsnd",
+    "sounds/target/levelstart_003.vsnd"
+  ],
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": false,
+  "__references": [],
+  "__version": 0
+}

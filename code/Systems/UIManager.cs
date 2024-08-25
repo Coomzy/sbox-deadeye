@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using static Sandbox.Gizmo;
 
-public class UIManager : Component
+public class UIManager : Component, IRestartable
 {
 	public static UIManager instance;
 
@@ -15,6 +15,7 @@ public class UIManager : Component
 	[Group("Setup"), Property] public DiedScreen diedScreen { get; private set; }
 	[Group("Setup"), Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
 	[Group("Setup"), Property] public WonScreen wonScreen { get; private set; }
+	[Group("Setup"), Property] public CountdownWidget countDownWidget { get; private set; }
 
 	[Group("Setup"), Property] public LeaderboardsScreen leaderboardsScreen { get; private set; }
 	[Group("Setup"), Property] public LevelLeaderboards levelLeaderboards { get; private set; }
@@ -28,6 +29,40 @@ public class UIManager : Component
 		instance = this;
 
 		base.OnAwake();
+
+		PreRestart();
+	}
+
+	public void PreRestart()
+	{
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = true;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
+
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
+		if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
+
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
+		if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	public void Died()

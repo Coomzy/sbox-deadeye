@@ -3,7 +3,7 @@ using Sandbox.Citizen;
 using System.Text.Json.Serialization;
 using static Sandbox.PhysicsContact;
 
-public class RoomManager : Component
+public class RoomManager : Component, IRestartable, IShutdown
 {
 	public static RoomManager instance;
 
@@ -22,6 +22,26 @@ public class RoomManager : Component
 		base.OnAwake();
 
 		roomIndex = 0;
+	}
+
+	public void PreRestart()
+	{
+		roomIndex = 0;
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	[Button("Generate Rooms")]

@@ -1,0 +1,81 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Audio;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<label style = "color: rgba(255, 255, 255, @alpha);">@message</label>
+</root>
+
+@code
+{
+
+	string message = "3";
+	float alpha = 1.0f;
+
+	bool fadeOutHasStarted = false;
+	TimeUntil fadeOut;
+
+	int hashCounter = 0;
+	int lastNumber = -1;
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		hashCounter++;
+
+		if (GamePlayManager.instance == null)
+		{
+			return;	
+		}
+
+		float remainingCountdown = GamePlayManager.instance.countDownFinish.Relative;
+		int wholeNumber = MathX.FloorToInt(remainingCountdown) + 1;
+
+		if (wholeNumber < 1)
+		{
+			if (!fadeOutHasStarted)
+			{
+				message = "GO!";
+				fadeOutHasStarted = true;
+				float fadeOutTime = (UISettings.instance != null) ? UISettings.instance.goFadeOutTime : 1.0f;
+				fadeOut = fadeOutTime;
+
+				var soundHandle = Sound.Play("levelstart");
+				soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+			}
+
+			alpha = 1.0f - fadeOut.Fraction;
+
+			if (fadeOut)
+			{
+				this.Enabled = false;
+				return;
+			}
+			return;
+		}
+
+		message = wholeNumber.ToString();
+		float remainder = remainingCountdown - (wholeNumber-1);
+
+		if (UISettings.instance == null)
+		{
+			alpha = 1.0f;
+			return;
+		}
+
+		alpha = UISettings.instance.countdownCurve.Evaluate(1.0f - remainder);
+
+		if (wholeNumber != lastNumber)
+		{
+			lastNumber = wholeNumber;
+
+			var soundHandle2 = Sound.Play("countdown");
+			soundHandle2.TargetMixer = Mixer.FindMixerByName("UI");
+		}
+	}
+
+	protected override int BuildHash() => System.HashCode.Combine(hashCounter);
+}
