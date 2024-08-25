@@ -241,6 +241,15 @@
         }
     }
 
+    public void OpenCombinedTimed()
+    {
+        isInLevelLeaderboardMode = false;
+        Leaderboards = new CombinedTimeLeaderboards();
+        Leaderboards.SetContext(null);
+
+        RetrieveLeaderboard(true);
+    }
+
     public void SetupLevelLeaderboard(LevelData level)
     {
         isInLevelLeaderboardMode = true;

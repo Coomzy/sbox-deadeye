@@ -55,4 +55,23 @@ public static class GameStats
 			Sandbox.Services.Stats.SetValue(level.statName, level.slowestTime);
 		}
 	}
+
+	[ConCmd("stats_fix")]
+	public static void FixStats()
+	{
+		//Sandbox.Services.Stats.SetValue(LOWEST_MEDAL, 0);
+
+		float slowestTime = 0.0f;
+		foreach (var level in GameSettings.instance.topDownLevels)
+		{
+			Log.Info($"FixStats() level = {level}");
+			if (level == null || !level.isLeaderboardLevel)
+				continue;
+
+			slowestTime += level.slowestTime;
+		}
+
+		Log.Info($"FixStats() slowestTime = {slowestTime}");
+		Sandbox.Services.Stats.SetValue(COMBINED_TIME, slowestTime);
+	}
 }

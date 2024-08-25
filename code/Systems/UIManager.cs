@@ -93,6 +93,7 @@ public class UIManager : Component, IRestartable
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
 		//if (wonScreen != null) wonScreen.Enabled = true;
 		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Unfuck();
 	}
 
 	public void CivilianKilled()
@@ -124,7 +125,9 @@ public class UIManager : Component, IRestartable
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
-		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
+
+		// This is done in the class (set invisible) because it causes that fucking index error from Panel::InternalTick()
+		//if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
 	}
 
 	public async void CloseLeaderboard()
@@ -138,7 +141,8 @@ public class UIManager : Component, IRestartable
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
-		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
+		//if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Unfuck();
 	}
 
 	public static string FormatTime(double time)
@@ -152,6 +156,10 @@ public class UIManager : Component, IRestartable
 		
 		string sign = seconds < 0 ? "-" : "+";
 
-		return (useSign ? sign : "") + string.Format("{0:00.000}", MathF.Abs(seconds));
+		if (useSign)
+		{
+			return sign + string.Format("{0:00.000}", MathF.Abs(time));
+		}
+		return string.Format("{0:00.000}", time);
 	}
 }
