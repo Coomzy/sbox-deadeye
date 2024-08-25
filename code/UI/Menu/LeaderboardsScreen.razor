@@ -2,21 +2,22 @@
 @using Sandbox.Audio;
 @using Sandbox.UI;
 @using Sandbox.Services;
+@using Sandbox.Utility;
 @using System;
 @using Sandbox.UI.Menu.Helpers;
 
 @inherits PanelComponent
 
-<root class="menu translucent-bg stretched">
-	<div class="container">
-		<div class="buttons">
+<root class="@GetMenuClass()">
+    <div class="container">
+        <!--<div class="buttons">
             <div class="button-bg">
-                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+                <div class="button cowboy singular" onclick="@(() => ButtonBack())">Back</div>
             </div>
-		</div>
+        </div>-->
 		<div class="content bg">
 	        <div class="title">
-		        <span>Leaderboards</span>
+                <span>@GetNamedLeaderboardTitle()</span>
 	        </div>
             <div class="table controller">
                 <div class="row">
@@ -25,7 +26,7 @@
                         <span class="arrow prev @(CanLeaderboardMoveLeft ? "" : "disabled")" onclick="@(() => MoveLeaderboardLeft())">
                             @if (Input.UsingController)
                             {
-                                <InputGlyph button="ContextLeft" size="Medium" style="Dark" />
+                                <InputGlyph button="Previous" size="Medium" style="Dark" />
                             } else {
                                 <span class="char">&larr;</span>
                             }
@@ -40,7 +41,7 @@
                         <span class="arrow next @(CanLeaderboardMoveRight ? "" : "disabled")" onclick="@(() => MoveLeaderboardRight())">
                             <span class="text">Next</span>
                             @if (Input.UsingController) {
-                                <InputGlyph button="ContextRight" size="Medium" style="Dark"/>
+                                <InputGlyph button="Next" size="Medium" style="Dark"/>
                             } else {
                             <span class="char">&rarr;</span>
                             }
@@ -61,6 +62,17 @@
                             <span>Cannot retrieve leaderboards due to an invalid configuration</span>
                         </div>
                     </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
+                        </div>
+                    </div>
                     return;
                 }
 
@@ -74,7 +86,18 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <div class="button red" onclick="@(() => RetrieveLeaderboard())">Try again?</div>
+                            <div class="button red" onclick="@(() => RetrieveLeaderboard(true))">Try again?</div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -86,6 +109,17 @@
                         <div class="column">
                             <span class="status">Refreshing</span>
                             <span class="icon refresh" style="transform: rotate(@(RefreshRotation)deg, 0, 0) translate(0px, @(RefreshYLocation)px);">⟳</span>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -100,7 +134,18 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <div class="button red small" onclick="@(() => RetrieveLeaderboard())">Try again?</div>
+                            <div class="button red small" onclick="@(() => RetrieveLeaderboard(true))">Try again?</div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -115,7 +160,18 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <div class="button red" onclick="@(() => RetrieveLeaderboard())">Try again?</div>
+                            <div class="button red" onclick="@(() => RetrieveLeaderboard(true))">Try again?</div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="button-bg">
+                            <div class="button cowboy singular" onclick="@(() => ButtonBack())">                                
+					            @if (Input.UsingController)
+					            {
+						            <InputGlyph button="Back" />
+					            }
+                                Back
+                            </div>
                         </div>
                     </div>
                     return;
@@ -125,7 +181,7 @@
                 {
                     if (++row >= 10) break;
                     string specialClass = "";
-                    if (entry.Me) specialClass = "me";
+                    if (entry.SteamId == (long)Steam.SteamId) specialClass = "me";
 
                     <div class="row @specialClass">
                         <div class="column row">@entry.Rank</div>
@@ -135,7 +191,18 @@
                     </div>
                 }
             </div>
-		</div>
+            <div class="buttons">
+                <div class="button-bg">
+                    <div class="button cowboy singular" onclick="@(() => ButtonBack())">
+					    @if (Input.UsingController)
+					    {
+						    <InputGlyph button="Back" />
+					    }
+                        Back
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 </root>
 
@@ -149,8 +216,65 @@
     private float RefreshRotation = 0;
     private float RefreshYLocation = 0;
     private int row = 0;
+    bool isInLevelLeaderboardMode = false;
+
+    string GetMenuClass()
+    {
+        if (!isMainMenu)
+        {
+            return "menu bg";
+        }
+        return "menu translucent-bg";
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (!HasClass("visible"))
+            return;
+
+        if (Input.Pressed("Back"))
+        {
+            // Done in build hash
+            //ButtonBack();
+        }
+    }
+
+    public void SetupLevelLeaderboard(LevelData level)
+    {
+        isInLevelLeaderboardMode = true;
+        Leaderboards = new LevelLeaderboards();
+        Leaderboards.SetContext(level);
+
+        Enabled = true;
+        SetClass("visible", true);
+        SetClass("invisible", false);
+
+        RetrieveLeaderboard(true);
+    }
+
+    public void CloseLevelLeaderboard()
+    {
+        isInLevelLeaderboardMode = false;
+        SetClass("visible", false);
+        SetClass("invisible", true);
+    }
+
+    public string GetNamedLeaderboardTitle()
+    {
+        if (Leaderboards?.context != null)
+        {            
+            return $"{Leaderboards.context.friendlyLevelName} Leaderboards";
+        }
+        return $"Combined Time Leaderboards";
+    }
 
     public string GetLeaderboardTitle() {
+        if (ActiveTab == LeaderboardGroup.MyScore)
+        {
+            return "My Score";
+        }
         return ActiveTab.ToString();
     }
 
@@ -166,25 +290,37 @@
         if (ActiveTab == LeaderboardGroup.Global)
         {
             // Move to far right. Will need updating if the enum changes
-            ActiveTab = LeaderboardGroup.Friends;
+            ActiveTab = LeaderboardGroup.MyScore;
         }
-        else
+        else if (ActiveTab == LeaderboardGroup.Friends)
         {
-            ActiveTab -= 1;
+            // Move to far right. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.Global;
+        }
+        else if (ActiveTab == LeaderboardGroup.MyScore)
+        {
+            // Move to far right. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.Friends;
         }
 
         HasRetrievingStarted = false;
     }
 
     public void MoveLeaderboardRight() {
-        if (ActiveTab == LeaderboardGroup.Friends)
+        if (ActiveTab == LeaderboardGroup.Global)
+        {
+            // Move to far left. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.Friends;
+        }
+        else if (ActiveTab == LeaderboardGroup.Friends)
+        {
+            // Move to far left. Will need updating if the enum changes
+            ActiveTab = LeaderboardGroup.MyScore;
+        }
+        else if (ActiveTab == LeaderboardGroup.MyScore)
         {
             // Move to far left. Will need updating if the enum changes
             ActiveTab = LeaderboardGroup.Global;
-        }
-        else
-        {
-            ActiveTab += 1;
         }
 
         HasRetrievingStarted = false;
@@ -195,7 +331,11 @@
         // I really don't get what's going on with this, MainMenu instance should be null in game and UI Manager on the menu but checking them doesn't seem to work
         if (isMainMenu)
         {
-            if (MainMenu.instance != null)
+            if (isInLevelLeaderboardMode)
+            {
+                CloseLevelLeaderboard();
+            }
+            else if (MainMenu.instance != null)
             {
                 MainMenu.instance.SetMenuState(MenuState.Main);
                 var soundHandle = Sound.Play("ui.navigate.back");
@@ -211,7 +351,11 @@
         }
     }
 
-    private void RetrieveLeaderboard() {
+    private void RetrieveLeaderboard(bool forceRefresh = false) {
+        if (forceRefresh)
+        {
+            HasRetrievingStarted = false;
+        }
         if (Leaderboards != null && this.Panel.IsVisibleSelf && !HasRetrievingStarted)
         {
             Leaderboards.GetLeaderboard(ActiveTab);
@@ -220,11 +364,18 @@
         }
     }
 
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+    }
+
     /// <summary>
     /// update every second
     /// </summary>
     protected override int BuildHash() {
         var NeedQuickRefresh = false;
+
+        //CheckInputs();
 
         if (this.Panel.IsVisibleSelf)
         {
@@ -233,9 +384,9 @@
                 RetrieveLeaderboard();
             }
 
-            if (Input.Pressed("ContextLeft") && CanLeaderboardMoveLeft) MoveLeaderboardLeft();
-            else if (Input.Pressed("ContextRight") && CanLeaderboardMoveRight) MoveLeaderboardRight();
-            else if (Input.Pressed("ActionBack")) ButtonBack();
+            if (Input.Pressed("Previous") && CanLeaderboardMoveLeft) MoveLeaderboardLeft();
+            else if (Input.Pressed("Next") && CanLeaderboardMoveRight) MoveLeaderboardRight();
+            else if (Input.Pressed("Back")) ButtonBack();
         }
 
 

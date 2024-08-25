@@ -11,6 +11,7 @@ CurrentTimeWidget {
 	align-content: flex-start;
 	//justify-content: center;
 	padding: 2em;
+	pointer-events: none;
 
 	.title {
 		font-size: 88px;

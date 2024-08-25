@@ -6,4 +6,10 @@ MainMenuScreen.Menu {
 	.title {
 		text-shadow: 2px 2px 50px black, 0 0 5px black;
 	}
+
+	> .container {
+		.button-bg {
+			margin-bottom: 300px;
+		}
+	}
 }

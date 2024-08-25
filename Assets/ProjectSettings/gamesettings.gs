@@ -2,8 +2,10 @@
   "menuLevel": "scenes/menu.ld",
   "topDownLevels": [
     "scenes/topdown/first_steps/first_steps.ld",
-    "scenes/topdown/original.ld",
-    "scenes/topdown/level_02.ld"
+    "scenes/topdown/level_04.ld",
+    "scenes/topdown/level_02.ld",
+    "scenes/topdown/level_03.ld",
+    "scenes/topdown/original.ld"
   ],
   "pistolPrefab": "prefabs/weapons/weapon - pistol.prefab",
   "bloodDecalPrefab": "prefabs/weapons/blood decal.prefab",
@@ -15,6 +17,7 @@
   "silverImage": "textures/medals/medal_silver.psd",
   "goldImage": "textures/medals/medal_gold.psd",
   "onyxImage": "textures/medals/medal_platinum.psd",
+  "lockedImage": "textures/medals/medal_locked.psd",
   "civilianKilledTimePenalty": 5,
   "simulatedReactTime": 0.25,
   "__references": [],

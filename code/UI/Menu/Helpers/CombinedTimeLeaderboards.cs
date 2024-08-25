@@ -23,7 +23,7 @@ public class CombinedTimeLeaderboards : Component, ILeaderboard
 	[Property] public List<CombinedTimeLeaderboardEntry> entries { get; set; } = new List<CombinedTimeLeaderboardEntry>();
 	
 	[Property, ReadOnly] public bool isRefreshing => cancellationTokenSource != null;
-	public Leaderboards.Board board { get; set; } = null;
+	public Leaderboards.Board2 board { get; set; } = null;
 	CancellationTokenSource cancellationTokenSource { get; set; } = null;
 
 	public LevelData context { get => null; set { /* Not supported */ } }
@@ -51,7 +51,7 @@ public class CombinedTimeLeaderboards : Component, ILeaderboard
 		Cancel();
 
 		cancellationTokenSource = new CancellationTokenSource();
-		board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, group, cancellationTokenSource.Token);
+		board = await GameLeaderboards.GetLeaderboard(GameStats.COMBINED_TIME, group, cancellationTokenSource.Token);
 		
 		/*List<PlayerStats> leaderboardPlayerStats = new List<PlayerStats>();
 		foreach (var entry in board.Entries)

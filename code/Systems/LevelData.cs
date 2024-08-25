@@ -19,7 +19,7 @@ public enum GameMode
 public class LevelData : GameResource
 {
 	static Dictionary<string, LevelData> sceneNameToLevelData { get; set; } = new Dictionary<string, LevelData>(StringComparer.OrdinalIgnoreCase);
-	public static LevelData active { get; private set; }
+	public static LevelData active { get; set; }
 
 	[Category("Setup"), Property] public SceneFile scene { get; set; }
 	[Category("Setup"), Property] public GameMode gameMode { get; set; } = GameMode.TopDown;
@@ -82,7 +82,7 @@ public class LevelData : GameResource
 
 	public static void SetActiveLevelData()
 	{
-		active = Game.ActiveScene.GetSceneLevelData();
+		//active = Game.ActiveScene.GetSceneLevelData();
 	}
 
 	public void Register()
@@ -140,7 +140,7 @@ public class LevelData : GameResource
 	{
 		if (GameSave.instance == null)
 		{
-			return true;
+			return false;
 		}
 
 		if (GameSave.instance.levelNameToBestTime.TryGetValue(ResourceName, out float savedBestTime))

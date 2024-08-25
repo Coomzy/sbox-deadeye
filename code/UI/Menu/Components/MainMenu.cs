@@ -8,6 +8,7 @@ using System;
 using System.ComponentModel.Design;
 using System.Text.Json;
 using System.Transactions;
+using Sandbox.UI.Menu.Helpers;
 
 public enum MenuState
 {
@@ -191,12 +192,13 @@ public class MainMenu : Component
 		);*/
 
 		// Move us to the correct place to skip to the next menu transition.
-		CancelSplineAnimation();
+		//CancelSplineAnimation();
 
 		// Update Virtual Area Spline
 		switch (state)
 		{
 			case MenuState.Main:
+			case MenuState.Leaderboards:
 				// Reset back, no spline to set here.
 				VANextState = 0.0f;
 				break;
@@ -208,7 +210,6 @@ public class MainMenu : Component
 				break;
 			case MenuState.GameMode:
 			case MenuState.LevelSelect:
-			case MenuState.Leaderboards:
 			case MenuState.Stats:
 			case MenuState.Settings:
 				VARotationType = SplineRotationType.None;
@@ -231,11 +232,15 @@ public class MainMenu : Component
 		currentMenu = selected;
 	}
 
-	protected void ToggleMenu(PanelComponent Component, bool Visibility)
+	async protected void ToggleMenu(PanelComponent Component, bool Visibility)
 	{
 		if (Component == null) return;
 
 		// Component.Enabled = Visibility;
+
+		// HACK: This is a fix so that if two screens share a bind it doesn't press the button for both lol
+		await Task.FrameEnd();
+
 		Component.Enabled = true;
 		Component.SetClass("visible", Visibility);
 		Component.SetClass("invisible", !Visibility);

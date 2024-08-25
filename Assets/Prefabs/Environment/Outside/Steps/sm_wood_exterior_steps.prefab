@@ -1,0 +1,35 @@
+{
+  "RootObject": {
+    "__guid": "014dd133-802c-4387-b4de-0fd36e36def1",
+    "Flags": 0,
+    "Name": "sm_wood_exterior_steps",
+    "Position": "0,143.9999,-9.930863",
+    "Rotation": "0,0,-0.7071067,0.7071068",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "5d2a6ea1-ae18-45d1-9c85-c25a855f5c36",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/architecture/sm_wood_exterior_steps.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "Sandbox.PlaneCollider",
+        "__guid": "e868388a-07ff-4d83-8f67-8d7a73c1bf3c",
+        "Center": "15.89998,0,12",
+        "IsTrigger": false,
+        "Scale": "48,96",
+        "Static": true,
+        "Surface": "surfaces/wood.surface"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

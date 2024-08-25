@@ -12,9 +12,11 @@
     flex-direction: column;
     font-weight: bold;
     // font-family: "paper cuts 2";
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Alfa Slab One';
     transform: scale( 1 );
     transition: all 0.1s linear; // ease-out;
+    //transition: none;
     pointer-events: all;
     //background-color: white; // rgba(25,25,200,1);
     background-color: transparent; // rgba(25,25,200,1);
@@ -85,6 +87,21 @@
 
             &:active {
                 border: 5px solid black;
+            }
+
+            &.cowboy {
+                color: white;
+                background-color: transparent;
+                box-shadow: none;
+
+                &:hover {
+                    color: yellow;
+                }
+
+                &:active {
+                    //color: lightgoldenrodyellow;
+                    border-color: transparent;
+                }
             }
 
             &.green {
@@ -341,7 +358,7 @@
         .button-bg {
             border-radius: 100px 10px 100px 10px;
             // box-shadow: 0 100px 10px black;
-            box-shadow: 0 0 200px rgba(50,50,50,0.5);
+            //box-shadow: 0 0 200px rgba(50,50,50,0.5);
             //margin: 10px;
             flex-direction: column;
 
@@ -378,7 +395,8 @@
 }
 
 .menu.translucent-bg {
-    transition: filter 250ms linear, opacity 500ms linear;
+    transition: none 0ms;
+    //transition: filter 250ms linear, opacity 500ms linear;
 
     &.invisible .container .content {
         backdrop-filter: blur(0px);

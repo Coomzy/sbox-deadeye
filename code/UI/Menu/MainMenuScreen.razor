@@ -10,12 +10,42 @@
 	<div class="container">
 		<div class="buttons">
 			<div class="button-bg">
-				<div class="button green" onclick="@(() => ButtonPlay())">Play</div>
-				<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>
-				<div class="button blue" onclick="@(() => ButtonLeaderboards())">Leaderboards</div>
-				<div class="button indigo" onclick="@(() => ButtonHowToPlay())">How to play</div>
-				<div class="button brown" onclick="@(() => ButtonSettings())">Settings</div>
-				<div class="button red" onclick="@(() => Quit())">Quit</div>
+				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonPlay())">
+					@if (Input.UsingController)
+					{
+						<span class="icon"><InputGlyph button="Play" /></span>
+					}
+					Play
+				</div>
+				<!--<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>-->
+				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonLeaderboards())">
+					@if (Input.UsingController)
+					{
+						<span class="icon"><InputGlyph button="Leaderboard" /></span>
+					}
+					Leaderboard
+				</div>
+				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonHowToPlay())">
+					@if (Input.UsingController)
+					{
+						<span class="icon"><InputGlyph button="HowToPlay" /></span>
+					}
+					How to play
+				</div>
+				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonSettings())">
+					@if (Input.UsingController)
+					{
+						<span class="icon"><InputGlyph button="Settings" /></span>
+					}
+					Settings
+				</div>
+				<div class="button cowboy" style="width: contain" onclick="@(() => Quit())">
+					@if (Input.UsingController)
+					{
+						<span class="icon"><InputGlyph button="Back" /></span>
+					}
+					Quit
+				</div>
 			</div>
 		</div>
 		<div class="content">
@@ -50,6 +80,35 @@
 
 @code
 {
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (!HasClass("visible"))
+			return;
+
+		if (Input.Pressed("Play"))
+		{
+			ButtonPlay();
+		}
+		if (Input.Pressed("Leaderboard"))
+		{
+			ButtonLeaderboards();
+		}
+		if (Input.Pressed("HowToPlay"))
+		{
+			ButtonHowToPlay();
+		}
+		if (Input.Pressed("Settings"))
+		{
+			ButtonSettings();
+		}
+		if (Input.Pressed("Back"))
+		{
+			Quit();
+		}
+	}
+
 	void ButtonPlay()
 	{
 		// Other gamemodes have been dropped

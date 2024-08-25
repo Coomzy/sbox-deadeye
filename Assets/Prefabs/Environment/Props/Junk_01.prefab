@@ -1,0 +1,87 @@
+{
+  "RootObject": {
+    "__guid": "163a0e8f-515b-4693-ad18-694213573c05",
+    "Flags": 0,
+    "Name": "junk_01",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.ModelRenderer",
+        "__guid": "c8b89dc6-1b96-4ab9-a25c-99b62037c45f",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/props/detail/sm_wooden_bucket.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "f582c458-f15c-4036-89e2-0213d974f0a7",
+        "Flags": 0,
+        "Name": "plastic_bucket_a_open",
+        "Position": "6.821546,3.44978,7.284376",
+        "Rotation": "0,-0.6370955,0,0.7707849",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "963b5fb8-07dd-4186-a95a-b00c76c09aef",
+            "BodyGroups": 18446744073709551615,
+            "Health": 500,
+            "IsStatic": true,
+            "Model": "models/sbox_props/plastic_bucket_a/plastic_bucket_a_open.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "a92341a9-2230-4551-b012-aefc32463e8f",
+        "Flags": 0,
+        "Name": "flourbag_crumple",
+        "Position": "1.636904,24.45859,-3.962541",
+        "Rotation": "0,0,0.2067988,0.9783835",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "2b7db200-039a-4144-a15f-8c838dda5721",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": true,
+            "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "e42c5115-fd16-4b7c-a4be-e17069b14a01",
+        "Flags": 0,
+        "Name": "sm_wooden_bucket_02 (1)",
+        "Position": "10.47514,-26.62734,6.501437",
+        "Rotation": "0.1464513,-0.6917745,0.1464513,0.6917745",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "9731236e-829b-488c-8b04-af058387da52",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.flourbag_crumple",
+    "facepunch.plasticbucketa1"
+  ],
+  "__version": 1
+}

@@ -1,0 +1,72 @@
+{
+  "RootObject": {
+    "__guid": "93313efa-12a0-4109-bcfb-be8a7d4d2977",
+    "Flags": 0,
+    "Name": "junk_04",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.Prop",
+        "__guid": "d343d26a-fd22-480a-9b0a-eb8cb6a932d7",
+        "BodyGroups": 18446744073709551615,
+        "Health": 50,
+        "IsStatic": false,
+        "Model": "models/props/wheelbarrow/wheelbarrow.vmdl",
+        "Tint": "1,1,1,1"
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "8635e738-b2e0-4967-9e01-8e6c23e6751e",
+        "Flags": 0,
+        "Name": "flourbag_crumple",
+        "Position": "0,-16.06964,-2.229099",
+        "Rotation": "0,0,-0.1412656,0.9899717",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "0738612e-4968-4aa4-8936-27ff6ee164d4",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "515ca798-b2c0-4e50-8381-d5fae73c7a1c",
+        "Flags": 0,
+        "Name": "flourbag",
+        "Position": "2.041835,-0.9746628,25.15917",
+        "Rotation": "-0.3770051,-0.4598024,0.5097865,0.6217449",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "a3d7ae67-fd5c-4390-9bb7-96d8c25e4eb2",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.flourbag",
+    "facepunch.flourbag_crumple",
+    "facepunch.wheelbarrow"
+  ],
+  "__version": 1
+}

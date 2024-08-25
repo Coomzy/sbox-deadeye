@@ -6,11 +6,16 @@
 @inherits PanelComponent
 
 <root class="menu">
-
     <div class="container">
         <div class="buttons">
             <div class="button-bg">
-                <div class="button red singular" onclick="@(() => ButtonBack())">Back</div>
+                <div class="button cowboy singular" onclick="@(() => ButtonBack())">
+                    @if (Input.UsingController)
+                    {
+                        <InputGlyph button="Back" /></span>
+                    }
+					Back
+                </div>
             </div>
         </div>
     </div>
@@ -19,6 +24,19 @@
 
 @code
 {
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (!HasClass("visible"))
+            return;
+
+        if (Input.Pressed("Back"))
+        {
+            ButtonBack();
+        }
+    }
+
 	void ButtonBack()
 	{
 		MainMenu.instance.SetMenuState(MenuState.Main);

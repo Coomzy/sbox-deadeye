@@ -1,0 +1,74 @@
+{
+  "RootObject": {
+    "__guid": "a0681a9f-7183-4d53-a2ed-c74002d06551",
+    "Flags": 0,
+    "Name": "junk_05",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "9ddef9f9-b270-4562-b48b-b6e5b8c12a64",
+        "Flags": 0,
+        "Name": "junk_01",
+        "Position": "5.791206,-8.513215,21.58185",
+        "Rotation": "-0.7649037,0,0,0.6441447",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "faae4604-d54a-410b-a2c2-3ef943ed4616",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_wooden_bucket.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "b0d6f4ed-0657-4cb0-81b9-7ed35597d662",
+        "Flags": 0,
+        "Name": "compost_bag_02",
+        "Position": "-14.52321,-17.26998,-3.634078",
+        "Rotation": "0,0,0.5672785,0.823526",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "97be6773-6add-41c2-acf8-6daa9b93a0dd",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/compost_bag_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f6697952-e84d-488c-b3c4-11c8c0d8ca49",
+        "Flags": 0,
+        "Name": "sm_wooden_bucket_02",
+        "Position": "-19.87074,0,-4",
+        "Rotation": "0,0,0.7576503,0.6526607",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "aa6b81c5-745e-4030-bdb8-29fe341fbda8",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "polyhaven.compost_bag_02"
+  ],
+  "__version": 1
+}

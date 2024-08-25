@@ -8,6 +8,8 @@ using Sandbox.Audio;
 
 public class GamePreferences : UserPreferences<GamePreferences>
 {
+	public bool restartLevelOnFail { get; set; } = false;
+	public bool restartLevelOnCivKill { get; set; } = false;
 	public bool useOriginalClothing { get; set; } = false;
 
 	public float gameVolume { get; set; } = 1.0f;

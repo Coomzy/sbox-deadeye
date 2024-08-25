@@ -5,7 +5,7 @@
   "Ident": "shootordontshoot",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "Textures/medals/*\ntextures/levels/thumbnail/*",
+  "Resources": "Textures/medals/*\ntextures/levels/thumbnail/*\nfonts/*",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
@@ -47,13 +47,13 @@
           "Name": "Shoot",
           "KeyboardCode": "MOUSE1",
           "GamepadCode": "RightTrigger",
-          "GroupName": "Top Down"
+          "GroupName": "Game"
         },
         {
           "Name": "Spare",
           "KeyboardCode": "MOUSE2",
           "GamepadCode": "LeftTrigger",
-          "GroupName": "Top Down"
+          "GroupName": "Game"
         },
         {
           "Name": "Restart",
@@ -62,100 +62,64 @@
           "GroupName": "Game"
         },
         {
-          "Name": "Quit",
-          "KeyboardCode": "BACKSPACE",
-          "GamepadCode": "SwitchLeftMenu",
+          "Name": "Restart_Alt",
+          "KeyboardCode": "r",
+          "GamepadCode": "DpadEast",
           "GroupName": "Game"
         },
         {
           "Name": "Shoot_Alt",
           "KeyboardCode": "A",
           "GamepadCode": "SwitchRightBumper",
-          "GroupName": "Top Down"
+          "GroupName": "Game"
         },
         {
           "Name": "Spare_Alt",
           "KeyboardCode": "D",
           "GamepadCode": "SwitchLeftBumper",
-          "GroupName": "Top Down"
-        },
-        {
-          "Name": "Restart_Alt",
-          "KeyboardCode": "R",
-          "GamepadCode": "DpadSouth",
           "GroupName": "Game"
         },
         {
-          "Name": "ActionConfirm",
-          "KeyboardCode": "space",
-          "GamepadCode": "A",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "ActionBack",
-          "KeyboardCode": "BACKSPACE",
-          "GamepadCode": "B",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "ActionAlt",
-          "KeyboardCode": "Q",
-          "GamepadCode": "X",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "ActionAccess",
-          "KeyboardCode": "E",
-          "GamepadCode": "Y",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "ActionConfirmAlt",
-          "KeyboardCode": "return",
-          "GamepadCode": "None",
-          "GroupName": "Menu"
+          "Name": "Quit",
+          "KeyboardCode": "backspace",
+          "GamepadCode": "SwitchLeftMenu",
+          "GroupName": "Game"
         },
         {
           "Name": "ToggleMusic",
           "KeyboardCode": "m",
           "GamepadCode": "DpadWest",
-          "GroupName": "Game"
-        },
-        {
-          "Name": "ContextLeft",
-          "KeyboardCode": "SHIFT",
-          "GamepadCode": "SwitchLeftBumper",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "ContextRight",
-          "KeyboardCode": "TAB",
-          "GamepadCode": "SwitchRightBumper",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "NavDown",
-          "KeyboardCode": "UPARROW",
-          "GamepadCode": "DpadNorth",
-          "GroupName": "Menu"
-        },
-        {
-          "Name": "NavUp",
-          "KeyboardCode": "DOWNARROW",
-          "GamepadCode": "DpadSouth",
-          "GroupName": "Menu"
+          "GroupName": "Misc"
         },
         {
           "Name": "Leaderboard",
           "KeyboardCode": "x",
           "GamepadCode": "X",
-          "GroupName": "Game"
+          "GroupName": "Menu"
         },
         {
-          "Name": "Next_Level",
-          "KeyboardCode": "space",
-          "GamepadCode": "A",
-          "GroupName": "Game"
+          "Name": "HowToPlay",
+          "KeyboardCode": "h",
+          "GamepadCode": "Y",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "Settings",
+          "KeyboardCode": "j",
+          "GamepadCode": "SwitchLeftMenu",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "Previous",
+          "KeyboardCode": "a",
+          "GamepadCode": "SwitchLeftBumper",
+          "GroupName": "Menu"
+        },
+        {
+          "Name": "Next",
+          "KeyboardCode": "d",
+          "GamepadCode": "SwitchRightBumper",
+          "GroupName": "Menu"
         }
       ],
       "__guid": "9c554b60-95ad-4ff5-8b25-68ca6285b49c"

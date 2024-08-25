@@ -3,12 +3,22 @@
 @import "./Shared/Table.scss";
 
 LeaderboardsScreen.menu {
-	transition: none;
+	transition: none 0ms;
 
 	.title {
 		color: gold;
 		text-shadow: 0 0 5px #977F02;
 		box-shadow: none;
+	}
+
+	.container {
+		display: flex;
+		flex-direction: column; /* Makes the children stack vertically */
+	}
+
+	.buttons {
+		align-self: flex-start; /* Aligns the buttons container to the end of the content container */
+		margin-top: auto; /* Pushes the button to the bottom */
 	}
 
 	.table.controller {
@@ -24,9 +34,8 @@ LeaderboardsScreen.menu {
 				border-radius: 10px;
 				cursor: pointer;
 				pointer-events: all;
-
 				align-items: center;
-				
+
 				span {
 					margin: 0 .25em;
 				}
@@ -46,7 +55,7 @@ LeaderboardsScreen.menu {
 	}
 
 	.table {
-		transition: none;
+		transition: none 0ms;
 		font-size: 40px;
 		width: 100%;
 

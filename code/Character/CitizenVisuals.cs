@@ -4,6 +4,7 @@ using Sandbox.Citizen;
 using System;
 using System.Security;
 using System.Text.Json;
+using System.Threading;
 using static Sandbox.Citizen.CitizenAnimationHelper;
 using static Sandbox.Clothing;
 using static Sandbox.ClothingContainer;
@@ -50,16 +51,25 @@ public class CitizenVisuals : Component
 	[Group("Runtime"), Property] public Weapon weapon { get; set; }
 	[Group("Runtime"), Property] public Target target => _target ?? GameObject.Components.Get<Target>();
 
+	CancellationTokenSource cancellationTokenSource;
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
+
+		cancellationTokenSource = new CancellationTokenSource();
 
 		// Need this while UpdateFromPrefab() is broken in edit time
 		if (weapon == null && weaponGameObject != null)
 		{
 			weaponGameObject.BreakFromPrefab();
 			weapon = weaponGameObject.Components.Get<Weapon>();
-			weaponGameObject.Enabled = false;
+			bool shouldHaveWeapon = target != null ? target.isBadTarget : false;
+
+			if (!shouldHaveWeapon)
+			{
+				weaponGameObject.Enabled = false;
+			}
 		}
 
 		//RuntimeApply();
@@ -91,7 +101,7 @@ public class CitizenVisuals : Component
 
 		if (weaponGameObject != null)
 		{
-			weaponGameObject.Enabled = shouldHaveWeapon;
+			//weaponGameObject.Enabled = shouldHaveWeapon;
 		}
 	}
 
@@ -480,14 +490,68 @@ public class CitizenVisuals : Component
 		bodyRenderer.GameObject.SetParent(null);
 		bodyRenderer.Transform.ClearInterpolation();
 
-		//var randomBody = bodyPhysics.PhysicsGroup.Bodies.ToList().Random();
-		var randomBody = bodyPhysics.PhysicsGroup.Bodies.Random();
-		randomBody.ApplyImpulse(force * 10.0f);
+		PhysicsBody hitPhysBody = null;
+
+		//GroupName: pelvis, GroupIndex: 0
+		//GroupName: spine_0, GroupIndex: 1
+		//GroupName: spine_2, GroupIndex: 2
+		//GroupName: head, GroupIndex: 3
+		//GroupName: arm_upper_R, GroupIndex: 4
+		//GroupName: arm_lower_R, GroupIndex: 5
+		//GroupName: hand_R, GroupIndex: 6
+		//GroupName: arm_upper_L, GroupIndex: 7
+		//GroupName: arm_lower_L, GroupIndex: 8
+		//GroupName: hand_L, GroupIndex: 9
+		//GroupName: leg_upper_R, GroupIndex: 10
+		//GroupName: leg_lower_R, GroupIndex: 11
+		//GroupName: ankle_R, GroupIndex: 12
+		//GroupName: leg_upper_L, GroupIndex: 13
+		//GroupName: leg_lower_L, GroupIndex: 14
+		//GroupName: ankle_L, GroupIndex: 15
+
+		var pickedBodyGroupIndex = -1;
+		var rndIndex = Game.Random.Int(0, 3);
+
+		switch (rndIndex)
+		{
+			// head
+			case 0:
+				pickedBodyGroupIndex = 3;
+				break;
+			// spine_2
+			case 1:
+				pickedBodyGroupIndex = 2;
+				break;
+			// arm_upper_R
+			case 2:
+				pickedBodyGroupIndex = 4;
+				break;
+			// arm_upper_L
+			case 3:
+				pickedBodyGroupIndex = 7;
+				break;
+		}
+
 		foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
+		{
+			if (pickedBodyGroupIndex != body.GroupIndex)
+				continue;
+
+			hitPhysBody = body;
+			break;
+		}
+
+		if (hitPhysBody != null)
+		{
+			hitPhysBody.ApplyImpulse(force * 10.0f);
+		}
+
+		//var randomBody = bodyPhysics.PhysicsGroup.Bodies.Random();
+		/*foreach (var body in bodyPhysics.PhysicsGroup.Bodies)
 		{
 			//body.ApplyImpulseAt(hitPosition, force);
 			//body.ApplyImpulse(force);
-		}
+		}*/
 
 		if (weaponGameObject == null)
 		{
@@ -504,12 +568,27 @@ public class CitizenVisuals : Component
 			weapon.Drop(weaponForce * 0.10f);
 		}
 
-		DisableRagdoll();
+		//DisableRagdoll();
 	}
 
 	async void DisableRagdoll()
 	{
-		await Task.DelayRealtimeSeconds(5.0f);
+		//await Task.DelayRealtimeSeconds(5.0f);
+		await GameTask.DelayRealtimeSeconds(5.0f, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 		bodyPhysics.PhysicsGroup.Sleeping = true;
+	}
+
+	protected override void OnDestroy()
+	{
+		if (cancellationTokenSource != null)
+		{
+			cancellationTokenSource.Cancel();
+		}
+
+		base.OnDestroy();
 	}
 }

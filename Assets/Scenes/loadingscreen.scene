@@ -1,0 +1,43 @@
+{
+  "__guid": "a13ac9db-3517-475d-86b7-7bd44005056c",
+  "GameObjects": [
+    {
+      "__guid": "026c98c7-1dc6-4231-b4ce-d02338cdbb47",
+      "Flags": 0,
+      "Name": "Loading Screen",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "LoadingScreen",
+          "__guid": "f25f8947-ae54-434d-b902-bc2b7e712284"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "loadingscreen",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

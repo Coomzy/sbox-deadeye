@@ -2,6 +2,7 @@
 using Sandbox.Audio;
 using Sandbox;
 using Sandbox.Citizen;
+using System.Threading;
 
 public class Weapon : Component
 {
@@ -14,6 +15,8 @@ public class Weapon : Component
 	[Group("Setup"), Property] public PrefabFile bloodSplatPFX { get; set; }
 	[Group("Setup"), Property] public ParticleEffect shellEjectPFX { get; set; }
 	[Group("Setup"), Property] public ParticleConeEmitter shellEjectEmitter { get; set; }
+	CancellationTokenSource cancellationTokenSource { get; set; }
+	TimeSince timeSinceLastShot {  get; set; }
 
 	protected override void OnAwake()
 	{
@@ -23,6 +26,7 @@ public class Weapon : Component
 		bulletTracerLineRenderer.Enabled = false;
 		muzzleFlashLight.Enabled = false;
 		shellEjectEmitter.Enabled = false;
+		cancellationTokenSource = new CancellationTokenSource();
 	}
 
 	[Button("Shoot")]
@@ -40,7 +44,6 @@ public class Weapon : Component
 		smokeGO.Transform.Position = muzzleFlashHolder.Transform.Position;
 		smokeGO.Transform.Rotation = muzzleFlashHolder.Transform.Rotation;
 
-
 		var bloodSplatGO = Scene.CreateObject();
 		bloodSplatGO.SetPrefabSource(bloodSplatPFX.ResourcePath);
 		bloodSplatGO.UpdateFromPrefab();
@@ -51,8 +54,16 @@ public class Weapon : Component
 		shellEjectEmitter.Emit(shellEjectPFX);
 		shellEjectEmitter.Enabled = false;*/
 
-		BulletTracer(hitPosition);
-		MuzzleFlashLight();
+		//BulletTracer(hitPosition);
+		//MuzzleFlashLight();
+
+		timeSinceLastShot = 0;
+		List<Vector3> points = new List<Vector3>();
+		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 25.0f));
+		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 125.0f));
+		bulletTracerLineRenderer.VectorPoints = points;
+		bulletTracerLineRenderer.Enabled = true;
+		muzzleFlashLight.Enabled = true;
 	}
 
 	async void BulletTracer(Vector3 hitPosition)
@@ -62,15 +73,39 @@ public class Weapon : Component
 		points.Add(muzzleFlashHolder.Transform.Position + (muzzleFlashHolder.Transform.Rotation.Forward * 125.0f));
 		bulletTracerLineRenderer.VectorPoints = points;
 		bulletTracerLineRenderer.Enabled = true;
-		await Task.Delay(20);
+		//await Task.Delay(20);
+		await GameTask.Delay(20, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 		bulletTracerLineRenderer.Enabled = false;
 	}
 
 	async void MuzzleFlashLight()
 	{
 		muzzleFlashLight.Enabled = true;
-		await Task.Delay(1);
+		//await Task.Delay(1);
+		await GameTask.Delay(1, cancellationTokenSource.Token);
+		if (cancellationTokenSource != null && cancellationTokenSource.IsCancellationRequested)
+		{
+			return;
+		}
 		muzzleFlashLight.Enabled = false;
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (bulletTracerLineRenderer.Enabled && timeSinceLastShot > 0.02f)
+		{
+			bulletTracerLineRenderer.Enabled = false;
+		}
+		if (muzzleFlashLight.Enabled && timeSinceLastShot > 0.001f)
+		{
+			muzzleFlashLight.Enabled = false;
+		}
 	}
 
 	[Button("Drop")]
@@ -81,6 +116,16 @@ public class Weapon : Component
 		rigidbody.ApplyImpulse(force);
 		var weaponRandomTorque = Game.Random.Float(1500.0f, 3500.0f);
 		rigidbody.ApplyTorque(Game.Random.Rotation().Forward * weaponRandomTorque);
+	}
+
+	protected override void OnDestroy()
+	{
+		if (cancellationTokenSource != null)
+		{
+			cancellationTokenSource.Cancel();
+		}
+
+		base.OnDestroy();
 	}
 
 	public override void Reset()

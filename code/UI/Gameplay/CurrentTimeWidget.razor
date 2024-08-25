@@ -11,7 +11,7 @@
 
 		@if (@ShouldShowTimeDiff())
 		{ 
-			<div class="title" style="color: @GetTimeDiffColor(); margin: -0px -200px -200px -535px">@GetTimeDiff()</div>
+			<div class="title" style="color: @GetTimeDiffColor(); margin: -0px 100px -200px -388.5px">@GetTimeDiff()</div>
 		}
 	</div>
 </root>
@@ -91,5 +91,5 @@
 		return "lime";
 	}
 
-	protected override int BuildHash() => System.HashCode.Combine(GetRemainingReactTime());
+	protected override int BuildHash() => System.HashCode.Combine(GetRemainingReactTime(), ShouldShowTimeDiff());
 }

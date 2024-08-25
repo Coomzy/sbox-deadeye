@@ -1,0 +1,157 @@
+{
+  "RootObject": {
+    "__guid": "89d2e837-9a90-48fe-9b4d-dffccc9dd89c",
+    "Flags": 0,
+    "Name": "junk_06",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "4bdc80d9-ff48-4a1e-b863-bb983179262c",
+        "Flags": 0,
+        "Name": "compost_bag_02 (1)",
+        "Position": "0.118,8.29088,-3.634078",
+        "Rotation": "0,0,0.259343,0.9657853",
+        "Scale": "1.290285,1.290285,1.290285",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "16d428a1-61fb-4056-85d6-2efa239f765e",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/compost_bag_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "acb65aaa-d048-463f-bfd1-e0dceeec4160",
+        "Flags": 0,
+        "Name": "compost_bag_02",
+        "Position": "0.118,-14.10535,-3.634078",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "c308b354-bd2c-4390-916a-3e907aae1f0f",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/compost_bag_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f4facb8e-c871-4dd7-bd54-fd76b7125de6",
+        "Flags": 0,
+        "Name": "wooden_crate_02",
+        "Position": "3.92871,-14.78586,-4",
+        "Scale": "1,1.240304,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "dd0c5868-ec92-462f-8dc4-bdd7067bcd01",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "94454c19-f2ce-42d3-8ba5-d2ac6f7781d6",
+        "Flags": 0,
+        "Name": "flourbag_crumple",
+        "Position": "5,25.57228,-3.962541",
+        "Rotation": "0,0,-0.1695685,0.9855184",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "3b2d0c0f-0bcf-4927-bcfc-f92064ada310",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f838f7d3-217f-47c7-8536-2898cead6e50",
+        "Flags": 0,
+        "Name": "flourbag (1)",
+        "Position": "4.664797,-53.56324,-3.977397",
+        "Rotation": "0,0,0.98719,-0.1595485",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "5d0ca73d-71dc-42ce-acd3-7db392d498ee",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "207a620a-cb91-44fe-a4d8-1135191a7bd1",
+        "Flags": 0,
+        "Name": "flourbag",
+        "Position": "3.863393,-36.09768,-3.977397",
+        "Rotation": "0,0,0.5416278,0.8406184",
+        "Scale": "4,4,4",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "2761bf08-bd9b-4df4-8f10-0addf7b732b3",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/packaged_food/flourbag.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "57f47c22-4b69-4757-acdf-270191d34185",
+        "Flags": 0,
+        "Name": "sm_wooden_bucket_02",
+        "Position": "18.86761,0.2099228,15.25115",
+        "Rotation": "0.9999264,0,0,0.01212658",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "e2082fd2-5022-45ea-8fbf-e4e802e19247",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.flourbag",
+    "facepunch.flourbag_crumple",
+    "facepunch.wooden_crate_02",
+    "polyhaven.compost_bag_02"
+  ],
+  "__version": 1
+}

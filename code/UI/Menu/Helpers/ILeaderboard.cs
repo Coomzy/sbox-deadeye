@@ -4,7 +4,7 @@ namespace Sandbox.UI.Menu.Helpers
 {
 	public interface ILeaderboard
 	{
-		public Leaderboards.Board board { get; set; }
+		public Leaderboards.Board2 board { get; set; }
 		public LevelData context { get; set; }
 		public bool isRefreshing { get; }
 

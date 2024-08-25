@@ -35,6 +35,7 @@ public static class GameStats
 		Sandbox.Services.Stats.SetValue(stat, amount);
 	}
 
+	[ConCmd("stats_reset")]
 	public static void Reset()
 	{
 		Sandbox.Services.Stats.SetValue(TARGETS_ELIMINATED, 0);
@@ -50,7 +51,7 @@ public static class GameStats
 			if (level == null || !level.isLeaderboardLevel)
 				continue;
 
-			Sandbox.Services.Stats.SetValue(level.statName, 99999);
+			Sandbox.Services.Stats.SetValue(level.statName, level.slowestTime);
 		}
 	}
 }

@@ -1,0 +1,74 @@
+{
+  "RootObject": {
+    "__guid": "a5a93a2e-7224-4c2c-81c6-3d913f1eb06f",
+    "Flags": 0,
+    "Name": "junk_08",
+    "Enabled": true,
+    "Children": [
+      {
+        "__guid": "1dc53859-b5b7-4fbb-9440-574dfc716587",
+        "Flags": 0,
+        "Name": "beer_bottle (1)",
+        "Position": "3.543434,-1.68852,22.02567",
+        "Rotation": "-0.6532815,-0.2705981,0.2705981,0.6532815",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "87e97723-f690-4bc9-8ba9-a5e57d767f0c",
+            "BodyGroups": 18446744073709551615,
+            "Health": 1,
+            "IsStatic": false,
+            "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "dc84789c-fa56-42e5-afc7-65b5a3308f89",
+        "Flags": 0,
+        "Name": "beer_bottle",
+        "Position": "5.932788,-7.038551,20.88031",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "efba63fb-d27c-4222-90f2-5800865704f2",
+            "BodyGroups": 18446744073709551615,
+            "Health": 1,
+            "IsStatic": false,
+            "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "7fb152f9-ce10-4851-b380-c102538b4779",
+        "Flags": 0,
+        "Name": "wooden_chair_a",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.Prop",
+            "__guid": "2348704b-99b6-4833-b467-c9538c2d5567",
+            "BodyGroups": 18446744073709551615,
+            "Health": 0,
+            "IsStatic": false,
+            "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [
+    "facepunch.beer_bottle",
+    "facepunch.wooden_chair_a"
+  ],
+  "__version": 1
+}
