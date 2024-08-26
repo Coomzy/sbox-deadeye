@@ -10,7 +10,7 @@
   "simulatedTime": 4.6223364,
   "friendlyLevelName": "First Steps",
   "friendlyLevelDescription": "Before you can be the fastest gun, you\u2019ve got to be the fastest learner",
-  "artworkImageData": "textures/levels/thumbnail/level_original_thumbnail_temp.png",
+  "artworkImageData": "textures/levels/thumbnail/group_1.png",
   "isLeaderboardLevel": true,
   "statNameOverride": null,
   "__references": [],

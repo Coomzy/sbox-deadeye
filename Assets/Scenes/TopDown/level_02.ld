@@ -10,7 +10,7 @@
   "simulatedTime": 9.336363,
   "friendlyLevelName": "WHERE IS TONY LAZUTO!?",
   "friendlyLevelDescription": "Raid a gang hideout for information",
-  "artworkImageData": "textures/levels/thumbnail/level_original_thumbnail_temp.png",
+  "artworkImageData": "textures/levels/thumbnail/group_3.png",
   "isLeaderboardLevel": true,
   "statNameOverride": null,
   "__references": [],

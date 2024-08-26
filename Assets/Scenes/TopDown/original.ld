@@ -10,7 +10,7 @@
   "simulatedTime": 15.725053,
   "friendlyLevelName": "Lazuto\u0027s Hideout",
   "friendlyLevelDescription": "The only good Lazuto is a dead Lazuto",
-  "artworkImageData": "textures/levels/thumbnail/level_original_thumbnail_temp.png",
+  "artworkImageData": "textures/levels/thumbnail/group_5.png",
   "isLeaderboardLevel": true,
   "statNameOverride": null,
   "__references": [],

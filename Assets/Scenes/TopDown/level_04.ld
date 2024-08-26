@@ -10,7 +10,7 @@
   "simulatedTime": 9.699179,
   "friendlyLevelName": "Into the Wild",
   "friendlyLevelDescription": "Set out into the Wild West to find Tony Lazuto\u0027s whereabouts",
-  "artworkImageData": "textures/levels/thumbnail/level_original_thumbnail_temp.png",
+  "artworkImageData": "textures/levels/thumbnail/group_2.png",
   "isLeaderboardLevel": true,
   "statNameOverride": null,
   "__references": [],
