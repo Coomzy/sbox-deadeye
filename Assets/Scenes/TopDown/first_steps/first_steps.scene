@@ -24819,6 +24819,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "caa4af4c-45b7-44ae-9afc-18996eda88a3",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -25563,6 +25572,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "4fe3d116-58d9-476c-bd62-e8d1afff0103",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -25599,6 +25617,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "ceb1c675-24ef-4c2c-a495-1a11c60161de",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -25686,7 +25713,7 @@
         },
         {
           "__type": "Sandbox.PlaneCollider",
-          "__guid": "15c99c0e-643a-4d0d-bc17-eea994f77c85",
+          "__guid": "992f9c24-959e-4bf9-b107-d332efa78ce9",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "512.5,512.5",
@@ -25768,7 +25795,7 @@
         },
         {
           "__type": "Sandbox.PlaneCollider",
-          "__guid": "8e25cd8f-a6eb-4f78-b18f-01a3cf8de36a",
+          "__guid": "046d52d3-30de-4b3a-b5f6-9dc6ba561d50",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "512.5,512.5",
@@ -25813,7 +25840,7 @@
         },
         {
           "__type": "Sandbox.PlaneCollider",
-          "__guid": "fca38597-725c-49ad-a680-b568ab22b799",
+          "__guid": "bcf2b841-be94-4e50-9958-3463d01e8660",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "512.5,512.5",
@@ -26780,7 +26807,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "c949e2e7-a4bb-41f5-b0ed-58e76468ec75",
           "BodyGroups": 18446744073709551615,
-          "Model": "models/props/detail/sm_don\u0027t.vmdl",
+          "Model": "models/props/detail/sm_dont.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
         }
