@@ -5,8 +5,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // padding: 50px;
-    padding: 2em;
+    padding: 50px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -36,10 +35,10 @@
         text-shadow: 0px 0px 2px black;
         flex-shrink: 0;
         font-family: Consolas;
+        margin-right: 50px;
     }
 
     > .container {
-        gap: 50px;
         width: 100%;
         height: 100%;
 
@@ -62,10 +61,12 @@
             flex-shrink: 0;
             align-items: flex-end;
             // gap: 8px;
+            gap: 0px;
         }
 
         .button {
             flex-shrink: 0;
+            flex-grow: 0;
             background-color: rgb(20,20,20);
             color: rgba(255,255,255, 0.9);
             width: 500px;
@@ -78,6 +79,7 @@
             font-weight: 600;
             // margin: 4px 2px;
             margin: 0;
+            gap: 0;
             transition: all 50ms linear;
             cursor: pointer;
 
@@ -93,6 +95,7 @@
                 color: white;
                 background-color: transparent;
                 box-shadow: none;
+                padding: 5px 10px;
 
                 &:hover {
                     color: yellow;
@@ -289,7 +292,7 @@
 
             &.transparent {
                 background-color: transparent;
-                text-shadow: 1px 1px 1px #7700EF;
+                text-shadow: 1px 1px 50px black;
                 color: white;
                 border: none;
 
@@ -325,6 +328,13 @@
                 margin: 0;
                 margin-right: 10px;
                 color: rgba(255,255,255,0.88);
+                
+                flex-direction: row;
+
+                InputGlyph {
+                    justify-content: center;
+                    align-self: center;
+                }
             }
 
             &.translucent .icon {

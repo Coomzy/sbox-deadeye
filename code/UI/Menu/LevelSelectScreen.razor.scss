@@ -19,6 +19,17 @@ LevelSelectScreen.menu {
 		flex-grow: 0;
 		flex-shrink: 8;
 	}
+
+	.container.controls {
+		.button {
+			width: 250px;
+			margin-right: 200px;
+		}
+
+		.button:last-child {
+			margin-right: 0;
+		}
+	}
 	// Fix stretching by growing the content. Shrink the whitespace area desired by buttons.
 	.container.main {
 		flex-grow: 2;
