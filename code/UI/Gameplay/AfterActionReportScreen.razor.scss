@@ -6,7 +6,15 @@ AfterActionReportScreen.menu {
 	pointer-events: none;
 	cursor: default;
 
+	font-family: 'Alfa Slab One';
+
+	.menu > .title {
+		font-family: 'Alfa Slab One';
+	}
+
 	.title {
+		font-family: 'Alfa Slab One';
+
 		margin: 30px 50px;
 		font-size: 60px;
 		//color: lightgray;

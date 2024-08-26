@@ -36,7 +36,7 @@
             "__guid": "6822c4bc-973e-410e-9205-c1015ae74e00",
             "BodyGroups": 18446744073709551615,
             "Health": 85,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/wooden_barrels/wooden_barrel_01a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -70,7 +70,7 @@
             "__guid": "cb015582-c8a5-4d1b-9477-528244d909c1",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
             "Tint": "1,1,1,1"
           }

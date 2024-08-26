@@ -58333,6 +58333,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "2b0d9e03-facd-481d-9cfc-a515fd30a1e2",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58351,6 +58360,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "fc6978f7-f2b0-410c-9c21-79098a06b007",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58369,6 +58387,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "519c3667-3cb8-4f63-ac42-9a48b8289207",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58386,6 +58413,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "3bca6c56-d1bd-4029-834b-8c8c610c8618",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58403,6 +58439,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "17ee68fc-513e-4cd2-aead-120d0e3dddc3",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58439,6 +58484,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "22925625-ae53-4c17-8e66-a23964c2376d",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58456,6 +58510,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "8cbe8a67-9c1b-4e3d-a208-9558be23fc8c",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58491,6 +58554,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "6fbcdd2c-c75f-4666-a9b2-510a4065f4bd",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58508,6 +58580,15 @@
           "Model": "models/props/architecture/sm_outside_floor_01.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "27a2c015-dfa8-464f-be62-caa9aab9ee31",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58525,6 +58606,15 @@
           "Model": "models/props/architecture/sm_ground_plane_01.vmdl",
           "RenderType": "Off",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "8e25cd8f-a6eb-4f78-b18f-01a3cf8de36a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/dirt.surface"
         }
       ]
     },
@@ -58596,6 +58686,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "90f211ac-b156-4db5-9c0f-5e0e921fb3d7",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58614,6 +58713,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "b769ee65-2314-41c2-9330-dc6955a0d2aa",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58632,6 +58740,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "0650d56a-aa4b-4cb3-a024-e046aebfc322",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58668,6 +58785,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "da951381-add5-48f8-b856-b51b24926506",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58686,6 +58812,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "37727e12-d069-4c89-92e5-46e0a665fcbb",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58704,6 +58839,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "5db2ecfb-619b-41d5-afbd-839f22eb678a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },
@@ -58721,6 +58865,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "ab4008d2-50c8-4fd7-b3f1-375e66fea024",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/sand.surface"
         }
       ]
     },

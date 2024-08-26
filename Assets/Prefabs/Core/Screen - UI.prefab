@@ -142,6 +142,10 @@
         "TranslateYSpeed": 1
       },
       {
+        "__type": "KilledCivsWidget",
+        "__guid": "9edbceb0-d8e6-4654-abcd-3643cde84529"
+      },
+      {
         "__type": "LevelLeaderboards",
         "__guid": "a20687f4-5e4f-495e-aa98-d8f1a45476c8",
         "__enabled": false,

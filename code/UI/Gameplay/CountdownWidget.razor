@@ -5,13 +5,14 @@
 @inherits PanelComponent
 
 <root>
+	<label style="color: rgba(255, 255, 255, @alphaLevelName);">@GetLevelName()</label>
 	<label style = "color: rgba(255, 255, 255, @alpha);">@message</label>
 </root>
 
 @code
 {
-
 	string message = "3";
+	float alphaLevelName = 1.0f;
 	float alpha = 1.0f;
 
 	bool fadeOutHasStarted = false;
@@ -19,6 +20,16 @@
 
 	int hashCounter = 0;
 	int lastNumber = -1;
+
+	string GetLevelName()
+	{
+		if (LevelData.active == null)
+		{
+			return "";
+		}
+
+		return LevelData.active.friendlyLevelName;
+	}
 
 	protected override void OnUpdate()
 	{
@@ -48,6 +59,7 @@
 			}
 
 			alpha = 1.0f - fadeOut.Fraction;
+			alphaLevelName = alpha;
 
 			if (fadeOut)
 			{

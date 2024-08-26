@@ -18,7 +18,7 @@
             "__guid": "87e97723-f690-4bc9-8ba9-a5e57d767f0c",
             "BodyGroups": 18446744073709551615,
             "Health": 1,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -36,7 +36,7 @@
             "__guid": "efba63fb-d27c-4222-90f2-5800865704f2",
             "BodyGroups": 18446744073709551615,
             "Health": 1,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -53,7 +53,7 @@
             "__guid": "2348704b-99b6-4833-b467-c9538c2d5567",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
             "Tint": "1,1,1,1"
           }

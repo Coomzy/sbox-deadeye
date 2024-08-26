@@ -3,8 +3,6 @@
     "__guid": "43d88ffd-003b-4516-b5dd-b4a6db8e61a0",
     "Flags": 0,
     "Name": "wooden_table_01",
-    "Position": "-64.86761,-117.4114,0",
-    "Rotation": "0,0,0.7071068,0.7071068",
     "Enabled": true,
     "Components": [
       {
@@ -21,10 +19,12 @@
         "Center": "0,0,0",
         "IsTrigger": false,
         "Scale": "26.60001,71,44",
-        "Static": false,
+        "Static": true,
         "Surface": "surfaces/wood.surface"
       }
-    ]
+    ],
+    "Children": [],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,

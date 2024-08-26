@@ -14,7 +14,8 @@ public static class GameStats
 	public const string DIED = "died";
 	public const string KILLED_TONY_LAZUTO = "killed-tony-lazuto";
 	public const string LOWEST_MEDAL = "lowest-medal";
-	public const string COMBINED_TIME = "combined-time";
+	//public const string COMBINED_TIME = "combined-time";
+	public const string COMBINED_TIME = "combined-time2";
 
 	public static void Increment(string stat, double incrementAmount = 1)
 	{

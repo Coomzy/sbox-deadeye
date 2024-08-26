@@ -10,7 +10,7 @@
         "__guid": "d343d26a-fd22-480a-9b0a-eb8cb6a932d7",
         "BodyGroups": 18446744073709551615,
         "Health": 50,
-        "IsStatic": false,
+        "IsStatic": true,
         "Model": "models/props/wheelbarrow/wheelbarrow.vmdl",
         "Tint": "1,1,1,1"
       }
@@ -30,7 +30,7 @@
             "__guid": "0738612e-4968-4aa4-8936-27ff6ee164d4",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -50,7 +50,7 @@
             "__guid": "a3d7ae67-fd5c-4390-9bb7-96d8c25e4eb2",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/packaged_food/flourbag.vmdl",
             "Tint": "1,1,1,1"
           }
