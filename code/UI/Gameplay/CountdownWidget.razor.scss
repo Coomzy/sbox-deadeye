@@ -1,6 +1,6 @@
 CountdownWidget {
 	position: absolute;
-	top: -350;
+	top: -350px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -15,6 +15,6 @@ CountdownWidget {
 	background-color: transparent;
 	flex-direction: column;
 	padding: 50px;
-	transform: scale( 1 );
+	transform: scale(1);
 	transition: all 0.1s ease-out;
 }

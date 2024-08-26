@@ -5,8 +5,8 @@
 @inherits PanelComponent
 
 <root>
-	<label style="color: rgba(255, 255, 255, @alphaLevelName);">@GetLevelName()</label>
-	<label style = "color: rgba(255, 255, 255, @alpha);">@message</label>
+	<label style="color: rgba(255, 255, 255, @alphaLevelName); font-size: @GetLevelNameFontSize();">@GetLevelName()</label>
+	<label style="color: rgba(255, 255, 255, @alpha);">@message</label>
 </root>
 
 @code
@@ -29,6 +29,21 @@
 		}
 
 		return LevelData.active.friendlyLevelName;
+	}
+
+	string GetLevelNameFontSize()
+	{
+		int perfectSize = 400; // px
+		int perfectLength = 16;
+
+		float currentScale = (float)GetLevelName().Replace(" ", "").Length / (float)perfectLength;
+		float resultScale = perfectSize * (currentScale > 1f ? 1f - currentScale : 1f + currentScale);
+
+		string scaleStr = MathX.Clamp(resultScale, 100, 250).ToFixed(2) + "px";
+
+		//Log.Info($"Title currentScale: {currentScale}, resultScale: {resultScale}, font-size: {scaleStr}");
+
+		return scaleStr;
 	}
 
 	protected override void OnUpdate()
