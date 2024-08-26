@@ -3,7 +3,7 @@
   "gameMode": "TopDown",
   "allowedCivilianCasualties": 3,
   "silverTime": 10,
-  "goldTime": 8,
+  "goldTime": 6.5,
   "onyxTime": 5,
   "slowestTime": 20.064943,
   "fastestTime": 0.33636338,

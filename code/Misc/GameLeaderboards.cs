@@ -53,7 +53,7 @@ public static class GameLeaderboards
 		}
 
 		Sandbox.Services.Stats.SetValue(leaderboardName, value);
-		Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{value}'");
+		//Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{value}'");
 	}
 
 	public static async Task<Leaderboards.Board2> GetLeaderboard(string leaderboardName, LeaderboardGroup group, CancellationToken cancellationToken)

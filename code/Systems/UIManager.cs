@@ -16,6 +16,7 @@ public class UIManager : Component, IRestartable
 	[Group("Setup"), Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
 	[Group("Setup"), Property] public WonScreen wonScreen { get; private set; }
 	[Group("Setup"), Property] public CountdownWidget countDownWidget { get; private set; }
+	[Group("Setup"), Property] public KilledCivsWidget killedCivsWidget { get; private set; }
 
 	[Group("Setup"), Property] public LeaderboardsScreen leaderboardsScreen { get; private set; }
 	[Group("Setup"), Property] public LevelLeaderboards levelLeaderboards { get; private set; }
@@ -38,6 +39,7 @@ public class UIManager : Component, IRestartable
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = true;
 		if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
+		if (killedCivsWidget != null) killedCivsWidget.Enabled = true;
 
 		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
 		if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
@@ -46,7 +48,7 @@ public class UIManager : Component, IRestartable
 
 	public void PostRestart()
 	{
-
+		if (killedCivsWidget != null) killedCivsWidget.Show();
 	}
 
 	public void PreShutdown()
@@ -116,7 +118,7 @@ public class UIManager : Component, IRestartable
 		{
 			Log.Warning($"UI Manager no leaderboardsScreen");
 			return;
-		}
+		} 
 
 		if (leaderboardsScreen != null)
 		{			
@@ -125,6 +127,7 @@ public class UIManager : Component, IRestartable
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
+		if (killedCivsWidget != null) killedCivsWidget.Hide();
 
 		// This is done in the class (set invisible) because it causes that fucking index error from Panel::InternalTick()
 		//if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
@@ -140,6 +143,7 @@ public class UIManager : Component, IRestartable
 		}
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
+		if (killedCivsWidget != null) killedCivsWidget.Show();
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
 		//if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
 		if (afterActionReportScreen != null) afterActionReportScreen.Unfuck();

@@ -33,6 +33,18 @@
 		return "textures/civ_alive.png";	
 	}
 
+	public void Show()
+	{
+		SetClass("visible", true);
+		SetClass("invisible", false);
+	}
+
+	public void Hide()
+	{
+		SetClass("visible", false);
+		SetClass("invisible", true);
+	}
+
 	protected override int BuildHash()
 	{
 		if (GamePlayManager.instance == null)

@@ -47,6 +47,12 @@
           "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
           "component_type": "FailedTooManyCivsKilledScreen"
         },
+        "killedCivsWidget": {
+          "_type": "component",
+          "component_id": "9edbceb0-d8e6-4654-abcd-3643cde84529",
+          "go": "c9bd70fa-0c7a-457a-93b6-091868c49a24",
+          "component_type": "KilledCivsWidget"
+        },
         "leaderboardsScreen": {
           "_type": "component",
           "component_id": "86997ff4-6169-411c-9cef-40309e34cf25",

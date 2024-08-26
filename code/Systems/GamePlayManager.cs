@@ -216,13 +216,16 @@ public class GamePlayManager : Component
 
 		previousBestTime = hasBeatLevel ? previousBestCache : null;
 
-		if (hasBeatLevel)
+		if (Game.IsEditor)
 		{
-			Log.Info($"WonLevel() levelTime: {levelTime}, previousBestCache: {previousBestCache}, isNewPersonalBest: {isNewPersonalBest}");
-		}
-		else
-		{
-			Log.Info($"WonLevel() for first time! levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+			if (hasBeatLevel)
+			{
+				Log.Info($"WonLevel() levelTime: {levelTime}, previousBestCache: {previousBestCache}, isNewPersonalBest: {isNewPersonalBest}");
+			}
+			else
+			{
+				Log.Info($"WonLevel() for first time! levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+			}
 		}
 
 		if (isNewPersonalBest)

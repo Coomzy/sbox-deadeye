@@ -34,4 +34,12 @@ KilledCivsWidget {
 			align-self: center;
 		}
 	}
+
+	&.visible {
+		opacity: 1;
+	}
+
+	&.invisible {
+		opacity: 0;
+	}
 }
