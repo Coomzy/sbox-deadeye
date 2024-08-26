@@ -5,14 +5,29 @@
 
 <root>
 	<div class="container">
-		<!--<div @ref=medal class="circle"></div>-->
-		<img src=@GetCurrentMedalImage() style="width: 200px; height: 200px; margin: -35px 0px -55px 0px" />
-		<div class="title">@GetRemainingReactTime()</div>
-
-		@if (@ShouldShowTimeDiff())
-		{ 
-			<div class="title" style="color: @GetTimeDiffColor(); margin: -0px 100px -200px -388.5px">@GetTimeDiff()</div>
-		}
+		<div class="table">
+			<div class="row">
+				<div class="column medal">
+					<div class="medal-badge @GetCurrentMedalType()">
+						<img class="medal @GetCurrentMedalType()" src=@GetCurrentMedalImage()/>
+					</div>
+				</div>
+				<div class="column time">
+					<div class="title">@GetRemainingReactTime()</div>
+				</div>
+			</div>
+			<div class="row timediff">
+				<div class="column medal">
+					@* For spacing... *@
+				</div>
+				<div class="column time">
+					@if (@ShouldShowTimeDiff())
+					{
+						<div class="title" style="color: @GetTimeDiffColor();">@GetTimeDiff()</div>
+					}
+				</div>
+			</div>
+		</div>
 	</div>
 </root>
 
@@ -42,8 +57,14 @@
 		}
 
 		var currentMedal = GamePlayManager.instance.currentMedal;
-		var medalImage = GameSettings.instance.GetMedalImage(currentMedal);
-		return medalImage;
+		return GameSettings.instance.GetMedalImage(currentMedal);
+	}
+
+	string GetCurrentMedalType()
+	{
+		if (GamePlayManager.instance == null) return "";
+
+		return GamePlayManager.instance.currentMedal.ToString();
 	}
 
 	string GetTimeDiff()
@@ -53,7 +74,7 @@
 			return "";
 		}
 
-		if (!GamePlayManager.instance.previousBestTime.HasValue)
+		if (GamePlayManager.instance.previousBestTime == null)
 		{
 			return "";
 		}
@@ -68,19 +89,25 @@
 		{
 			return false;
 		}
-		return GamePlayManager.instance.previousBestTime.HasValue;
+
+		if (GamePlayManager.instance.previousBestTime == null)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	string GetTimeDiffColor()
 	{
 		if (GamePlayManager.instance == null)
 		{
-			return "";
+			return "white"; // NOTE: CSS setting must provide a value
 		}
 
-		if (!GamePlayManager.instance.previousBestTime.HasValue)
+		if (GamePlayManager.instance.previousBestTime == null)
 		{
-			return "";
+			return "white"; // NOTE: CSS setting must provide a value
 		}
 
 		if (GamePlayManager.instance.levelTimeDiff > 0.0f)

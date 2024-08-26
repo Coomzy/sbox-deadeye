@@ -1,7 +1,7 @@
 
 using Sandbox.Citizen;
 
-public class PlayerCamera_TD : Component
+public class PlayerCamera_TD : Component, IRestartable, IShutdown
 {
 	public static PlayerCamera_TD instance;
 
@@ -11,13 +11,37 @@ public class PlayerCamera_TD : Component
 
 	[Group("Config"), Property] public float targetHeight { get; set; } = 433.6f; // The height you want the camera to cover in world units.
 
+	Vector3 startPos;
+
 	protected override void OnAwake()
 	{
 		instance = this;
 
 		base.OnAwake();
 
+		startPos = GameObject.Transform.Position;
+		PreRestart();
+	}
+
+	public void PreRestart()
+	{
+		GameObject.Transform.Position = startPos;
 		GameObject.Transform.Rotation = new Angles(90.0f, 0.0f, 0.0f);
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	protected override void OnUpdate()

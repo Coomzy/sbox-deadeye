@@ -1,0 +1,20 @@
+CountdownWidget {
+	position: absolute;
+	top: -350px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	pointer-events: all;
+	//cursor: "bug-default";
+	color: white;
+	font-size: 250px;
+	font-family: 'Alfa Slab One';
+	background-color: transparent;
+	flex-direction: column;
+	padding: 50px;
+	transform: scale(1);
+	transition: all 0.1s ease-out;
+}

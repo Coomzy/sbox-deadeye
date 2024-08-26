@@ -71,7 +71,7 @@ public class StatAndLeaderboardTest : Component
 		var board = await GameLeaderboards.GetLeaderboard(GameLeaderboards.COMBINED_TIME, LeaderboardGroup.Global, 10, cancellationTokenSource.Token);
 		//var board = await GameLeaderboards.GetLeaderboard("level-original", LeaderboardGroup.Friends, 10);
 
-		Log.Info($"Board: {board.Stat}, entries: {board.TotalEntries}");
+		//Log.Info($"Board: {board.Stat}, entries: {board.TotalEntries}");
 
 		foreach (var e in board.Entries)
 		{

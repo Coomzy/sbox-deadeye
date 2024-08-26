@@ -219,9 +219,10 @@ public class MusicManagerSystem : GameObjectSystem
 
 	void OnLevelLoaded()
 	{
+		// This happens on start up
 		if (Game.IsEditor && !Game.IsPlaying)
 		{
-			Log.Info("IS EDITOR AND IS NOT PLAYING");
+			//Log.Info("IS EDITOR AND IS NOT PLAYING");
 			return;
 		}
 

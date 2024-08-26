@@ -7,6 +7,16 @@
 
 <root class="menu">
     <div class="container">
+        <div class="keyboard-hint">
+            @if (hasBeatAllLevels)
+            {
+                <label>Hint: Keyboard is faster. What about both?</label>
+            }
+            else
+            {
+                <label>Hint: Keyboard is faster</label>
+            }
+        </div>
         <div class="buttons">
             <div class="button-bg">
                 <div class="button cowboy singular" onclick="@(() => ButtonBack())">
@@ -24,6 +34,23 @@
 
 @code
 {
+    bool hasBeatAllLevels = true;
+
+    protected override void OnAwake()
+    {
+        foreach (var level in GameSettings.instance.topDownLevels)
+        {
+            if (level == null)
+                continue;
+
+            if (!level.HasCompletedLevel())
+            {
+                hasBeatAllLevels = false;
+                break;
+            }
+        }
+    }
+
     protected override void OnUpdate()
     {
         base.OnUpdate();

@@ -12,8 +12,10 @@ public static class GameStats
 	public const string FAILURE_TOO_MANY_CIVS_KILLED = "failure-too-many-civs-killed";
 	public const string WON = "won";
 	public const string DIED = "died";
+	public const string KILLED_TONY_LAZUTO = "killed-tony-lazuto";
 	public const string LOWEST_MEDAL = "lowest-medal";
-	public const string COMBINED_TIME = "combined-time";
+	//public const string COMBINED_TIME = "combined-time";
+	public const string COMBINED_TIME = "combined-time2";
 
 	public static void Increment(string stat, double incrementAmount = 1)
 	{
@@ -53,5 +55,24 @@ public static class GameStats
 
 			Sandbox.Services.Stats.SetValue(level.statName, level.slowestTime);
 		}
+	}
+
+	[ConCmd("stats_fix")]
+	public static void FixStats()
+	{
+		//Sandbox.Services.Stats.SetValue(LOWEST_MEDAL, 0);
+
+		float slowestTime = 0.0f;
+		foreach (var level in GameSettings.instance.topDownLevels)
+		{
+			Log.Info($"FixStats() level = {level}");
+			if (level == null || !level.isLeaderboardLevel)
+				continue;
+
+			slowestTime += level.slowestTime;
+		}
+
+		Log.Info($"FixStats() slowestTime = {slowestTime}");
+		Sandbox.Services.Stats.SetValue(COMBINED_TIME, slowestTime);
 	}
 }

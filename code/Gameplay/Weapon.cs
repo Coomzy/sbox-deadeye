@@ -4,7 +4,7 @@ using Sandbox;
 using Sandbox.Citizen;
 using System.Threading;
 
-public class Weapon : Component
+public class Weapon : Component, IRestartable, IShutdown
 {
 	[Group("Setup"), Property] public Rigidbody rigidbody { get; set; }
 	[Group("Setup"), Property] public GameObject muzzleFlashHolder { get; set; }
@@ -17,16 +17,54 @@ public class Weapon : Component
 	[Group("Setup"), Property] public ParticleConeEmitter shellEjectEmitter { get; set; }
 	CancellationTokenSource cancellationTokenSource { get; set; }
 	TimeSince timeSinceLastShot {  get; set; }
+	GameObject originalParent { get; set; }
+
+	Vector3 startPos;
+	Rotation startRot;
+	Vector3 startRigidBodyPos;
+	Rotation startRigidBodyRot;
 
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 
+		originalParent = GameObject.Parent;
+		startPos = GameObject.Transform.LocalPosition;
+		startRot = GameObject.Transform.LocalRotation;
+		startRigidBodyPos = rigidbody.GameObject.Transform.LocalPosition;
+		startRigidBodyRot = rigidbody.GameObject.Transform.LocalRotation;
+		cancellationTokenSource = new CancellationTokenSource();
+		PreRestart();
+	}
+
+	public void PreRestart()
+	{
 		muzzleFlashVFX.Enabled = false;
 		bulletTracerLineRenderer.Enabled = false;
 		muzzleFlashLight.Enabled = false;
 		shellEjectEmitter.Enabled = false;
-		cancellationTokenSource = new CancellationTokenSource();
+
+		rigidbody.Enabled = false;
+		GameObject.SetParent(originalParent, true);
+		GameObject.Transform.LocalPosition = startPos;
+		GameObject.Transform.LocalRotation = startRot;
+		rigidbody.GameObject.Transform.LocalPosition = startRigidBodyPos;
+		rigidbody.GameObject.Transform.LocalRotation = startRigidBodyRot;
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	[Button("Shoot")]

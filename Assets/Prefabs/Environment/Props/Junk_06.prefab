@@ -19,7 +19,7 @@
             "__guid": "16d428a1-61fb-4056-85d6-2efa239f765e",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/compost_bag_02.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -37,7 +37,7 @@
             "__guid": "c308b354-bd2c-4390-916a-3e907aae1f0f",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/compost_bag_02.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -56,7 +56,7 @@
             "__guid": "dd0c5868-ec92-462f-8dc4-bdd7067bcd01",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -76,7 +76,7 @@
             "__guid": "3b2d0c0f-0bcf-4927-bcfc-f92064ada310",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/packaged_food/flourbag_crumple.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -96,7 +96,7 @@
             "__guid": "5d0ca73d-71dc-42ce-acd3-7db392d498ee",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/packaged_food/flourbag.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -116,7 +116,7 @@
             "__guid": "2761bf08-bd9b-4df4-8f10-0addf7b732b3",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/packaged_food/flourbag.vmdl",
             "Tint": "1,1,1,1"
           }

@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Transactions;
 using static Sandbox.Gizmo;
 
-public class Target : Component
+public class Target : Component, IRestartable, IShutdown
 {
 	[Group("Setup"), Property] public SkinnedModelRenderer bodyRenderer { get; set; }
 	[Group("Setup"), Property] public ModelPhysics bodyPhysics { get; set; }
@@ -17,6 +17,7 @@ public class Target : Component
 
 	[Group("Config"), Property] public bool isBadTarget { get; set; } = true;
 	[Group("Config"), Property] public bool lookAtPlayer { get; set; } = true;
+	[Group("Config"), Property] public bool isTonyLazuto { get; set; } = false;
 
 	[Group("Runtime"), Property] public bool isDead { get; set; } = false;
 
@@ -36,6 +37,28 @@ public class Target : Component
 		//highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
 		//highlightOutline.ObscuredColor = highlightOutline.Color;
 		//highlightOutline.Enabled = false;
+	}
+
+	public void PreRestart()
+	{
+		isDead = false;
+		highlightOutline.Color = Color.Transparent;
+		highlightOutline.ObscuredColor = highlightOutline.Color;
+	}
+
+	public void PostRestart()
+	{
+
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	public Vector3 GetHeadPos()
@@ -99,5 +122,10 @@ public class Target : Component
 	{
 		isDead = true;
 		citizenVisuals.Die(force);
+
+		if (isTonyLazuto)
+		{
+			GameStats.Increment(GameStats.KILLED_TONY_LAZUTO);
+		}
 	}
 }

@@ -5,7 +5,7 @@
   "Ident": "shootordontshoot",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": "Textures/medals/*\ntextures/levels/thumbnail/*\nfonts/*",
+  "Resources": "Textures/medals/*\ntextures/levels/thumbnail/*\nfonts/*\nTextures/civ_alive.png\nTextures/civ_dead.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "IsWhitelistDisabled": false,
@@ -98,7 +98,7 @@
           "GroupName": "Menu"
         },
         {
-          "Name": "HowToPlay",
+          "Name": "Controls",
           "KeyboardCode": "h",
           "GamepadCode": "Y",
           "GroupName": "Menu"

@@ -24,7 +24,9 @@ public class GamePlayManager : Component
 	[Group("Runtime"), Property] public int civiliansKilled { get; set; }
 	[Group("Runtime"), Property] public bool isNewPersonalBest { get; set; }
 	[Group("Runtime"), Property] public float? previousBestTime { get; set; }
-
+	[Group("Runtime"), Property] public TimeUntil countDownFinish { get; set; }
+	[Group("Runtime"), Property] public bool hasFinishedCountDown => countDownFinish; 
+	
 	public MedalType currentMedal => LevelData.active != null ? LevelData.active.TimeToMedalType(levelTime) : MedalType.None;
 
 	public float levelTime
@@ -55,6 +57,111 @@ public class GamePlayManager : Component
 		instance = this;
 
 		base.OnAwake();
+
+		countDownFinish = 3f;
+		Restart_Internal();
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		CheckForExitLevelInput();
+
+		if (countDownFinish)
+		{
+			CheckForReloadLevelInput();
+		}
+
+		//Log.Warning($"Execute Commands Stage: {executeCommandsStage}, loop: {loop}");
+	}
+
+	void CheckForExitLevelInput()
+	{
+		if (Input.EscapePressed)
+		{
+			Input.EscapePressed = false;
+			ExitLevel();
+			return;
+		}
+
+		if (!Input.Pressed("Quit"))
+		{
+			return;
+		}
+
+		if (UIManager.instance?.leaderboardsScreen != null && UIManager.instance.leaderboardsScreen.Enabled)
+			return;
+
+		ExitLevel();
+	}
+
+	void CheckForReloadLevelInput()
+	{
+		bool pressed = Input.Pressed("Restart");
+		if (Input.Pressed("Restart_Alt"))
+		{
+			pressed = true;
+		}
+		if (!pressed)
+			return;
+
+		if (UIManager.instance?.leaderboardsScreen != null && UIManager.instance.leaderboardsScreen.Enabled)
+			return;
+
+		Restart();
+		//LoadingScreen.ReloadLevel();
+	}
+
+	void Restart_Internal()
+	{
+		isPlayingLevel = true;
+		decidingTime = 0.0f;
+		civiliansKilled = 0;
+		isNewPersonalBest = false;
+		previousBestTime = null;
+	}
+
+	void Restart()
+	{
+		Restart_Internal();
+
+		var restartables = Scene.GetAllComponents<IRestartable>();
+		foreach (var restartable in restartables)
+		{
+			if (restartable == null)
+				continue;
+
+			restartable.PreRestart();
+		}
+		foreach (var restartable in restartables)
+		{
+			if (restartable == null)
+				continue;
+
+			restartable.PostRestart();
+		}
+	}
+
+	public void ExitLevel()
+	{
+		var shutdowns = Scene.GetAllComponents<IShutdown>();
+		foreach (var shutdown in shutdowns)
+		{
+			if (shutdown == null)
+				continue;
+
+			shutdown.PreShutdown();
+		}
+		foreach (var shutdown in shutdowns)
+		{
+			if (shutdown == null)
+				continue;
+
+			shutdown.PostShutdown();
+		}
+
+		LoadingScreen.SwitchToMenu();
 	}
 
 	public void FailLevel(FailReason failReason)
@@ -100,8 +207,8 @@ public class GamePlayManager : Component
 				LevelData.active.slowestTime = levelTime;
 			}
 
-			isNewPersonalBest = hasBeatLevel ? previousBestTime <= levelTime : true;
 			previousBestTime = hasBeatLevel ? previousBestCache : null;
+			isNewPersonalBest = hasBeatLevel ? previousBestTime <= levelTime : true;
 			return;
 		}
 
@@ -109,13 +216,16 @@ public class GamePlayManager : Component
 
 		previousBestTime = hasBeatLevel ? previousBestCache : null;
 
-		if (hasBeatLevel)
+		if (Game.IsEditor)
 		{
-			Log.Info($"WonLevel() levelTime: {levelTime}, previousBestCache: {previousBestCache}, isNewPersonalBest: {isNewPersonalBest}");
-		}
-		else
-		{
-			Log.Info($"WonLevel() for first time! levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+			if (hasBeatLevel)
+			{
+				Log.Info($"WonLevel() levelTime: {levelTime}, previousBestCache: {previousBestCache}, isNewPersonalBest: {isNewPersonalBest}");
+			}
+			else
+			{
+				Log.Info($"WonLevel() for first time! levelTime: {levelTime}, isNewPersonalBest: {isNewPersonalBest}");
+			}
 		}
 
 		if (isNewPersonalBest)
@@ -126,24 +236,21 @@ public class GamePlayManager : Component
 			GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
 		}
 
-		if (isNewPersonalBest || !hasBeatLevel)
+		float combinedTime = 0.0f;
+		bool hasBeatAllLevels = true;
+		foreach (var level in GameSettings.instance.topDownLevels)
 		{
-			float combinedTime = 0.0f;
-			bool hasBeatAllLevels = true;
-			foreach (var level in GameSettings.instance.topDownLevels)
+			if (!level.HasCompletedLevel())
 			{
-				if (!level.HasCompletedLevel())
-				{
-					hasBeatAllLevels = false;
-					break;
-				}
-				combinedTime += level.GetBestTime();
+				hasBeatAllLevels = false;
+				break;
 			}
+			combinedTime += level.GetBestTime();
+		}
 
-			if (hasBeatAllLevels)
-			{
-				GameStats.Set(GameStats.COMBINED_TIME, combinedTime);
-			}
+		if (hasBeatAllLevels)
+		{
+			GameStats.Set(GameStats.COMBINED_TIME, combinedTime);
 		}
 	}
 

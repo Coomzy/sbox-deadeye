@@ -1,6 +1,6 @@
 @import "./Shared/Menu.scss";
 
-MainMenuScreen.Menu {
+MainMenuScreen.menu {
 	background-color: transparent;
 	//background: url("UI/Menu/shoot-dont-shoot-menu-bg.png");
 	.title {
@@ -10,6 +10,10 @@ MainMenuScreen.Menu {
 	> .container {
 		.button-bg {
 			margin-bottom: 300px;
+		}
+
+		.button.cowboy {
+			padding: 15px 32px;
 		}
 	}
 }

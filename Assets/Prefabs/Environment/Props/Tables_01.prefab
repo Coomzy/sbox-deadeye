@@ -18,7 +18,7 @@
             "__guid": "e50d44e8-fd35-49c7-a36f-8bc3d4691415",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -37,7 +37,7 @@
             "__guid": "63ebeeee-f23e-48bb-b72d-27ea41eedd91",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -56,7 +56,7 @@
             "__guid": "451eac62-32f6-445f-b73b-58468341772e",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -73,7 +73,7 @@
             "__guid": "86cb8d57-a74f-4b25-8cd3-3f199c6b62e8",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/furniture/round_wooden_table_01.vmdl",
             "Tint": "1,1,1,1"
           }

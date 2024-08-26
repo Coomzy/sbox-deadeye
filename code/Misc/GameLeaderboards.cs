@@ -23,6 +23,7 @@ public static class GameLeaderboards
 	public const string FAILURE_TOO_MANY_CIVS_KILLED = "fail-civs-lb";
 	public const string WON = "won-lb";
 	public const string DIED = "died-lb";
+	public const string KILLED_TONY_LAZUTO = "killed-tony-lb";
 	public const string LOWEST_MEDAL = "lowest-medal-lb";
 	public const string COMBINED_TIME = "combined-time-lb";
 
@@ -52,7 +53,7 @@ public static class GameLeaderboards
 		}
 
 		Sandbox.Services.Stats.SetValue(leaderboardName, value);
-		Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{value}'");
+		//Log.Info($"Submitting leaderboard '{leaderboardName}' for time '{value}'");
 	}
 
 	public static async Task<Leaderboards.Board2> GetLeaderboard(string leaderboardName, LeaderboardGroup group, CancellationToken cancellationToken)

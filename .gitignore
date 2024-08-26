@@ -11,6 +11,8 @@ bin
 Properties/*
 code/obj/*
 code/Properties/*
+Source
+WorkFiles
 
 # Auto-generated asset related files
 *.generated.*

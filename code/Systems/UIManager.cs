@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using static Sandbox.Gizmo;
 
-public class UIManager : Component
+public class UIManager : Component, IRestartable
 {
 	public static UIManager instance;
 
@@ -15,6 +15,8 @@ public class UIManager : Component
 	[Group("Setup"), Property] public DiedScreen diedScreen { get; private set; }
 	[Group("Setup"), Property] public FailedTooManyCivsKilledScreen failedTooManyCivsKilledScreen { get; private set; }
 	[Group("Setup"), Property] public WonScreen wonScreen { get; private set; }
+	[Group("Setup"), Property] public CountdownWidget countDownWidget { get; private set; }
+	[Group("Setup"), Property] public KilledCivsWidget killedCivsWidget { get; private set; }
 
 	[Group("Setup"), Property] public LeaderboardsScreen leaderboardsScreen { get; private set; }
 	[Group("Setup"), Property] public LevelLeaderboards levelLeaderboards { get; private set; }
@@ -28,6 +30,41 @@ public class UIManager : Component
 		instance = this;
 
 		base.OnAwake();
+
+		PreRestart();
+	}
+
+	public void PreRestart()
+	{
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = true;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
+		if (killedCivsWidget != null) killedCivsWidget.Enabled = true;
+
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
+		if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
+
+	}
+
+	public void PostRestart()
+	{
+		if (killedCivsWidget != null) killedCivsWidget.Show();
+	}
+
+	public void PreShutdown()
+	{
+		this.Enabled = false;
+
+		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
+		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
+		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
+		if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
+	}
+
+	public void PostShutdown()
+	{
+
 	}
 
 	public void Died()
@@ -58,6 +95,7 @@ public class UIManager : Component
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
 		//if (wonScreen != null) wonScreen.Enabled = true;
 		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Unfuck();
 	}
 
 	public void CivilianKilled()
@@ -80,7 +118,7 @@ public class UIManager : Component
 		{
 			Log.Warning($"UI Manager no leaderboardsScreen");
 			return;
-		}
+		} 
 
 		if (leaderboardsScreen != null)
 		{			
@@ -89,7 +127,10 @@ public class UIManager : Component
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
-		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
+		if (killedCivsWidget != null) killedCivsWidget.Hide();
+
+		// This is done in the class (set invisible) because it causes that fucking index error from Panel::InternalTick()
+		//if (afterActionReportScreen != null) afterActionReportScreen.Enabled = false;
 	}
 
 	public async void CloseLeaderboard()
@@ -102,8 +143,10 @@ public class UIManager : Component
 		}
 
 		if (currentTimeWidget != null) currentTimeWidget.Enabled = true;
+		if (killedCivsWidget != null) killedCivsWidget.Show();
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = true;
-		if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
+		//if (afterActionReportScreen != null) afterActionReportScreen.Enabled = true;
+		if (afterActionReportScreen != null) afterActionReportScreen.Unfuck();
 	}
 
 	public static string FormatTime(double time)
@@ -117,6 +160,10 @@ public class UIManager : Component
 		
 		string sign = seconds < 0 ? "-" : "+";
 
-		return (useSign ? sign : "") + string.Format("{0:00.000}", MathF.Abs(seconds));
+		if (useSign)
+		{
+			return sign + string.Format("{0:00.000}", MathF.Abs(time));
+		}
+		return string.Format("{0:00.000}", time);
 	}
 }

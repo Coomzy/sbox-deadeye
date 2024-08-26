@@ -36,7 +36,7 @@
             "__guid": "97be6773-6add-41c2-acf8-6daa9b93a0dd",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/compost_bag_02.vmdl",
             "Tint": "1,1,1,1"
           }

@@ -11,13 +11,13 @@ TimeAddedWidget {
 	background-color: transparent;
 	font-weight: 400;
 	font-family: Consolas;
-	padding: 0px;
+	padding: 50px;
 	transition: all 0.1s ease-out;
 	pointer-events: none;
 
 	.table {
-		margin-top: 150px;
-		width: 550px;
+		margin-top: 125px;
+		width: 475px;
 		height: 500px;
 		justify-content: flex-end;
 		align-content: flex-start;
