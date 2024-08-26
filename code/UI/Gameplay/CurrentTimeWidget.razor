@@ -74,7 +74,7 @@
 			return "";
 		}
 
-		if (!GamePlayManager.instance.previousBestTime.HasValue)
+		if (GamePlayManager.instance.previousBestTime == null)
 		{
 			return "";
 		}
@@ -89,7 +89,13 @@
 		{
 			return false;
 		}
-		return GamePlayManager.instance.previousBestTime.HasValue;
+
+		if (GamePlayManager.instance.previousBestTime == null)
+		{
+			return false;
+		}
+
+		return true;
 	}
 
 	string GetTimeDiffColor()
@@ -99,7 +105,7 @@
 			return "white"; // NOTE: CSS setting must provide a value
 		}
 
-		if (!GamePlayManager.instance.previousBestTime.HasValue)
+		if (GamePlayManager.instance.previousBestTime == null)
 		{
 			return "white"; // NOTE: CSS setting must provide a value
 		}
