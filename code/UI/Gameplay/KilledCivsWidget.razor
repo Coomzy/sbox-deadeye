@@ -1,0 +1,43 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="container">
+		<img src=@GetTexture(3) />
+		<img src=@GetTexture(2) />
+		<img src=@GetTexture(1) />
+	</div>
+</root>
+
+@code
+{
+	public string GetTexture(int civIndex)
+	{
+		if (LevelData.active == null)
+			return "";
+
+		int allowedCivilianCasualties = LevelData.active.allowedCivilianCasualties;
+		if (allowedCivilianCasualties < civIndex)
+			return "";
+
+		if (GamePlayManager.instance == null)
+			return "";
+
+		int civsRemaining = allowedCivilianCasualties - GamePlayManager.instance.civiliansKilled;
+		if (civsRemaining < civIndex)
+		{
+			return "textures/civ_dead.png";
+		}
+		return "textures/civ_alive.png";	
+	}
+
+	protected override int BuildHash()
+	{
+		if (GamePlayManager.instance == null)
+			return 0;
+
+		return GamePlayManager.instance.civiliansKilled;
+	}
+}

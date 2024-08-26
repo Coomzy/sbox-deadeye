@@ -25683,6 +25683,15 @@
           "Model": "models/props/architecture/sm_wood_floor.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "15c99c0e-643a-4d0d-bc17-eea994f77c85",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
         }
       ]
     },
@@ -25756,6 +25765,15 @@
           "Model": "models/props/architecture/sm_wood_floor.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "8e25cd8f-a6eb-4f78-b18f-01a3cf8de36a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
         }
       ]
     },
@@ -25792,6 +25810,15 @@
           "Model": "models/props/architecture/sm_wood_floor.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "fca38597-725c-49ad-a680-b568ab22b799",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
         }
       ]
     },

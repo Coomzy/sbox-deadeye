@@ -58525,6 +58525,15 @@
           "Model": "models/props/architecture/sm_ground_plane_01.vmdl",
           "RenderType": "Off",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "8e25cd8f-a6eb-4f78-b18f-01a3cf8de36a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/dirt.surface"
         }
       ]
     },

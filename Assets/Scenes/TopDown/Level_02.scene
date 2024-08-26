@@ -42,6 +42,8 @@
       "__guid": "341aab56-21ab-4572-b2d4-ea16cd283300",
       "Flags": 0,
       "Name": "Camera",
+      "Position": "0,0,700",
+      "Rotation": "0,0.7071068,0,0.7071068",
       "Enabled": true,
       "__Prefab": "prefabs/player/camera.prefab",
       "__PrefabVariables": {}
@@ -42077,7 +42079,7 @@
                 "_type": "gameobject",
                 "go": "0db53704-a4b4-43dc-9cb0-bce529c600e5"
               },
-              "reactTime": 1.25,
+              "reactTime": 1.75,
               "targetIndex": -1,
               "targets": [
                 {
@@ -50317,6 +50319,15 @@
           "Model": "models/props/architecture/sm_outside_floor_02.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "8e25cd8f-a6eb-4f78-b18f-01a3cf8de36a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/mud.surface"
         }
       ]
     },
@@ -51118,7 +51129,7 @@
           "__guid": "0b8c2502-4662-4a2d-b6ed-8129db160475",
           "Flags": 0,
           "Name": "beer_bottle (12)",
-          "Position": "784.0902,-262.7992,9.75896",
+          "Position": "784.0898,-262.801,9.75896",
           "Rotation": "0.6532823,0.2705984,-0.6532822,0.2705985",
           "Enabled": true,
           "Components": [
@@ -51137,7 +51148,7 @@
           "__guid": "cd000c78-f74e-4f9e-929b-3e5fbf39d2c3",
           "Flags": 0,
           "Name": "beer_bottle (11)",
-          "Position": "765.3143,-244.0197,9.75896",
+          "Position": "765.3139,-244.0215,9.75896",
           "Rotation": "0.5000004,-0.5000004,-0.5000006,-0.5000003",
           "Enabled": true,
           "Components": [
@@ -51156,7 +51167,7 @@
           "__guid": "be723146-5813-427a-b675-b2e9043860b1",
           "Flags": 0,
           "Name": "beer_bottle (10)",
-          "Position": "741.1798,-240.6661,9.75896",
+          "Position": "741.1794,-240.6679,9.75896",
           "Rotation": "0.2705981,-0.6532819,-0.2705984,-0.6532817",
           "Enabled": true,
           "Components": [
@@ -51175,7 +51186,7 @@
           "__guid": "52436361-1e90-4ac4-b3fb-063c5b0620e4",
           "Flags": 0,
           "Name": "beer_bottle (9)",
-          "Position": "778.1275,-277.6129,9.758957",
+          "Position": "778.127,-277.6147,9.758957",
           "Rotation": "-0.707107,0.0000001341105,0.7071069,-0.0000001788139",
           "Enabled": true,
           "Components": [
@@ -51194,7 +51205,7 @@
           "__guid": "12a2b7f2-eaad-42ec-8c1f-c6d13b2e79b1",
           "Flags": 0,
           "Name": "beer_bottle (8)",
-          "Position": "857.9738,-383.4059,44.23459",
+          "Position": "857.973,-383.408,44.23459",
           "Rotation": "0,0,0.9238798,0.3826834",
           "Enabled": true,
           "Components": [
@@ -51213,7 +51224,7 @@
           "__guid": "190f020b-2b4e-444d-ac73-83bce6214e75",
           "Flags": 0,
           "Name": "beer_bottle (7)",
-          "Position": "853.8279,-402.3629,44.23459",
+          "Position": "853.827,-402.3648,44.23459",
           "Rotation": "0,0,0.9238798,0.3826835",
           "Enabled": true,
           "Components": [
@@ -51232,7 +51243,7 @@
           "__guid": "1d1ff2b4-e83d-403d-b47d-71efb2454a57",
           "Flags": 0,
           "Name": "beer_bottle (6)",
-          "Position": "849.843,-393.8231,44.23459",
+          "Position": "849.8422,-393.8251,44.23459",
           "Rotation": "0,0,0.9238799,0.3826835",
           "Enabled": true,
           "Components": [
@@ -51251,7 +51262,7 @@
           "__guid": "f67f15de-3ccd-4622-8ddc-d2b7c8846e6e",
           "Flags": 0,
           "Name": "beer_bottle (5)",
-          "Position": "879.399,-393.5287,44.23459",
+          "Position": "879.3982,-393.5306,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51270,7 +51281,7 @@
           "__guid": "ef4eae47-9340-4a22-9b9f-e3fd1ec3b631",
           "Flags": 0,
           "Name": "beer_bottle (4)",
-          "Position": "614.0734,-128.1904,44.23459",
+          "Position": "614.0734,-128.1918,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51289,7 +51300,7 @@
           "__guid": "eb7b477a-56a7-40bb-8e58-fe46994f0991",
           "Flags": 0,
           "Name": "beer_bottle (3)",
-          "Position": "590.4285,-141.652,44.23459",
+          "Position": "590.4284,-141.6534,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51308,7 +51319,7 @@
           "__guid": "905ff593-8314-4988-ae05-d39c497b51b2",
           "Flags": 0,
           "Name": "beer_bottle (2)",
-          "Position": "602.7686,-148.3869,44.23459",
+          "Position": "602.7686,-148.3883,44.23459",
           "Enabled": true,
           "Components": [
             {

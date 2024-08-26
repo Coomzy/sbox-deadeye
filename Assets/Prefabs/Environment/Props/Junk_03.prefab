@@ -28,7 +28,7 @@
             "__guid": "00a5d1a6-5588-40e1-9ddf-2f2f29afcda4",
             "BodyGroups": 18446744073709551615,
             "Health": 1,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -46,7 +46,7 @@
             "__guid": "5839f587-871c-4fa2-bf06-6dffcbf6987d",
             "BodyGroups": 18446744073709551615,
             "Health": 1,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -65,7 +65,7 @@
             "__guid": "44069d01-ad95-4ef5-961e-ed434fc6e768",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/props/trim_sheets/crate/wooden_crate/wooden_crate_02.vmdl",
             "Tint": "1,1,1,1"
           }
@@ -84,7 +84,7 @@
             "__guid": "48957ae7-e663-42a0-8e95-e5cc4980d729",
             "BodyGroups": 18446744073709551615,
             "Health": 0,
-            "IsStatic": false,
+            "IsStatic": true,
             "Model": "models/compost_bag_02.vmdl",
             "Tint": "1,1,1,1"
           }

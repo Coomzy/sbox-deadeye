@@ -207,8 +207,8 @@ public class GamePlayManager : Component
 				LevelData.active.slowestTime = levelTime;
 			}
 
-			isNewPersonalBest = hasBeatLevel ? previousBestTime <= levelTime : true;
 			previousBestTime = hasBeatLevel ? previousBestCache : null;
+			isNewPersonalBest = hasBeatLevel ? previousBestTime <= levelTime : true;
 			return;
 		}
 
@@ -233,24 +233,21 @@ public class GamePlayManager : Component
 			GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
 		}
 
-		if (isNewPersonalBest || !hasBeatLevel)
+		float combinedTime = 0.0f;
+		bool hasBeatAllLevels = true;
+		foreach (var level in GameSettings.instance.topDownLevels)
 		{
-			float combinedTime = 0.0f;
-			bool hasBeatAllLevels = true;
-			foreach (var level in GameSettings.instance.topDownLevels)
+			if (!level.HasCompletedLevel())
 			{
-				if (!level.HasCompletedLevel())
-				{
-					hasBeatAllLevels = false;
-					break;
-				}
-				combinedTime += level.GetBestTime();
+				hasBeatAllLevels = false;
+				break;
 			}
+			combinedTime += level.GetBestTime();
+		}
 
-			if (hasBeatAllLevels)
-			{
-				GameStats.Set(GameStats.COMBINED_TIME, combinedTime);
-			}
+		if (hasBeatAllLevels)
+		{
+			GameStats.Set(GameStats.COMBINED_TIME, combinedTime);
 		}
 	}
 

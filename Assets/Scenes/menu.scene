@@ -1,5 +1,5 @@
 {
-  "__guid": "84300573-e855-4e8c-8e59-c25327ea7cdb",
+  "__guid": "06614129-1fbc-4e7b-a844-85b8dee76d57",
   "GameObjects": [
     {
       "__guid": "1c4bba59-50e1-4218-8cd0-d70feacaf733",
@@ -314,7 +314,7 @@
                   "hints": [
                     "Red Outline",
                     "Armed",
-                    "Deadly Threat"
+                    "Murderer"
                   ],
                   "useBullet": true
                 }
@@ -346,7 +346,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "6c0b32ea-2674-4e39-93bc-335daa9d28c3",
+                    "component_id": "b6e1bbb8-d4a0-47b7-a06a-6d0dd8ca9fcb",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -416,7 +416,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "6c0b32ea-2674-4e39-93bc-335daa9d28c3",
+                    "component_id": "b6e1bbb8-d4a0-47b7-a06a-6d0dd8ca9fcb",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -2738,7 +2738,6 @@
               "Position": "210.5115,-128.5577,-69.058",
               "Rotation": "0,0,0.8660254,0.5",
               "Scale": "6,5,5",
-              "Enabled": true,
               "Components": [
                 {
                   "__type": "Sandbox.ModelRenderer",
@@ -2781,7 +2780,6 @@
               "Position": "102.01,-162.179,-69.05757",
               "Rotation": "0,0,0.7071068,0.7071068",
               "Scale": "6,5,5",
-              "Enabled": true,
               "Components": [
                 {
                   "__type": "Sandbox.ModelRenderer",
@@ -2824,7 +2822,6 @@
               "Position": "-7.154907,-135.1764,-69.058",
               "Rotation": "0,0,0.5387709,0.8424523",
               "Scale": "6,5,5",
-              "Enabled": true,
               "Components": [
                 {
                   "__type": "Sandbox.ModelRenderer",
@@ -4108,7 +4105,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "16a8069e-f330-4bf4-9704-f09a8b4cf20d",
+            "component_id": "257dc7fa-7468-4ab4-a575-d06d21f41581",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -7889,6 +7886,27 @@
           "Tint": "1,1,1,1"
         }
       ]
+    },
+    {
+      "__guid": "e135f60d-3950-47d8-850e-0631d89327ad",
+      "Flags": 0,
+      "Name": "Decal",
+      "Position": "279.8157,-722.1801,138.6696",
+      "Rotation": "0.7070798,-0.7070798,-0.006170562,-0.006170623",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DecalRenderer",
+          "__guid": "f6fa5096-0ebc-4120-8a56-0066d5360ef6",
+          "CutoffAngle": 60,
+          "CutoffAngleSoftness": 5,
+          "Material": "textures/wanted_poster.vmat",
+          "Mod2XBlending": false,
+          "Size": "64,64,32",
+          "TintColor": "1,1,1,1",
+          "TriPlanar": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -7922,7 +7940,7 @@
     "additionproject.vintagecabinet_1",
     "facepunch.beer_bottle",
     "facepunch.flourbag_crumple",
-    "facepunch.plasticbucketa2",
+    "facepunch.plasticbucketa1",
     "facepunch.wooden_chair_a",
     "facepunch.wooden_crate_02",
     "polyhaven.wooden_barrel_01a"
