@@ -12,27 +12,29 @@
 
 	@if (!isFailState)
 	{
-		<div class="table">
-			<div class="row">
-				<div class="column">
-					@if (IsNewPersonalBest())
-					{
-						<div class="label">New Personal Best!</div>
-					}
-				</div>
-				<div class="column">
-					<div class="medals">
-						<img class="medal bronze @GetMedalLocked(MedalType.Bronze)" src=@GetMedalImage(MedalType.Bronze) style="opacity: 1" />
-						<img class="medal silver @GetMedalLocked(MedalType.Silver)" src=@GetMedalImage(MedalType.Silver) style="opacity: @GetMedalOpacity(MedalType.Silver)" />
-						<img class="medal gold @GetMedalLocked(MedalType.Gold)" src=@GetMedalImage(MedalType.Gold) style="opacity: @GetMedalOpacity(MedalType.Gold)" />
-						<img class="medal onyx @GetMedalLocked(MedalType.Onyx)" src=@GetMedalImage(MedalType.Onyx) style="opacity: @GetMedalOpacity(MedalType.Onyx)" />
+		<div class="report">
+			<div class="table">
+				<div class="row">
+					<div class="column best-time">
+						@if (IsNewPersonalBest())
+						{
+							<div class="label">New Personal Best!</div>
+						}
 					</div>
-				</div>
-				<div class="column">
-					@if (!HasBestMedal())
-					{
-						<div class="label">@GetNextTime()</div>
-					}
+					<div class="column medals">
+						<div class="medal-container">
+							<img class="medal bronze @GetMedalLocked(MedalType.Bronze)" src=@GetMedalImage(MedalType.Bronze) style="opacity: 1" />
+							<img class="medal silver @GetMedalLocked(MedalType.Silver)" src=@GetMedalImage(MedalType.Silver) style="opacity: @GetMedalOpacity(MedalType.Silver)" />
+							<img class="medal gold @GetMedalLocked(MedalType.Gold)" src=@GetMedalImage(MedalType.Gold) style="opacity: @GetMedalOpacity(MedalType.Gold)" />
+							<img class="medal onyx @GetMedalLocked(MedalType.Onyx)" src=@GetMedalImage(MedalType.Onyx) style="opacity: @GetMedalOpacity(MedalType.Onyx)" />
+						</div>
+					</div>
+					<div class="column next-time">
+						@if (!HasBestMedal())
+						{
+							<div class="label">@GetNextTime()</div>
+						}
+					</div>
 				</div>
 			</div>
 		</div>

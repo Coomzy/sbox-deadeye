@@ -15,7 +15,7 @@ AfterActionReportScreen.menu {
 	.title {
 		font-family: 'Alfa Slab One';
 
-		margin: 30px 50px;
+		margin: 30px 25px;
 		font-size: 60px;
 		//color: lightgray;
 	}
@@ -34,40 +34,58 @@ AfterActionReportScreen.menu {
 		}
 	}
 
-	.table {
-		margin: -150px 0 0 0;
-		max-width: 1600px;
+	.report {
+		position: absolute;
+		top: 0;
 
-		.row {
-			color: white;
-			width: 100%;
-			padding: 25px 0;
-		}
+		.table {
+			margin: 50px 0 0 0;
+			max-width: 1800px;
 
-		.row, .column {
-			align-items: center;
-			justify-content: center;
-		}
-
-		.medals {
-			height: 125px;
-			margin: 0 60px;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-
-			img.medal {
-				flex-direction: column;
-				align-self: flex-start;
-				flex-grow: 0;
-				flex-shrink: 0;
-				width: 200px;
-				height: 200px;
-				margin: -37.5px -30px;
+			.row {
+				color: white;
+				width: 100%;
+				padding: 15px 0;
 			}
 
-			img.medal.onyx.unlocked:last-child {
-				margin: -37.5px 0 0 0;
+			.row, .column {
+				align-items: center;
+				justify-content: center;
+			}
+
+			.best-time {
+				align-items: flex-end;
+			}
+
+			.next-time {
+				align-items: flex-start;
+			}
+
+			.medals {
+				margin: 0 20px;
+			}
+
+			.medal-container {
+				height: 125px;
+				margin: 0;
+				//background-color: red;
+				/*flex-direction: row;
+				align-items: center;
+				justify-content: center;*/
+
+				img.medal {
+					flex-direction: column;
+					align-self: flex-start;
+					flex-grow: 0;
+					flex-shrink: 0;
+					width: 200px;
+					height: 200px;
+					margin: -37.5px -30px;
+				}
+
+				img.medal.onyx.unlocked:last-child {
+					margin: -37.5px 0 0 0;
+				}
 			}
 		}
 	}
