@@ -7,6 +7,16 @@
 
 <root class="menu">
     <div class="container">
+        <div class="keyboard-hint">
+            @if (hasBeatAllLevels)
+            {
+                <label>Hint: Keyboard is faster. What about both?</label>
+            }
+            else
+            {
+                <label>Hint: Keyboard is faster</label>
+            }
+        </div>
         <div class="buttons">
             <div class="button-bg">
                 <div class="button cowboy singular" onclick="@(() => ButtonBack())">
@@ -17,14 +27,6 @@
 					Back
                 </div>
             </div>
-            @if (hasBeatAllLevels)
-            {
-                <label>Hint: Keyboard is faster. What about both?</label>
-            }
-            else
-            {
-                <label>Hint: Keyboard is faster</label>
-            }
         </div>
     </div>
 
