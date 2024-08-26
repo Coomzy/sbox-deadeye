@@ -1,79 +1,66 @@
 @import "../Menu/Shared/Menu.scss";
+@import "../Menu/Shared/Table.scss";
 
-AfterActionReport.menu {
+AfterActionReportScreen.menu {
 	background-color: transparent;
-	//pointer-events: none;
-
-	.container {
-		height: 10%;
-		display: flex;
-		justify-content: flex-end; /* Pushes items to the right */
-		flex-direction: row;
-		position: absolute;
-		bottom: 20px; /* Distance from the bottom of the screen */
-		transform: translateX(-50%); /* Centers the container horizontally */
-		align-items: flex-end;
-		gap: 20px;
-		//pointer-events: none;
-	}
-
-	.container .buttonsalt {
-		.button-group {
-			align-items: flex-end;
-			flex-direction: row;
-			align-items: center;
-			color: black;
-			background-color: black;
-
-			InputGlyph {
-				margin-left: 0.5em;
-			}
-		}
-
-		.button {
-			width: 600px;
-			pointer-events: all;
-
-			.icon.hand {
-				padding: 5px 0;
-			}
-		}
-	}
+	pointer-events: none;
+	cursor: default;
 
 	.title {
-		align-self: flex-end;
-		font-size: 88px;
+		margin: 30px 50px;
+		font-size: 60px;
 		//color: lightgray;
 	}
 
-	.table {
-		flex-direction: column;
-		width: 600px;
-		mix-blend-mode: lighten;
+	.container {
+		align-items: flex-end;
+		gap: 0;
 
-		.header {
-			opacity: 0.3;
+		.buttonsalt {
+			.button-group {
+				//height: 64px;
+				align-items: flex-end;
+				flex-direction: row;
+				align-items: center;
+			}
 		}
+	}
+
+	.table {
+		margin: -150px 0 0 0;
+		max-width: 1600px;
 
 		.row {
-			white-space: nowrap;
-
-			> .name {
-				flex-grow: 1;
-			}
-
-			> .stat {
-				width: 100px;
-				justify-content: flex-end;
-			}
-
-			> * {
-				padding: 0px 8px;
-			}
+			color: white;
+			width: 100%;
+			padding: 25px 0;
 		}
 
-		.me {
-			color: #4cff00;
+		.row, .column {
+			align-items: center;
+			justify-content: center;
+		}
+
+		.medals {
+			height: 125px;
+			margin: 0 60px;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+
+			img.medal {
+				flex-direction: column;
+				align-self: flex-start;
+				flex-grow: 0;
+				flex-shrink: 0;
+				width: 200px;
+				height: 200px;
+				margin: -37.5px -30px;
+			}
+
+			img.medal.onyx.unlocked:last-child {
+				margin: -37.5px 0 0 0;
+			}
 		}
 	}
 }

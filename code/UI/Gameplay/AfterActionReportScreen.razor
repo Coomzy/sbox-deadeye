@@ -5,26 +5,37 @@
 @using Sandbox.Audio;
 @inherits PanelComponent
 
-<root class="menu" style="pointer-events: none; cursor: default;">
-	<div class="title" style="font-size: 65px; margin: -00px 100px -00px 0px;">
+<root class="menu">
+	<div class="title">
 		<span>@GetActionStateMessage()</span>
 	</div>
 
 	@if (!isFailState)
 	{
-		// TODO: I couldn't figure out how to do a background around this stuff
-		<img src=@GetMedalImage(MedalType.Bronze) style="width: 200px; height: 200px; margin: -115px 500px -50px 0px;"/>
-		<img src=@GetMedalImage(MedalType.Silver) style="width: 200px; height: 200px; margin: -115px 166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Silver)" />
-		<img src=@GetMedalImage(MedalType.Gold) style="width: 200px; height: 200px; margin: -115px -166.67px -50px 0px; opacity: @GetMedalOpacity(MedalType.Gold)" />
-		<img src=@GetMedalImage(MedalType.Onyx) style="width: 200px; height: 200px; margin: -115px -500px 80px 0px; opacity: @GetMedalOpacity(MedalType.Onyx)" />
-		@if (IsNewPersonalBest())
-		{
-			<div class="label" style="width: 350px; height: 00px; margin: -0px 200px 00px 0px; color: white;">New Personal Best!</div>
-		}
-		@if (!HasBestMedal())
-		{
-			<div class="label" style="width: 350px; height: 00px; margin: -0px -500px 00px 0px; color: white;">@GetNextTime()</div>
-		}
+		<div class="table">
+			<div class="row">
+				<div class="column">
+					@if (IsNewPersonalBest())
+					{
+						<div class="label">New Personal Best!</div>
+					}
+				</div>
+				<div class="column">
+					<div class="medals">
+						<img class="medal bronze @GetMedalLocked(MedalType.Bronze)" src=@GetMedalImage(MedalType.Bronze) style="opacity: 1" />
+						<img class="medal silver @GetMedalLocked(MedalType.Silver)" src=@GetMedalImage(MedalType.Silver) style="opacity: @GetMedalOpacity(MedalType.Silver)" />
+						<img class="medal gold @GetMedalLocked(MedalType.Gold)" src=@GetMedalImage(MedalType.Gold) style="opacity: @GetMedalOpacity(MedalType.Gold)" />
+						<img class="medal onyx @GetMedalLocked(MedalType.Onyx)" src=@GetMedalImage(MedalType.Onyx) style="opacity: @GetMedalOpacity(MedalType.Onyx)" />
+					</div>
+				</div>
+				<div class="column">
+					@if (!HasBestMedal())
+					{
+						<div class="label">@GetNextTime()</div>
+					}
+				</div>
+			</div>
+		</div>
 	}
 
 	<div class="container">
@@ -214,6 +225,11 @@
 			return false;
 		}
 		return GamePlayManager.instance.isNewPersonalBest;
+	}
+
+	string GetMedalLocked(MedalType medalType)
+	{
+		return (GetMedalImage(medalType) == GameSettings.instance.lockedImage ? "locked" : "unlocked");
 	}
 
 	float GetMedalOpacity(MedalType medalType)
