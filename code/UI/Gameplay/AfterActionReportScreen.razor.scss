@@ -31,6 +31,13 @@ AfterActionReportScreen.menu {
 				flex-direction: row;
 				align-items: center;
 			}
+
+			.button {
+				flex-grow: 0;
+				flex-shrink: 0;
+				width: auto;
+				margin: 0 25px;
+			}
 		}
 	}
 
