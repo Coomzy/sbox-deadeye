@@ -73,6 +73,9 @@ public class GamePlayManager : Component
 				Log.Warning("Could not find a GlobalHighlight!!");
 			}
 		}
+
+		GameStats.Increment(GameStats.LEVEL_LOADS);
+		GameStats.Increment(GameStats.ATTEMPTS);
 	}
 
 	protected override void OnUpdate()
@@ -139,6 +142,9 @@ public class GamePlayManager : Component
 	{
 		Restart_Internal();
 
+		GameStats.Increment(GameStats.ATTEMPTS);
+		GameStats.Increment(GameStats.RESTARTS);
+
 		var restartables = Scene.GetAllComponents<IRestartable>();
 		foreach (var restartable in restartables)
 		{
@@ -158,6 +164,8 @@ public class GamePlayManager : Component
 
 	public void ExitLevel()
 	{
+		GameStats.Increment(GameStats.LEVEL_EXITS);
+
 		var shutdowns = Scene.GetAllComponents<IShutdown>();
 		foreach (var shutdown in shutdowns)
 		{

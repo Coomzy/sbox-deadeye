@@ -16,6 +16,10 @@ public static class GameStats
 	public const string LOWEST_MEDAL = "lowest-medal";
 	//public const string COMBINED_TIME = "combined-time";
 	public const string COMBINED_TIME = "combined-time2";
+	public const string LEVEL_LOADS = "level-loads";
+	public const string LEVEL_EXITS = "level-exits";
+	public const string ATTEMPTS = "attempts";
+	public const string RESTARTS = "restarts";
 
 	public static void Increment(string stat, double incrementAmount = 1)
 	{
