@@ -5187,12 +5187,12 @@
                 {
                   "__type": "Sandbox.SpotLight",
                   "__guid": "ef1bad34-107d-4b73-91d0-7036173c2f9e",
-                  "Attenuation": 0.5,
+                  "Attenuation": 0.06,
                   "ConeInner": 26.3,
                   "ConeOuter": 47.73,
                   "FogMode": "Enabled",
                   "FogStrength": 1,
-                  "LightColor": "0.90233,1,0.86977,1",
+                  "LightColor": "0.90698,1,0.77674,1",
                   "Radius": 825.10004,
                   "Shadows": true
                 }
@@ -5205,7 +5205,6 @@
               "Position": "-5.409302,-371.6691,164.7132",
               "Rotation": "-0.2123113,0.2153025,0.669275,0.6787044",
               "Tags": "light_spot,light",
-              "Enabled": true,
               "Components": [
                 {
                   "__type": "Sandbox.SpotLight",

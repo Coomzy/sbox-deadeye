@@ -347,7 +347,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "674720c9-6e58-4777-b3c7-7dc81f6ca2da",
+                    "component_id": "f01c69c6-e64f-4585-8c60-d326bc246c5f",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -417,7 +417,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "674720c9-6e58-4777-b3c7-7dc81f6ca2da",
+                    "component_id": "f01c69c6-e64f-4585-8c60-d326bc246c5f",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -4106,7 +4106,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "f64e370b-b7b7-463e-b726-095a58ed7e97",
+            "component_id": "c356c6cc-0e9c-4fa8-b5a9-f98372a1a0d5",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -8116,6 +8116,43 @@
       "Scale": "0.1,0.1,0.1",
       "Enabled": true,
       "Children": [
+        {
+          "__guid": "cd19e8fb-19e6-40af-bd09-fb7dc1ae9fbd",
+          "Flags": 0,
+          "Name": "sm_shoot (1)",
+          "Position": "783.1238,0,0",
+          "Scale": "7.596175,7.596175,7.596175",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "a4692ba2-20e2-458d-8e5f-e25ca8783eeb",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/m_ground_dirt_02_lighter.vmat",
+              "Model": "models/props/detail/sm_shoot.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "bd274368-ac2b-439a-8947-7c64e3a93388",
+          "Flags": 0,
+          "Name": "sm_don\u0027t",
+          "Position": "209.0796,0,0",
+          "Scale": "7.68638,7.68638,7.68638",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9bead076-fc3f-4e3b-b5fc-c8cfb3a7bb6b",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_dont.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
         {
           "__guid": "25da76da-58a0-4bdb-9f73-a3ac996ad927",
           "Flags": 0,
