@@ -21,7 +21,6 @@
       "Position": "0,0,200",
       "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
       "Tags": "light_directional,light",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.DirectionalLight",
@@ -47,6 +46,7 @@
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 0.85,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 100
         },
         {
@@ -217,7 +217,8 @@
       "__guid": "8819173c-1ce3-40e0-9852-b2da04676222",
       "Flags": 0,
       "Name": "Sun",
-      "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Position": "223.9566,-716.9995,100.6479",
+      "Rotation": "-0.0637375,0.04724966,0.8008034,0.5936489",
       "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
@@ -226,9 +227,9 @@
           "__guid": "65350e84-3270-4ed4-abd6-54931211f3ef",
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.94419,0.97767,1,1",
+          "LightColor": "0.11664,0.06568,0.20465,1",
           "Shadows": true,
-          "SkyColor": "0.2532,0.32006,0.35349,1"
+          "SkyColor": "0.12184,0.06663,0.20465,1"
         }
       ]
     },
@@ -346,7 +347,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "77a9f022-0e25-4616-af0e-b976752a8bf5",
+                    "component_id": "674720c9-6e58-4777-b3c7-7dc81f6ca2da",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -416,7 +417,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "77a9f022-0e25-4616-af0e-b976752a8bf5",
+                    "component_id": "674720c9-6e58-4777-b3c7-7dc81f6ca2da",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -4105,7 +4106,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "e56bb49b-15b6-41c8-8a21-0b75e44c2e2a",
+            "component_id": "f64e370b-b7b7-463e-b726-095a58ed7e97",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -5064,32 +5065,12 @@
       ]
     },
     {
-      "__guid": "34cb66dc-18f4-4a8d-b51b-69af84ae93b9",
-      "Flags": 0,
-      "Name": "lantern_01",
-      "Position": "152.369,-80.54926,46.19885",
-      "Rotation": "0,0,0.9238796,0.3826833",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.Prop",
-          "__guid": "49aa06e2-4518-4009-9b9b-df399cb06b65",
-          "BodyGroups": 18446744073709551615,
-          "Health": 0,
-          "IsStatic": true,
-          "Model": "models/furniture/lantern_01/lantern_01.vmdl",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
       "__guid": "97c1063a-18cb-4592-9864-d9eee8753c6a",
       "Flags": 0,
       "Name": "3D Text - Title",
       "Position": "235.1843,130.4585,120.5816",
       "Rotation": "-0.00000005960464,0,1,-0.00000002980232",
       "Scale": "3,3,3",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -5097,7 +5078,7 @@
           "BodyGroups": 18446744073709551615,
           "Model": "models/title_3d_text._deadeye.vmdl",
           "RenderType": "On",
-          "Tint": "0.08837,0.04713,0,1"
+          "Tint": "1,1,1,1"
         }
       ]
     },
@@ -7170,11 +7151,11 @@
         {
           "__type": "Sandbox.PointLight",
           "__guid": "139aa2b0-39f1-480e-84fc-200121849a91",
-          "Attenuation": 1,
+          "Attenuation": 2.01,
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.91373,0.98039,1,1",
-          "Radius": 400,
+          "Radius": 397.09952,
           "Shadows": true
         }
       ]
@@ -7905,6 +7886,1140 @@
           "Size": "64,64,32",
           "TintColor": "1,1,1,1",
           "TriPlanar": false
+        }
+      ]
+    },
+    {
+      "__guid": "722038f7-6e9d-468b-a411-60854dd5ed86",
+      "Flags": 0,
+      "Name": "Cube (3)",
+      "Position": "141.3768,-72.26927,46.19885",
+      "Rotation": "0.00000000140552,0.000000003393228,0.9238796,0.3826833",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "5a5b7902-951c-411c-8a65-6c23aee44c7f",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+          "RenderType": "Off",
+          "Tint": "1,1,1,1"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "a546cf8b-4887-439e-837e-ac21b3c7fa48",
+          "Flags": 0,
+          "Name": "Point Light",
+          "Position": "-0.002146779,0.0006756262,8.795589",
+          "Tags": "light_point,light",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.PointLight",
+              "__guid": "19d7622c-4312-4648-80da-b4fe48be53d2",
+              "Attenuation": 6.6,
+              "FogMode": "Enabled",
+              "FogStrength": 1,
+              "LightColor": "1,0.57674,0.34884,1",
+              "Radius": 501.80026,
+              "Shadows": true
+            }
+          ]
+        },
+        {
+          "__guid": "9a05be4d-11c4-46af-aae8-be12daaa3ce9",
+          "Flags": 0,
+          "Name": "Sphere",
+          "Position": "-0.02697398,0.02727617,9.21307",
+          "Scale": "0.1022695,0.1022695,0.1022695",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "968ce645-f559-493a-a64d-80f6ab5e0a72",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/tb_stuff/lamp_menu.vmat",
+              "Model": "models/dev/sphere.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "830fbc1e-0140-43e5-9a2e-2345a5fdfdf4",
+      "Flags": 0,
+      "Name": "bluelight",
+      "Position": "53.82925,124.988,221.8669",
+      "Rotation": "0.001707165,0.487272,-0.00305942,0.8732432",
+      "Tags": "light_spot,light",
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "df7d7d4c-7ab2-4ec2-ab75-9b05eb6035bd",
+          "Attenuation": 0.37,
+          "ConeInner": 34.09,
+          "ConeOuter": 53.18,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.33085,0.22791,1,1",
+          "Radius": 1500,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "b9857ad7-3e29-4cc4-a5d8-c6649a10c820",
+      "Flags": 0,
+      "Name": "bluelight (1)",
+      "Position": "104.1507,158.2842,168.9887",
+      "Rotation": "0.0008571585,0.2446566,-0.003397019,0.9696034",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "6826be49-e172-435c-a411-e9ea2fc48c04",
+          "Attenuation": 0.24,
+          "ConeInner": 39.94,
+          "ConeOuter": 53.18,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.22791,0.45954,1,1",
+          "Radius": 1500,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "1c0b2662-4b1a-4292-a46a-56a9b3bbf315",
+      "Flags": 0,
+      "Name": "lamp_extra",
+      "Position": "131.8395,-71.26475,57.38542",
+      "Rotation": "0.003523231,0.0983972,-0.03560941,0.9945036",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "8e29693a-01e5-43d0-bc35-602be304a87a",
+          "Attenuation": 0,
+          "ConeInner": 43.05,
+          "ConeOuter": 23.57,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.99209,1,0.52558,1",
+          "Radius": 22.699644,
+          "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "c5e774fd-fb06-4ede-9b28-2d07fab134eb",
+      "Flags": 0,
+      "Name": "lamp_to_player",
+      "Position": "145.0205,-77.12913,80.05578",
+      "Rotation": "-0.1252938,0.02594732,0.9711736,0.2011221",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "02e1bf9c-44cf-4b21-9410-cb37cde27f62",
+          "Attenuation": 2.36,
+          "ConeInner": 43.05,
+          "ConeOuter": 48.12,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.99209,1,0.52558,1",
+          "Radius": 866.0996,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "9c6f1970-abb2-41f4-a197-3e336cefb2d5",
+      "Flags": 0,
+      "Name": "frontlight",
+      "Position": "-29.05911,-151.6986,77.64614",
+      "Rotation": "-0.04940904,0.05526123,0.6646972,0.7434264",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "c69be3cf-e5a5-49ad-bdc6-b1504c3f732a",
+          "Attenuation": 0.24,
+          "ConeInner": 8.77,
+          "ConeOuter": 31.36,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1,0.51023,0.24651,1",
+          "Radius": 175.79965,
+          "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "b5e94275-013c-4db4-ae37-f6611cb3465f",
+      "Flags": 0,
+      "Name": "toplight",
+      "Position": "46.02608,-2.435931,206.4416",
+      "Rotation": "-0.554128,0.02855784,0.8308389,0.04281855",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "9d91180b-34da-44da-9ea8-e720d9b2ec21",
+          "Attenuation": 0.24,
+          "ConeInner": 8.77,
+          "ConeOuter": 31.36,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "1,0.51023,0.24651,1",
+          "Radius": 175.79965,
+          "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "2f4ea723-42e1-4a74-9105-de55ea874bc8",
+      "Flags": 0,
+      "Name": "backlight",
+      "Position": "30.3105,71.87523,72.85525",
+      "Rotation": "0.04620457,0.02977679,-0.8392959,0.5408888",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SpotLight",
+          "__guid": "57c70a24-9f87-40ca-af35-9ff64a0e9a44",
+          "Attenuation": 0.24,
+          "ConeInner": 8.77,
+          "ConeOuter": 31.36,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0,0.76667,1,1",
+          "Radius": 109.4991,
+          "Shadows": false
+        }
+      ]
+    },
+    {
+      "__guid": "3839e662-595c-4813-abb2-af051d07a548",
+      "Flags": 0,
+      "Name": "allthethings",
+      "Position": "736.5967,0,51.15152",
+      "Scale": "0.1,0.1,0.1",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "25da76da-58a0-4bdb-9f73-a3ac996ad927",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_fence_01 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/outside/windows/sm_wood_exterior_fence_01.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "2527dbf4-2410-4b48-b731-711824da6c55",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_window (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/windows/sm_wood_wall_01_window.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "8051fc92-ef1a-4032-b874-b656a134011c",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_balcony (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/outside/balcony/sm_wood_exterior_balcony.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "f854c7de-f39e-4dca-b1fe-8b4561bff20c",
+          "Flags": 0,
+          "Name": "smoke_ pfx (1)",
+          "Position": "0,0,0",
+          "Tags": "particles",
+          "Enabled": true,
+          "__Prefab": "prefabs/weapons/smoke_ pfx.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "600dfe5f-5d6a-48ad-81e3-f50a7db183e5",
+          "Flags": 0,
+          "Name": "blood decal (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/weapons/blood decal.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "91524d18-78fa-4355-ae44-704c6fa151ab",
+          "Flags": 0,
+          "Name": "bloodsplat_pfx (1)",
+          "Position": "0,0,0",
+          "Tags": "particles",
+          "Enabled": true,
+          "__Prefab": "prefabs/weapons/bloodsplat_pfx.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "cf480c92-dbff-4163-9638-e0a03fbcf238",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_half (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/walls_half/sm_wood_wall_01_half.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "a12e3337-2c86-44fa-91c8-fffb8a2ac0b0",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_fence_03 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/outside/walls_half/sm_wood_exterior_fence_03.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "bf00dbcc-8d13-4691-a7b0-402a1461c7c9",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/outside/walls/sm_wood_wall_01.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "54b41368-a165-4d87-8872-4f681aee8f3b",
+          "Flags": 0,
+          "Name": "sm_outside_floor_01 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/outside/floor/sm_outside_floor_01.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "2e9f4272-c0bc-4a7f-abaf-44a29a6c8f4f",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_window_02 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/windows/sm_wood_wall_01_window_02.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "db3a2197-448d-487b-9bc3-984a12393bdd",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_door (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/outside/doors/sm_wood_wall_01_door.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "dd87bdf8-608a-4b0b-bc0d-19bab4bb72df",
+          "Flags": 0,
+          "Name": "junk_01 (2)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_01.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "68838be9-2341-40ea-91be-5a9ac3fa1c3f",
+          "Flags": 0,
+          "Name": "wooden_table_01 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/wooden_table_01.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "4db867c8-96ff-401b-a6d7-cfe57dfa2663",
+          "Flags": 0,
+          "Name": "junk_07 (3)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_07.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "c35115a1-1f85-404f-aa26-11e53b7f6494",
+          "Flags": 0,
+          "Name": "junk_08 (2)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_08.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "0d11a857-06d2-482e-82ce-b68643698128",
+          "Flags": 0,
+          "Name": "barrels (2)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/barrels.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "f53a6ca1-7d20-46f8-b110-3a87afccf453",
+          "Flags": 0,
+          "Name": "junk_02 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_02.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "30d1583a-c271-4986-a970-5f8b1acb6219",
+          "Flags": 0,
+          "Name": "junk_06 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_06.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "eb64c6df-495a-4ae6-9516-d3b3e55d2009",
+          "Flags": 0,
+          "Name": "junk_05 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_05.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "befbffc5-536a-43f4-9f36-6c54480e2974",
+          "Flags": 0,
+          "Name": "junk_03 (1)",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "__Prefab": "prefabs/environment/props/junk_03.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "12ba130e-2a8a-4f55-81db-4c612c9a3262",
+          "Flags": 0,
+          "Name": "sm_bar_chair_round",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "74e41238-e982-4469-9238-4ea86f26cb94",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_bar_chair_round.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "d972f9fe-24b5-47d6-8508-0f5940f454d5",
+          "Flags": 0,
+          "Name": "sm_bed",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "b12adf08-f6f8-471b-b2c2-dd322f71b80c",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_bed.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "49681a08-ef63-4459-b7fb-2e6d4eede122",
+          "Flags": 0,
+          "Name": "sm_bench",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "1420dad6-1662-4137-9206-f737ffe92c71",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_bench.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "94c5a440-358a-44e6-b330-c4ff8a81dfcb",
+          "Flags": 0,
+          "Name": "sm_cards",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "e8234bf4-5f62-428a-8ad5-04abe23c9870",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_cards.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e5b703f7-1da3-49ec-83e0-85cd68f0fd1d",
+          "Flags": 0,
+          "Name": "sm_chest",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "4b9aa973-2f9b-498f-89ff-aa1ee95db6c5",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_chest.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "05b6587f-5ee3-4807-842c-8cd8e011dee2",
+          "Flags": 0,
+          "Name": "sm_dartboard",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "ad8e0a4b-abee-4ba9-8265-ff798fa109e2",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_dartboard.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "3dbb24fa-713d-4edf-b6ee-1a26594b88c8",
+          "Flags": 0,
+          "Name": "sm_dont",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "39886963-d867-40c4-b9b1-aac81b8b2b00",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_dont.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "56dbb15a-149e-44be-9be6-77d398f16dae",
+          "Flags": 0,
+          "Name": "sm_folding_wooden_stool",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "f69ac074-1aa2-48b1-bc30-47e9cf773279",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_folding_wooden_stool.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "77a0e6f3-6d8b-4662-b35e-2d084a18276b",
+          "Flags": 0,
+          "Name": "sm_horse_stable",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "d4b9705d-f8cb-4a98-bfe4-4b42f6d2fd9f",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_horse_stable.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "74ce523a-2d08-4ad9-96f3-577127114c9a",
+          "Flags": 0,
+          "Name": "sm_metal_jug",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "35f805dc-a1e2-42d6-96ca-a40b80758f38",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_metal_jug.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "4589d0cf-4b27-4ff5-ac75-007dbe65e23c",
+          "Flags": 0,
+          "Name": "sm_rockingchair",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9465a9c1-895d-4be3-a48a-86193088bf83",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_rockingchair.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "1990193b-d7ee-4fd5-a58d-9d1daf08feae",
+          "Flags": 0,
+          "Name": "sm_rug_01",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "344ade37-af87-49ff-ac91-8cb19daa2d1b",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_rug_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "b6e8b156-932f-4558-989b-5372928c6999",
+          "Flags": 0,
+          "Name": "sm_rug_01_alt",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "75722304-7c5c-47bc-aa3d-9ad37c4123db",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_rug_01_alt.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "565ace90-6ffd-4e9e-93d4-cdb41d3220a6",
+          "Flags": 0,
+          "Name": "sm_rug_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7f24fa88-8208-4393-9c71-e2d362253d45",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_rug_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "59000513-30e6-4807-9880-90ac2fbea35a",
+          "Flags": 0,
+          "Name": "sm_rug_03",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "5278ca97-7500-42ac-be22-8482cdce3788",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_rug_03.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "640a6c7a-bc96-46df-a78d-4da745d479aa",
+          "Flags": 0,
+          "Name": "sm_rug_04",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "810f2e81-bcb2-418b-a769-1e4cdbb78a4d",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_rug_04.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "ef932c1c-a6b2-45df-b1eb-91a1712a7989",
+          "Flags": 0,
+          "Name": "sm_shoot",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "a0372007-9514-43cc-9b0d-ff08bc9fdcc6",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_shoot.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "784e9b93-ff72-4bcc-ad00-fcd3b9e220c3",
+          "Flags": 0,
+          "Name": "sm_wood_table_01",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "a723b9b4-aa90-4d4e-815b-a0507dd98199",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_wood_table_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "9541128e-44a2-4e83-bca5-682db1572329",
+          "Flags": 0,
+          "Name": "sm_wooden_bucket",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "6762e93a-ffce-42bf-9aae-f0bea9b9bb56",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_wooden_bucket.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "4d15d0af-2451-4c4b-b591-7e4def6a28b4",
+          "Flags": 0,
+          "Name": "sm_wooden_bucket_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "eeb300d8-2f17-460e-8546-5afaa10498e9",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_wooden_bucket_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "f053db92-a515-4a69-9ebc-f613b4adb68a",
+          "Flags": 0,
+          "Name": "sm_wooden_crate",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "49c246f9-8e11-4da5-a757-9320f81d5b74",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_wooden_crate.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "15ec55e9-d892-4b30-8216-f1158078ada1",
+          "Flags": 0,
+          "Name": "sm_wooden_stool",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "6ea1469b-c3f0-4c7c-a5f2-a846055c0aa7",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/detail/sm_wooden_stool.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "a352a1e6-bc5f-4b2a-a873-2b28edbd9c54",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_balcony_03",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "1a17f1e0-a399-41ce-9890-bb7b5a4cc574",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_balcony_03.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "3b63da5b-e356-4ab7-8802-12e42d6dd5ec",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_balcony_04",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "36d121bb-ab0b-45fb-ad08-f2f293f72109",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_balcony_04.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "8a0f5485-1604-49e9-9e13-7629d213ef69",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_facade_01",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "295f9ef7-3e57-4e80-8c0d-18580969a4ee",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_facade_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "90d5609a-e61d-4427-a236-c859b0a97025",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_facade_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "10b611b5-099d-4946-9e85-221965d1cf5f",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_facade_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "52277529-55db-4e2c-bb05-d7766020006b",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_facade_menu",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "bc630166-1ae6-4268-bd21-da9ba5268f5a",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_facade_menu.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "c2bcbf19-252f-478d-a6ec-9dd8698fca05",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_facade_roof",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "dacfde00-915f-4d05-b141-504875cd93af",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_facade_roof.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "514cec88-1336-44ac-a051-6dada9bdbb2a",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_fence_01",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9922c81f-864e-448d-878a-06dd19d50533",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_fence_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "376c2322-51fa-4b32-a180-28a2a95f0115",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_fence_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "1e3236a4-4c44-44b6-a99f-07a9e78ad2e0",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_fence_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "a494ec09-1442-4168-b86a-7880e4cb1f99",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_fence_03",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "933c95ed-2421-4e62-bbe3-bad25ac961d1",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_fence_03.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "69a04310-0550-4627-b650-87b0734dbffc",
+          "Flags": 0,
+          "Name": "sm_wood_exterior_steps",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "ab3df7c7-c84d-405f-ad05-63d35dac4c7c",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_exterior_steps.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "03f252d9-1dda-4397-b9f7-f0cd7b9ff263",
+          "Flags": 0,
+          "Name": "sm_wood_floor",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "e4a4bafe-ea6a-4363-9e8f-51d8cec3219e",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_floor.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "57b026c2-a962-4447-ae72-afb79c0801a8",
+          "Flags": 0,
+          "Name": "sm_wood_floor_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "2eb272f6-52c0-47be-9669-9d831eaeda04",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_floor_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2ede8ed4-b064-4d46-8582-4481d3d79576",
+          "Flags": 0,
+          "Name": "sm_wood_platform",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "b3ffb15d-25a1-4cd1-9da2-398ec848fcfc",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_platform.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "32dc8a66-5297-4977-9552-c4570de156b4",
+          "Flags": 0,
+          "Name": "sm_wood_scatter_01",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "c5264f20-834b-4c39-8615-de8fe06f8312",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_scatter_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e8649ae4-bde1-464d-a969-199dd4b510b9",
+          "Flags": 0,
+          "Name": "sm_wood_scatter_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "028c387b-7b7a-46c8-8c36-e29952720fc9",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_scatter_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "c64d5dcc-c584-4302-9f21-34f916d8d9bb",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "e2545a83-1a2b-481d-8fe4-6a4b6c86225e",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_wall_01.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "066e5d20-7a4b-4f7a-94c1-71c661ecae8a",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_door",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "017d8a16-bf6a-46d7-81bf-7e420b2968d1",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_wall_01_door.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "2318f6d1-64a9-440b-a306-db08d62cba41",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_half",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9bce087f-c75e-486a-8152-e36d67c40619",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_wall_01_half.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "76aa74a1-01ae-4145-be38-8d99f07f6343",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_window",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7c9c20e4-85ed-406d-9f85-996aaa2b47ca",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_wall_01_window.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e45423ec-a25e-497c-ae87-5c7f09e59989",
+          "Flags": 0,
+          "Name": "sm_wood_wall_01_window_02",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "88400624-b72d-4b20-9d66-d01add13a9b2",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/props/architecture/sm_wood_wall_01_window_02.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            }
+          ]
         }
       ]
     }
