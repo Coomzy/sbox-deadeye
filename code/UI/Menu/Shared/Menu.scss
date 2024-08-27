@@ -67,7 +67,7 @@
 
         .button {
             flex-direction: row;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             flex-shrink: 0;
             flex-grow: 0;
@@ -196,6 +196,20 @@
                     background-color: #444;
                 }
             }
+
+            &.white {
+                background-color: #fff;
+                color: black;
+
+                &:hover {
+                    background-color: #efefef;
+                }
+
+                &:active {
+                    background-color: #dbdbdb;
+                }
+            }
+
 
             &.lightgray, &.lightgrey {
                 background-color: #aaa;
@@ -332,7 +346,6 @@
                 margin: 0;
                 margin-right: 10px;
                 color: rgba(255,255,255,0.88);
-
                 flex-direction: row;
 
                 InputGlyph {
@@ -399,7 +412,6 @@
             flex-grow: 1;
             flex-direction: column;
             align-self: center;
-
             border-radius: 20px;
 
             &.bg {

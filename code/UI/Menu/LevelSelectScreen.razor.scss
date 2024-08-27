@@ -1,6 +1,10 @@
 @import "./Shared/Menu.scss";
 
 LevelSelectScreen.menu {
+	.invisible {
+		opacity: 0;
+	}
+
 	.title {
 		align-self: center;
 		text-shadow: 0 0 2px black, 0 0 5px black, 0 0 20px black;
@@ -196,6 +200,24 @@ LevelSelectScreen.menu {
 				width: 100%;
 			}
 
+			.buttons {
+				margin-top: 5px;
+				flex-shrink: 0;
+				flex-grow: 0;
+				flex-wrap: nowrap;
+
+				width: 100%;
+				flex-direction: row;
+				justify-content: space-between;
+				//align-items: center;
+				//justify-content: center;
+
+				.button.leaderboard {
+					color: #c8b806;
+					align-self: flex-start;
+				}
+			}
+
 			.misc {
 				flex-direction: column;
 				flex-grow: 0;
@@ -235,10 +257,6 @@ LevelSelectScreen.menu {
 							height: 128px;
 						}
 					}
-				}
-
-				.link.leaderboard {
-					color: gold;
 				}
 
 				.link {
