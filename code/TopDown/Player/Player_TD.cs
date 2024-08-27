@@ -597,7 +597,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		if (killedAnyCivs2 && GamePreferences.instance.restartLevelOnCivKill)
 		{
-			LoadingScreen.ReloadLevel();
+			GamePlayManager.instance.Restart();
 			return;
 		}
 
@@ -724,7 +724,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		if (killedAnyCivs && GamePreferences.instance.restartLevelOnCivKill)
 		{
-			LoadingScreen.ReloadLevel();
+			GamePlayManager.instance.Restart();
 			return;
 		}
 
@@ -805,7 +805,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		if (GamePreferences.instance.restartLevelOnFail)
 		{
-			LoadingScreen.ReloadLevel();
+			GamePlayManager.instance.Restart();
 			return;
 		}
 
@@ -831,7 +831,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 		{
 			if (GamePreferences.instance.restartLevelOnFail)
 			{
-				LoadingScreen.ReloadLevel();
+				GamePlayManager.instance.Restart();
 				return;
 			}
 
@@ -1247,7 +1247,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		if (GamePreferences.instance.restartLevelOnFail)
 		{
-			LoadingScreen.ReloadLevel();
+			GamePlayManager.instance.Restart();
 			return;
 		}
 
@@ -1277,7 +1277,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 		{
 			if (GamePreferences.instance.restartLevelOnFail)
 			{
-				LoadingScreen.ReloadLevel();
+				GamePlayManager.instance.Restart();
 				return;
 			}
 

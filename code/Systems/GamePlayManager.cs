@@ -76,6 +76,32 @@ public class GamePlayManager : Component
 
 		GameStats.Increment(GameStats.LEVEL_LOADS);
 		GameStats.Increment(GameStats.ATTEMPTS);
+
+		if (GameSettings.instance != null && GameSettings.instance.topDownLevels != null && GameSave.instance != null)
+		{
+			for (int i = 0; i < GameSettings.instance.topDownLevels.Count; i++)
+			{
+				var level = GameSettings.instance.topDownLevels[i];
+				if (level == null)
+					continue;
+
+				if (level != LevelData.active)
+					continue;
+
+				int levelIndex = i + 1;
+
+				if (GameSave.instance.furthestLevelPlayed >= levelIndex)
+				{
+					continue;
+				}
+
+				int diff = levelIndex - GameSave.instance.furthestLevelPlayed;
+				GameSave.instance.furthestLevelPlayed = levelIndex;
+				GameSave.instance.Save();
+				GameStats.Increment(GameStats.LEVEL_FURTHEST_PLAYED, diff);
+				break;
+			}
+		}
 	}
 
 	protected override void OnUpdate()
@@ -138,7 +164,7 @@ public class GamePlayManager : Component
 		previousBestTime = null;
 	}
 
-	void Restart()
+	public void Restart()
 	{
 		Restart_Internal();
 
@@ -272,6 +298,32 @@ public class GamePlayManager : Component
 		if (hasBeatAllLevels)
 		{
 			GameStats.Set(GameStats.COMBINED_TIME, combinedTime);
+		}
+
+		if (GameSettings.instance != null && GameSettings.instance.topDownLevels != null && GameSave.instance != null)
+		{
+			for (int i = 0; i < GameSettings.instance.topDownLevels.Count; i++)
+			{
+				var level = GameSettings.instance.topDownLevels[i];
+				if (level == null)
+					continue;
+
+				if (level != LevelData.active)
+					continue;
+
+				int levelIndex = i + 1;
+
+				if (GameSave.instance.furthestLevelComplete >= levelIndex)
+				{
+					continue;
+				}
+
+				int diff = levelIndex - GameSave.instance.furthestLevelComplete;
+				GameSave.instance.furthestLevelComplete = levelIndex;
+				GameSave.instance.Save();
+				GameStats.Increment(GameStats.LEVEL_FURTHEST_BEAT, diff);
+				break;
+			}
 		}
 	}
 

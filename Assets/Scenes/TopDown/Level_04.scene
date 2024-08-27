@@ -30324,7 +30324,7 @@
               ],
               "ignoreRandomize": false,
               "lights": [],
-              "reactTime": 5,
+              "reactTime": 7.5,
               "targetIndex": 0,
               "targets": [
                 {
