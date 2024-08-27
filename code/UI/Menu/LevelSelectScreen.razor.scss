@@ -5,16 +5,17 @@ LevelSelectScreen.menu {
 		align-self: center;
 		text-shadow: 0 0 2px black, 0 0 5px black, 0 0 20px black;
 		color: #4CAF50; // rgb(75,75,75);
+		margin: 10px;
 	}
 
 	.container.controls {
-		// A bit hacky. Would prefer not to...
 		position: absolute;
 		left: 0;
 		bottom: 0;
-		padding: 2em;
-		width: 600px;
-		height: 10em;
+		padding: 10px 25px;
+		// padding: 2em;
+		width: auto;
+		height: auto;
 		z-index: 99;
 		flex-grow: 0;
 		flex-shrink: 8;
@@ -22,7 +23,7 @@ LevelSelectScreen.menu {
 
 	.container.controls {
 		.button {
-			width: 250px;
+			width: auto;
 			margin-right: 200px;
 		}
 
@@ -30,29 +31,32 @@ LevelSelectScreen.menu {
 			margin-right: 0;
 		}
 	}
+
 	// Fix stretching by growing the content. Shrink the whitespace area desired by buttons.
 	.container.main {
 		flex-grow: 2;
 		z-index: 99;
-	}
 
-	.content {
-		align-items: center;
+		.content {
+			padding: 0;
+			justify-content: center;
+		}
 	}
 
 	.switcher {
 		width: 100%;
 		color: white;
 		flex-direction: row;
-		font-size: 50px;
+		font-size: 20px;
 		align-items: center;
 		align-content: center;
 		justify-content: center;
 		flex-wrap: nowrap;
 
 		> .column {
-			height: 100%;
-			margin: .5em;
+			// height: 100%;
+			height: auto;
+			margin: 10px;
 		}
 
 		.column .level /*, 
@@ -76,7 +80,7 @@ LevelSelectScreen.menu {
 				flex-direction: column;
 				// border-radius: 100%;
 				border-radius: 20px;
-				padding: .5em;
+				padding: 10px;
 				text-shadow: 0 0 2px black, 0 0 50px black;
 				cursor: pointer;
 				transition: none;
@@ -98,14 +102,14 @@ LevelSelectScreen.menu {
 					// Make sure it's as square as possible...
 					// Each character and font-family may have a different size
 					font-family: Roboto;
-					font-size: 120px;
-					padding: 10px 0;
-					transform: translate(7px, 0px);
-					line-height: 70px;
+					font-size: 110px;
+					padding: 15px;
+					transform: translate(0px, 0px);
+					line-height: 60px;
 				}
 
 				.text {
-					font-size: 30px;
+					font-size: 25px;
 				}
 
 				&.prev .char {
@@ -126,19 +130,21 @@ LevelSelectScreen.menu {
 		}
 
 		.level {
+			font-size: 25px;
 			flex-shrink: 0;
 			flex-grow: 0;
 			border-radius: 25px;
 			padding: 25px;
-			margin: .5em;
-			width: 1200px; // calc(100% - 100px);
+			margin: 0;
+			width: auto;
+			max-width: 1200px;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			align-self: flex-start;
 
 			.button {
-				font-size: 40px;
+				font-size: 30px;
 				width: auto;
 				border-radius: 20px;
 			}
@@ -150,12 +156,13 @@ LevelSelectScreen.menu {
 				text-align: center;
 
 				.name {
+					font-size: 40px;
 					width: 100%;
 				}
 
 				.id {
 					width: 100%;
-					font-size: 26px;
+					font-size: 25px;
 					font-weight: 600;
 				}
 
@@ -168,7 +175,7 @@ LevelSelectScreen.menu {
 				align-self: flex-start;
 				flex-shrink: 0;
 				margin: .25em 0;
-				font-size: 30px;
+				font-size: 25px;
 				font-weight: 600;
 			}
 
@@ -177,7 +184,7 @@ LevelSelectScreen.menu {
 				background-color: gray;
 				width: 100%;
 				max-width: 800px;
-				height: 350px;
+				height: 325px;
 				max-height: 650px;
 				margin: 0.25em 0;
 				border-radius: 15px;
@@ -190,7 +197,6 @@ LevelSelectScreen.menu {
 			}
 
 			.misc {
-				font-size: 28px;
 				flex-direction: column;
 				flex-grow: 0;
 
@@ -199,29 +205,49 @@ LevelSelectScreen.menu {
 				}
 
 				.key, .value {
-					margin: 0 0.2em;
 					align-items: center;
+				}
+
+				.value {
+					margin-left: 10px;
 				}
 
 				.civs {
 					justify-content: flex-end;
 				}
 
-				.medal {
-					width: 128px;
-					height: 100px;
-					margin: 0 5px 0 0;
-					//border-radius: 100%;
-					//box-shadow: 0px 0px 15px black;
-					align-items: center;
-					justify-content: center;
+				.medals {
+					margin: 0;
+					margin-left: -25px;
 
-					img {
-						margin-top: -25px;
-						width: 100px;
-						height: 100px;
+					.medal {
+						// width: 128px;
+						//height: 128px;
+						// margin: -20px;
+						//border-radius: 100%;
+						//box-shadow: 0px 0px 15px black;
+						align-items: center;
+						justify-content: center;
+
+						img {
+							margin: -50px;
+							width: 128px;
+							height: 128px;
+						}
 					}
 				}
+
+				.link.leaderboard {
+					color: gold;
+				}
+
+				.link {
+					width: auto;
+					height: auto;
+					color: blue;
+					cursor: pointer;
+				}
+
 			}
 
 			.table {

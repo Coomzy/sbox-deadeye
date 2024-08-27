@@ -179,7 +179,7 @@
 
                 @foreach (var entry in Leaderboards.board.Entries)
                 {
-                    if (++row >= 10) break;
+                    if (++row > 10) break;
                     string specialClass = "";
                     if (entry.SteamId == (long)Steam.SteamId) specialClass = "me";
 

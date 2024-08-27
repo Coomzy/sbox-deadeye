@@ -2,6 +2,7 @@
 @import "../Menu/Shared/Table.scss";
 
 AfterActionReportScreen.menu {
+	padding: 0;
 	background-color: transparent;
 	pointer-events: none;
 	cursor: default;
@@ -15,18 +16,32 @@ AfterActionReportScreen.menu {
 	.title {
 		font-family: 'Alfa Slab One';
 
-		margin: 40px 10px;
+		margin: 10px;
 		font-size: 50px;
+		color: white;
+
+		text-shadow: 1px 1px 2px black, 1px 1px 20px black;
 		//color: lightgray;
 	}
 
 	.container {
-		align-items: flex-end;
+		flex-wrap: nowrap;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
 		gap: 0;
 
+		.content {
+			margin-top: 175px;
+			padding: 20px;
+			width: auto;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
 		.buttonsalt {
+			align-self: flex-start;
 			.button-group {
-				//height: 64px;
 				align-items: flex-end;
 				flex-direction: row;
 				align-items: center;
@@ -36,19 +51,21 @@ AfterActionReportScreen.menu {
 				flex-grow: 0;
 				flex-shrink: 0;
 				width: auto;
-				margin: 0 25px;
-			}
+				margin: 0 10px;
+			} 
 		}
+	}
+
+	.container .button {
+		font-size: 35px;
 	}
 
 	.report {
 		font-size: 30px;
-		position: absolute;
-		top: 0;
 
 		.table {
-			margin: 50px 0 0 0;
-			max-width: 1800px;
+			margin: 0;
+			max-width: 1000px;
 
 			.row {
 				color: white;
@@ -61,37 +78,25 @@ AfterActionReportScreen.menu {
 				justify-content: center;
 			}
 
-			.best-time {
-				align-items: flex-end;
-			}
-
-			.next-time {
-				align-items: flex-start;
-			}
-
 			.medals {
 				margin: 0 5px;
 			}
 
 			.medal-container {
-				height: 125px;
+				height: auto;
 				margin: 0;
-				//background-color: red;
-				/*flex-direction: row;
-				align-items: center;
-				justify-content: center;*/
 
 				img.medal {
 					flex-direction: column;
 					align-self: flex-start;
 					flex-grow: 0;
 					flex-shrink: 0;
-					width: 200px;
-					height: 200px;
+					width: 300px;
+					height: 300px;
 					margin: -37.5px -30px;
 				}
 
-				img.medal.onyx.unlocked:last-child {
+				img.medal.onyx.unlocked {
 					margin: -37.5px 0 0 0;
 				}
 			}

@@ -12,7 +12,7 @@ CurrentTimeWidget {
 	flex-wrap: wrap;
 	align-content: flex-start;
 	//justify-content: center;
-	padding: 2em;
+	padding: 25px;
 	pointer-events: none;
 
 	.container {
@@ -61,7 +61,7 @@ CurrentTimeWidget {
 				flex-direction: row;
 
 				.title {
-					font-size: 70px;
+					font-size: 55px;
 					//font-family: Poppins;
 					font-family: Consolas;
 					color: #fff;
@@ -80,7 +80,7 @@ CurrentTimeWidget {
 
 				.time {
 					label {
-						margin-left: -40px;
+						margin-left: -30px;
 					}
 				}
 			}

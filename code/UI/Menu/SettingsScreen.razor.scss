@@ -8,11 +8,33 @@ SettingsScreen.menu {
 		box-shadow: none;
 	}
 
-	.content .buttons {
-		.button {
-			padding: 10px;
-			font-size: 30px;
+	// Buttons on the left side
+	.container .buttons {
+		.button-bg .button {
+			width: 100%;
+			min-width: 400px;
+			max-width: 600px;
 		}
+	}
+
+	.container {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.content {
+		height: 100%;
+		max-width: 1750px;
+		align-self: flex-end;
+
+		// Buttons inside the content box
+		.buttons {
+			.button {
+				padding: 10px;
+				font-size: 30px;
+			}
+		}
+
 	}
 
 	.table {
@@ -29,7 +51,7 @@ SettingsScreen.menu {
 
 		.row.title {
 			color: #333;
-			margin-top: 2em;
+			margin-top: 20px;
 			padding: 5px 0;
 			justify-content: flex-start;
 			font-size: 32px;

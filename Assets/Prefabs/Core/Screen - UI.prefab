@@ -10,7 +10,8 @@
         "__guid": "d97b94b9-4aad-4f08-9b4c-56efb99ce35d",
         "AutoScreenScale": true,
         "Opacity": 1,
-        "Scale": 0.85,
+        "Scale": 1,
+        "ScaleStrategy": "ConsistentHeight",
         "ZIndex": 100
       },
       {

@@ -19,29 +19,33 @@ LeaderboardsScreen.menu {
 	.buttons {
 		align-self: flex-start; /* Aligns the buttons container to the end of the content container */
 		margin-top: auto; /* Pushes the button to the bottom */
+		.button {
+			width: auto;
+			font-size: 40px;
+		}
 	}
 
 	.table.controller {
-		margin: 0 0 1em;
+		margin: 5px 0;
 
 		.column {
 			> span {
-				font-size: 35px;
+				font-size: 30px;
 				font-weight: 600;
 				background-color: rgba(255, 255, 255,0.5);
 				box-shadow: 0 0 10px #777;
-				padding: 0.25em 0.5em;
+				padding: 5px 10px;
 				border-radius: 10px;
 				cursor: pointer;
 				pointer-events: all;
 				align-items: center;
 
 				span {
-					margin: 0 .25em;
+					margin: 0 5px;
 				}
 
 				span.char {
-					font-size: 75px;
+					font-size: 60px;
 					line-height: 50px;
 					margin: -17.5px 0 0;
 				}
@@ -49,18 +53,17 @@ LeaderboardsScreen.menu {
 		}
 
 		h1 {
-			font-size: 50px;
+			font-size: 40px;
 			margin: 20px 0 0 0;
 		}
 	}
 
 	.table {
 		transition: none 0ms;
-		font-size: 40px;
 		width: 100%;
 
 		.row {
-			font-size: 28px;
+			font-size: 24px;
 			font-weight: 600;
 			padding: 0.25em 0;
 

@@ -12,7 +12,7 @@
 	MedalType medal = MedalType.None;
 }
 
-<root class="menu">
+<root class="menu stretched">
     <div class="container main">
         <div class="content">
 	        <div class="title">
@@ -76,7 +76,7 @@
 													<span class="value"> </span>
 												}
 											</p>
-											<p class="medals">
+											<div class="medals">
 												@*<span class="key">Medal: </span>*@
 												<span class="value">
 													@if (medal == MedalType.None)
@@ -107,7 +107,7 @@
 														}
 													}
 												</span>
-											</p>
+											</div>
 											<p class="kvp next">
 												@if (medal == MedalType.Onyx)
 												{
@@ -126,6 +126,13 @@
 													<span class="value">Pass for Bronze</span>
 												}
 											</p>
+											<div @*class="button cowboy singular"*@ class="kvp link leaderboard" onclick="@(() => OpenLeaderboard())">
+												Leaderboard
+												@if (Input.UsingController)
+												{
+													<InputGlyph button="Leaderboard" size="Small"/></span>
+												}
+											</div>
 										</div>
 									</div>
 									<div class="column">
@@ -182,13 +189,6 @@
                         <InputGlyph button="Back" /></span>
                     }
 					Back
-				</div>			
-				<div class="button cowboy singular" style="width: contain" onclick="@(() => OpenLeaderboard())">
-                    @if (Input.UsingController)
-                    {
-                        <InputGlyph button="Leaderboard" /></span>
-                    }
-					Leaderboard
 				</div>
 			</div>
 		</div>

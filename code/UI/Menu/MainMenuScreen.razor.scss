@@ -8,8 +8,12 @@ MainMenuScreen.menu {
 	}
 
 	> .container {
+		.buttons {
+			justify-content: center;
+		}
+
 		.button-bg {
-			margin-bottom: 300px;
+			//margin-bottom: 300px;
 		}
 
 		.button.cowboy {
