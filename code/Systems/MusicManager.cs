@@ -87,10 +87,10 @@ public class MusicManager : Component, IHotloadManaged
 		mixGuitar = Sound.Play(CUT_GUITAR);
 		mixInstruments = Sound.Play(CUT_INSTRUMENTS);
 
-		mixBass.TargetMixer = Mixer.FindMixerByName("Music");
-		mixDrums.TargetMixer = Mixer.FindMixerByName("Music");
-		mixGuitar.TargetMixer = Mixer.FindMixerByName("Music");
-		mixInstruments.TargetMixer = Mixer.FindMixerByName("Music");
+		mixBass.TargetMixer = Mixer.FindMixerByName("Soundtrack");
+		mixDrums.TargetMixer = Mixer.FindMixerByName("Soundtrack");
+		mixGuitar.TargetMixer = Mixer.FindMixerByName("Soundtrack");
+		mixInstruments.TargetMixer = Mixer.FindMixerByName("Soundtrack");
 
 		timeTillBeat = TIME_BASE + 0.1f + -0.008f;
 

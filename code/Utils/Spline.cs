@@ -35,53 +35,53 @@ public class Spline : Component
 		CalculateSplinePoints();
 	}
 
-	protected override void DrawGizmos()
-	{
-		base.DrawGizmos();
-
-		bool isSelectedAtAll = Gizmo.IsSelected || Gizmo.IsChildSelected || drawGizmo;
-		if (!isSelectedAtAll)
-		{
-			return;
-		}
-
-		Gizmo.Transform = Game.ActiveScene.Transform.World;
-
-		CalculateSplinePoints();
-
-		List<Vector3> curvedPoints = new List<Vector3>();
-		foreach (var point in points)
-		{
-			if (!point.curve.HasValue)
-			{
-				Gizmo.Draw.Line(point.start, point.end);
-				continue;
-			}
-
-			curvedPoints.Clear();
-			for (int i = 0; i <= segments; i++)
-			{
-				float t = i / (float)segments;
-				Vector3 curvePoint = QuadraticBezier(point.start, point.curve.Value, point.end, t);
-				curvedPoints.Add(curvePoint);
-			}
-
-			if (curvedPoints.Count < 2)
-				continue;
-
-			for (int i = 1; i < curvedPoints.Count; i++)
-			{
-				var start = curvedPoints[i-1];
-				var end = curvedPoints[i];
-
-				Gizmo.Draw.Line(start, end);
-			}
-		}
-
-		float pointTime = testTime ?? Time.Now;
-		var pointOnSpline = GetPointAlongSplineAtTime(pointTime);
-		Gizmo.Draw.LineSphere(pointOnSpline, 3.5f);
-	}
+	//protected override void DrawGizmos()
+	//{
+	//	base.DrawGizmos();
+	//
+	//	bool isSelectedAtAll = Gizmo.IsSelected || Gizmo.IsChildSelected || drawGizmo;
+	//	if (!isSelectedAtAll)
+	//	{
+	//		return;
+	//	}
+	//
+	//	Gizmo.Transform = Game.ActiveScene.Transform.World;
+	//
+	//	CalculateSplinePoints();
+	//
+	//	List<Vector3> curvedPoints = new List<Vector3>();
+	//	foreach (var point in points)
+	//	{
+	//		if (!point.curve.HasValue)
+	//		{
+	//			Gizmo.Draw.Line(point.start, point.end);
+	//			continue;
+	//		}
+	//
+	//		curvedPoints.Clear();
+	//		for (int i = 0; i <= segments; i++)
+	//		{
+	//			float t = i / (float)segments;
+	//			Vector3 curvePoint = QuadraticBezier(point.start, point.curve.Value, point.end, t);
+	//			curvedPoints.Add(curvePoint);
+	//		}
+	//
+	//		if (curvedPoints.Count < 2)
+	//			continue;
+	//
+	//		for (int i = 1; i < curvedPoints.Count; i++)
+	//		{
+	//			var start = curvedPoints[i-1];
+	//			var end = curvedPoints[i];
+	//
+	//			Gizmo.Draw.Line(start, end);
+	//		}
+	//	}
+	//
+	//	float pointTime = testTime ?? Time.Now;
+	//	var pointOnSpline = GetPointAlongSplineAtTime(pointTime);
+	//	Gizmo.Draw.LineSphere(pointOnSpline, 3.5f);
+	//}
 
 	void CalculateSplinePoints()
 	{

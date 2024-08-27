@@ -1,4 +1,3 @@
-
 using Sandbox.Citizen;
 using System.Text.Json.Serialization;
 using static Sandbox.PhysicsContact;
@@ -11,7 +10,7 @@ public class RoomManager : Component, IRestartable, IShutdown
 
 	[Group("Setup"), Property] public List<Room> rooms { get; set; }
 
-	[Group("Runtime"), Property, JsonIgnore] public int roomIndex { get; set; }
+	[Group("Runtime"), Property, JsonIgnore] public int roomIndex { get; private set; }
 	[Group("Runtime"), Property, JsonIgnore] public Room currentRoom => rooms.ContainsIndex(roomIndex) ? rooms[roomIndex] : null;
 	[Group("Runtime"), Property, JsonIgnore] public bool isFinalRoom => roomIndex == rooms.Count - 1;
 
@@ -23,6 +22,84 @@ public class RoomManager : Component, IRestartable, IShutdown
 
 		roomIndex = 0;
 	}
+
+
+	[Button("UpdateRoomDataForPerf")]
+	void UpdateRoomDataForPerf()
+	{
+		//var r = GameObject.Components.GetAll<Room>();
+		//foreach (var room in r)
+		//{
+		//	RoomVisualGenerator rvg = room.Components.Get<RoomVisualGenerator>(FindMode.EverythingInDescendants);
+		//	if (rvg != null)
+		//	{
+		//		room.roomVisualGenerator = rvg;
+		//	}
+		//}
+
+		foreach (var room in rooms)
+		{
+			room.GetLights();
+		}
+	}
+
+	//protected override void OnStart()
+	//{
+	//	base.OnStart();
+	//
+	//	TestPerf();
+	//}
+	//
+	//void TestPerf()
+	//{
+	//	//for (int room = 0; room < rooms.Count; room++)
+	//	//{
+	//	//	for (int target = 0; target < rooms[room].targets.Count; target++)
+	//	//	{
+	//	//		Target tgt = rooms[room].targets[target];
+	//	//		//tgt.bodyRenderer.Enabled = false;
+	//	//
+	//	//		//List<CitizenClothingInst> insts = rooms[room].targets[target].citizenVisuals.GetAllClothingInsts();
+	//	//		List<SkinnedModelRenderer> list = tgt.Components.GetAll<SkinnedModelRenderer>(FindMode.EverythingInDescendants).ToList();
+	//	//		foreach (var item in list)
+	//	//		{
+	//	//			item.Enabled = false;
+	//	//			//item.UseAnimGraph = false;
+	//	//		}
+	//	//		//
+	//	//		//tgt.bodyPhysics.Enabled = false;
+	//	//		//
+	//	//		//tgt.bodyRenderer.UseAnimGraph = false;
+	//	//
+	//	//		//tgt.highlightOutline.Enabled = false;
+	//	//	}
+	//	//
+	//	//	//if (rooms[room].roomVisualGenerator != null)
+	//	//	//{
+	//	//	//	rooms[room].roomVisualGenerator.GameObject.Enabled = false;
+	//	//	//}
+	//	//}
+	//
+	//	Benchmark();
+	//}
+	//
+	//async void Benchmark()
+	//{
+	//	TimeUntil t = 5.0f;
+	//
+	//	int frameCount = 0;
+	//	float timeTotal = 0.0f;
+	//	while (!t)
+	//	{
+	//		timeTotal += Time.Delta;
+	//		frameCount++;
+	//		await Task.Frame();
+	//	}
+	//
+	//	float avg = timeTotal / (float)frameCount;
+	//	float avgMS = avg * 1000.0f;
+	//	Log.Info($"AVG FRAME TIME: {avgMS:F0}ms");
+	//}
 
 	public void PreRestart()
 	{
@@ -42,6 +119,39 @@ public class RoomManager : Component, IRestartable, IShutdown
 	public void PostShutdown()
 	{
 
+	}
+
+	public void NextRoom()
+	{
+		roomIndex++;
+		DirtyLiveRooms();
+	}
+
+	void DirtyLiveRooms()
+	{
+		if (rooms == null)
+		{
+			return;
+		}
+
+		int cap = rooms.Count;
+		int minActiveRoom = System.Math.Clamp(roomIndex - 2, 0, cap);
+		int maxActiveRoom = System.Math.Clamp(roomIndex + 1, 0, cap);
+
+		//Log.Info($"roomIndex: {roomIndex}    min:{minActiveRoom}    max:{maxActiveRoom}");
+
+		for (int i = 0; i < rooms.Count; i++)
+		{
+			if (rooms[i] == null)
+			{
+				continue;
+			}
+
+			bool active = (i >= minActiveRoom) && (i <= maxActiveRoom);
+			rooms[i].SetRoomObjectsActive(active);
+
+			//Log.Info($"[{i}]: active: {active}");
+		}
 	}
 
 	[Button("Generate Rooms")]

@@ -2,6 +2,33 @@
   "__guid": "7aa87460-1ca2-4eaf-b391-e4503f8fbeb6",
   "GameObjects": [
     {
+      "__guid": "f7e7d1f6-8a0c-40a7-b418-4100566b4ec2",
+      "Flags": 0,
+      "Name": "GlobalHighlight",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "GlobalHighlight",
+          "__guid": "ece77649-bfe6-47a4-992d-8357e2cf7c59",
+          "highlightOutline": {
+            "_type": "component",
+            "component_id": "002569da-745a-4c68-85e2-aab75db36b05",
+            "go": "f7e7d1f6-8a0c-40a7-b418-4100566b4ec2",
+            "component_type": "HighlightOutline"
+          }
+        },
+        {
+          "__type": "Sandbox.HighlightOutline",
+          "__guid": "002569da-745a-4c68-85e2-aab75db36b05",
+          "Color": "1,0,0,1",
+          "InsideColor": "0,0,0,0",
+          "InsideObscuredColor": "0,0,0,0",
+          "ObscuredColor": "1,0,0,1",
+          "Width": 0.25
+        }
+      ]
+    },
+    {
       "__guid": "fcecde1f-cb27-49a8-a436-4b188a036d6e",
       "Flags": 0,
       "Name": "Level Data Setter",
@@ -204,6 +231,7 @@
               "__guid": "200ad5c2-b866-4d8b-8261-53f66b850526",
               "generatedTargetsRaw": [],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 5,
               "targetIndex": -1,
               "targets": [],
@@ -284,6 +312,20 @@
                 "135,180,0,0"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "b04d7b24-7179-4e9c-a4a0-0afe200edc9a",
+                  "go": "ad530c92-9d9b-44e7-82af-3bc034e2691e",
+                  "component_type": "PointLight"
+                },
+                {
+                  "_type": "component",
+                  "component_id": "6dde8d2e-5efd-4717-b3d2-f344df8f37fc",
+                  "go": "7ab664e8-15bd-4605-bd67-d6e1795d7f6f",
+                  "component_type": "SpotLight"
+                }
+              ],
               "reactTime": 2,
               "targetIndex": -1,
               "targets": [
@@ -3883,6 +3925,303 @@
                   "__PrefabVariables": {}
                 },
                 {
+                  "__guid": "be088707-2a18-4e50-8222-52b9d2ffde2a",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "0,0,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "663857c5-2b3f-40b3-a847-7ad41d916a95",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "4a341fac-cd24-4cf8-beb3-a69fcda77edd",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "cf1f052a-07c7-419f-bd1a-09b9f511f20b",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "491.4797,0,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "548c3793-00e8-4804-ad93-78a12f4f96a0",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "46efa1c0-9f31-4183-a232-017fcbee8435",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "d0c697fa-208b-4bf1-86e8-a5d914a86b07",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "491.4797,498.939,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "54422bde-2be0-4912-841c-c846a8ee7251",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "7d7f42fd-28a0-4f9f-ae30-f0e52e356e58",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "0d7f3eed-b53c-421a-a0ae-fd2f13127dcd",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "491.4797,997.0709,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "ccf0c66c-2a57-4548-9dae-caf4a6ffb59d",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "d0b1a88a-b8bb-4da4-99d0-651116fdcf24",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "0b441e3f-e47b-402b-ad57-8c83d868f580",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "995.5565,997.0709,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "151610c8-6d44-4590-92ae-4f0ae98f46c0",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "0d84cad1-237e-41e3-b160-ddce85db7281",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "f4c3ec4e-c162-4e34-bde0-529556a5375a",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "1504.202,997.0709,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "aaab3fe0-1b76-4035-947d-c6de7a9638b3",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "1c96831f-b6d1-475b-8c97-8851041515d4",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "08b3293a-3b87-4282-8e33-1a8c568672f5",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "1504.202,508.08,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "78f60aa4-48ef-454a-945c-2aae41f72b10",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "a2e78781-d04f-4613-8fc2-258af5c85e7b",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "cf723fdf-8ecb-4cdf-a857-40d3dd61fae1",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "1991.956,508.08,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "8639312e-4cc1-436f-a6a2-e77bcf9d69ec",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "c33f86d5-295a-4622-959d-4d27806c9905",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "a3c628c0-4e7b-444c-aa42-610c9a1a5b94",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "2488.366,508.08,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "b56c5cb7-ed9c-4406-b2d2-46a59c874d7e",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "2b4a1a11-fe2b-4421-afe3-b557594ab8a7",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "243390c8-40e4-47b9-954f-fc288d92286b",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "2488.366,-502.2632,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "db8e647f-70a3-472b-b240-40f08b8e2e9d",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "291a99d7-b6e5-4350-adac-3278494556cf",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "bf509bf9-60ca-4c12-80d6-67806ec73386",
+                  "Flags": 0,
+                  "Name": "floor",
+                  "Position": "2488.366,-990.152,186.8535",
+                  "Scale": "1.075835,1.075835,1.075835",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "a1efca12-9cef-4a99-9670-4bc56de7bab7",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/props/architecture/sm_wood_floor.vmdl",
+                      "RenderType": "ShadowsOnly",
+                      "Tint": "1,1,1,1"
+                    },
+                    {
+                      "__type": "Sandbox.PlaneCollider",
+                      "__guid": "bce678bc-b984-40b9-b9d6-90f75efe62b8",
+                      "Center": "0,0,0",
+                      "IsTrigger": false,
+                      "Scale": "512,512",
+                      "Static": true,
+                      "Surface": "surfaces/wood.surface"
+                    }
+                  ]
+                },
+                {
                   "__guid": "d795bbcc-a3fb-4716-9544-2e5e236dfb75",
                   "Flags": 0,
                   "Name": "--- NORTH ---",
@@ -4177,10 +4516,19 @@
                   ]
                 },
                 {
+                  "__guid": "a532a00c-165e-4ccc-8a99-52c54f0e3a29",
+                  "Flags": 0,
+                  "Name": "junk_07",
+                  "Position": "2592.454,-555.8976,3.507951",
+                  "Enabled": true,
+                  "__Prefab": "prefabs/environment/props/junk_07.prefab",
+                  "__PrefabVariables": {}
+                },
+                {
                   "__guid": "e77e0906-6382-407a-b03c-9552c062d0ee",
                   "Flags": 0,
                   "Name": "sm_rug_02 (3)",
-                  "Position": "2654.116,-438.1966,1.535588",
+                  "Position": "2654.116,-486.9491,1.535588",
                   "Rotation": "0,0,0.9999552,-0.009466685",
                   "Enabled": true,
                   "Components": [
@@ -4316,7 +4664,7 @@
                       "__guid": "3b047616-90b8-4892-b73c-ac5eb7e603d4",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/fancy_picture_frame_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -4336,7 +4684,7 @@
                       "__guid": "a642275f-7ca1-458f-8581-ef60f60fc701",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/fancy_picture_frame_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -4356,7 +4704,7 @@
                       "__guid": "3cdafdda-f546-41a0-b6e4-20ecb919fcb6",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/fancy_picture_frame_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -4376,7 +4724,7 @@
                       "__guid": "3606303b-930a-46a8-b46f-0bf5ffe4bfa4",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/fancy_picture_frame_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -4396,7 +4744,7 @@
                       "__guid": "eacb3c35-0d21-40d5-8dcb-a9ca0106a541",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/fancy_picture_frame_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -4416,7 +4764,7 @@
                       "__guid": "08df2416-e6fe-4920-b37d-4d1b75016269",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/fancy_picture_frame_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -4463,8 +4811,29 @@
                       "__guid": "c0794590-6951-4586-99d2-4c3072eca0d2",
                       "BodyGroups": 18446744073709551615,
                       "Model": "models/furniture/lantern_01/lantern_01.vmdl",
-                      "RenderType": "On",
+                      "RenderType": "Off",
                       "Tint": "1,1,1,1"
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "__guid": "95db35a4-2d53-4e5c-b43d-8de83ee953d6",
+                      "Flags": 0,
+                      "Name": "Sphere",
+                      "Position": "0,0,9.187531",
+                      "Scale": "0.1,0.1,0.1",
+                      "Enabled": true,
+                      "Components": [
+                        {
+                          "__type": "Sandbox.ModelRenderer",
+                          "__guid": "f8452ef4-7774-42b6-a1fb-9ead8f478b60",
+                          "BodyGroups": 18446744073709551615,
+                          "MaterialOverride": "materials/tb_stuff/lamp_emissive.vmat",
+                          "Model": "models/dev/sphere.vmdl",
+                          "RenderType": "Off",
+                          "Tint": "1,1,1,1"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -4505,6 +4874,87 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "77584a22-4d96-4e24-8e17-de1769a427cc",
+              "Flags": 0,
+              "Name": "Cube (3)",
+              "Position": "218.9509,-115.6925,41.56557",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "5a7363f4-5099-4212-9963-525fe153f86d",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+                  "RenderType": "Off",
+                  "Tint": "1,1,1,1"
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "ad530c92-9d9b-44e7-82af-3bc034e2691e",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "-0.002146779,0.0006756262,8.795589",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "b04d7b24-7179-4e9c-a4a0-0afe200edc9a",
+                      "Attenuation": 1.02,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "1,0.77225,0.47442,1",
+                      "Radius": 486.60052,
+                      "Shadows": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "08973a88-322b-4da1-9506-46e3d763a5ac",
+                  "Flags": 0,
+                  "Name": "Sphere",
+                  "Position": "0.003447831,0.1384507,9.21307",
+                  "Scale": "0.1022695,0.1022695,0.1022695",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "d7c0d346-984a-4cf9-a9db-df823df43ae9",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/tb_stuff/lamp_emissive.vmat",
+                      "Model": "models/dev/sphere.vmdl",
+                      "RenderType": "Off",
+                      "Tint": "1,1,1,1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "7ab664e8-15bd-4605-bd67-d6e1795d7f6f",
+              "Flags": 0,
+              "Name": "Spot Light",
+              "Position": "-245.8783,0.6234896,113.1155",
+              "Rotation": "-0.002553809,0.418143,0.005547813,0.9083607",
+              "Tags": "light_spot,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "6dde8d2e-5efd-4717-b3d2-f344df8f37fc",
+                  "Attenuation": 0.11,
+                  "ConeInner": 15,
+                  "ConeOuter": 45,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 500,
+                  "Shadows": false
+                }
+              ]
             }
           ]
         },
@@ -4524,6 +4974,20 @@
                 "-135,180,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "e8337ded-30e4-4f88-8ee1-7fc096b9d1c0",
+                  "go": "61641d8b-ad01-46ad-b20a-4743acdc95d4",
+                  "component_type": "SpotLight"
+                },
+                {
+                  "_type": "component",
+                  "component_id": "b37138fc-0cd2-49ca-a619-5d08d7fb2018",
+                  "go": "29b211e0-5064-4a1a-a98a-15236a2126e3",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 2,
               "targetIndex": -1,
               "targets": [
@@ -8491,7 +8955,7 @@
                   "__guid": "88774fb3-38e7-4c24-8122-946f9128c762",
                   "Flags": 0,
                   "Name": "sm_rug_04 (1)",
-                  "Position": "1130.745,981.486,0.7347128",
+                  "Position": "896.271,991.0903,0.7348437",
                   "Rotation": "0,0,0.04998826,0.9987499",
                   "Scale": "1.305624,1.305624,1.305624",
                   "Enabled": true,
@@ -8526,6 +8990,69 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "61641d8b-ad01-46ad-b20a-4743acdc95d4",
+              "Flags": 0,
+              "Name": "Spot Light (1)",
+              "Position": "234.8291,-116.4038,122.0821",
+              "Rotation": "-0.4157801,-0.04186528,0.8966868,0.1460381",
+              "Tags": "light_spot,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "e8337ded-30e4-4f88-8ee1-7fc096b9d1c0",
+                  "Attenuation": 0.54,
+                  "ConeInner": 15,
+                  "ConeOuter": 63.7,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 500,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "e69cd74b-a000-4757-b96f-79c93730917d",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "-191.8775,37.98224,119.1335",
+              "Tags": "light_point,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "43194b88-bad5-4256-be5c-c69cf4f52c83",
+                  "Attenuation": 1.32,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 253.29962,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "29b211e0-5064-4a1a-a98a-15236a2126e3",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "-7.174011,225.4035,103.0806",
+              "Rotation": "-0.0651639,0.07148861,0.6704994,0.7355771",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "b37138fc-0cd2-49ca-a619-5d08d7fb2018",
+                  "Attenuation": 1.62,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 253.29962,
+                  "Shadows": false
+                }
+              ]
             }
           ]
         },
@@ -8544,6 +9071,14 @@
                 "70,180,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "57eca8de-ed39-4e61-8491-84c9629db606",
+                  "go": "54bb8ef2-893c-4b03-972a-153720e06082",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 1.5,
               "targetIndex": -1,
               "targets": [
@@ -8573,6 +9108,45 @@
             }
           ],
           "Children": [
+            {
+              "__guid": "54bb8ef2-893c-4b03-972a-153720e06082",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "103.0895,-11.40622,67.58412",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "57eca8de-ed39-4e61-8491-84c9629db606",
+                  "Attenuation": 1.54,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 359.49954,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "9c47954f-9507-4da9-8e15-9154f8bf32cb",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "-135.4827,19.7597,119.134",
+              "Tags": "light_point,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "a4ef2e6f-34b8-421a-8518-0f4c143a79a2",
+                  "Attenuation": 1.32,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 253.29962,
+                  "Shadows": false
+                }
+              ]
+            },
             {
               "__guid": "c146a747-f329-4f24-a335-503a08735d49",
               "Flags": 0,
@@ -11294,6 +11868,14 @@
                 "65,175,0,0"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "e313431d-b77f-456d-971d-403e560869aa",
+                  "go": "e1342ca5-32bc-4edc-bf31-236f3f1e9b16",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 1,
               "targetIndex": -1,
               "targets": [
@@ -14104,6 +14686,45 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "e1342ca5-32bc-4edc-bf31-236f3f1e9b16",
+              "Flags": 0,
+              "Name": "Point Light (1)",
+              "Position": "-60.72748,92.26807,103.591",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "e313431d-b77f-456d-971d-403e560869aa",
+                  "Attenuation": 1.58,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 217.2596,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "8a8781da-f701-4bc1-8efd-173fa3bfe976",
+              "Flags": 0,
+              "Name": "Point Light (1)",
+              "Position": "-22.75769,-146.8641,79.92792",
+              "Tags": "light_point,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "0366a063-db73-4e3a-9df0-9c6e012bfd1a",
+                  "Attenuation": 1.54,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 176.79985,
+                  "Shadows": false
+                }
+              ]
             }
           ]
         },
@@ -14125,6 +14746,14 @@
                 "-90,75,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "cbfb86c1-b822-42dd-8d06-6d8716119d4b",
+                  "go": "b12265af-e9a4-4b77-ab0b-cb968010d9f3",
+                  "component_type": "PointLight"
+                }
+              ],
               "playerPosOverride": {
                 "_type": "gameobject",
                 "go": "af7553a0-9a32-4771-a704-e1be3b7ff17c"
@@ -14177,6 +14806,64 @@
           ],
           "Children": [
             {
+              "__guid": "9128d8b6-e48a-4203-8e3a-a9d94ea96111",
+              "Flags": 0,
+              "Name": "Cube (3)",
+              "Position": "69.43298,-68.28137,8.921473",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "8e02b651-b93e-4bb4-bdf1-44750a82486f",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+                  "RenderType": "Off",
+                  "Tint": "1,1,1,1"
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "b12265af-e9a4-4b77-ab0b-cb968010d9f3",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "-0.002146779,0.0006756262,8.795589",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "cbfb86c1-b822-42dd-8d06-6d8716119d4b",
+                      "Attenuation": 0.19,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "1,0.77225,0.47442,1",
+                      "Radius": 486.60052,
+                      "Shadows": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "2c2fc80e-4941-4c78-b9fb-4b4104089928",
+                  "Flags": 0,
+                  "Name": "Sphere",
+                  "Position": "0.003447831,0.1384507,9.21307",
+                  "Scale": "0.1022695,0.1022695,0.1022695",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "b7844698-77f9-4e7c-a103-2df138742323",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/tb_stuff/lamp_emissive.vmat",
+                      "Model": "models/dev/sphere.vmdl",
+                      "RenderType": "Off",
+                      "Tint": "1,1,1,1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "__guid": "d1881363-5656-4328-bc59-9450f654bcbf",
               "Flags": 0,
               "Name": "Spline",
@@ -14226,7 +14913,7 @@
                   "__guid": "4c360db7-8874-4ad4-b91b-81a53e398e28",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "139.9507,-78.18439,0",
+                  "Position": "139.9508,-78.18427,4.078006",
                   "Rotation": "0,0,0.976296,0.2164396",
                   "Enabled": true,
                   "Components": [
@@ -15391,7 +16078,7 @@
                   "__guid": "2ea752bf-81a5-4637-9f78-7cd2de14f3a0",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-141.0361,-78.18439,0",
+                  "Position": "-141.036,-78.18427,4.078006",
                   "Rotation": "0,0,0.2164396,0.976296",
                   "Enabled": true,
                   "Components": [
@@ -18857,7 +19544,7 @@
                   "__guid": "17ec4256-e5e9-4d69-8a2d-d479187cdd79",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "0.000004470349,-85,0",
+                  "Position": "0.0001220703,-84.99988,4.078006",
                   "Rotation": "0,0,0.7071068,0.7071068",
                   "Enabled": true,
                   "Components": [
@@ -20107,7 +20794,7 @@
                       "__guid": "30ee61f7-ebd6-40bf-8f45-a851f89ed7cd",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/gothiccommode_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -20126,7 +20813,7 @@
                       "__guid": "65767bb2-e167-4136-aa57-4bd028546965",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/gothiccommode_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -20144,7 +20831,7 @@
                       "__guid": "9e6b9d03-0381-44a7-9875-cb1473330505",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/gothiccommode_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -20162,7 +20849,7 @@
                       "__guid": "7b54e303-dc7d-4c19-8809-d0a34e803307",
                       "BodyGroups": 18446744073709551615,
                       "Health": 0,
-                      "IsStatic": false,
+                      "IsStatic": true,
                       "Model": "models/furniture/gothiccommode_01.vmdl",
                       "Tint": "1,1,1,1"
                     }
@@ -20565,6 +21252,14 @@
                 "-35,135,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "c7f252b9-5527-4f34-a9b5-8ec38390d0e8",
+                  "go": "3bacc36e-e519-4b76-9094-c3209362b143",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 2,
               "targetIndex": -1,
               "targets": [
@@ -20650,7 +21345,7 @@
                   "__guid": "20607a2b-44c9-4a12-a8f3-9d6c316e6d40",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "110.5855,77.43282,0",
+                  "Position": "110.5852,77.43274,-4.261518",
                   "Rotation": "0,0,0.9537169,-0.300706",
                   "Enabled": true,
                   "Components": [
@@ -20729,6 +21424,7 @@
                         "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
                       ],
                       "duckHeight": 0.19145021,
+                      "facialClothing": {},
                       "feet": true,
                       "footwearClothing": {
                         "clothing": "models/citizen_clothes/shoes/smartshoes/smartshoes.clothing"
@@ -20736,6 +21432,7 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/fingerless_gloves/fingerless_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
                       "hatClothing": {
@@ -21813,7 +22510,7 @@
                   "__guid": "8dbcfe2d-03bb-43f3-9d50-1c0e35e7bde4",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "125,0,0",
+                  "Position": "124.9998,-0.0001220703,-4.261518",
                   "Rotation": "0,0,1,-0.00000004371139",
                   "Enabled": true,
                   "Components": [
@@ -21892,6 +22589,7 @@
                         "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
                       ],
                       "duckHeight": 0.19145021,
+                      "facialClothing": {},
                       "feet": true,
                       "footwearClothing": {
                         "clothing": "models/citizen_clothes/shoes/smartshoes/smartshoes.clothing"
@@ -21899,11 +22597,10 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing"
                       },
-                      "hairClothing": {
-                        "clothing": "models/citizen_clothes/hair/hair_slicked_back_balding/hair_slicked_back_balding.clothing"
-                      },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
+                      "hatClothing": {},
                       "head": false,
                       "legs": true,
                       "skinClothing": {},
@@ -22975,7 +23672,7 @@
                   "__guid": "7de19259-a259-4523-a7a6-4baf5aceed3f",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "110.5855,-77.43282,0",
+                  "Position": "110.5852,-77.43292,-4.261518",
                   "Rotation": "0,0,0.9537169,0.3007059",
                   "Enabled": true,
                   "Components": [
@@ -23038,6 +23735,7 @@
                         "go": "24b46c90-c513-4c6e-b24a-5c707f0b3b18",
                         "component_type": "SkinnedModelRenderer"
                       },
+                      "bottomsClothing": {},
                       "characterHeight": 0.9915775,
                       "chest": true,
                       "clothingHolder": {
@@ -23051,10 +23749,13 @@
                         "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
                       ],
                       "duckHeight": 0.19145021,
+                      "facialClothing": {},
                       "feet": true,
+                      "footwearClothing": {},
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
                       "hatClothing": {
@@ -24469,6 +25170,47 @@
               "Name": "Props",
               "Position": "0,0,0",
               "Enabled": true
+            },
+            {
+              "__guid": "3bacc36e-e519-4b76-9094-c3209362b143",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "154.7654,-78.42694,71.86417",
+              "Rotation": "0.002141524,0.1114703,-0.01908832,0.9935821",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "c7f252b9-5527-4f34-a9b5-8ec38390d0e8",
+                  "Attenuation": 2.23,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 254.59995,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "d9af1f27-c36b-4123-a187-dd8842a5423d",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "-84.95288,53.88049,91.01376",
+              "Rotation": "0.002141524,0.1114703,-0.01908832,0.9935821",
+              "Tags": "light_point,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "1fa5725e-c2cd-474f-ae22-ce30a0a023fe",
+                  "Attenuation": 2.45,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 390.09988,
+                  "Shadows": false
+                }
+              ]
             }
           ]
         },
@@ -24484,6 +25226,7 @@
               "__guid": "793f73c7-228a-40f9-b96b-a066001df7fa",
               "generatedTargetsRaw": [],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 5,
               "targetIndex": -1,
               "targets": [],
@@ -24909,6 +25652,72 @@
               "Name": "Props",
               "Position": "0,0,0",
               "Enabled": true
+            },
+            {
+              "__guid": "56fb49a4-d8c6-447e-ae56-67c4f085c95f",
+              "Flags": 0,
+              "Name": "Spot Light (1)",
+              "Position": "-0.04394531,251.6919,114.7637",
+              "Rotation": "0.2605529,0.2623734,-0.6546991,0.6592735",
+              "Tags": "light_spot,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "d992c57b-5bac-457d-b597-6ac097bcc79e",
+                  "Attenuation": 1.02,
+                  "ConeInner": 15,
+                  "ConeOuter": 45,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 500,
+                  "Shadows": true
+                }
+              ]
+            },
+            {
+              "__guid": "d4fe189f-e668-4952-a6b5-f03b0cdf22aa",
+              "Flags": 0,
+              "Name": "Spot Light",
+              "Position": "248.8164,51.29474,139.9824",
+              "Rotation": "0.3697647,0.001287326,-0.9291189,0.003234684",
+              "Tags": "light_spot,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "351181f3-f9f1-44e6-b02a-a2e420d9741b",
+                  "Attenuation": 0.32,
+                  "ConeInner": 15,
+                  "ConeOuter": 45,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 500,
+                  "Shadows": true
+                }
+              ]
+            },
+            {
+              "__guid": "1d9e7a9a-bfd9-4304-9ec5-c5d6bb397fe8",
+              "Flags": 0,
+              "Name": "Spot Light",
+              "Position": "248.8164,-83.55621,139.9824",
+              "Rotation": "0.3697647,0.001287326,-0.9291189,0.003234684",
+              "Tags": "light_spot,light",
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "8066af53-76bf-422f-b2ac-a9fd4bdb6aa7",
+                  "Attenuation": 0.32,
+                  "ConeInner": 15,
+                  "ConeOuter": 45,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 500,
+                  "Shadows": true
+                }
+              ]
             }
           ]
         },
@@ -24932,6 +25741,14 @@
                 "35,170,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "7d719f69-6e24-4a11-a996-d20fb2a079fb",
+                  "go": "a350adc0-2950-478d-ae9d-f877193c68c9",
+                  "component_type": "SpotLight"
+                }
+              ],
               "reactTime": 3.5,
               "targetIndex": -1,
               "targets": [
@@ -25041,7 +25858,7 @@
                   "__guid": "351b9386-8997-4d4a-a51d-a68d27a04b20",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-120,115,0",
+                  "Position": "-120,114.9999,-5.056692",
                   "Rotation": "0,-0,-0.3826835,0.9238795",
                   "Enabled": true,
                   "Components": [
@@ -26206,7 +27023,7 @@
                   "__guid": "cd991c33-7aa7-4399-a3de-3acf5f847634",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "-80,-115,0",
+                  "Position": "-80,-115.0001,-5.056692",
                   "Rotation": "0,0,0.4617488,0.8870108",
                   "Enabled": true,
                   "Components": [
@@ -27343,7 +28160,7 @@
                   "__guid": "651e9053-3e81-407a-9f31-3f775ffdaf6d",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-40,115,0",
+                  "Position": "-40,114.9999,-5.056692",
                   "Rotation": "0,0,0.5372996,-0.8433914",
                   "Enabled": true,
                   "Components": [
@@ -28535,7 +29352,7 @@
                   "__guid": "a00c78d7-e5bb-405d-a263-9843ae9956e1",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "0,-115,0",
+                  "Position": "0,-115.0001,-5.056692",
                   "Rotation": "0,0,0.7071068,0.7071068",
                   "Enabled": true,
                   "Components": [
@@ -29699,7 +30516,7 @@
                   "__guid": "cef854d3-4f24-4583-8af9-6813c6fd9bf9",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "40,115,0",
+                  "Position": "40,114.9999,-5.056692",
                   "Rotation": "0,0,-0.7933533,0.6087614",
                   "Enabled": true,
                   "Components": [
@@ -30864,7 +31681,7 @@
                   "__guid": "489bc6fa-ffb1-47cf-bad6-18eccb25bef7",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "80,-115,0",
+                  "Position": "80,-115.0001,-5.056692",
                   "Rotation": "0,0,0.8870108,0.4617488",
                   "Enabled": true,
                   "Components": [
@@ -32028,7 +32845,7 @@
                   "__guid": "83e337fe-3acd-4185-96be-23baacab7d7a",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "120,115,0",
+                  "Position": "120,114.9999,-5.056692",
                   "Rotation": "0,0,0.9537169,-0.3007058",
                   "Enabled": true,
                   "Components": [
@@ -33590,6 +34407,29 @@
               "Name": "Props",
               "Position": "0,0,0",
               "Enabled": true
+            },
+            {
+              "__guid": "a350adc0-2950-478d-ae9d-f877193c68c9",
+              "Flags": 0,
+              "Name": "Spot Light (2)",
+              "Position": "243.4934,-22.25616,161.153",
+              "Rotation": "-0.3753934,-0.00007639175,0.9268651,0.0008827396",
+              "Tags": "light_spot,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "7d719f69-6e24-4a11-a996-d20fb2a079fb",
+                  "Attenuation": 0.28,
+                  "ConeInner": 29.03,
+                  "ConeOuter": 58.25,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "1,0.50822,0.43256,1",
+                  "Radius": 1019.8995,
+                  "Shadows": true
+                }
+              ]
             }
           ]
         },
@@ -33610,6 +34450,20 @@
                 "-55,135,0,0"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "65874277-1732-45b8-ac34-f0a8f198abca",
+                  "go": "311ed29b-69db-4e51-a387-0a768ec2b317",
+                  "component_type": "PointLight"
+                },
+                {
+                  "_type": "component",
+                  "component_id": "86d06f73-4e49-416c-8e4a-36a2759128fe",
+                  "go": "15fc318a-c27e-4ffb-ad85-7e14bcd28d77",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 2.25,
               "targetIndex": -1,
               "targets": [
@@ -33701,7 +34555,7 @@
                   "__guid": "7a40b4ac-7f21-428c-b16c-8542e18ea1f9",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "135,0,0",
+                  "Position": "135,0,-5.132854",
                   "Rotation": "0,0,1,-0.00000004371139",
                   "Enabled": true,
                   "Components": [
@@ -33780,6 +34634,7 @@
                         "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
                       ],
                       "duckHeight": 0.19145021,
+                      "facialClothing": {},
                       "feet": true,
                       "footwearClothing": {
                         "clothing": "models/citizen_clothes/shoes/boots/black_boots.clothing"
@@ -33787,6 +34642,7 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
                       "hatClothing": {
@@ -34863,7 +35719,7 @@
                   "__guid": "48a41381-9bff-470f-9a0f-94b73ac7c5e5",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-118.777,83.16859,0",
+                  "Position": "-118.7771,83.16858,-5.132854",
                   "Rotation": "0,0,0.3007059,-0.9537169",
                   "Enabled": true,
                   "Components": [
@@ -36026,7 +36882,7 @@
                   "__guid": "dfb8c403-c0c9-407b-94ac-77f8746a8246",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "83.1687,118.777,0",
+                  "Position": "83.1687,118.777,-5.132854",
                   "Rotation": "0,0,0.8870109,-0.4617485",
                   "Enabled": true,
                   "Components": [
@@ -37216,7 +38072,7 @@
                   "__guid": "a98201db-4776-4d42-ab0e-889379b21e1f",
                   "Flags": 0,
                   "Name": "Target - Civilian",
-                  "Position": "77.43282,-110.5855,0",
+                  "Position": "77.43286,-110.5855,-5.132854",
                   "Rotation": "0,0,0.8870109,0.4617485",
                   "Enabled": true,
                   "Components": [
@@ -37295,6 +38151,7 @@
                         "models/citizen_clothes/shoes/sneakers/blue_sneakers.clothing"
                       ],
                       "duckHeight": 0.19145021,
+                      "facialClothing": {},
                       "feet": true,
                       "footwearClothing": {
                         "clothing": "models/citizen_clothes/shoes/boots/army_boots.clothing"
@@ -38722,6 +39579,48 @@
               "Name": "Props",
               "Position": "0,0,0",
               "Enabled": true
+            },
+            {
+              "__guid": "311ed29b-69db-4e51-a387-0a768ec2b317",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "65.58276,20.87646,114.1443",
+              "Rotation": "0.00579252,0.1950319,-0.02911669,0.9803475",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "65874277-1732-45b8-ac34-f0a8f198abca",
+                  "Attenuation": 1,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 186.2996,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "15fc318a-c27e-4ffb-ad85-7e14bcd28d77",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "-5.651367,-218.3835,96.69369",
+              "Rotation": "0.00579252,0.1950319,-0.02911669,0.9803475",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "86d06f73-4e49-416c-8e4a-36a2759128fe",
+                  "Attenuation": 0.71,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.91373,0.98039,1,1",
+                  "Radius": 232.3996,
+                  "Shadows": false
+                }
+              ]
             }
           ]
         },
@@ -38737,6 +39636,7 @@
               "__guid": "872d23e7-8500-49f4-9d6d-c78dd53d1856",
               "generatedTargetsRaw": [],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 0,
               "targetIndex": -1,
               "targets": [],
@@ -39262,6 +40162,14 @@
                 "-65,160,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "e7f17308-d550-4fd9-9865-06ab8190a028",
+                  "go": "df306b26-0c2f-4c0d-9a2d-7c63beef45dc",
+                  "component_type": "PointLight"
+                }
+              ],
               "playerPosOverride": {
                 "_type": "gameobject",
                 "go": "70dd8059-1ba0-4a81-be21-4482ce62a581"
@@ -39335,6 +40243,65 @@
               ]
             },
             {
+              "__guid": "f8f7a44a-e0de-47e9-8319-dab43113c1dc",
+              "Flags": 0,
+              "Name": "Cube (3)",
+              "Position": "51.42456,-65.54034,0.06168435",
+              "Rotation": "0.0000000001847216,0.0000000001417418,0.6087614,0.7933534",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "4ca3e718-f0de-4b3c-bcdd-18ca8e0c80ea",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+                  "RenderType": "Off",
+                  "Tint": "1,1,1,1"
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "df306b26-0c2f-4c0d-9a2d-7c63beef45dc",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "-0.002146779,0.0006756262,8.795589",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "e7f17308-d550-4fd9-9865-06ab8190a028",
+                      "Attenuation": 0.19,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "1,0.77225,0.47442,1",
+                      "Radius": 486.60052,
+                      "Shadows": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "1f19c97d-e760-453e-af73-ac656a265667",
+                  "Flags": 0,
+                  "Name": "Sphere",
+                  "Position": "0.003447831,0.1384507,9.21307",
+                  "Scale": "0.1022695,0.1022695,0.1022695",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "b40c8042-48c3-4bdd-bf4f-a4fccf2e1454",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/tb_stuff/lamp_emissive.vmat",
+                      "Model": "models/dev/sphere.vmdl",
+                      "RenderType": "Off",
+                      "Tint": "1,1,1,1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
               "__guid": "69a35535-22d9-405a-9b74-a484984bf92a",
               "Flags": 0,
               "Name": "Targets",
@@ -39345,7 +40312,7 @@
                   "__guid": "06efda53-7d6f-49e8-842b-ed65b35b23bd",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-67.61894,-145.0092,0",
+                  "Position": "-67.6189,-145.0092,-5.143255",
                   "Rotation": "0,0,0.5372997,0.8433914",
                   "Enabled": true,
                   "Components": [
@@ -39434,6 +40401,7 @@
                       "glovesClothing": {
                         "clothing": "models/citizen_clothes/gloves/leather_gloves/leather_gloves.clothing"
                       },
+                      "hairClothing": {},
                       "handedness": "Right",
                       "hands": true,
                       "hatClothing": {
@@ -40536,7 +41504,7 @@
                   "__guid": "0ebcb689-4cbe-462c-aa85-8dd2758d15ad",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "67.61891,-145.0092,0",
+                  "Position": "67.6189,-145.0092,-5.143255",
                   "Rotation": "0,0,0.8433914,0.5372997",
                   "Enabled": true,
                   "Components": [
@@ -42075,6 +43043,14 @@
                 "-90,125,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "f2bc93bd-0967-4f8f-a0c8-38baac0d51f3",
+                  "go": "c8fc6fdf-520f-47a9-9715-7d2471cbab8d",
+                  "component_type": "SpotLight"
+                }
+              ],
               "playerPosOverride": {
                 "_type": "gameobject",
                 "go": "0db53704-a4b4-43dc-9cb0-bce529c600e5"
@@ -42166,6 +43142,29 @@
               ]
             },
             {
+              "__guid": "c8fc6fdf-520f-47a9-9715-7d2471cbab8d",
+              "Flags": 0,
+              "Name": "Spot Light",
+              "Position": "1.990234,-221.0463,144.3278",
+              "Rotation": "-0.1771527,0.1747141,0.6895995,0.6801063",
+              "Tags": "light_spot,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.SpotLight",
+                  "__guid": "f2bc93bd-0967-4f8f-a0c8-38baac0d51f3",
+                  "Attenuation": 0.45,
+                  "ConeInner": 40.32,
+                  "ConeOuter": 49.29,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "0.3814,1,0.97938,1",
+                  "Radius": 500,
+                  "Shadows": true
+                }
+              ]
+            },
+            {
               "__guid": "c3c8dfe6-fdb4-4138-83f4-f8228513f5c1",
               "Flags": 0,
               "Name": "Targets",
@@ -42176,7 +43175,7 @@
                   "__guid": "ca54db45-3103-48e8-971d-bf939966bc2a",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "73.47315,101.1271,0",
+                  "Position": "73.47314,101.1271,-5.270754",
                   "Rotation": "0,0,0.9629225,0.2697784",
                   "Enabled": true,
                   "Components": [
@@ -43287,7 +44286,7 @@
                   "__guid": "c0aaa70c-9408-4c56-8a16-b76c6e7d62e9",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-73.47315,101.1271,0",
+                  "Position": "-73.47314,101.1271,-5.270754",
                   "Rotation": "0,0,0.3658991,0.9306546",
                   "Enabled": true,
                   "Components": [
@@ -44479,7 +45478,7 @@
                   "__guid": "827a0e02-8256-43cf-b8a8-93eee32c9611",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "118.8821,-38.62713,0",
+                  "Position": "118.8821,-38.62708,-5.270754",
                   "Rotation": "0,0,0.9120542,0.4100695",
                   "Enabled": true,
                   "Components": [
@@ -45617,7 +46616,7 @@
                   "__guid": "dc6920e0-201b-4b0d-8286-301c07153153",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "-118.8821,-38.62712,0",
+                  "Position": "-118.8821,-38.62708,-5.270754",
                   "Rotation": "0,0,0.3434634,0.9391661",
                   "Enabled": true,
                   "Components": [
@@ -46782,7 +47781,7 @@
                   "__guid": "651f40b4-4de6-416e-91f4-eb21383c63db",
                   "Flags": 0,
                   "Name": "Target - Enemy",
-                  "Position": "0.000007450582,-125,0",
+                  "Position": "0,-125,-5.270754",
                   "Rotation": "0,0,0.7071068,0.7071068",
                   "Enabled": true,
                   "Components": [
@@ -48396,8 +49395,8 @@
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Flags": 0,
       "Name": "Sun",
-      "Position": "0,0,256",
-      "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Position": "3340.771,-61.57393,1867.205",
+      "Rotation": "-0.6361758,0.06461956,0.7648976,0.07769448",
       "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
@@ -48459,7 +49458,7 @@
           "__guid": "d0f41b2e-abbe-4aec-98ee-47d683578872",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/sofa_03.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -48478,7 +49477,7 @@
           "__guid": "8fd58a8e-2c38-4110-ac5b-c6e24aa8acc4",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/sofa_03.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -48497,7 +49496,7 @@
           "__guid": "8d3c1556-aa9b-4534-97c8-4d78ab8b5766",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/sofa_03.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -48516,7 +49515,7 @@
           "__guid": "b6d84058-0de9-4c18-9521-89402627a9dc",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/vintage_cabinet_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -48526,7 +49525,7 @@
       "__guid": "db3bbfa1-1f48-47cc-93f1-f2e93f41cd23",
       "Flags": 0,
       "Name": "vintage_cabinet_01",
-      "Position": "3207.842,-543.0047,-3.970773",
+      "Position": "3207.842,-454.1869,-3.970773",
       "Rotation": "0,0,-1,-0.00000004371139",
       "Enabled": true,
       "Components": [
@@ -48535,7 +49534,7 @@
           "__guid": "5fcb4204-3afa-4673-b699-9a980a40f142",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/vintage_cabinet_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -48554,7 +49553,7 @@
           "__guid": "529883f5-1347-4c5a-8d1b-7d6151a42bc3",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/vintage_cabinet_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -48573,7 +49572,7 @@
           "__guid": "19f95f82-b1e5-4526-a7fb-634fe4a95126",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/vintage_cabinet_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -51190,7 +52189,7 @@
               "__guid": "75e493d4-db9e-4a24-a161-3ddcf678ccc5",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51200,7 +52199,7 @@
           "__guid": "0b8c2502-4662-4a2d-b6ed-8129db160475",
           "Flags": 0,
           "Name": "beer_bottle (12)",
-          "Position": "784.0892,-262.8029,9.75896",
+          "Position": "784.0875,-262.8091,9.75896",
           "Rotation": "0.6532823,0.2705984,-0.6532822,0.2705985",
           "Enabled": true,
           "Components": [
@@ -51209,7 +52208,7 @@
               "__guid": "ec6c3da1-66e9-4834-9a2f-252f390c1bde",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51219,7 +52218,7 @@
           "__guid": "cd000c78-f74e-4f9e-929b-3e5fbf39d2c3",
           "Flags": 0,
           "Name": "beer_bottle (11)",
-          "Position": "765.3135,-244.0233,9.75896",
+          "Position": "765.3122,-244.0294,9.75896",
           "Rotation": "0.5000004,-0.5000004,-0.5000006,-0.5000003",
           "Enabled": true,
           "Components": [
@@ -51228,7 +52227,7 @@
               "__guid": "d5452181-d4a2-4dbd-bec1-d6f973097a7f",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51238,7 +52237,7 @@
           "__guid": "be723146-5813-427a-b675-b2e9043860b1",
           "Flags": 0,
           "Name": "beer_bottle (10)",
-          "Position": "741.1791,-240.6696,9.75896",
+          "Position": "741.1777,-240.6755,9.75896",
           "Rotation": "0.2705981,-0.6532819,-0.2705984,-0.6532817",
           "Enabled": true,
           "Components": [
@@ -51247,7 +52246,7 @@
               "__guid": "fe112cc4-271b-463b-bb1a-45e44cf1e17c",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51257,7 +52256,7 @@
           "__guid": "52436361-1e90-4ac4-b3fb-063c5b0620e4",
           "Flags": 0,
           "Name": "beer_bottle (9)",
-          "Position": "778.1266,-277.6165,9.758957",
+          "Position": "778.1251,-277.6228,9.758957",
           "Rotation": "-0.707107,0.0000001341105,0.7071069,-0.0000001788139",
           "Enabled": true,
           "Components": [
@@ -51266,7 +52265,7 @@
               "__guid": "98ad06f3-808a-4018-b925-915e9ca53cc8",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51276,7 +52275,7 @@
           "__guid": "12a2b7f2-eaad-42ec-8c1f-c6d13b2e79b1",
           "Flags": 0,
           "Name": "beer_bottle (8)",
-          "Position": "857.9724,-383.4101,44.23459",
+          "Position": "857.9702,-383.4171,44.23459",
           "Rotation": "0,0,0.9238798,0.3826834",
           "Enabled": true,
           "Components": [
@@ -51285,7 +52284,7 @@
               "__guid": "2a02323d-266a-45c2-af6e-882caa85ff2a",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51295,7 +52294,7 @@
           "__guid": "190f020b-2b4e-444d-ac73-83bce6214e75",
           "Flags": 0,
           "Name": "beer_bottle (7)",
-          "Position": "853.826,-402.3666,44.23459",
+          "Position": "853.8236,-402.374,44.23459",
           "Rotation": "0,0,0.9238798,0.3826835",
           "Enabled": true,
           "Components": [
@@ -51304,7 +52303,7 @@
               "__guid": "ca966736-6385-49c6-9786-290770d671bd",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51314,7 +52313,7 @@
           "__guid": "1d1ff2b4-e83d-403d-b47d-71efb2454a57",
           "Flags": 0,
           "Name": "beer_bottle (6)",
-          "Position": "849.8414,-393.8271,44.23459",
+          "Position": "849.8387,-393.8339,44.23459",
           "Rotation": "0,0,0.9238799,0.3826835",
           "Enabled": true,
           "Components": [
@@ -51323,7 +52322,7 @@
               "__guid": "1d1774bd-2521-455b-824b-a11281c50fb8",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51333,7 +52332,7 @@
           "__guid": "f67f15de-3ccd-4622-8ddc-d2b7c8846e6e",
           "Flags": 0,
           "Name": "beer_bottle (5)",
-          "Position": "879.3975,-393.5327,44.23459",
+          "Position": "879.395,-393.5397,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51342,7 +52341,7 @@
               "__guid": "c96e33da-b9ef-4747-9d50-d9f233d7184d",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51352,7 +52351,7 @@
           "__guid": "ef4eae47-9340-4a22-9b9f-e3fd1ec3b631",
           "Flags": 0,
           "Name": "beer_bottle (4)",
-          "Position": "614.0734,-128.1932,44.23459",
+          "Position": "614.0734,-128.198,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51361,7 +52360,7 @@
               "__guid": "90f7fb6c-b630-400a-afc6-e18848ec532a",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51371,7 +52370,7 @@
           "__guid": "eb7b477a-56a7-40bb-8e58-fe46994f0991",
           "Flags": 0,
           "Name": "beer_bottle (3)",
-          "Position": "590.4282,-141.6548,44.23459",
+          "Position": "590.4279,-141.6595,44.23459",
           "Rotation": "0,0,0.707107,0.7071069",
           "Enabled": true,
           "Components": [
@@ -51380,7 +52379,7 @@
               "__guid": "1c8f31af-2416-4695-9b10-15471cf42eb3",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51390,7 +52389,7 @@
           "__guid": "905ff593-8314-4988-ae05-d39c497b51b2",
           "Flags": 0,
           "Name": "beer_bottle (2)",
-          "Position": "602.7686,-148.3897,44.23459",
+          "Position": "602.7686,-148.3945,44.23459",
           "Enabled": true,
           "Components": [
             {
@@ -51398,7 +52397,7 @@
               "__guid": "31f26dac-4609-49c3-ab2b-955aaa9065f1",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51416,7 +52415,7 @@
               "__guid": "fbdc02e1-8283-49ce-98cf-5e1f8b6e8784",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51434,7 +52433,7 @@
               "__guid": "a9b44d15-9e9b-420a-9e73-82d7bd56ff54",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51464,7 +52463,7 @@
               "__guid": "22c14dde-56c9-4463-b652-bf0c5b2b782b",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51482,7 +52481,7 @@
               "__guid": "5d213f52-15fd-404a-b908-852b1495aa16",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51500,7 +52499,7 @@
               "__guid": "51e849c9-a599-4f4a-babc-432882f448f0",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51530,7 +52529,7 @@
               "__guid": "eecccb63-3350-4125-856e-fe0cf3a62531",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51550,7 +52549,7 @@
               "__guid": "ffa630d1-93b6-4119-bab9-19e370834953",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51570,7 +52569,7 @@
               "__guid": "4ab3020f-07a4-4631-a0e0-5cd842883795",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51590,7 +52589,7 @@
               "__guid": "6fc3a348-feb5-4672-8d2d-c99a193d8cb6",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51609,7 +52608,7 @@
               "__guid": "45b23652-0602-4d3a-980c-62e62160549e",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51628,7 +52627,7 @@
               "__guid": "c08b98e8-6c75-43bb-9bd4-45cd8812cf9a",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51647,7 +52646,7 @@
               "__guid": "910eac87-c1c1-49a0-884b-e9bda12a24c6",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51667,7 +52666,7 @@
               "__guid": "a4e2c86d-b06b-4890-8af7-32917f012820",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51687,7 +52686,7 @@
               "__guid": "84589543-98fc-4f6f-bc24-d616e311e71e",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51707,7 +52706,7 @@
               "__guid": "e1d1e651-9077-44dd-a41f-71d56fe49767",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51727,7 +52726,7 @@
               "__guid": "b07f316b-bb5b-405b-8e9d-296dfbd50bc0",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51746,7 +52745,7 @@
               "__guid": "b8ca3f66-166e-4293-bb57-808ef99f9ed6",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51765,7 +52764,7 @@
               "__guid": "424dbfff-c3cd-45d6-9c86-4e96c4a17c6e",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51784,7 +52783,7 @@
               "__guid": "f7c6e588-3349-4cfe-90df-cde884994e70",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51804,7 +52803,7 @@
               "__guid": "05945ed2-9970-4f5e-9706-b50fd32807aa",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51824,7 +52823,7 @@
               "__guid": "ef38e135-9d90-45fa-a3f3-30f424935690",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51843,7 +52842,7 @@
               "__guid": "29036279-e59f-40cd-b0ae-086bc99ee1ff",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51862,7 +52861,7 @@
               "__guid": "f3210d7d-16b0-4f98-857f-def3c666dcd9",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51881,7 +52880,7 @@
               "__guid": "2d956d54-587d-4c09-b6c4-631e37ee2bb8",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51900,7 +52899,7 @@
               "__guid": "1dfc717a-faca-4253-9796-da9dc797bebe",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51919,7 +52918,7 @@
               "__guid": "853c5dd8-771b-43b7-a83c-ac4a03995d5c",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51938,7 +52937,7 @@
               "__guid": "5ede7a70-05c3-474a-8bcf-9247bfec3aa8",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -51957,7 +52956,7 @@
               "__guid": "43a3d098-a3d4-49b0-9a60-881e0ca44862",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51977,7 +52976,7 @@
               "__guid": "53d14d7f-fec8-4b66-a217-14e779be0946",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -51997,7 +52996,7 @@
               "__guid": "52280ef4-5601-47d8-9661-9716a0d98b28",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52016,7 +53015,7 @@
               "__guid": "fea0ba0b-cfe3-4ed3-8f0f-1dd02933eca9",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52036,7 +53035,7 @@
               "__guid": "a9b3a14a-6b4e-4eba-938a-d2501b84f1b1",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52055,7 +53054,7 @@
               "__guid": "cee15e86-c265-42fe-87ee-97d2426aeb16",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52074,7 +53073,7 @@
               "__guid": "0b5f5b50-0977-40e2-a591-03295e1a7915",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52093,7 +53092,7 @@
               "__guid": "558e9e80-9602-476f-af0b-fdc2d5b570e8",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52112,7 +53111,7 @@
               "__guid": "bdaaf8f3-3ed8-4dd1-92d8-6340a5524f9a",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52131,7 +53130,7 @@
               "__guid": "f7080747-3f5c-4abb-9253-616a839618ac",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52150,7 +53149,7 @@
               "__guid": "2029ef48-cc15-4a17-a3af-e75d1274db43",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52169,7 +53168,7 @@
               "__guid": "6516e305-a865-49ec-b23f-8dcce41f68af",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52188,7 +53187,7 @@
               "__guid": "9531b84c-3ffe-453f-9df4-e60c6acc7ab5",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52207,7 +53206,7 @@
               "__guid": "56a33adf-fec9-4d62-b1fe-cb52a1303d9d",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52226,7 +53225,7 @@
               "__guid": "71447d24-dab9-4552-b36e-f7af64cb2d7a",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52245,7 +53244,7 @@
               "__guid": "367212ba-3a1e-4d70-b196-bd6097e6e65f",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52264,7 +53263,7 @@
               "__guid": "6344e439-e772-4a6f-a750-237122d6b2e6",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52283,7 +53282,7 @@
               "__guid": "f1f8a85f-56ec-436f-a804-6ae8f89c9c66",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52302,7 +53301,7 @@
               "__guid": "c3212c03-31ee-4979-b37e-5bd94e0e1fa9",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52321,7 +53320,7 @@
               "__guid": "40ffeb0f-9507-4fda-bcaf-0e3c692ac41f",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52340,7 +53339,7 @@
               "__guid": "2a21a39d-d1c1-4700-9b85-9b5e7c909485",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52360,7 +53359,7 @@
               "__guid": "2e4e9758-3e35-488d-b25e-02fb57c97938",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52380,7 +53379,7 @@
               "__guid": "7b25a012-a227-4291-9494-7ecc27468cd5",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52399,7 +53398,7 @@
               "__guid": "2ee11aa2-2020-403c-9d5a-b44cd63a63e1",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52419,7 +53418,7 @@
               "__guid": "c82ebc47-1883-467a-88bc-e3e3b77691dc",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52438,7 +53437,7 @@
               "__guid": "9591a090-2385-4fb5-a726-f736eacc8167",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52457,7 +53456,7 @@
               "__guid": "029f4750-9a52-4a61-ba2b-7455edd54296",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52476,7 +53475,7 @@
               "__guid": "72282bd7-4488-40d1-aa35-28eb30c00daa",
               "BodyGroups": 18446744073709551615,
               "Health": 1,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52495,7 +53494,7 @@
               "__guid": "af2d28f7-dfa6-4d98-b11d-de037f4e6b6a",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52515,7 +53514,7 @@
               "__guid": "9be8667e-54dd-498b-9518-f4b574f65bf4",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52534,7 +53533,7 @@
               "__guid": "a012df09-adbf-4c79-ae71-056e47ff2b69",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52563,7 +53562,7 @@
               "__guid": "be4bc7b6-a6ae-4d5d-ac80-33f0d20d7d38",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52583,7 +53582,7 @@
               "__guid": "85be1fee-70c5-4d1b-82d7-0bb235dbb841",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52603,7 +53602,7 @@
               "__guid": "22b3afed-fed0-4282-84d1-bb4d6a52ca9a",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52623,7 +53622,7 @@
               "__guid": "388bbaed-e54e-406a-8551-6470fd65cb07",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52643,7 +53642,7 @@
               "__guid": "86c8e20f-fc97-4d72-8a25-d18f687c5467",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -52671,7 +53670,7 @@
               "__guid": "c5ec73cf-496b-4418-8c66-a64fc67d4540",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52691,7 +53690,7 @@
               "__guid": "8427d62a-dcc3-4c5d-aeeb-16205c016d4c",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52711,7 +53710,7 @@
               "__guid": "f74a7e71-5af6-4e5a-b465-ab647914b8ad",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52731,7 +53730,7 @@
               "__guid": "f896fe11-ad32-444c-afdf-bbe0395f743b",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "MaterialGroup": "polished",
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
@@ -52750,7 +53749,7 @@
               "__guid": "b34f45fe-ef22-4748-9994-7be9a900a306",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/furniture/round_wooden_table_01.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -53169,7 +54168,7 @@
       "__guid": "3cc30e6e-7556-40db-add8-0a041c991dfe",
       "Flags": 0,
       "Name": "sm_bed",
-      "Position": "3167.638,-444.7103,-0.00001989708",
+      "Position": "3167.638,-547.0414,-0.00001989708",
       "Rotation": "0,0,0.9999872,0.005062585",
       "Enabled": true,
       "Components": [
@@ -53187,7 +54186,7 @@
       "__guid": "aa945c00-9f40-4a54-9db0-3d168caf893a",
       "Flags": 0,
       "Name": "junk_01",
-      "Position": "2813.566,-682.8114,10",
+      "Position": "2813.566,-682.8114,0.7526293",
       "Rotation": "0,0,0.3390814,0.940757",
       "Enabled": true,
       "__Prefab": "prefabs/environment/props/junk_01.prefab",

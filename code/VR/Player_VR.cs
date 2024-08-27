@@ -43,7 +43,7 @@ public class Player_VR : Component
 
 	void GoToNextRoom()
 	{
-		RoomManager.instance.roomIndex++;
+		//RoomManager.instance.roomIndex++;
 		SetState(PlayerState_VR.Walking);
 	}
 
@@ -120,7 +120,7 @@ public class Player_VR : Component
 			else
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				RoomManager.instance.roomIndex++;
+				//RoomManager.instance.roomIndex++;
 				SetState(PlayerState_VR.Walking);
 			}
 
@@ -170,7 +170,7 @@ public class Player_VR : Component
 			}
 			else
 			{
-				RoomManager.instance.roomIndex++;
+				//RoomManager.instance.roomIndex++;
 				SetState(PlayerState_VR.Walking);
 			}
 		}

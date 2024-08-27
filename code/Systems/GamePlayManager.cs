@@ -62,6 +62,19 @@ public class GamePlayManager : Component
 		Restart_Internal();
 	}
 
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		if (GlobalHighlight.instance == null)
+		{
+			if (Game.IsEditor)
+			{
+				Log.Warning("Could not find a GlobalHighlight!!");
+			}
+		}
+	}
+
 	protected override void OnUpdate()
 	{
 		base.OnUpdate();

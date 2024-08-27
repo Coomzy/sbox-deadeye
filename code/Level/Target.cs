@@ -21,13 +21,21 @@ public class Target : Component, IRestartable, IShutdown
 
 	[Group("Runtime"), Property] public bool isDead { get; set; } = false;
 
+	GameObject originalParent;
+
+	public List<SkinnedModelRenderer> allRenderers { get; set; }
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 		
-		highlightOutline.Enabled = true;
-		highlightOutline.Color = Color.Transparent;
-		highlightOutline.ObscuredColor = highlightOutline.Color;
+		highlightOutline.Enabled = false;
+		//highlightOutline.Color = Color.Transparent;
+		//highlightOutline.ObscuredColor = highlightOutline.Color;
+
+		originalParent = GameObject.Parent;
+
+		allRenderers = Components.GetAll<SkinnedModelRenderer>(FindMode.EverythingInDescendants).ToList();
 	}
 
 	protected override void OnStart()
@@ -42,8 +50,10 @@ public class Target : Component, IRestartable, IShutdown
 	public void PreRestart()
 	{
 		isDead = false;
+
+		GameObject.SetParent(originalParent);
 		highlightOutline.Color = Color.Transparent;
-		highlightOutline.ObscuredColor = highlightOutline.Color;
+		highlightOutline.ObscuredColor = Color.Transparent;
 	}
 
 	public void PostRestart()
@@ -78,16 +88,30 @@ public class Target : Component, IRestartable, IShutdown
 
 	public void Select()
 	{
-		highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
-		highlightOutline.ObscuredColor = highlightOutline.Color;
+		if (GlobalHighlight.instance != null)
+		{
+			GameObject.SetParent(GlobalHighlight.instance.GameObject);
+			GlobalHighlight.instance.highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
+			GlobalHighlight.instance.highlightOutline.ObscuredColor = highlightOutline.Color;
+		}
+
+		//highlightOutline.Color = isBadTarget ? GameSettings.instance.badHighlightColour : GameSettings.instance.goodHighlightColour;
+		//highlightOutline.ObscuredColor = highlightOutline.Color;
 		//highlightOutline.Enabled = true;
 	}
 
 	public void Deselect()
 	{
 		//highlightOutline.Enabled = false;
-		highlightOutline.Color = Color.Transparent;
-		highlightOutline.ObscuredColor = highlightOutline.Color;
+		//highlightOutline.Color = Color.Transparent;
+		//highlightOutline.ObscuredColor = highlightOutline.Color;
+
+		if (GlobalHighlight.instance != null)
+		{
+			GameObject.SetParent(originalParent);
+			GlobalHighlight.instance.highlightOutline.Color = Color.Transparent;
+			GlobalHighlight.instance.highlightOutline.ObscuredColor = Color.Transparent;
+		}
 	}
 
 	[Button("LookAtPlayer")]

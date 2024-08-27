@@ -346,7 +346,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "b6e1bbb8-d4a0-47b7-a06a-6d0dd8ca9fcb",
+                    "component_id": "77a9f022-0e25-4616-af0e-b976752a8bf5",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -416,7 +416,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "b6e1bbb8-d4a0-47b7-a06a-6d0dd8ca9fcb",
+                    "component_id": "77a9f022-0e25-4616-af0e-b976752a8bf5",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -4105,7 +4105,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "257dc7fa-7468-4ab4-a575-d06d21f41581",
+            "component_id": "e56bb49b-15b6-41c8-8a21-0b75e44c2e2a",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }
@@ -7230,7 +7230,7 @@
           "__guid": "af371aaf-09ca-4a14-9c86-ece9ca633735",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/vintage_cabinet_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -7792,7 +7792,7 @@
           "__guid": "73fb465b-47ff-4b43-9da3-428321bde182",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/sofa_03.vmdl",
           "Tint": "1,1,1,1"
         }

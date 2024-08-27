@@ -99,8 +99,17 @@
 		{
 			lastNumber = wholeNumber;
 
+			float pitch = 1.0f;
+
+			if (wholeNumber == 3) pitch = 0.70f;
+			if (wholeNumber == 2) pitch = 0.85f;
+			if (wholeNumber == 1) pitch = 1.0f;
+
 			var soundHandle2 = Sound.Play("countdown");
 			soundHandle2.TargetMixer = Mixer.FindMixerByName("UI");
+
+			soundHandle2.Pitch = pitch;
+
 		}
 	}
 

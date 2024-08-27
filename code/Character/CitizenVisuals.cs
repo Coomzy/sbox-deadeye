@@ -249,7 +249,7 @@ public class CitizenVisuals : Component, IRestartable, IShutdown
 		//bodyRenderer.SetBodyGroup("feet", (bodyGroups & Clothing.BodyGroups.Feet) == Clothing.BodyGroups.Feet ? 1 : 0);
 	}
 
-	List<CitizenClothingInst> GetAllClothingInsts()
+	public List<CitizenClothingInst> GetAllClothingInsts()
 	{
 		var clothingInsts = new List<CitizenClothingInst>();
 

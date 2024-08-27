@@ -5,9 +5,7 @@
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/target/leather holster 001.vsnd",
-    "sounds/target/leather holster 002.vsnd",
-    "sounds/target/leather holster 003.vsnd"
+    "sounds/target/passed.vsnd"
   ],
   "Occlusion": false,
   "AirAbsorption": false,

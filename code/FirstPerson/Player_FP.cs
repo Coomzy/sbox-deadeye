@@ -44,7 +44,7 @@ public class Player_FP : Component
 	void GoToNextRoom()
 	{
 		Mouse.Visible = false;
-		RoomManager.instance.roomIndex++;
+		//RoomManager.instance.roomIndex++;
 		SetState(PlayerState_FP.Walking);
 	}
 
@@ -121,7 +121,7 @@ public class Player_FP : Component
 			else
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				RoomManager.instance.roomIndex++;
+				//RoomManager.instance.roomIndex++;
 				SetState(PlayerState_FP.Walking);
 			}
 
@@ -171,7 +171,7 @@ public class Player_FP : Component
 			}
 			else
 			{
-				RoomManager.instance.roomIndex++;
+				//RoomManager.instance.roomIndex++;
 				SetState(PlayerState_FP.Walking);
 			}
 		}

@@ -21,7 +21,7 @@ public class GamePreferences : UserPreferences<GamePreferences>
 	public void ApplyVolumesToMixers()
 	{
 		var mixerGame = Mixer.FindMixerByName("Game");
-		var mixerMusic = Mixer.FindMixerByName("Music");
+		var mixerMusic = Mixer.FindMixerByName("Soundtrack");
 		var mixerUI = Mixer.FindMixerByName("UI");
 
 		//Log.Info($"mixerGame: {mixerGame}, mixerMusic: {mixerMusic}, mixerUI: {mixerUI}");

@@ -2,6 +2,33 @@
   "__guid": "144dd9d8-fbfe-4870-8086-ad50b1f75539",
   "GameObjects": [
     {
+      "__guid": "3c39aa51-9143-4ca2-9e66-2bfdf74a322d",
+      "Flags": 0,
+      "Name": "GlobalHighlight",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "GlobalHighlight",
+          "__guid": "997e96d2-4a35-489c-bf04-8b77c75127ba",
+          "highlightOutline": {
+            "_type": "component",
+            "component_id": "74a667b3-3c86-4328-84a6-957111400fe5",
+            "go": "3c39aa51-9143-4ca2-9e66-2bfdf74a322d",
+            "component_type": "HighlightOutline"
+          }
+        },
+        {
+          "__type": "Sandbox.HighlightOutline",
+          "__guid": "74a667b3-3c86-4328-84a6-957111400fe5",
+          "Color": "1,0,0,1",
+          "InsideColor": "0,0,0,0",
+          "InsideObscuredColor": "0,0,0,0",
+          "ObscuredColor": "1,0,0,1",
+          "Width": 0.25
+        }
+      ]
+    },
+    {
       "__guid": "91e2f223-43e4-4878-aef0-a48399eedcc6",
       "Flags": 0,
       "Name": "Level Data Setter",
@@ -130,6 +157,7 @@
               "__guid": "2d381498-2d73-4f9a-99a6-e8639acb5794",
               "generatedTargetsRaw": [],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 5,
               "targetIndex": -1,
               "targets": [],
@@ -209,6 +237,7 @@
                 "180,115,0,1"
               ],
               "ignoreRandomize": true,
+              "lights": [],
               "reactTime": 2,
               "targetIndex": 0,
               "targets": [
@@ -2687,6 +2716,7 @@
                 "125,150,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 3.5,
               "targetIndex": 0,
               "targets": [
@@ -8586,6 +8616,7 @@
                 "-110,160,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 2,
               "targetIndex": 0,
               "targets": [
@@ -12150,6 +12181,7 @@
                 "-135,175,0,0"
               ],
               "ignoreRandomize": true,
+              "lights": [],
               "reactTime": 2,
               "targetIndex": 0,
               "targets": [
@@ -16885,6 +16917,20 @@
                 "180,135,0,0"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "2d4ffd3e-0639-47a8-b05d-0d5ea6540c51",
+                  "go": "52e77aec-125a-4fb4-b462-9428911cd2d2",
+                  "component_type": "PointLight"
+                },
+                {
+                  "_type": "component",
+                  "component_id": "94d5e993-75bf-4698-a61f-d75df0e4edc7",
+                  "go": "e5a0cd91-0ba9-4c51-a7b3-f1f04913fe1f",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 3.5,
               "targetIndex": 0,
               "targets": [
@@ -17001,6 +17047,85 @@
                       "IsTrigger": false,
                       "Scale": "100,100,10",
                       "Static": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "52e77aec-125a-4fb4-b462-9428911cd2d2",
+              "Flags": 0,
+              "Name": "Point Light",
+              "Position": "-150.9692,39.76342,72.96115",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "2d4ffd3e-0639-47a8-b05d-0d5ea6540c51",
+                  "Attenuation": 1.54,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "1,0.9738,0.93953,1",
+                  "Radius": 487.70108,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "932e4142-f3fc-4607-9732-1c43c9f70005",
+              "Flags": 0,
+              "Name": "Cube (3)",
+              "Position": "228.8142,-206.063,45.66249",
+              "Rotation": "0.000000009847423,-0.00000001283341,0.7933534,0.6087618",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "66fbd332-217f-44bc-bbe8-4a6befe29fb7",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/furniture/lantern_01/lantern_01.vmdl",
+                  "RenderType": "Off",
+                  "Tint": "1,1,1,1"
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "e5a0cd91-0ba9-4c51-a7b3-f1f04913fe1f",
+                  "Flags": 0,
+                  "Name": "Point Light",
+                  "Position": "-0.002146779,0.0006756262,8.795589",
+                  "Tags": "light_point,light",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.PointLight",
+                      "__guid": "94d5e993-75bf-4698-a61f-d75df0e4edc7",
+                      "Attenuation": 1.02,
+                      "FogMode": "Enabled",
+                      "FogStrength": 1,
+                      "LightColor": "1,0.84481,0.64186,1",
+                      "Radius": 486.60052,
+                      "Shadows": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "d6cca0c9-3d19-4156-bbaa-3825b5839674",
+                  "Flags": 0,
+                  "Name": "Sphere",
+                  "Position": "0.003447831,0.1384507,9.21307",
+                  "Scale": "0.1022695,0.1022695,0.1022695",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "f1f8ae5c-9153-4e0d-b78c-7a3da50e47d3",
+                      "BodyGroups": 18446744073709551615,
+                      "MaterialOverride": "materials/tb_stuff/lamp_emissive.vmat",
+                      "Model": "models/dev/sphere.vmdl",
+                      "RenderType": "Off",
+                      "Tint": "1,1,1,1"
                     }
                   ]
                 }
@@ -23982,6 +24107,20 @@
                 "45,150,0,0"
               ],
               "ignoreRandomize": false,
+              "lights": [
+                {
+                  "_type": "component",
+                  "component_id": "3ba7ee67-aded-4a06-acb0-015c857d3f1e",
+                  "go": "018114c7-4312-4f53-b21c-58dd88134e94",
+                  "component_type": "PointLight"
+                },
+                {
+                  "_type": "component",
+                  "component_id": "cf755433-df05-4147-8121-6db7b827f884",
+                  "go": "1acf82ad-ea61-4807-80c1-ad7787b0221e",
+                  "component_type": "PointLight"
+                }
+              ],
               "reactTime": 2,
               "targetIndex": 0,
               "targets": [
@@ -27610,6 +27749,46 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "018114c7-4312-4f53-b21c-58dd88134e94",
+              "Flags": 0,
+              "Name": "Point Light (1)",
+              "Position": "-13.3059,-198.1316,50.32229",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "3ba7ee67-aded-4a06-acb0-015c857d3f1e",
+                  "Attenuation": 1.54,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "1,0.9738,0.93953,1",
+                  "Radius": 231.20108,
+                  "Shadows": false
+                }
+              ]
+            },
+            {
+              "__guid": "1acf82ad-ea61-4807-80c1-ad7787b0221e",
+              "Flags": 0,
+              "Name": "Point Light (1)",
+              "Position": "92.37328,176.5478,64.94633",
+              "Tags": "light_point,light",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.PointLight",
+                  "__guid": "cf755433-df05-4147-8121-6db7b827f884",
+                  "Attenuation": 3.23,
+                  "FogMode": "Enabled",
+                  "FogStrength": 1,
+                  "LightColor": "1,0.9738,0.93953,1",
+                  "Radius": 267.70065,
+                  "Shadows": false
+                }
+              ]
             }
           ]
         },
@@ -27629,6 +27808,7 @@
                 "-25,150,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 1.5,
               "targetIndex": 0,
               "targets": [
@@ -30143,6 +30323,7 @@
                 "45,200,0,1"
               ],
               "ignoreRandomize": false,
+              "lights": [],
               "reactTime": 5,
               "targetIndex": 0,
               "targets": [
@@ -58744,8 +58925,8 @@
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Flags": 0,
       "Name": "Sun",
-      "Position": "0,0,256",
-      "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Position": "484.8449,347.183,1875.24",
+      "Rotation": "-0.3848769,0.2494673,0.7456747,0.4833271",
       "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
@@ -58754,7 +58935,7 @@
           "__guid": "d3659344-a90d-48fa-927a-095f70fe041f",
           "FogMode": "Enabled",
           "FogStrength": 1,
-          "LightColor": "0.94419,0.97767,1,1",
+          "LightColor": "0.93953,0.95767,1,1",
           "Shadows": true,
           "SkyColor": "0.2532,0.32006,0.35349,1"
         }
@@ -59749,7 +59930,7 @@
       "__guid": "b8e76db1-969e-46e0-9b7b-517fc8c59b0e",
       "Flags": 0,
       "Name": "sm_wood_exterior_fence_01 (1)",
-      "Position": "-1070,2200,0.00006484985",
+      "Position": "-1070,2198.796,0.00006484985",
       "Rotation": "-0,0,-1,0.0000001311342",
       "Enabled": true,
       "Components": [
@@ -60705,6 +60886,62 @@
       ]
     },
     {
+      "__guid": "f7325fd8-c269-4832-b193-cfd3e4a917d0",
+      "Flags": 0,
+      "Name": "sm_wood_roof",
+      "Position": "-1500,3504.134,185.5871",
+      "Rotation": "0.0000003894144,0,0,-1",
+      "Scale": "1.040826,1,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "a1e87678-9f25-4ba0-ba2e-2348a2e255c3",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_floor.vmdl",
+          "RenderType": "ShadowsOnly",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "149f3947-90e6-46e7-b233-357c01e8063d",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
+        }
+      ]
+    },
+    {
+      "__guid": "1929705c-6f66-443b-aad5-56ae69484ae8",
+      "Flags": 0,
+      "Name": "sm_wood_roof",
+      "Position": "-1500,3013.139,185.5875",
+      "Rotation": "0.0000003894144,0,0,-1",
+      "Scale": "1.040826,1,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "0b44a1a7-5709-4875-9469-f041638d597a",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/props/architecture/sm_wood_floor.vmdl",
+          "RenderType": "ShadowsOnly",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.PlaneCollider",
+          "__guid": "548b894c-4819-4fa1-8704-2c981a7bab6f",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "512.5,512.5",
+          "Static": true,
+          "Surface": "surfaces/wood.surface"
+        }
+      ]
+    },
+    {
       "__guid": "f02a46b7-40d8-4eec-914d-d70719b330fe",
       "Flags": 0,
       "Name": "standing_picture_frame_02",
@@ -60717,7 +60954,7 @@
           "__guid": "f7f3d9d0-8272-460c-8024-4e7b76ab07dd",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/props/standing_picture_frame_02.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -60737,7 +60974,7 @@
           "__guid": "512ed0bb-2adf-4994-b676-99ecb85231d6",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/fancy_picture_frame_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -60757,7 +60994,7 @@
           "__guid": "cf4b1922-a28d-4753-bcb2-a90b9896cd36",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/fancy_picture_frame_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -61000,7 +61237,7 @@
               "__guid": "a1e24f0d-23ab-4c69-b305-8e985d507db9",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61019,7 +61256,7 @@
               "__guid": "3805ae99-15c2-440f-be1d-4a68b40ce55f",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61038,7 +61275,7 @@
               "__guid": "e0753e74-db77-4617-b0f7-5ec10f089da3",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61057,7 +61294,7 @@
               "__guid": "375fe9db-f8a5-468f-93a4-e7bfcf97e4f0",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61076,7 +61313,7 @@
               "__guid": "e9f17fd1-6c1c-4bc3-9730-59f14cd1088f",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61095,7 +61332,7 @@
               "__guid": "107ffc22-c8b9-4ec8-a574-8ce47ffc998b",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61114,7 +61351,7 @@
               "__guid": "6ee03a66-681b-4089-9af4-ea1361f1c6c5",
               "BodyGroups": 18446744073709551615,
               "Health": 0,
-              "IsStatic": false,
+              "IsStatic": true,
               "Model": "models/props/trim_sheets/chairs/wooden_chair_a.vmdl",
               "Tint": "1,1,1,1"
             }
@@ -61885,7 +62122,7 @@
           "__guid": "846b40b0-8358-4dce-b964-1c9a7b0cf226",
           "BodyGroups": 18446744073709551615,
           "Health": 300,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/sbox_props/plastic_bucket_a/plastic_bucket_a.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -61904,7 +62141,7 @@
           "__guid": "dab816ee-222f-425b-9211-75b247235b78",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/vintage_cabinet_01.vmdl",
           "Tint": "1,1,1,1"
         },
@@ -61935,7 +62172,7 @@
           "__guid": "271fa107-c3f1-4a07-85e7-695b3c84df31",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/gothiccommode_01.vmdl",
           "Tint": "1,1,1,1"
         }
@@ -61954,7 +62191,7 @@
           "__guid": "86137af1-70c7-4227-890e-23de7657785d",
           "BodyGroups": 18446744073709551615,
           "Health": 0,
-          "IsStatic": false,
+          "IsStatic": true,
           "Model": "models/furniture/sofa_03.vmdl",
           "Tint": "1,1,1,1"
         },
@@ -62035,6 +62272,7 @@
   "ResourceVersion": 1,
   "__references": [
     "additionproject.gothiccommode_01",
+    "additionproject.lantern_01",
     "additionproject.picture_frame1",
     "additionproject.pictureframe_02",
     "additionproject.sofa_03",

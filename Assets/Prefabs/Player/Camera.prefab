@@ -2,7 +2,7 @@
   "RootObject": {
     "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
     "Flags": 0,
-    "Name": "Camera",
+    "Name": "camera",
     "Enabled": true,
     "Components": [
       {
@@ -83,6 +83,23 @@
       {
         "__type": "Sandbox.Highlight",
         "__guid": "c9dbc2d5-e1fc-4760-96ec-445e53500e1f"
+      },
+      {
+        "__type": "Sandbox.AmbientOcclusion",
+        "__guid": "b47d7e8a-6f50-4abc-9686-4fa37c83d4e2",
+        "FalloffDistance": 1,
+        "Intensity": 13.4,
+        "Quality": "High",
+        "Radius": 13
+      },
+      {
+        "__type": "Sandbox.Vignette",
+        "__guid": "a8366897-1566-412f-b3b1-85e2ae29d0ae",
+        "Center": "0.5,0.5",
+        "Color": "0.02326,0.02243,0.02217,0.73",
+        "Intensity": 0.7,
+        "Roundness": 0.22,
+        "Smoothness": 0.93
       }
     ],
     "Children": [],

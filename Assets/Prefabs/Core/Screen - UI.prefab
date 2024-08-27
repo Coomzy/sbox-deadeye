@@ -156,6 +156,10 @@
         "__guid": "a20687f4-5e4f-495e-aa98-d8f1a45476c8",
         "__enabled": false,
         "isRefreshing": false
+      },
+      {
+        "__type": "PreloadUIWidget",
+        "__guid": "df5baa62-7d9e-47a7-b48a-8a5f5f7059db"
       }
     ],
     "Children": [],

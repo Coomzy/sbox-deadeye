@@ -1,0 +1,24 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@inherits PanelComponent
+
+<root>
+	<div class="container">
+		<img style="opacity: 0;" src="textures/civ_alive.png" />
+		<img style="opacity: 0;" src="textures/civ_dead.png" />
+		<img style="opacity: 0;" src="textures/medals/medal_locked.psd" />
+		<img style="opacity: 0;" src="textures/medals/medal_platinum.psd" />
+		<img style="opacity: 0;" src="textures/medals/medal_gold.psd" />
+		<img style="opacity: 0;" src="textures/medals/medal_silver.psd" />
+		<img style="opacity: 0;" src="textures/medals/medal_bronze.psd" />
+	</div>
+</root>
+
+@code
+{
+	protected override int BuildHash()
+	{
+		return -1;
+	}
+}

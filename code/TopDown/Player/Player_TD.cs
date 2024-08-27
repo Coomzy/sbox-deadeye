@@ -153,7 +153,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 		if (FUCKING_STOP_YOU_CUNT())
 			return;
 
-		RoomManager.instance.roomIndex++;
+		RoomManager.instance.NextRoom();
 		SetState(PlayerState_TD.Walking);
 	}
 
@@ -245,7 +245,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 		{
 			if (RoomManager.instance.currentRoom.targets == null || RoomManager.instance.currentRoom.targets.Count < 1)
 			{
-				RoomManager.instance.roomIndex++;
+				RoomManager.instance.NextRoom();
 				SetState(PlayerState_TD.Walking);
 			}
 			else
@@ -341,7 +341,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 			else
 			{
 				RoomManager.instance.currentRoom.currentTarget.Deselect();
-				RoomManager.instance.roomIndex++;
+				RoomManager.instance.NextRoom();
 				SetState(PlayerState_TD.Walking);
 			}
 
@@ -644,7 +644,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 		}
 		else
 		{
-			RoomManager.instance.roomIndex++;
+			RoomManager.instance.NextRoom();
 			SetState(PlayerState_TD.Walking);
 		}
 	}
@@ -771,7 +771,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 		}
 		else
 		{
-			RoomManager.instance.roomIndex++;
+			RoomManager.instance.NextRoom();
 			SetState(PlayerState_TD.Walking);
 		}
 	}
