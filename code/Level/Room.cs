@@ -194,7 +194,7 @@ public class Room : Component, IRestartable, IShutdown
 		GetTargets();
 	}
 
-	protected override void DrawGizmos()
+	/*protected override void DrawGizmos()
 	{
 		base.DrawGizmos();
 
@@ -206,5 +206,5 @@ public class Room : Component, IRestartable, IShutdown
 		{
 			Gizmo.Draw.Line(pos, item.Transform.Position);
 		}
-	}
+	}*/
 }

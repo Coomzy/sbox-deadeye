@@ -46,6 +46,8 @@ public class Player_TD : Component, IRestartable, IShutdown
 	public RealTimeSince timeSinceStartedDecisionMaking { get; private set; }
 	CancellationTokenSource cancellationTokenSource;
 
+	TimeUntil? timeUntilShowMouse = null;
+
 	bool queueShoot;
 	bool queueSpare;
 
@@ -58,7 +60,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		base.OnAwake();
 
-		Mouse.Visible = true;
+		Mouse.Visible = false;
 		startPos = GameObject.Transform.Position;
 		startRot = GameObject.Transform.Rotation;
 		state = PlayerState_TD.Idle;
@@ -75,11 +77,15 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 	protected override void OnStart()
 	{
+		Mouse.Visible = false;
 		Apply_Weapon();
 	}
 
 	public void PreRestart()
 	{
+		timeUntilShowMouse = null;
+		Mouse.Visible = false;
+
 		state = PlayerState_TD.Idle;
 		GameObject.Transform.Position = startPos;
 		GameObject.Transform.Rotation = startRot;
@@ -778,6 +784,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 	/*async*/ void DeadStart()
 	{
+		timeUntilShowMouse = 10.0f;
 		hasShownDiedScreen = false;
 		//Game.ActiveScene.TimeScale = 1.0f;
 		GamePlayManager.instance.FailLevel(FailReason.Died);
@@ -1212,6 +1219,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 	/*async*/ void KilledTooManyCivsStart()
 	{
+		timeUntilShowMouse = 10.0f;
 		if (FUCKING_STOP_YOU_CUNT())
 			return;
 
@@ -1348,6 +1356,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 	/*async*/ void WonStart()
 	{
+		timeUntilShowMouse = 10.0f;
 		if (FUCKING_STOP_YOU_CUNT())
 			return;
 
@@ -1384,6 +1393,11 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 	protected override void OnUpdate()
 	{
+		if (timeUntilShowMouse != null && timeUntilShowMouse.Value)
+		{
+			Mouse.Visible = true;
+		}
+
 		if (FUCKING_STOP_YOU_CUNT())
 			return;
 

@@ -68,10 +68,11 @@ public class UIManager : Component, IRestartable
 	}
 
 	public void Died()
-	{
-		//if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
-		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
-		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
+    {
+        Mouse.Visible = true;
+        //if (currentTimeWidget != null) //currentTimeWidget.Enabled = false;
+        //if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
+        if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		//if (leaderboardsScreen != null) leaderboardsScreen.Enabled = false;
@@ -81,6 +82,7 @@ public class UIManager : Component, IRestartable
 
 	public void FailedTooManyCivsKilled()
 	{
+		Mouse.Visible = true;
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
@@ -90,6 +92,7 @@ public class UIManager : Component, IRestartable
 
 	public void Won()
 	{
+		Mouse.Visible = true;
 		//if (currentTimeWidget != null) currentTimeWidget.Enabled = false;
 		//if (timeAddedWidget != null) timeAddedWidget.Enabled = false;
 		if (reactTimeBarWidget != null) reactTimeBarWidget.Enabled = false;
