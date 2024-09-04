@@ -94,6 +94,12 @@
             "go": "2de4b206-7686-4243-b205-5e21452c68b8",
             "component_type": "MainMenuScreen"
           },
+          "marathonModeScreen": {
+            "_type": "component",
+            "component_id": "fedd50a2-5165-4bf4-a022-9a67c95c8f33",
+            "go": "2de4b206-7686-4243-b205-5e21452c68b8",
+            "component_type": "MarathonModeScreen"
+          },
           "menuState": "Main",
           "settingsScreen": {
             "_type": "component",
@@ -159,6 +165,11 @@
         {
           "__type": "PassThruMenuScreen",
           "__guid": "c855335d-1029-41a1-a30c-7ad0ac53a5bb",
+          "__enabled": false
+        },
+        {
+          "__type": "MarathonModeScreen",
+          "__guid": "fedd50a2-5165-4bf4-a022-9a67c95c8f33",
           "__enabled": false
         }
       ]
@@ -347,7 +358,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "f01c69c6-e64f-4585-8c60-d326bc246c5f",
+                    "component_id": "c9719ac3-eb2c-4b86-ba54-c555cca49067",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   }
@@ -417,7 +428,7 @@
                   },
                   "weapon": {
                     "_type": "component",
-                    "component_id": "f01c69c6-e64f-4585-8c60-d326bc246c5f",
+                    "component_id": "c9719ac3-eb2c-4b86-ba54-c555cca49067",
                     "go": "99f64441-b1aa-42fa-be2c-a31be0698518",
                     "component_type": "Weapon"
                   },
@@ -4106,7 +4117,7 @@
           },
           "weapon": {
             "_type": "component",
-            "component_id": "c356c6cc-0e9c-4fa8-b5a9-f98372a1a0d5",
+            "component_id": "4734c597-2fd7-439a-85e3-20b99de0b61e",
             "go": "94f8f606-e933-4814-bb0d-7e92cde286a4",
             "component_type": "Weapon"
           }

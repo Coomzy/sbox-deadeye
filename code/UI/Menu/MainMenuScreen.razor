@@ -17,6 +17,13 @@
 					}
 					Play
 				</div>
+				<!--<div class="button cowboy" style="width: contain" onclick="@(() => ButtonMarathonMode())">
+					@if (Input.UsingController)
+					{
+						<span class="icon"><InputGlyph button="MarathonMode" /></span>
+					}
+					Marathon Mode
+				</div>-->
 				<!--<div class="button yellow" onclick="@(() => ButtonStats())">Stats</div>-->
 				<div class="button cowboy" style="width: contain" onclick="@(() => ButtonLeaderboards())">
 					@if (Input.UsingController)
@@ -90,6 +97,10 @@
 		if (Input.Pressed("Play"))
 		{
 			ButtonPlay();
+		}		
+		if (Input.Pressed("MarathonMode"))
+		{
+			ButtonMarathonMode();
 		}
 		if (Input.Pressed("Leaderboard"))
 		{
@@ -111,10 +122,20 @@
 
 	void ButtonPlay()
 	{
+		GamePlayManager.isInMarathonMode = false;
 		// Other gamemodes have been dropped
 		//MainMenu.instance.SetMenuState(MenuState.GameMode);
 
 		MainMenu.instance.SetMenuState(MenuState.LevelSelect);
+		var soundHandle = Sound.Play("ui.button.press");
+		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+	}
+
+	void ButtonMarathonMode()
+	{
+		GamePlayManager.isInMarathonMode = true;
+		//MainMenu.instance.leaderboardsScreen.OpenCombinedTimed();
+		MainMenu.instance.SetMenuState(MenuState.MarathonMode);
 		var soundHandle = Sound.Play("ui.button.press");
 		soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
 	}

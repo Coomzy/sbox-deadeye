@@ -19,6 +19,7 @@ public enum MenuState
 	Leaderboards,
 	HowToPlay,
 	Settings,
+	MarathonMode,
 }
 
 public enum SplineRotationType
@@ -37,6 +38,7 @@ public class MainMenu : Component
 
 	[Group("Screens"), Property] public MainMenuScreen mainMenuScreen { get; private set; }
 	[Group("Screens"), Property] public GameModeScreen gameModeScreen { get; private set; }
+	[Group("Screens"), Property] public MarathonModeScreen marathonModeScreen { get; private set; }
 	[Group("Screens"), Property] public LevelSelectScreen levelSelectScreen { get; private set; }
 	[Group("Screens"), Property] public SettingsScreen settingsScreen { get; private set; }
 	[Group("Screens"), Property] public StatsScreen statsScreen { get; private set; }
@@ -128,6 +130,7 @@ public class MainMenu : Component
 		ToggleMenu(howToPlayScreen, false);
 		ToggleMenu(statsScreen, false);
 		ToggleMenu(leaderboardsScreen, false);
+		ToggleMenu(marathonModeScreen, false);
 	}
 
 	[Button("GetLeaderboard")]
@@ -183,6 +186,9 @@ public class MainMenu : Component
 			case MenuState.HowToPlay:
 				selected = howToPlayScreen;
 				break;
+			case MenuState.MarathonMode:
+				selected = marathonModeScreen;
+				break;
 		}
 
 		/*if (GameTitleText != null) GameTitleText.RenderType = (
@@ -212,6 +218,7 @@ public class MainMenu : Component
 			case MenuState.LevelSelect:
 			case MenuState.Stats:
 			case MenuState.Settings:
+			case MenuState.MarathonMode:
 				VARotationType = SplineRotationType.None;
 				VASplineMoveSpeed = 2f;
 				VASpline = SideViewSpline;

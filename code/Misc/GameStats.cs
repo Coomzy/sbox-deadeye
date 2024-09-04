@@ -22,6 +22,7 @@ public static class GameStats
 	public const string RESTARTS = "restarts";
 	public const string LEVEL_FURTHEST_PLAYED = "level-far-played";
 	public const string LEVEL_FURTHEST_BEAT = "level-far-beat";
+	public const string MARATHON_MODE = "marathon-mode";
 
 	public static void Increment(string stat, double incrementAmount = 1)
 	{

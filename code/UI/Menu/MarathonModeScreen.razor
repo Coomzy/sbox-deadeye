@@ -1,0 +1,99 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Audio;
+@using Sandbox.Services;
+@using System;
+@inherits PanelComponent
+
+<root class="menu">
+    <div class="container">
+        <div class="keyboard-hint">
+            <label>Hint: Keyboard is faster. What about both?</label>
+            @*@if (hasBeatAllLevels)
+            {
+                <label>Hint: Keyboard is faster. What about both?</label>
+            }
+            else
+            {
+                <label>Hint: Keyboard is faster</label>
+            }*@
+        </div>
+        <div class="buttons">
+            <div class="button-bg">
+                <div class="button cowboy singular" onclick="@(() => ButtonPlay())">
+                    @if (Input.UsingController)
+                    {
+                        <InputGlyph button="Play" /></span>
+                    }
+					Play
+                </div>
+            </div>
+            <div class="button-bg">
+                <div class="button cowboy singular" onclick="@(() => ButtonBack())">
+                    @if (Input.UsingController)
+                    {
+                        <InputGlyph button="Back" /></span>
+                    }
+					Back
+                </div>
+            </div>
+        </div>
+    </div>
+
+</root>
+
+@code
+{
+        /*bool hasBeatAllLevels = true;
+
+        protected override void OnAwake()
+        {
+        foreach (var level in GameSettings.instance.topDownLevels)
+            {
+            if (level == null)
+            continue;
+
+            if (!level.HasCompletedLevel())
+                {
+                hasBeatAllLevels = false;
+    break;
+    }
+    }
+    }*/
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        if (!HasClass("visible"))
+            return;
+
+        if (Input.Pressed("Play"))
+        {
+            ButtonPlay();
+        }
+        if (Input.Pressed("Back"))
+        {
+            ButtonBack();
+        }
+    }
+
+    void ButtonBack()
+    {
+        MainMenu.instance.SetMenuState(MenuState.Main);
+        var soundHandle = Sound.Play("ui.navigate.back");
+        soundHandle.TargetMixer = Mixer.FindMixerByName("UI");
+    }
+
+    void ButtonPlay()
+    {
+        var firstLevel = GameSettings.instance.topDownLevels[0];
+        Game.ActiveScene.Load(firstLevel.scene);
+        //LoadingScreen.SwitchLevel(firstLevel);
+    }
+
+	/// <summary>
+    /// update every second
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine( RealTime.Now.CeilToInt() );
+}

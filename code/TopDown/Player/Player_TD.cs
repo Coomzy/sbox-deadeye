@@ -310,6 +310,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 			return;
 
 		GamePlayManager.instance.decidingTime += Time.Delta;
+		GamePlayManager.marathonModeDecidingTime += Time.Delta;
 
 		if (RoomManager.instance?.currentRoom == null)
 		{

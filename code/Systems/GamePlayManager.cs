@@ -25,7 +25,10 @@ public class GamePlayManager : Component
 	[Group("Runtime"), Property] public bool isNewPersonalBest { get; set; }
 	[Group("Runtime"), Property] public float? previousBestTime { get; set; }
 	[Group("Runtime"), Property] public TimeUntil countDownFinish { get; set; }
-	[Group("Runtime"), Property] public bool hasFinishedCountDown => countDownFinish; 
+	[Group("Runtime"), Property] public bool hasFinishedCountDown => countDownFinish;
+
+	public static float marathonModeDecidingTime { get; set; }
+	public static bool isInMarathonMode { get; set; } = false;
 	
 	public MedalType currentMedal => LevelData.active != null ? LevelData.active.TimeToMedalType(levelTime) : MedalType.None;
 
@@ -65,6 +68,16 @@ public class GamePlayManager : Component
 	protected override void OnStart()
 	{
 		base.OnStart();
+
+		if (isInMarathonMode)
+		{
+			var firstLevel = GameSettings.instance.topDownLevels[0];
+			bool isFirstLevel = firstLevel == LevelData.active;
+			if (isFirstLevel)
+			{
+				marathonModeDecidingTime = 0.0f;
+			}
+		}
 
 		if (GlobalHighlight.instance == null)
 		{
@@ -162,14 +175,25 @@ public class GamePlayManager : Component
 		civiliansKilled = 0;
 		isNewPersonalBest = false;
 		previousBestTime = null;
+
+		var firstLevel = GameSettings.instance.topDownLevels[0];
+		bool isFirstLevel = firstLevel == LevelData.active;
+		if (isFirstLevel)
+		{
+			marathonModeDecidingTime = 0.0f;
+		}
 	}
 
 	public void Restart()
 	{
-		Restart_Internal();
-
 		GameStats.Increment(GameStats.ATTEMPTS);
 		GameStats.Increment(GameStats.RESTARTS);
+
+		if (RestartMarathonMode())
+		{
+			return;
+		}
+		Restart_Internal();
 
 		var restartables = Scene.GetAllComponents<IRestartable>();
 		foreach (var restartable in restartables)
@@ -188,10 +212,39 @@ public class GamePlayManager : Component
 		}
 	}
 
+	public bool RestartMarathonMode()
+	{
+		var firstLevel = GameSettings.instance.topDownLevels[0];
+		bool isFirstLevel = firstLevel == LevelData.active;
+		if (isFirstLevel)
+			return false;
+
+		marathonModeDecidingTime = 0.0f;
+		var shutdowns = Scene.GetAllComponents<IShutdown>();
+		foreach (var shutdown in shutdowns)
+		{
+			if (shutdown == null)
+				continue;
+
+			shutdown.PreShutdown();
+		}
+		foreach (var shutdown in shutdowns)
+		{
+			if (shutdown == null)
+				continue;
+
+			shutdown.PostShutdown();
+		}
+		LoadingScreen.SwitchLevel(firstLevel.scene);
+
+		return true;
+	}
+
 	public void ExitLevel()
 	{
 		GameStats.Increment(GameStats.LEVEL_EXITS);
 
+		marathonModeDecidingTime = 0.0f;
 		var shutdowns = Scene.GetAllComponents<IShutdown>();
 		foreach (var shutdown in shutdowns)
 		{
@@ -325,6 +378,17 @@ public class GamePlayManager : Component
 				break;
 			}
 		}
+
+		if (isInMarathonMode)
+		{
+			var lastLevel = GameSettings.instance.topDownLevels[GameSettings.instance.topDownLevels.Count-1];
+			bool isLastLevel = lastLevel == LevelData.active;
+			if (isLastLevel)
+			{
+				GameLeaderboards.SetLeaderboard(GameStats.MARATHON_MODE, marathonModeDecidingTime);
+			}
+		}
+
 	}
 
 	[Button("Test")]

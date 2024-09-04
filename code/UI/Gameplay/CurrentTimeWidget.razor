@@ -44,6 +44,10 @@
 		}
 
 		var levelTime = GamePlayManager.instance.levelTime;
+		if (GamePlayManager.isInMarathonMode)
+		{
+			levelTime = GamePlayManager.marathonModeDecidingTime;
+		}
 		var formattedTime = UIManager.FormatTime(levelTime);
 		return formattedTime;
 	}
