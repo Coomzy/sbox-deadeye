@@ -417,6 +417,9 @@ public class Player_TD : Component, IRestartable, IShutdown
 		if (input1 && input2)
 		{
 			queueShoot = true;
+			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT, 1);
+			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT_SHOOT, 1);
+			Log.Info("Queue Shoot!");
 		}
 
 		if (input1 || input2)
@@ -445,6 +448,9 @@ public class Player_TD : Component, IRestartable, IShutdown
 		if (input1 && input2)
 		{
 			queueSpare = true;
+			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT, 1);
+			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT_SPARE, 1);
+			Log.Info("Queue Spare!");
 		}
 
 		if (input1 || input2)

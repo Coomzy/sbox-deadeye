@@ -131,6 +131,8 @@ public class MainMenu : Component
 		ToggleMenu(statsScreen, false);
 		ToggleMenu(leaderboardsScreen, false);
 		ToggleMenu(marathonModeScreen, false);
+
+		GameStats.CheckMedalAchievements();
 	}
 
 	[Button("GetLeaderboard")]

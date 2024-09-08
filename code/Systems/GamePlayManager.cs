@@ -214,6 +214,11 @@ public class GamePlayManager : Component
 
 	public bool RestartMarathonMode()
 	{
+		if (!isInMarathonMode)
+		{
+			return false;
+		}
+
 		var firstLevel = GameSettings.instance.topDownLevels[0];
 		bool isFirstLevel = firstLevel == LevelData.active;
 		if (isFirstLevel)
@@ -332,9 +337,11 @@ public class GamePlayManager : Component
 		{
 			GameLeaderboards.SetLeaderboardLevelTime(LevelData.active, levelTime);
 
-			var bestMedalType = GameSettings.instance.GetLowestMedalType();
-			GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
+			//var bestMedalType = GameSettings.instance.GetLowestMedalType();
+			//GameLeaderboards.SetLeaderboard(GameStats.LOWEST_MEDAL, (int)bestMedalType);
 		}
+
+		GameStats.CheckMedalAchievements();
 
 		float combinedTime = 0.0f;
 		bool hasBeatAllLevels = true;

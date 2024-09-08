@@ -23,6 +23,9 @@ public static class GameStats
 	public const string LEVEL_FURTHEST_PLAYED = "level-far-played";
 	public const string LEVEL_FURTHEST_BEAT = "level-far-beat";
 	public const string MARATHON_MODE = "marathon-mode";
+	public const string TIMES_QUEUED_INPUT = "times-queued-input";
+	public const string TIMES_QUEUED_INPUT_SHOOT = "times-queued-input-shoot";
+	public const string TIMES_QUEUED_INPUT_SPARE = "times-queued-input-spare";
 
 	public static void Increment(string stat, double incrementAmount = 1)
 	{
@@ -81,5 +84,31 @@ public static class GameStats
 
 		Log.Info($"FixStats() slowestTime = {slowestTime}");
 		Sandbox.Services.Stats.SetValue(COMBINED_TIME, slowestTime);
+	}
+
+	public static void CheckMedalAchievements()
+	{
+		//Log.Info($"CheckMedalAchievements()");
+		MedalType lowestMedal = MedalType.Onyx;
+		foreach (var level in GameSettings.instance.topDownLevels)
+		{
+			var levelMedal = level.GetBestMedal();
+
+			if (levelMedal == MedalType.None)
+			{
+				lowestMedal = MedalType.None;
+				continue;
+			}
+
+			//Log.Info($"{level.medalStatName}: {levelMedal} (int){(int)levelMedal}");
+			Set(level.medalStatName, (int)levelMedal);
+
+			if (levelMedal < lowestMedal)
+			{
+				lowestMedal = levelMedal;
+			}
+		}
+		//Log.Info($"Lowest Medal: {lowestMedal} (int){(int)lowestMedal}");
+		Set(LOWEST_MEDAL, (int)lowestMedal);
 	}
 }

@@ -64,6 +64,9 @@ public class LevelData : GameResource
 	}
 
 	[Category("Leaderboard"), Property, ReadOnly, JsonIgnore]
+	public string medalStatName => $"{statName}-mdl".ToLower();
+
+	[Category("Leaderboard"), Property, ReadOnly, JsonIgnore]
 	public string leaderboardName
 	{
 		get

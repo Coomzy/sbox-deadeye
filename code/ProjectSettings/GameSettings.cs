@@ -100,7 +100,7 @@ public class GameSettings : GameResourceSingleton<GameSettings>
 		var lowestMedalType = MedalType.Onyx;
 		foreach (var level in topDownLevels)
 		{
-			if (level.HasCompletedLevel())
+			if (!level.HasCompletedLevel())
 			{
 				lowestMedalType = MedalType.None;
 				break;
