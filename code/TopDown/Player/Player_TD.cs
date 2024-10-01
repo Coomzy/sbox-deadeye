@@ -92,6 +92,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		target = null;
 		targets.Clear();
+		ClearQueuedShots();
 
 		bodyPhysics.Enabled = false;
 		bodyRenderer.UseAnimGraph = true;
@@ -273,6 +274,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 
 		timeSinceStartedDecisionMaking = 0;
 		targets.Clear();
+		ClearQueuedShots();
 
 		//Game.ActiveScene.TimeScale = 0.25f;
 
@@ -405,7 +407,6 @@ public class Player_TD : Component, IRestartable, IShutdown
 		}
 	}
 
-
 	bool ShootKeyIsDown()
 	{
 		if (FUCKING_STOP_YOU_CUNT())
@@ -419,7 +420,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 			queueShoot = true;
 			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT, 1);
 			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT_SHOOT, 1);
-			Log.Info("Queue Shoot!");
+			//Log.Info("Queue Shoot!");
 		}
 
 		if (input1 || input2)
@@ -450,7 +451,7 @@ public class Player_TD : Component, IRestartable, IShutdown
 			queueSpare = true;
 			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT, 1);
 			GameStats.Increment(GameStats.TIMES_QUEUED_INPUT_SPARE, 1);
-			Log.Info("Queue Spare!");
+			//Log.Info("Queue Spare!");
 		}
 
 		if (input1 || input2)
@@ -465,6 +466,12 @@ public class Player_TD : Component, IRestartable, IShutdown
 		}
 
 		return false;
+	}
+
+	public void ClearQueuedShots()
+	{
+		queueShoot = false;
+		queueSpare = false;
 	}
 
 	enum ExecuteSubState

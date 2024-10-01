@@ -67,8 +67,8 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.beer_bottle",
-    "facepunch.wooden_chair_a"
+    "facepunch.beer_bottle#33584",
+    "facepunch.wooden_chair_a#43573"
   ],
   "__version": 1
 }

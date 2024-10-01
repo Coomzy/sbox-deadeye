@@ -334,8 +334,8 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.12g_shell",
-    "facepunch.v_usp"
+    "facepunch.12g_shell#35374",
+    "facepunch.v_usp#64712"
   ],
   "__version": 1
 }

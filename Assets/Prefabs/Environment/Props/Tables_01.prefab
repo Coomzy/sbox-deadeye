@@ -87,8 +87,8 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "additionproject.roundwoodentable",
-    "facepunch.wooden_chair_a"
+    "additionproject.roundwoodentable#12663",
+    "facepunch.wooden_chair_a#43573"
   ],
   "__version": 1
 }

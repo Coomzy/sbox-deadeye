@@ -148,10 +148,10 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.flourbag",
-    "facepunch.flourbag_crumple",
-    "facepunch.wooden_crate_02",
-    "polyhaven.compost_bag_02"
+    "facepunch.flourbag_crumple#57318",
+    "facepunch.flourbag#57319",
+    "facepunch.wooden_crate_02#43575",
+    "polyhaven.compost_bag_02#20844"
   ],
   "__version": 1
 }

@@ -123,13 +123,13 @@ public class Room : Component, IRestartable, IShutdown
 			newTarget.Transform.LocalRotation = Rotation.Identity;
 			newTarget.SetPrefabSource(GameSettings.instance.targetPrefab.ResourcePath);
 
-			Game.ActiveScene = GameObject.Scene;
+			//Game.ActiveScene = GameObject.Scene;
 			if (Game.ActiveScene != null)
 			{
 				newTarget.UpdateFromPrefab();
 				newTarget.BreakFromPrefab();
 			}
-			Game.ActiveScene = null;
+			//Game.ActiveScene = null;
 
 			var target = newTarget.Components.Get<Target>();
 			if (target != null)

@@ -88,7 +88,7 @@ public class RoomVisualGenerator : Component
 
 	public void SetPrefab(GameObject prefabInst, List<PrefabFile> prefabFiles)
 	{
-		Game.ActiveScene = GameObject.Scene;
+		//Game.ActiveScene = GameObject.Scene;
 		var prefabFile = prefabFiles != null ? prefabFiles.Random() : null;
 		string prefabFilePath = prefabFile != null ? prefabFile.ResourcePath : "";
 		prefabInst.Enabled = string.IsNullOrEmpty(prefabFilePath) ? false : true;

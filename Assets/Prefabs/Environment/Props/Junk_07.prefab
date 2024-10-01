@@ -102,8 +102,8 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.wooden_crate_02",
-    "polyhaven.wooden_barrel_01a"
+    "facepunch.wooden_crate_02#43575",
+    "polyhaven.wooden_barrel_01a#24454"
   ],
   "__version": 1
 }

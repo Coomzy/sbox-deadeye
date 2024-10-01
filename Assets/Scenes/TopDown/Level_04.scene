@@ -62271,14 +62271,14 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "additionproject.gothiccommode_01",
-    "additionproject.lantern_01",
-    "additionproject.picture_frame1",
-    "additionproject.pictureframe_02",
-    "additionproject.sofa_03",
-    "additionproject.vintagecabinet_1",
-    "facepunch.plasticbucketa1",
-    "facepunch.wooden_chair_a"
+    "additionproject.gothiccommode_01#12664",
+    "additionproject.lantern_01#12417",
+    "additionproject.picture_frame1#12740",
+    "additionproject.pictureframe_02#12796",
+    "additionproject.sofa_03#12669",
+    "additionproject.vintagecabinet_1#12799",
+    "facepunch.plasticbucketa1#33624",
+    "facepunch.wooden_chair_a#43573"
   ],
   "__version": 1
 }

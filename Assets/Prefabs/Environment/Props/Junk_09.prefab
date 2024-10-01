@@ -165,7 +165,7 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.beer_bottle"
+    "facepunch.beer_bottle#33584"
   ],
   "__version": 1
 }

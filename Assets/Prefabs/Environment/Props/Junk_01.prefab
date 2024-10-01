@@ -80,8 +80,8 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.flourbag_crumple",
-    "facepunch.plasticbucketa1"
+    "facepunch.flourbag_crumple#57318",
+    "facepunch.plasticbucketa1#33624"
   ],
   "__version": 1
 }

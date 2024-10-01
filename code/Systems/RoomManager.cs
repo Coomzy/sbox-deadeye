@@ -226,13 +226,13 @@ public class RoomManager : Component, IRestartable, IShutdown
 
 				roomVisualGeneratorGO.SetPrefabSource(RoomSettings.instance.roomVisualGenerator.ResourcePath);
 
-				Game.ActiveScene = GameObject.Scene;
+				//Game.ActiveScene = GameObject.Scene;
 				if (Game.ActiveScene != null)
 				{
 					roomVisualGeneratorGO.UpdateFromPrefab();
 					roomVisualGeneratorGO.BreakFromPrefab();
 				}
-				Game.ActiveScene = null;
+				//Game.ActiveScene = null;
 
 				var roomVisualGenerator = splineGO.Components.Get<RoomVisualGenerator>();
 				if (roomVisualGenerator != null)

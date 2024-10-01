@@ -64,9 +64,9 @@
   "MenuIcon": null,
   "ResourceVersion": 1,
   "__references": [
-    "facepunch.flourbag",
-    "facepunch.flourbag_crumple",
-    "facepunch.wheelbarrow"
+    "facepunch.flourbag_crumple#57318",
+    "facepunch.flourbag#57319",
+    "facepunch.wheelbarrow#43801"
   ],
   "__version": 1
 }

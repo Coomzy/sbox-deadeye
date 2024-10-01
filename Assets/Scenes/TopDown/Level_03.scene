@@ -63832,7 +63832,7 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "additionproject.lantern_01"
+    "additionproject.lantern_01#12417"
   ],
   "__version": 1
 }

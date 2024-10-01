@@ -4,7 +4,7 @@
   "Org": "coomzy",
   "Ident": "shootordontshoot",
   "Schema": 1,
-  "IncludeSourceFiles": false,
+  "IncludeSourceFiles": true,
   "Resources": "Textures/medals/*\ntextures/levels/thumbnail/*\nfonts/*\nTextures/civ_alive.png\nTextures/civ_dead.png",
   "PackageReferences": [],
   "EditorReferences": null,

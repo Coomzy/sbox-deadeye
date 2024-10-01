@@ -54290,16 +54290,16 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "additionproject.gfatherclock1",
-    "additionproject.gothiccommode_01",
-    "additionproject.lantern_01",
-    "additionproject.picture_frame1",
-    "additionproject.roundwoodentable",
-    "additionproject.sofa_03",
-    "additionproject.vintagecabinet_1",
-    "facepunch.beer_bottle",
-    "facepunch.wooden_chair_a",
-    "polyhaven.wooden_table_02"
+    "additionproject.gfatherclock1#12737",
+    "additionproject.gothiccommode_01#12664",
+    "additionproject.lantern_01#12417",
+    "additionproject.picture_frame1#12740",
+    "additionproject.roundwoodentable#12663",
+    "additionproject.sofa_03#12669",
+    "additionproject.vintagecabinet_1#12799",
+    "facepunch.beer_bottle#33584",
+    "facepunch.wooden_chair_a#43573",
+    "polyhaven.wooden_table_02#24212"
   ],
   "__version": 1
 }
