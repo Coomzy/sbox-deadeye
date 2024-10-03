@@ -3,8 +3,8 @@ using System.Runtime.InteropServices.JavaScript;
 
 public static class GameInputs
 {
-	[ConCmd("setbinds_to_meta_strat")]
-	public static void setbinds_to_meta_strat()
+	[ConCmd("bind_to_meta_strat")]
+	public static void bind_to_meta_strat()
 	{
 		IGameInstance.Current.SetBind("Shoot", "leftarrow");
 		IGameInstance.Current.SetBind("Shoot_Alt", "rightarrow");
